@@ -8,8 +8,13 @@ from .models import *
 
 admin.site.register(Tribe_Image)
 
+
 class ViewAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     pass
 
 admin.site.register(Tribe,ViewAdmin)
-admin.site.register(Health, ViewAdmin)
+admin.site.register(Health,ViewAdmin)
+admin.site.register(Education,ViewAdmin)
+admin.site.register(SOL,ViewAdmin)
+admin.site.register(Culture,ViewAdmin)
+admin.site.register(Governence,ViewAdmin)
