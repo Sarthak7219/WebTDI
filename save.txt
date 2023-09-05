@@ -1,0 +1,49 @@
+    EV_score = models.BooleanField(null=True, blank=True)
+    MEET_score = models.BooleanField(null=True, blank=True)
+
+
+    
+    def no_of_G_indicators(self):
+        scores = [self.EV_score, self.MEET_score]S
+        cnt = 0
+        for score in scores:
+            if score is not None:
+                cnt += 1
+        return cnt
+    
+    def G_developed_indicators(self):
+        scores = [self.EV_score, self.MEET_score]
+        total = 0
+        for score in scores:
+            if score is not None:
+                total += score
+        return total
+    
+    
+    def G_calculate_weightage(self):
+        if self.no_of_G_indicators():
+            return 0.2 * (1 / self.no_of_G_indicators())
+        else:
+            return 0
+    
+    def G_DS(self):
+        weightage = self.G_calculate_weightage()
+        return weightage * self.G_developed_indicators()
+    
+    def G_is_developed(self):
+        if self.G_DS() > 0.033 :
+            return 1
+        else:
+            return 0 
+        
+    
+
+    def G_is_multidimensionally_developed(self):
+        res = sum([self.G_developed_indicators(), self.G_developed_indicators(), self.G_developed_indicators(), self.G_developed_indicators(), self.G_developed_indicators()])
+        if res > 1:
+            return 1
+        else:
+            return 0
+        
+    def members_of_developed_households(self):
+        return (int(self.G_is_developed()))*(int(self.size))

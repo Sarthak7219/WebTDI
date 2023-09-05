@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 # Register your models here.
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
@@ -12,9 +11,16 @@ admin.site.register(Tribe_Image)
 class ViewAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     pass
 
-admin.site.register(Tribe,ViewAdmin)
-admin.site.register(Health,ViewAdmin)
-admin.site.register(Education,ViewAdmin)
-admin.site.register(SOL,ViewAdmin)
-admin.site.register(Culture,ViewAdmin)
-admin.site.register(Governence,ViewAdmin)
+
+
+admin.site.register(Household, ViewAdmin)
+# class HouseholdAdmin(ImportExportModelAdmin):
+#     resource_class = HouseholdResource
+#     list_display = ['size', 'tribe']
+
+admin.site.register(Tribe)
+# class TribeAdmin(admin.ModelAdmin):
+#     list_display = [ 'name']
+
+
+
