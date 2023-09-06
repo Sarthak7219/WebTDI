@@ -4,8 +4,17 @@ from .models import Household, Tribe
 def home_view(request):
     return render(request,'home/homepage.html')
 
-# def asur_view(request):
-#     return render(request,'pvtg/asur.html')
+def asur_view(request):
+    tribe = Tribe.objects.get(id = 2)
+    total_tribals = tribe.get_total_tribals()
+    household = Household.objects.all()
+    print(tribe.tribal_dimensional_intensity)
+    context = {
+        'household' : household,
+        'total_tribals' : total_tribals,
+        'tribe' : tribe
+    }
+    return render(request,'pvtg/asur.html',context=context)
 
 # def asur_view(request):
      
@@ -73,7 +82,7 @@ def home_view(request):
 
 def test_view(request):
     
-    tribe = Tribe.objects.get(id = 1)
+    tribe = Tribe.objects.get(id = 2)
     total_tribals = tribe.get_total_tribals()
     household = Household.objects.all()
 
