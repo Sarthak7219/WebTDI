@@ -89,24 +89,26 @@ class Tribe(models.Model):
         return ans
 
 
-    def tribal_dimensional_incidence(self, tribe_id):
-        cnt = 0
-        tribe_households = self.household.filter(tribe_id=tribe_id)  # Filter households by tribe_id
+    def tribal_dimensional_incidence(self):
         ans = []
+        households = self.household.all()
 
-        for household in tribe_households:
-            household_incidence = household.household_dimensional_incidence()  # Assuming this returns the incidence for the household
-            cnt += household_incidence
-            ans.append(cnt)
+        for i in range(0,5):
+            cnt = 0  # Reset cnt for each dimension
+            for household in households:
+                household_incidence = household.household_dimensional_incidence()[i]
+                cnt += household_incidence
+            ans.append(round(cnt, 3))
 
         return ans
-    def tribal_incidence(self, tribe_id):
+    
+    def tribal_incidence(self):
         ans = 0
-        tribe_households = self.household.filter(tribe_id=tribe_id)  # Filter households by tribe_id
+        tribe_households = self.household.all() # Filter households by tribe_id
         for household in tribe_households:
             household_tribal_incidence = household.household_tribal_incidence()  # Assuming this returns the incidence for the household
             ans += household_tribal_incidence
-        return ans
+        return round(ans,2)
     
     def tribal_dimensional_intensity(self):
         ans = []
@@ -125,18 +127,23 @@ class Tribe(models.Model):
         households = self.household.all()
         cnt = 0  # Reset cnt for each dimension
         for household in households:
-                household_tribal_intensity = household.household_tribal_intensity()[i]
+                household_tribal_intensity = household.household_tribal_intensity()
                 cnt += household_tribal_intensity
         return cnt
     
     def tribal_dimensional_index(self):
         ans = []
-        for i in range(0,5):
-            tribal_dimensional_incidence = self.tribal_dimensional_incidence()[i]
-            tribal_dimensional_intensity=self.tribal_dimensional_intensity()[i]    
-            tribal_dimensional_index=tribal_dimensional_incidence*tribal_dimensional_intensity
+        incidence_values = self.tribal_dimensional_incidence()
+        intensity_values = self.tribal_dimensional_intensity()
+
+        for i in range(5):
+            tribal_dimensional_incidence = incidence_values[i]
+            tribal_dimensional_intensity = intensity_values[i]
+            tribal_dimensional_index = tribal_dimensional_incidence * tribal_dimensional_intensity
             ans.append(round(tribal_dimensional_index, 3))
+
         return ans
+
     
     def tribal_index(self):
         triball_incidence = self.triball_incidence()[i]
@@ -146,6 +153,7 @@ class Tribe(models.Model):
     
     def total_members_multi_dimensionally_developed_households(self):
         households = self.household.all()
+        multi_dim_dev_mem = 0
         cnt = 0  # Reset cnt for each dimension
         for household in households:
                 if household.is_multidimensionally_developed:
@@ -259,13 +267,13 @@ class Household(models.Model):
             ans=ans+self.D_DS()[i]
         return ans
 
-    def is_multidimensionally_developed(self):    ##--> TO be Updated!!!!
-        ans = []
+    def is_multidimensionally_developed(self):
+       
         res = self.tribal_development_score()
-        if res > 1:
-            ans.append(1)
+        if res > 0.33:
+            ans = 1
         else:
-            ans.append(0)
+            ans =0
         return ans
 
     def members_of_developed_households(self):
@@ -290,17 +298,15 @@ class Household(models.Model):
                 incidence_value = 0.0  # Handle the case where there are no households to avoid division by zero
             incidence.append(round(incidence_value, 2))
         return incidence
+    
     def household_tribal_incidence(self):
         total_tribals = self.tribeID.get_total_tribals()
-        if self.is_multidimensionally_developed():
-           members_in_developed_households = self.size  # Call the method as a function
-
-        if total_tribals > 0:
-                incidence_value = members_in_developed_households / total_tribals
-        else:
-                incidence_value = 0.0  # Handle the case where there are no households to avoid division by zero
+        is_multidimensionally_developed=self.is_multidimensionally_developed()
         
-        return incidence_value
+        prod = (is_multidimensionally_developed)*(self.size)
+        ans = prod/total_tribals
+        return ans
+
     
 
 
@@ -329,7 +335,7 @@ class Household(models.Model):
             total_members_multi_dimensionally_developed_households = self.tribeID.total_members_multi_dimensionally_developed_households()
             if self.is_multidimensionally_developed:
               members_in_developed_households = self.size  # Call the method as a function
-            score = self.tribal_development_score
+            score = self.tribal_development_score()
             
             if total_members_multi_dimensionally_developed_households > 0:
                 ans = (score * members_in_developed_households * 5) / total_members_multi_dimensionally_developed_households

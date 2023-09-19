@@ -20,6 +20,11 @@
     {% for i in tribe.total_members_across_onedimensionally_developed_households %}
     <li>total_members_across_onedimensionally_developed_households = {{i}}</li>
     {% endfor %}
+    {% for i in tribe.tribal_dimensional_index %}
+    <li>tribal_dimensional_index = {{i}}</li>
+    {% endfor %}
+    tribal_incidence={{tribe.tribal_incidence}}
+    tribal_intensity={{tribe.tribal_intensity}}
 
     {% for i in household %}
     <hr>
