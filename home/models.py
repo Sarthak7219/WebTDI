@@ -160,6 +160,27 @@ class Tribe(models.Model):
                     multi_dim_dev_mem+=household.size
                 cnt += multi_dim_dev_mem
         return cnt
+    
+
+    def dimensional_score(self):
+        households = self.household.all()
+        ans=[]
+         # Reset cnt for each dimension
+        for i in range(0,5):
+            dimensional_score = 0
+            for household in households:
+                    if household.D_DS[i]:
+                        dimensional_score+=household.D_DS[i]
+            ans.append(dimensional_score) 
+        return ans
+    
+    def indicator_contribution_to_dimension(self):
+        dimensional_score = self.dimensional_score()
+        indicator_score  =self.get_tribal_indicator_members()
+        ans = indicator_score/dimensional_score
+        return ans*100
+        
+
 
 class Household(models.Model):
     tribeID = models.ForeignKey(Tribe, on_delete=models.CASCADE, related_name="household", null=True, blank=True)
@@ -343,6 +364,7 @@ class Household(models.Model):
                 ans = 0.0  # Handle the case where total_members_across_onedimensionally_developed_households is zero\
             return ans
 
+    
 
       
 

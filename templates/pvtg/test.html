@@ -11,6 +11,9 @@
     {% for i in tribe.get_tribal_indicator_members %}
      <p>indivcator_score : {{i}}</p>
     {% endfor %}
+    {% for i in tribe.indicator_contribution_to_dimension%}
+    <p>CD_score = {{i}}</p>
+    {% endfor %}
     {% for i in tribe.tribal_dimensional_incidence %}
     <li><h5>tribal_dimensional_incidence = {{i}}</h5></li>
     {% endfor %}

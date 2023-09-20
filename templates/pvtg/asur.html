@@ -162,7 +162,7 @@
                   <div class="asur">Asur</div>
                 </div>
               </div>
-              <img class="frame-item" alt="" src="../../media/images/right-table.png" />
+              
 
               <div class="frame4">
                 <div class="group4">
@@ -311,17 +311,10 @@
         var myDatta = myDattaElement.getAttribute("data-my-data");
         myDataArray.push(myDatta); // Store the data in the array
     }
-    // var myDattaElement1 = document.getElementById("my-datta1");
-    // var myDatta1 = myDattaElement1.getAttribute("data-my-data");
-    // var myDattaElement2 = document.getElementById("my-datta2");
-    // var myDatta2 = myDattaElement2.getAttribute("data-my-data");
-    // var myDattaElement3= document.getElementById("my-datta3");
-    // var myDatta3= myDattaElement3.getAttribute("data-my-data");
-    // var myDattaElement4= document.getElementById("my-datta4");
-    // var myDatta4= myDattaElement4.getAttribute("data-my-data");
-    // var myDattaElement5= document.getElementById("my-datta5");
-    // var myDatta5= myDattaElement5.getAttribute("data-my-data");
-    const datta = {
+
+
+    
+    const data1 = {
       labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Level of Education', 'Drop-out', 'Institutional Credit', 'Land Ownership', 'Sanitation','Cooking Fuel','Source of Drinking Water','Electricity','Assets','Language','Arts and Culture','Voted','Meetings'],
         datasets: [
           {
@@ -335,9 +328,9 @@
         ],
       };
       
-      const configg = {
+      const config1 = {
         type: 'bar',
-        data: datta,
+        data: data1,
         options: {
           indexAxis: 'y',
           scales: {
@@ -353,8 +346,188 @@
         },
       };
       
-      const myChartt = new Chart(document.getElementById('censored-graph'), configg);
+      const myChart1 = new Chart(document.getElementById('censored-graph'), config1);
+
+
+    
+      var myDataArray = []; 
+
+
+//Pie chart health
+const data2 = {
+  // labels: [
+  //   'Red',
+  //   'Blue',
+  //   'Yellow'
+  // ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+const config2 = {
+  type: 'doughnut',
+  data: data2,
+};
+const myChart2 = new Chart(document.getElementById('health-pie'), config2);
+
+
+//Pie chart education
+const data3 = {
+  // labels: [
+  //   'Red',
+  //   'Blue',
+  //   'Yellow'
+  // ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+const config3 = {
+  type: 'doughnut',
+  data: data3,
+};
+const myChart3 = new Chart(document.getElementById('education-pie'), config3);
+
+//Pie chart end Education
+
+
+//Pie chart sol
+const data4 = {
+  // labels: [
+  //   'Red',
+  //   'Blue',
+  //   'Yellow'
+  // ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+const config4 = {
+  type: 'doughnut',
+  data: data4,
+};
+const myChart4 = new Chart(document.getElementById('sol-pie'), config4);
+
+//Pie chart end Education
+
+//Pie chart sol
+const data5 = {
+  // labels: [
+  //   'Red',
+  //   'Blue',
+  //   'Yellow'
+  // ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+const config5 = {
+  type: 'doughnut',
+  data: data5,
+};
+const myChart5 = new Chart(document.getElementById('culture-pie'), config5);
+
+//Pie chart end sol
+
+//Pie chart culture
+// const data6 = {
+//   // labels: [
+//   //   'Red',
+//   //   'Blue',
+//   //   'Yellow'
+//   // ],
+//   datasets: [{
+//     label: 'My First Dataset',
+//     data: [300, 50, 100],
+//     backgroundColor: [
+//       'rgb(255, 99, 132)',
+//       'rgb(54, 162, 235)',
+//       'rgb(255, 205, 86)'
+//     ],
+//     hoverOffset: 4
+//   }]
+// };
+
+// const config6 = {
+//   type: 'doughnut',
+//   data: data6,
+// };
+// const myChart6 = new Chart(document.getElementById('culture-pie'), config6);
+
+//Pie chart end culture
+
+//Pie chart governance
+const data6 = {
+  // labels: [
+  //   'Red',
+  //   'Blue',
+  //   'Yellow'
+  // ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+const config6 = {
+  type: 'doughnut',
+  data: data6,
+};
+const myChart6 = new Chart(document.getElementById('governance-pie'), config6);
+
+//Pie chart end governance
+
+
+
+
+
+
+    
+     
+
+
+
 
     </script>
+    
+    
   </body>
 </html>
