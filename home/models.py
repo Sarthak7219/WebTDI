@@ -36,7 +36,19 @@ class Tribe(models.Model):
             ans.append(total_members)  # Append the total_members for this dimension to the ans list
 
         return ans
+    
+    def total_households_across_onedindicator_developed_households(self):
+        ans = []  # Initialize ans list outside of the loop
+        households = self.household.all()   # Fetch all households using your ORM (e.g., Django's ORM)
 
+        for i in range(5):
+            total_members = 0  # Reset total_members for each dimension
+            for household in households:
+                members_of_onedimensionally_developed_households = household.is_developed()[i] * household.size
+                total_members += members_of_onedimensionally_developed_households  # Update the total members for this dimension
+            ans.append(total_members)  # Append the total_members for this dimension to the ans list
+
+        return ans
 
     def get_tribal_indicator_members(self):
         households = self.household.all() 
@@ -161,24 +173,35 @@ class Tribe(models.Model):
                 cnt += multi_dim_dev_mem
         return cnt
     
+    def indicator_score(self):
+        households = self.household.all()
+        for household in households:
+            weightage = household.calculate_weightage()
+
 
     def dimensional_score(self):
         households = self.household.all()
-        ans=[]
-         # Reset cnt for each dimension
-        for i in range(0,5):
-            dimensional_score = 0
+        ans = []  # Initialize an array to store dimensional scores
+        for i in range(5):
+            output=0
             for household in households:
-                    if household.D_DS[i]:
-                        dimensional_score+=household.D_DS[i]
-            ans.append(dimensional_score) 
+                D_ds = household.D_DS()[i]
+                if D_ds:
+                 output += D_ds
+            ans.append(output)
         return ans
-    
+
     def indicator_contribution_to_dimension(self):
-        dimensional_score = self.dimensional_score()
-        indicator_score  =self.get_tribal_indicator_members()
-        ans = indicator_score/dimensional_score
-        return ans*100
+        
+        dimensional_scores = self.dimensional_score()
+        indicator_score = self.get_tribal_indicator_members()
+        
+
+        
+        return (indicator_score[3] / dimensional_scores[0])*100
+
+        
+
         
 
 
@@ -251,6 +274,28 @@ class Household(models.Model):
             ans.append(cnt)
         return ans
 
+
+    def test_indicators(self):
+
+        scores_H = [self.CD_score, self.IM_score, self.MC_score, self.CM_score, self.FS_score]
+        scores_E = [self.LE_score, self.DRO_score]
+        scores_S = [self.IC_score, self.OW_score, self.SANI_score, self.FUEL_score, self.DRWA_score, self.ELECTR_score, self.ASS_score]
+        scores_C =[self.LAN_score, self.ARTS_score]
+        scores_G = [self.EV_score, self.MEET_score]
+        weightage=self.calculate_weightage()
+        scores = [scores_H, scores_E, scores_S, scores_C, scores_G]
+        ans=[]
+
+        for i in scores:
+            index = scores.index(i)
+            dimension_indicators_array = []
+            for j in i:
+                output=j*weightage[index]
+                dimension_indicators_array.append(output)
+            ans.append(dimension_indicators_array)
+    
+        
+        return ans
     
     def calculate_weightage(self):
         ans = []

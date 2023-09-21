@@ -5,15 +5,23 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>TEST</h1>
+    {%for i in household.0.test_indicators%}
+    {{i}}
+    {% endfor %}
+
+
     For Asur :
 
     Total Number of Tribals : {{total_tribals}}
     {% for i in tribe.get_tribal_indicator_members %}
      <p>indivcator_score : {{i}}</p>
     {% endfor %}
-    {% for i in tribe.indicator_contribution_to_dimension%}
-    <p>CD_score = {{i}}</p>
-    {% endfor %}
+    <h2>CD_score</h2>
+    {{tribe.dimensional_score.0}}
+    {{tribe.get_tribal_indicator_members.3}}
+    {{tribe.indicator_contribution_to_dimension}}
+    
     {% for i in tribe.tribal_dimensional_incidence %}
     <li><h5>tribal_dimensional_incidence = {{i}}</h5></li>
     {% endfor %}

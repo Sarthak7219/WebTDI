@@ -85,10 +85,12 @@ def test_view(request):
     tribe = Tribe.objects.get(id = 2)
     total_tribals = tribe.get_total_tribals()
     household = Household.objects.all()
-
+    
+    
     context = {
         'household' : household,
         'total_tribals' : total_tribals,
         'tribe' : tribe
+
     }
     return render(request, 'pvtg/test.html', context)
