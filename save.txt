@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="../../media/css/global.css" />
+    <link rel="stylesheet" href="../../media/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
+    />
+    
+  </head>
+  <body>
+    <div class="setup-materials">
+      <div class="navbar1">
+        <div class="web-tdi1">Web TDI</div>
+        <div class="opt1-group">
+          <div class="opt11">opt1</div>
+          <div class="opt21">opt2</div>
+          <div class="opt21">opt3</div>
+          <div class="opt21">opt4</div>
+          <div class="opt21">opt5</div>
+        </div>
+        <div class="login-group">
+          <div class="login1">Login</div>
+          <div class="signup1">SignUp</div>
+        </div>
+      </div>
+      <div class="page2-parent">
+        <div class="page2">
+          <div class="frame-parent">
+            <div class="frame-group">
+                <div class="group">
+                    <img class="vector-icon" alt="" src="../../media/images/" />
+    
+                    <div class="percentage-contribution-of">
+                      Percentage contribution of each Dimension and Indicator to TDI
+                      Score
+                    </div>
+                  </div>
+              <!-- <img class="frame-child" alt="" src="../../media/images/percentage-graph.png" /> -->
+                <div class="percentage-graph">
+                    <div class="censored"><canvas id="censored-graph"></canvas>
+                      <div id="my-datta1" data-my-data="{{tribe.get_tribal_indicator_members.0}}"></div>
+                      <div id="my-datta2" data-my-data="{{tribe.get_tribal_indicator_members.1}}"></div>
+                      <div id="my-datta3" data-my-data="{{tribe.get_tribal_indicator_members.2 }}"></div>
+                      <div id="my-datta4" data-my-data="{{ tribe.get_tribal_indicator_members.3}}"></div>
+                      <div id="my-datta5" data-my-data="{{tribe.get_tribal_indicator_members.4}}"></div>
+                      <div id="my-datta6" data-my-data="{{tribe.get_tribal_indicator_members.5}}"></div>
+                      <div id="my-datta7" data-my-data="{{tribe.get_tribal_indicator_members.6}}"></div>
+                      <div id="my-datta8" data-my-data="{{tribe.get_tribal_indicator_members.7}}"></div>
+                      <div id="my-datta9" data-my-data="{{tribe.get_tribal_indicator_members.8}}"></div>
+                      <div id="my-datta10" data-my-data="{{tribe.get_tribal_indicator_members.9}}"></div>
+                      <div id="my-datta11" data-my-data="{{tribe.get_tribal_indicator_members.10}}"></div>
+                      <div id="my-datta12" data-my-data="{{tribe.get_tribal_indicator_members.11}}"></div>
+                      <div id="my-datta13" data-my-data="{{tribe.get_tribal_indicator_members.12}}"></div>
+                      <div id="my-datta14" data-my-data="{{tribe.get_tribal_indicator_members.13}}"></div>
+                      <div id="my-datta15" data-my-data="{{tribe.get_tribal_indicator_members.14}}"></div>
+                      <div id="my-datta16" data-my-data="{{tribe.get_tribal_indicator_members.15}}"></div>
+                      <div id="my-datta17" data-my-data="{{tribe.get_tribal_indicator_members.16}}"></div>
+                      <div id="my-datta18" data-my-data="{{tribe.get_tribal_indicator_members.17}}"></div>
+                    </div>
+                    <div class="uncensored"><canvas id="uncensored-graph"></canvas></div>
+                </div>
+             
+            </div>
+            <div class="group-parent">
+              <div class="group1">
+                <img class="vector-icon1" alt="" src="../../media/images/vector1.svg" />
+
+                <div class="percentage-contribution-of1">
+                  Percentage contribution of each Dimension and Indicator to TDI
+                  Score
+                </div>
+              </div>
+              <div class="group-child">
+                <img src="../../media/images/asur-image.png" alt="" style="width: 100%;">
+              </div>
+            </div>
+          </div>
+          <div class="frame-container">
+            <div class="frame-div">
+              <div class="frame">
+                <img
+                  class="rectangle-icon"
+                  alt=""
+                  src="../../media/images/map.png"
+                />
+              </div>
+              <div class="group2">
+                <div class="percentage-contribution-of2">
+                  Percentage contribution of each Dimension and Indicator to TDI
+                  Score
+                </div>
+              </div>
+            </div>
+            <div class="score-graph-1-parent">
+              <!-- <img
+                class="score-graph-1-icon"
+                alt=""
+                src="../../media/images/score-graph.png"
+              /> -->
+              <div>
+                <canvas id="myChart"></canvas>
+                <div id="my-data1" data-my-data="{{ health_index}}"></div>
+                <div id="my-data2" data-my-data="{{ education_index}}"></div>
+                <div id="my-data3" data-my-data="{{ sol_index}}"></div>
+                <div id="my-data4" data-my-data="{{ culture_index}}"></div>
+                <div id="my-data5" data-my-data="{{ governence_index}}"></div>
+
+                <!-- <p>{{education_index}}</p>
+                <p>{{sol_index}}</p>
+                <p>{{culture_index}}</p>
+                <p>{{governence_index}}</p> -->
+              </div>
+
+              <div class="group2">
+
+                <div class="score">Score</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page1">
+          <div class="tribe-logo-parent">
+            <img
+              class="tribe-logo-icon"
+              alt=""
+              src="../../media/images/Tribe-logo-name.png"
+            />
+
+            <div class="frame1" style="background-image: url(../../media/images/asur.jpg);">
+              <div class="photo-desc" style="background-color: #f2f2f277;">
+                <div class="image-location-">
+                  Image Location - Village Husmu , Neharhat , Jharkhand
+                </div>
+                <div class="an-asur-man">
+                  An Asur man stands tall in his home
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame2">
+            <div class="frame3">
+              <div class="dimensions">Dimensions</div>
+              <div class="rectangle-wrapper">
+                <img
+                  class="rectangle-icon1"
+                  alt=""
+                  src="../../media/images/Picture2.png"
+                />
+              </div>
+            </div>
+            <div class="frame-parent1">
+              <div class="frame-wrapper">
+                <div class="a-snapshot-of-tdi-among-asur-p-parent">
+                  <div class="a-snapshot-of">
+                    A snapshot of TDI among Asur PVTG
+                  </div>
+                  <div class="asur">Asur</div>
+                </div>
+              </div>
+              <img class="frame-item" alt="" src="../../media/images/right-table.png" />
+
+              <div class="frame4">
+                <div class="group4">
+                  <img class="vector-icon5" alt="" src="../../media/images/" />
+
+                  <div class="percentage-contribution-of3">
+                    Percentage contribution of each Dimension and Indicator to
+                    TDI Score
+                  </div>
+                </div>
+              </div>
+              <div class="indicators-wrapper">
+                <div class="indicators">Indicators</div>
+              </div>
+              <div class="frame-parent2">
+                <div class="health-parent">
+                  <div class="pie-box">
+                    <div class="health1">Health</div>
+                    <img
+                      class="vector-icon6"
+                      alt=""
+                      src="../../media/images/health-icon.png"
+                    />
+
+                    
+
+                    <div class="chronic-diseases-immunisation-container">
+                      <p class="chronic-diseases">Chronic Diseases</p>
+                      <p class="chronic-diseases">Immunisation</p>
+                      <p class="chronic-diseases">Maternal Care</p>
+                      <p class="chronic-diseases">Child Mortality</p>
+                    </div>
+                    <!-- <img
+                      class="health-pie-icon-1"
+                      alt=""
+                      src="../../media/images/healthpieicon-1@2x.png"
+                    /> -->
+                    <div class="pie-icon-1"><canvas class="canvas-pie" id="health-pie"> 
+                    </canvas></div>
+                    
+                  </div>
+                  <div class="pie-box">
+                    
+
+                    
+
+                    <div class="institutional-credit-ownership-container">
+                      <p class="chronic-diseases">Institutional Credit</p>
+                      <p class="chronic-diseases">Ownership</p>
+                      <p class="chronic-diseases">Sanitation</p>
+                      <p class="chronic-diseases">Fuel</p>
+                      <p class="chronic-diseases">Drinkng Water</p>
+                      <p class="chronic-diseases">Electricity</p>
+                    </div>
+                    <div class="standard-of-living">Standard of Living</div>
+                    <img
+                      class="sol-icon-1"
+                      alt=""
+                      src="../../media/images/sol-icon.png"
+                    />
+                    <div class="pie-icon-1"><canvas class="canvas-pie" id="sol-pie"> 
+                    </canvas></div>
+                  </div>
+                  <div class="pie-box">
+                    <img
+                      class="governance-icon-1"
+                      alt=""
+                      src="../../media/images/governance-icon.png"
+                    />
+
+                    <img
+                      class="vector-icon17"
+                      alt=""
+                      src="../../media/images/vector16.svg"
+                    />
+
+                    <div class="governance1">GOVERNANCE</div>
+                    <div class="execution-of-voting">
+                      Execution Of Voting Rights
+                    </div>
+                    <img
+                      class="vector-icon18"
+                      alt=""
+                      src="../../media/images/vector17.svg"
+                    />
+
+                    <div class="participation-in-government">
+                      Participation in Government meetings
+                    </div>
+                    <div class="pie-icon-1"><canvas class="canvas-pie" id="governance-pie"> 
+                    </canvas></div>
+                    
+                  </div>
+                </div>
+                <div class="education-parent">
+                  <div class="pie-box">
+                   
+
+                    <div class="drop-out">Drop Out</div>
+                    <div class="years-of-schooling">Years of Schooling</div>
+                    
+
+                    <div class="education1">Education</div>
+                    <img
+                      class="education-icon-1"
+                      alt=""
+                      src="../../media/images/education-icon.png"
+                    />
+
+                    <div class="pie-icon-1"><canvas class="canvas-pie" id="education-pie"> 
+                    </canvas></div>
+                  </div>
+                  <div class="pie-box">
+                    
+
+                    <div class="arts">Arts</div>
+                    
+
+                    <div class="lanuage">Lanuage</div>
+                    <img
+                      class="culture-icon-1"
+                      alt=""
+                      src="../../media/images/culture-icon.png"
+                    />
+
+                    <div class="pie-icon-1"><canvas class="canvas-pie" id="culture-pie"> 
+                    </canvas></div>
+
+                    <div class="culture1">Culture</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="chart.js"></script>
+    <script>
+      var myDataElement1 = document.getElementById("my-data1");
+      var myData1 = myDataElement1.getAttribute("data-my-data");
+      var myDataElement2 = document.getElementById("my-data2");
+      var myData2 = myDataElement2.getAttribute("data-my-data");
+      var myDataElement3= document.getElementById("my-data2");
+      var myData3= myDataElement3.getAttribute("data-my-data");
+      var myDataElement4= document.getElementById("my-data4");
+      var myData4= myDataElement4.getAttribute("data-my-data");
+      var myDataElement5= document.getElementById("my-data5");
+      var myData5= myDataElement5.getAttribute("data-my-data");
+      const data = {
+          labels: ['Health_Development_Index', 'Education_Development_Index', 'Standard_Of_Living_Development_Index', 'Culture_Development_Index', 'Governence_Development_Index'],
+          datasets: [
+            {
+              label: 'Development_Index',
+              data: [myData1,myData2,myData3,myData4,myData5],
+              fill: false,
+              backgroundColor: ["blue", "green", "yellow", "grey", "darkorange"], 
+              borderColor: 'rgba(75,192,192,1)',
+              borderWidth: 1,
+            },
+          ],
+        };
+        
+        const config = {
+          type: 'bar',
+          data: data,
+          options: {
+            indexAxis: 'x',
+            scales: {
+              xAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        };
+        
+        const myChart = new Chart(document.getElementById('myChart'), config);
+  </script>
+  <script>
+    var myDataArray = []; // Create an array to store the data
+
+    for (var i = 1; i <= 18; i++) {
+        var myDattaElement = document.getElementById(`my-datta${i}`);
+        var myDatta = myDattaElement.getAttribute("data-my-data");
+        myDataArray.push(myDatta); // Store the data in the array
+    }
+    
+    {% comment %} var myDattaElement2 = document.getElementById("my-datta2");
+    var myDatta2 = myDattaElement2.getAttribute("data-my-data");
+    var myDattaElement3= document.getElementById("my-datta3");
+    var myDatta3= myDattaElement3.getAttribute("data-my-data");
+    var myDattaElement4= document.getElementById("my-datta4");
+    var myDatta4= myDattaElement4.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data");
+    var myDattaElement5= document.getElementById("my-datta5");
+    var myDatta5= myDattaElement5.getAttribute("data-my-data"); {% endcomment %}
+    {% comment %} labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Level of Education', 'Drop-out', 'Institutional Credit', 'Land Ownership', 'Sanitation','Cooking Fuel','Source of Drinking Water','Electricity','Assets','Language','Arts and Culture','Voted','Meetings'] {% endcomment %}
+    const datta = {
+        labels:['jan','feb']
+        datasets: [
+          {
+            label: 'Sales',
+            data: [3,5],
+            fill: false,
+            backgroundColor: 'rgba(75,192,192,0.4)',
+            borderColor: 'rgba(75,192,192,1)',
+            borderWidth: 1,
+          },
+        ],
+      };
+      
+      const configg = {
+        type: 'bar',
+        data: datta,
+        options: {
+          indexAxis: 'y',
+          scales: {
+            xAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      };
+      
+      const myChartt = new Chart(document.getElementById('censored-graph'), configg);
+    </script>
+  
+  </body>
+</html>
