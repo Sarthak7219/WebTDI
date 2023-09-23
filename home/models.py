@@ -158,9 +158,9 @@ class Tribe(models.Model):
 
     
     def tribal_index(self):
-        triball_incidence = self.triball_incidence()[i]
+        tribal_incidence = self.tribal_incidence()[i]
         tribal_intensity=self.tribal_intensity()[i]    
-        tribal_index=triball_incidence*tribal_intensity
+        tribal_index=tribal_incidence*tribal_intensity
         return tribal_index
     
     def total_members_multi_dimensionally_developed_households(self):
@@ -173,10 +173,25 @@ class Tribe(models.Model):
                 cnt += multi_dim_dev_mem
         return cnt
     
-    def indicator_score(self):
+    def indicators_score(self):
         households = self.household.all()
-        for household in households:
-            weightage = household.calculate_weightage()
+        total = []  # Initialize the total as an empty list
+
+        # Assuming that the test_indicators for all households have the same structure (lists of lists)
+        if households:
+            # Initialize total as a copy of the first household's test_indicators
+            total = [list(indicators) for indicators in households[0].test_indicators()]
+
+            # Iterate through the rest of the households and add their test_indicators
+            for household in households[1:]:
+                indicators = household.test_indicators()
+                for i in range(len(indicators)):
+                    for j in range(len(indicators[i])):
+                        total[i][j] += indicators[i][j]
+
+          # This line prints the total to the console for debugging purposes
+
+        return total
 
 
     def dimensional_score(self):
@@ -191,14 +206,23 @@ class Tribe(models.Model):
             ans.append(output)
         return ans
 
-    def indicator_contribution_to_dimension(self):
-        
+    def indicator_contributions_to_dimension(self):
         dimensional_scores = self.dimensional_score()
-        indicator_score = self.get_tribal_indicator_members()
-        
+        indicator_scores = self.indicators_score()  # Assuming this returns a list of lists of scores
 
-        
-        return (indicator_score[3] / dimensional_scores[0])*100
+        contributions = []  # Initialize an empty list to store contributions
+
+        for i in range(len(indicator_scores)):
+            if dimensional_scores[i] != 0:
+                indicator_contribution = [] 
+                for j in range(len(indicator_scores[i])):
+                    contribution = round((indicator_scores[i][j] / dimensional_scores[i]) * 100,2)
+                    indicator_contribution.append(contribution)
+                contributions.append(indicator_contribution)
+
+        return contributions
+
+
 
         
 
