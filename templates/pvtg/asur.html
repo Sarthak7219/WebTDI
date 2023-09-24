@@ -143,6 +143,7 @@
             </div>
             <div class="frame-parent1">
               <div class="frame-wrapper">
+                <img src="../../media/images/background-blue.png" alt="Here is an image">
                 <div class="a-snapshot-of-tdi-among-asur-p-parent">
                   <div class="a-snapshot-of">
                     A snapshot of TDI among Asur PVTG
@@ -317,6 +318,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <script>
     var myDataArray = []; // Create an array to store the data
@@ -358,7 +360,14 @@
               },
             ],
           },
+          plugins:{
+            datalabels:{
+              anchor:"end",
+              align:"top"
+            }
+          }
         },
+        plugins :[ChartDataLabels]
       };
       
     const myChart2 = new Chart(document.getElementById('censored-graph'), config1);
@@ -379,9 +388,11 @@ const data2 = {
     label: '',
     data: health_data,
     backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#315493',
+      '#3B64AD',
+      '#4472C4',
+      '#8FA2D4',
+      '',
     ],
     hoverOffset: 4
   }]
@@ -408,11 +419,10 @@ const data3 = {
     label: '',
     data: education_data,
     backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#538233',
+      '#A1C490',
     ],
-    hoverOffset: 4
+    hoverOffset: 4,
   }]
 };
 
@@ -438,9 +448,13 @@ const data4 = {
     label: '',
     data: sol_data,
     backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#C09000',
+      '#E2AA00',
+      '#FFC000',
+      '#FFD184',
+      '#FFE0B5',
+      '#FFD9A0',
+      
     ],
     hoverOffset: 4
   }]
@@ -467,9 +481,9 @@ const data5 = {
     label: '',
     data: culture_data,
     backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#5F5F5F',
+      'B3B3B3',
+      
     ],
     hoverOffset: 4
   }]
@@ -496,9 +510,8 @@ const data6 = {
     label: '',
     data: governance_data,
     backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#F5C7B8',
+      '#F1A78A',
     ],
     hoverOffset: 4
   }]
@@ -547,6 +560,26 @@ const data = {
 new Chart(ctx, {
   type: 'bar',
   data: data,
+  options: {
+          indexAxis: 'x',
+          scales: {
+            xAxes: [
+              {
+                ticks: {
+                  stepSize: 10,
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+          plugins:{
+            datalabels:{
+              anchor:"end",
+              align:"top"
+            }
+          }
+        },
+        plugins :[ChartDataLabels]
 });
 
 
