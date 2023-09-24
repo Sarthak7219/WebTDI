@@ -96,24 +96,12 @@
                 </div>
               </div>
             </div>
-            <div class="score-graph-1-parent">
-              <!-- <img
-                class="score-graph-1-icon"
-                alt=""
-                src="../../media/images/score-graph.png"
-              /> -->
+            <div class="score-graph-1-parent" >
+              
               <div>
-                <canvas id="myChart"></canvas>
-                <div id="my-data1" data-my-data="{{ health_index}}"></div>
-                <div id="my-data2" data-my-data="{{ education_index}}"></div>
-                <div id="my-data3" data-my-data="{{ sol_index}}"></div>
-                <div id="my-data4" data-my-data="{{ culture_index}}"></div>
-                <div id="my-data5" data-my-data="{{ governence_index}}"></div>
-
-                <!-- <p>{{education_index}}</p>
-                <p>{{sol_index}}</p>
-                <p>{{culture_index}}</p>
-                <p>{{governence_index}}</p> -->
+                <canvas id="graph2"></canvas>
+                <div id="my-graph2-data"></div>
+              
               </div>
 
               <div class="group2">
@@ -180,7 +168,13 @@
               <div class="frame-parent2">
                 <div class="health-parent">
                   <div class="pie-box">
-                    <div class="health1">Health</div>
+                    <div class="health1">
+                     
+
+                      <div id="my-data-health" data-my-data="{{indicator_contributions_to_dimension}}"></div>
+                      
+                    
+                          </div>
                     <img
                       class="vector-icon6"
                       alt=""
@@ -206,7 +200,7 @@
                   </div>
                   <div class="pie-box">
                     
-
+                    
                     
 
                     <div class="institutional-credit-ownership-container">
@@ -218,6 +212,13 @@
                       <p class="chronic-diseases">Electricity</p>
                     </div>
                     <div class="standard-of-living">Standard of Living</div>
+                    <div class="sol1">
+                     
+
+                      <div id="my-data-sol"></div>
+                      
+                    
+                          </div>
                     <img
                       class="sol-icon-1"
                       alt=""
@@ -227,6 +228,13 @@
                     </canvas></div>
                   </div>
                   <div class="pie-box">
+                    <div class="governance1">
+                     
+
+                      <div id="my-data-governance"></div>
+                      
+                    
+                          </div>
                     <img
                       class="governance-icon-1"
                       alt=""
@@ -266,6 +274,13 @@
                     
 
                     <div class="education1">Education</div>
+                   
+                     
+
+                      <div id="my-data-education"></div>
+                      
+                    
+                    
                     <img
                       class="education-icon-1"
                       alt=""
@@ -346,23 +361,23 @@
         },
       };
       
-      const myChart1 = new Chart(document.getElementById('censored-graph'), config1);
+    const myChart2 = new Chart(document.getElementById('censored-graph'), config1);
+    
+    
 
 
     
-      var myDataArray = []; 
+      
 
 
 //Pie chart health
+var myDattaElement = document.getElementById('my-data-health');
+var health_data = {{health_contributions_to_dimension| safe}};
 const data2 = {
-  // labels: [
-  //   'Red',
-  //   'Blue',
-  //   'Yellow'
-  // ],
+  
   datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
+    label: '',
+    data: health_data,
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
@@ -376,10 +391,13 @@ const config2 = {
   type: 'doughnut',
   data: data2,
 };
-const myChart2 = new Chart(document.getElementById('health-pie'), config2);
+const health = new Chart(document.getElementById('health-pie'), config2);
 
 
 //Pie chart education
+var myDattaElement = document.getElementById('my-data-education');
+var education_data = {{education_contributions_to_dimension| safe}};
+
 const data3 = {
   // labels: [
   //   'Red',
@@ -387,8 +405,8 @@ const data3 = {
   //   'Yellow'
   // ],
   datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
+    label: '',
+    data: education_data,
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
@@ -402,12 +420,14 @@ const config3 = {
   type: 'doughnut',
   data: data3,
 };
-const myChart3 = new Chart(document.getElementById('education-pie'), config3);
+const education = new Chart(document.getElementById('education-pie'), config3);
 
 //Pie chart end Education
 
 
 //Pie chart sol
+var myDattaElement = document.getElementById('my-data-sol');
+var sol_data = {{sol_contributions_to_dimension| safe}};
 const data4 = {
   // labels: [
   //   'Red',
@@ -415,8 +435,8 @@ const data4 = {
   //   'Yellow'
   // ],
   datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
+    label: '',
+    data: sol_data,
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
@@ -430,11 +450,13 @@ const config4 = {
   type: 'doughnut',
   data: data4,
 };
-const myChart4 = new Chart(document.getElementById('sol-pie'), config4);
+const sol = new Chart(document.getElementById('sol-pie'), config4);
 
 //Pie chart end Education
 
-//Pie chart sol
+//Pie chart culture
+var myDattaElement = document.getElementById('my-data-culture');
+var culture_data = {{culture_contributions_to_dimension| safe}};
 const data5 = {
   // labels: [
   //   'Red',
@@ -442,8 +464,8 @@ const data5 = {
   //   'Yellow'
   // ],
   datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
+    label: '',
+    data: culture_data,
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
@@ -457,38 +479,13 @@ const config5 = {
   type: 'doughnut',
   data: data5,
 };
-const myChart5 = new Chart(document.getElementById('culture-pie'), config5);
+const culture = new Chart(document.getElementById('culture-pie'), config5);
 
-//Pie chart end sol
 
-//Pie chart culture
-// const data6 = {
-//   // labels: [
-//   //   'Red',
-//   //   'Blue',
-//   //   'Yellow'
-//   // ],
-//   datasets: [{
-//     label: 'My First Dataset',
-//     data: [300, 50, 100],
-//     backgroundColor: [
-//       'rgb(255, 99, 132)',
-//       'rgb(54, 162, 235)',
-//       'rgb(255, 205, 86)'
-//     ],
-//     hoverOffset: 4
-//   }]
-// };
-
-// const config6 = {
-//   type: 'doughnut',
-//   data: data6,
-// };
-// const myChart6 = new Chart(document.getElementById('culture-pie'), config6);
-
-//Pie chart end culture
 
 //Pie chart governance
+var myDattaElement = document.getElementById('my-data-governance');
+var governance_data = {{governance_contributions_to_dimension| safe}};
 const data6 = {
   // labels: [
   //   'Red',
@@ -496,8 +493,8 @@ const data6 = {
   //   'Yellow'
   // ],
   datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
+    label: '',
+    data: governance_data,
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
@@ -511,10 +508,46 @@ const config6 = {
   type: 'doughnut',
   data: data6,
 };
-const myChart6 = new Chart(document.getElementById('governance-pie'), config6);
+const governance = new Chart(document.getElementById('governance-pie'), config6);
 
 //Pie chart end governance
 
+
+
+var graph2_data = {{tribal_dimensional_index| safe}};
+const ctx = document.getElementById('graph2');
+
+// Your list of values
+const dataList = [10, 20, 30, 40, 50];
+
+// Your single integer value
+var tdi =0.7;
+
+// Create the data array with both the list of values and the single integer value
+const data = {
+  labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Additional Value'],
+  datasets: [
+    {
+      label: 'Data List',
+      data: [...graph2_data, tdi], // Add the additional value to the data list
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(153, 102, 255)',
+        'rgb(0, 0, 0)', // Color for the additional value
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
+// Create the chart
+new Chart(ctx, {
+  type: 'bar',
+  data: data,
+});
 
 
 

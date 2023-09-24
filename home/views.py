@@ -8,11 +8,27 @@ def asur_view(request):
     tribe = Tribe.objects.get(id = 2)
     total_tribals = tribe.get_total_tribals()
     household = Household.objects.all()
-    print(tribe.tribal_dimensional_intensity)
+    
+    health_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[0]
+    education_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[1]
+    sol_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[2]
+    culture_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[3]
+    governance_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[4]
+    
+    tribal_dimensional_index=tribe.tribal_dimensional_index()
+    # tribal_index=tribe.tribal_index()
+
     context = {
         'household' : household,
         'total_tribals' : total_tribals,
-        'tribe' : tribe
+        'tribe' : tribe,
+        'health_contributions_to_dimension' : health_contributions_to_dimension,
+        'education_contributions_to_dimension':education_contributions_to_dimension,
+        'sol_contributions_to_dimension':sol_contributions_to_dimension,
+        'culture_contributions_to_dimension':culture_contributions_to_dimension,
+        'governance_contributions_to_dimension':governance_contributions_to_dimension,
+        'tribal_dimensional_index' :tribal_dimensional_index,
+        # 'tribal_index':tribal_index
     }
     return render(request,'pvtg/asur.html',context=context)
 
@@ -87,10 +103,12 @@ def test_view(request):
     household = Household.objects.all()
     
     
+    
     context = {
         'household' : household,
         'total_tribals' : total_tribals,
-        'tribe' : tribe
+        'tribe' : tribe,
+        
 
     }
     return render(request, 'pvtg/test.html', context)
