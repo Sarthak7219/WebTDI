@@ -163,14 +163,29 @@ class Tribe(models.Model):
                 EV_members   +=0
                 MEET_members +=0
         sum=[CD_members,IM_members,MC_members,CM_members,FS_members,LE_members,DRO_members,IC_members,OW_members ,SANI_members  ,FUEL_members  ,DRWA_members  ,ELECTR_members,ASS_members  , LAN_members  ,ARTS_members ,EV_members,MEET_members]
-            
+        
         ans = []
         total_members = self.get_total_tribals()
         for i in sum:
             indicator_score = (i/total_members)
             ans.append(round(indicator_score,2))
         return ans
+    def dimensional_contribution_to_index(self):
+        tribe_household=self.household.all()
+        get_total_tribals=self.get_total_tribals()
+        ans=[]
+        for i in range(0,5):
+          total_members_of_developed_households=0
+          for household in tribe_household:
+            total_members_of_developed_households+=household.members_of_developed_households()[i]
+          ans.append(total_members_of_developed_households)
+        dimensional_contribution_to_index=[]
+        for i in ans:
+            output=i/get_total_tribals
+            dimensional_contribution_to_index.append(output)
+        return dimensional_contribution_to_index
 
+        
 
     def tribal_dimensional_incidence(self):
         ans = []

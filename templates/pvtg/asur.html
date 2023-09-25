@@ -141,8 +141,8 @@
         <div class="frame2">
           <div class="frame3">
             <div class="dimensions">Dimensions</div>
-            <div class="rectangle-wrapper">
-              <img class="rectangle-icon1" alt="" src="../../media/images/Picture2.png" />
+            <div class="rectangle-wrapper" >
+              <canvas id="vertical-bar-graph" width="388" height="1379"></canvas>
             </div>
           </div>
           <div class="frame-parent1">
@@ -306,16 +306,107 @@
 <!-- CHART JS -->
   <script>
 
+//DIMENTION CONTRIBUTION VERTICAL BAR
+// const vertical_bar = {{ tribal_dimensional_index| safe }};
+const vertical_graph_element = document.getElementById('vertical-bar-graph');
+var data_health={{tribe.dimensional_contribution_to_index.0}};
+var data_education={{tribe.dimensional_contribution_to_index.1}};
+var data_sol={{tribe.dimensional_contribution_to_index.2}};
+var data_culture={{tribe.dimensional_contribution_to_index.3}};
+var data_goverance={{tribe.dimensional_contribution_to_index.4}};
+
+const vertical_bar_data = {
+  labels: ['Dimensions'],
+  datasets: [
+    {
+      label: 'Governance', // Removed square brackets
+      data:data_health , // Replace with your actual data for 'Governance'
+      backgroundColor: '#C55A11', // Color for 'Governance'
+    },
+    {
+      label: 'Culture', // Removed square brackets
+      data: data_education, // Replace with your actual data for 'Culture'
+      backgroundColor: '#BFBFBF', // Color for 'Culture'
+    },
+    {
+      label: 'Sol', // Removed square brackets
+      data:data_sol, // Replace with your actual data for 'Sol'
+      backgroundColor: '#FFD966', // Color for 'Sol'
+    },
+    {
+      label: 'Education', // Removed square brackets
+      data:data_culture, // Replace with your actual data for 'Education'
+      backgroundColor: '#A9D18E', // Color for 'Education'
+    },
+    {
+      label: 'Health', // Removed square brackets
+      data:data_goverance, // Replace with your actual data for 'Health'
+      backgroundColor: '#5B9BD5', // Color for 'Health'
+    },
+  ],
+};
+
+const config_vertical_bar = {
+  type: 'bar',
+  data: vertical_bar_data,
+  options: {
+    indexAxis: 'x',
+    scales: {
+      x: {
+        stacked: true,
+        beginAtZero: true,
+      },
+      y: {
+        display: false,
+        stacked: true,
+        beginAtZero: true,
+        maxTicksLimit: 16,
+        autoSkip: false,
+      },
+    },
+    
+    plugins: {
+      datalabels: {
+        anchor: 'center', // Center the labels inside the bars
+        align: 'center', // Align the labels to the center
+        color: 'black', // Label color
+        font: {
+          weight: 'bold', // Label font weight
+        },
+        formatter: function (value, context) {
+          const label = vertical_bar_data.labels[context.dataIndex];
+          const dataset = vertical_bar_data.datasets[context.datasetIndex];
+          const colorIndex = context.datasetIndex; // Get the color index
+
+          // Create a legend string
+          const legend =  dataset.label +','+ value;
+          
+          return legend;
+        },
+        display: 'auto',
+      },
+      legend: {
+        display: false, // Hide the legend
+      },
+    },
+  },
+  plugins: [ChartDataLabels]
+};
+
+
+const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar);
+
+            
 //UNSENSORED-GRAPH
     var myDataArray = []; // Create an array to store the data
-
+    
     for (var i = 1; i <= 18; i++) {
       var myDattaElement = document.getElementById(`my-data_uncensored${i}`);
       var myDatta = myDattaElement.getAttribute("data-my-data");
       myDataArray.push(myDatta); // Store the data in the array
     }
-
-
+    
+    
 
     const uncensored_data = {
       labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security', 'Level of Education', 'Drop-out', 'Institutional Credit', 'Land Ownership', 'Sanitation', 'Cooking Fuel', 'Source of Drinking Water', 'Electricity', 'Assets', 'Language', 'Arts and Culture', 'Voted', 'Meetings'],
@@ -369,12 +460,12 @@
       },
       plugins: [ChartDataLabels]
     };
-
+    
     const uncensored_graph = new Chart(document.getElementById('uncensored-graph'), config_uncensored);
-//*******************************************
-
-
-//CENSORED-GRAPH
+    //*******************************************
+    
+    
+    //CENSORED-GRAPH
     var myDataArray = []; // Create an array to store the data
 
     for (var i = 1; i <= 18; i++) {
@@ -434,19 +525,19 @@
       },
       plugins: [ChartDataLabels]
     };
-
+    
     const censored_graph = new Chart(document.getElementById('censored-graph'), config_censored);
-//********************************
-
-
-
-
-
-
-
-
-
-//Pie chart health
+    //********************************
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Pie chart health
     var myDattaElement = document.getElementById('my-data-health');
     var health_data = {{ health_contributions_to_dimension| safe}};
     const data2 = {
@@ -470,9 +561,9 @@
       data: data2,
     };
     const health = new Chart(document.getElementById('health-pie'), config2);
-
-
-//Pie chart education *********
+    
+    
+    //Pie chart education *********
     var myDattaElement = document.getElementById('my-data-education');
     var education_data = {{ education_contributions_to_dimension| safe}};
 
@@ -498,11 +589,11 @@
       data: data3,
     };
     const education = new Chart(document.getElementById('education-pie'), config3);
-
-//*******************
-
-
-//Pie chart sol ***********
+    
+    //*******************
+    
+    
+    //Pie chart sol ***********
     var myDattaElement = document.getElementById('my-data-sol');
     var sol_data = {{ sol_contributions_to_dimension| safe}};
     const data4 = {
@@ -532,10 +623,10 @@
       data: data4,
     };
     const sol = new Chart(document.getElementById('sol-pie'), config4);
-
-//********************
-
-//Pie chart culture ********
+    
+    //********************
+    
+    //Pie chart culture ********
     var myDattaElement = document.getElementById('my-data-culture');
     var culture_data = {{ culture_contributions_to_dimension| safe}};
     const data5 = {
@@ -561,10 +652,10 @@
       data: data5,
     };
     const culture = new Chart(document.getElementById('culture-pie'), config5);
-//**************
-
-
-//Pie chart governance ******
+    //**************
+    
+    
+    //Pie chart governance ******
     var myDattaElement = document.getElementById('my-data-governance');
     var governance_data = {{ governance_contributions_to_dimension| safe}};
     const data6 = {
@@ -589,74 +680,87 @@
       data: data6,
     };
     const governance = new Chart(document.getElementById('governance-pie'), config6);
-
-//************************
-
-
-//Dimension Index And TDI Graph *********
-    var graph2_data = {{ tribal_dimensional_index| safe}};
-    const ctx = document.getElementById('graph2');
-
-
     
-    var tdi = {{ tribe.tribal_index }};
-
-    const data = {
-      labels: ['Health Development Index', 'Education Development Index', 'Sol Development Index', 'Culture Development Index', 'Governance Development Index', 'Tribal Development Index'],
-      datasets: [
-        {
-          // label: ['Health Development Index','Education Development Index','Sol Development Index','Culture Development Index','Governance Development Index','Tribal Development Index'],
-          data: [...graph2_data, tdi], // Add the additional value to the data list
-          backgroundColor: [
-            '#4472C4',
-            '#ED7D31',
-            '#A5A5A5',
-            '#FFC000',
-            '#5B9BD5',
-            '#70AD47', // Color for the additional value
-          ],
-          borderWidth: 1,
-        },
-      ],
-    };
-    const options = {
-      plugins: {
-        datalabels: {
-          display: true,
-          color: "black"
-        }
-      },
-      legend: {
-        display: false
-      }
-    };
-    // Create the chart
-    new Chart(ctx, {
-      type: 'bar',
-      data: data,
-      options: {
-        indexAxis: 'x',
-        scales: {
-          xAxes: [
+    //************************
+    
+    
+    //Dimension Index And TDI Graph *********
+        var graph2_data = {{ tribal_dimensional_index| safe}};
+        const ctx = document.getElementById('graph2');
+    
+    
+        
+        var tdi = {{ tribe.tribal_index }};
+    
+        const data = {
+          labels: ['Health Development Index', 'Education Development Index', 'Sol Development Index', 'Culture Development Index', 'Governance Development Index', 'Tribal Development Index'],
+          datasets: [
             {
-              ticks: {
-                stepSize: 10,
-                beginAtZero: true,
-              },
+              // label: ['Health Development Index','Education Development Index','Sol Development Index','Culture Development Index','Governance Development Index','Tribal Development Index'],
+              data: [...graph2_data, tdi], // Add the additional value to the data list
+              backgroundColor: [
+                '#4472C4',
+                '#ED7D31',
+                '#A5A5A5',
+                '#FFC000',
+                '#5B9BD5',
+                '#70AD47', // Color for the additional value
+              ],
+              borderWidth: 1,
             },
           ],
-        },
-        plugins: {
-          datalabels: {
-            anchor: "end",
-            align: "top"
+        };
+        const options = {
+          plugins: {
+            datalabels: {
+              display: true,
+              color: "black"
+            }
+          },
+          legend: {
+            display: false
           }
-        }
-      },
-      plugins: [ChartDataLabels]
-    });
+        };
+        // Create the chart
+        new Chart(ctx, {
+          type: 'bar',
+          data: data,
+          options: {
+            indexAxis: 'x',
+            scales: {
+              xAxes: [
+                {
+                  ticks: {
+                    stepSize: 10,
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+            plugins: {
+              datalabels: {
+                anchor: "end",
+                align: "top"
+              }
+            }
+          },
+          plugins: [ChartDataLabels]
+        });
+    
+    //**********************
+            
 
-//**********************
+        
+        
+          
+
+          
+          
+    
+    
+
+
+
 
 
 
