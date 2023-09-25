@@ -42,27 +42,46 @@
                   </div>
               <!-- <img class="frame-child" alt="" src="../../media/images/percentage-graph.png" /> -->
                 <div class="percentage-graph">
-                    <div class="censored"><canvas id="censored-graph"></canvas>
-                      <div id="my-datta1" data-my-data="{{tribe.get_tribal_indicator_members.0}}"></div>
-                      <div id="my-datta2" data-my-data="{{tribe.get_tribal_indicator_members.1}}"></div>
-                      <div id="my-datta3" data-my-data="{{tribe.get_tribal_indicator_members.2 }}"></div>
-                      <div id="my-datta4" data-my-data="{{ tribe.get_tribal_indicator_members.3}}"></div>
-                      <div id="my-datta5" data-my-data="{{tribe.get_tribal_indicator_members.4}}"></div>
-                      <div id="my-datta6" data-my-data="{{tribe.get_tribal_indicator_members.5}}"></div>
-                      <div id="my-datta7" data-my-data="{{tribe.get_tribal_indicator_members.6}}"></div>
-                      <div id="my-datta8" data-my-data="{{tribe.get_tribal_indicator_members.7}}"></div>
-                      <div id="my-datta9" data-my-data="{{tribe.get_tribal_indicator_members.8}}"></div>
-                      <div id="my-datta10" data-my-data="{{tribe.get_tribal_indicator_members.9}}"></div>
-                      <div id="my-datta11" data-my-data="{{tribe.get_tribal_indicator_members.10}}"></div>
-                      <div id="my-datta12" data-my-data="{{tribe.get_tribal_indicator_members.11}}"></div>
-                      <div id="my-datta13" data-my-data="{{tribe.get_tribal_indicator_members.12}}"></div>
-                      <div id="my-datta14" data-my-data="{{tribe.get_tribal_indicator_members.13}}"></div>
-                      <div id="my-datta15" data-my-data="{{tribe.get_tribal_indicator_members.14}}"></div>
-                      <div id="my-datta16" data-my-data="{{tribe.get_tribal_indicator_members.15}}"></div>
-                      <div id="my-datta17" data-my-data="{{tribe.get_tribal_indicator_members.16}}"></div>
-                      <div id="my-datta18" data-my-data="{{tribe.get_tribal_indicator_members.17}}"></div>
+                    <div class="censored"><canvas id="censored-graph"  height="400"></canvas>
+                      <div id="my-data_censored1" data-my-data="{{tribe.get_censored_tribal_indicator_score.0}}"></div>
+                      <div id="my-data_censored2" data-my-data="{{tribe.get_censored_tribal_indicator_score.1}}"></div>
+                      <div id="my-data_censored3" data-my-data="{{tribe.get_censored_tribal_indicator_score.2 }}"></div>
+                      <div id="my-data_censored4" data-my-data="{{ tribe.get_censored_tribal_indicator_score.3}}"></div>
+                      <div id="my-data_censored5" data-my-data="{{tribe.get_censored_tribal_indicator_score.4}}"></div>
+                      <div id="my-data_censored6" data-my-data="{{tribe.get_censored_tribal_indicator_score.5}}"></div>
+                      <div id="my-data_censored7" data-my-data="{{tribe.get_censored_tribal_indicator_score.6}}"></div>
+                      <div id="my-data_censored8" data-my-data="{{tribe.get_censored_tribal_indicator_score.7}}"></div>
+                      <div id="my-data_censored9" data-my-data="{{tribe.get_censored_tribal_indicator_score.8}}"></div>
+                      <div id="my-data_censored10" data-my-data="{{tribe.get_censored_tribal_indicator_score.9}}"></div>
+                      <div id="my-data_censored11" data-my-data="{{tribe.get_censored_tribal_indicator_score.10}}"></div>
+                      <div id="my-data_censored12" data-my-data="{{tribe.get_censored_tribal_indicator_score.11}}"></div>
+                      <div id="my-data_censored13" data-my-data="{{tribe.get_censored_tribal_indicator_score.12}}"></div>
+                      <div id="my-data_censored14" data-my-data="{{tribe.get_censored_tribal_indicator_score.13}}"></div>
+                      <div id="my-data_censored15" data-my-data="{{tribe.get_censored_tribal_indicator_score.14}}"></div>
+                      <div id="my-data_censored16" data-my-data="{{tribe.get_censored_tribal_indicator_score.15}}"></div>
+                      <div id="my-data_censored17" data-my-data="{{tribe.get_censored_tribal_indicator_score.16}}"></div>
+                      <div id="my-data_censored18" data-my-data="{{tribe.get_censored_tribal_indicator_score.17}}"></div>
                     </div>
-                    <!-- <div class="uncensored"><canvas id="uncensored-graph"></canvas></div> -->
+                    <div class="uncensored"><canvas id="uncensored-graph" height="400"></canvas>
+                      <div id="my-data_uncensored1" data-my-data="{{tribe.get_tribal_indicator_members.0}}"></div>
+                      <div id="my-data_uncensored2" data-my-data="{{tribe.get_tribal_indicator_members.1}}"></div>
+                      <div id="my-data_uncensored3" data-my-data="{{tribe.get_tribal_indicator_members.2 }}"></div>
+                      <div id="my-data_uncensored4" data-my-data="{{ tribe.get_tribal_indicator_members.3}}"></div>
+                      <div id="my-data_uncensored5" data-my-data="{{tribe.get_tribal_indicator_members.4}}"></div>
+                      <div id="my-data_uncensored6" data-my-data="{{tribe.get_tribal_indicator_members.5}}"></div>
+                      <div id="my-data_uncensored7" data-my-data="{{tribe.get_tribal_indicator_members.6}}"></div>
+                      <div id="my-data_uncensored8" data-my-data="{{tribe.get_tribal_indicator_members.7}}"></div>
+                      <div id="my-data_uncensored9" data-my-data="{{tribe.get_tribal_indicator_members.8}}"></div>
+                      <div id="my-data_uncensored10" data-my-data="{{tribe.get_tribal_indicator_members.9}}"></div>
+                      <div id="my-data_uncensored11" data-my-data="{{tribe.get_tribal_indicator_members.10}}"></div>
+                      <div id="my-data_uncensored12" data-my-data="{{tribe.get_tribal_indicator_members.11}}"></div>
+                      <div id="my-data_uncensored13" data-my-data="{{tribe.get_tribal_indicator_members.12}}"></div>
+                      <div id="my-data_uncensored14" data-my-data="{{tribe.get_tribal_indicator_members.13}}"></div>
+                      <div id="my-data_uncensored15" data-my-data="{{tribe.get_tribal_indicator_members.14}}"></div>
+                      <div id="my-data_uncensored16" data-my-data="{{tribe.get_tribal_indicator_members.15}}"></div>
+                      <div id="my-data_uncensored17" data-my-data="{{tribe.get_tribal_indicator_members.16}}"></div>
+                      <div id="my-data_uncensored18" data-my-data="{{tribe.get_tribal_indicator_members.17}}"></div>
+                    </div>
                 </div>
              
             </div>
@@ -154,8 +173,7 @@
 
               <div class="frame4">
                 <div class="group4">
-                  <img class="vector-icon5" alt="" src="../../media/images/" />
-
+                  
                   <div class="percentage-contribution-of3">
                     Percentage contribution of each Dimension and Indicator to
                     TDI Score
@@ -322,7 +340,7 @@
     var myDataArray = []; // Create an array to store the data
 
     for (var i = 1; i <= 18; i++) {
-        var myDattaElement = document.getElementById(`my-datta${i}`);
+        var myDattaElement = document.getElementById(`my-data_uncensored${i}`);
         var myDatta = myDattaElement.getAttribute("data-my-data");
         myDataArray.push(myDatta); // Store the data in the array
     }
@@ -352,8 +370,20 @@
             xAxes: [
               {
                 ticks: {
-                  stepSize: 10,
+                  stepSize: 1,
                   beginAtZero: true,
+                  maxTicksLimit: 16,
+                  autoSkip: false
+                },
+              },
+            ],
+            yAxes: [
+              {
+                ticks: {
+                  stepSize: 1,
+                  beginAtZero: true,
+                  maxTicksLimit: 16,
+                  autoSkip: false
                 },
               },
             ],
@@ -361,8 +391,64 @@
         },
       };
       
-    const myChart2 = new Chart(document.getElementById('censored-graph'), config1);
+    const myChart2 = new Chart(document.getElementById('uncensored-graph'), config1);
     
+    var myDataArray = []; // Create an array to store the data
+
+    for (var i = 1; i <= 18; i++) {
+        var myDattaElement = document.getElementById(`my-data_censored${i}`);
+        var myDatta = myDattaElement.getAttribute("data-my-data");
+        myDataArray.push(myDatta); // Store the data in the array
+    }
+
+
+    
+    const datacensored = {
+      labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Level of Education', 'Drop-out', 'Institutional Credit', 'Land Ownership', 'Sanitation','Cooking Fuel','Source of Drinking Water','Electricity','Assets','Language','Arts and Culture','Voted','Meetings'],
+        datasets: [
+          {
+            label: 'Sales',
+            data: myDataArray,
+            fill: false,
+            backgroundColor: 'rgba(75,192,192,0.4)',
+            borderColor: 'rgba(75,192,192,1)',
+            borderWidth: 1,
+          },
+        ],
+      };
+      
+      const configcensored = {
+        type: 'bar',
+        data: datacensored,
+        options: {
+          indexAxis: 'y',
+          scales: {
+            xAxes: [
+              {
+                ticks: {
+                  stepSize: 1,
+                  beginAtZero: true,
+                  autoSkip: false
+                },
+              },
+            ],
+            yAxes: [
+              {
+                ticks: {
+                  stepSize: 1,
+                  beginAtZero: true,
+                  maxTicksLimit: 16,
+                  autoSkip: false
+                },
+              },
+            ],
+          },
+        },
+      };
+      
+    const myChartcensored = new Chart(document.getElementById('censored-graph'), configcensored);
+    
+
     
 
 
@@ -521,7 +607,7 @@ const ctx = document.getElementById('graph2');
 const dataList = [10, 20, 30, 40, 50];
 
 // Your single integer value
-var tdi =0.7;
+var tdi ={{tribe.tribal_index}};
 
 // Create the data array with both the list of values and the single integer value
 const data = {
@@ -542,7 +628,17 @@ const data = {
     },
   ],
 };
-
+const options = {
+      plugins: {
+        datalabels: {
+          display: true,
+          color: "black"
+        }
+      },
+      legend: {
+        display: false
+      }
+    };
 // Create the chart
 new Chart(ctx, {
   type: 'bar',

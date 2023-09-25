@@ -14,7 +14,7 @@
     For Asur :
 
     Total Number of Tribals : {{total_tribals}}
-    {% for i in tribe.get_tribal_indicator_members %}
+    {% for i in tribe.get_censored_tribal_indicator_score %}
      <p>indivcator_score : {{i}}</p>
     {% endfor %}
     <h2>CD_score</h2>
@@ -49,6 +49,7 @@
             <li>Health development score = {{i.D_DS.0}}</li>
             <li>Is household developed in Health Dimension = {{i.is_developed.0}}</li>
             <li>dimensional_incidence = {{i.household_dimensional_incidence.0}}</li>
+            
 
             <li>household_dimensional_intensity = {{i.household_dimensional_intensity.0}}</li>
             
@@ -64,6 +65,7 @@
             <li>Is household developed in Education Dimension = {{i.is_developed.1}}</li>
             <li>household_dimensional_incidence = {{i.household_dimensional_incidence.1}}</li>
             <li>household_dimensional_intensity = {{i.household_dimensional_intensity.1}}</li>
+            
 
 
             <h3>Standard Of Lving :</h3> 
@@ -95,6 +97,7 @@
 
 
             <li>Is HH multidimensionally developed = {{i.is_multidimensionally_developed.0}}</li>
+            <li>household_tribal_index = {{i.household_tribal_index}}</li>
             
         </ul>
     </div>
