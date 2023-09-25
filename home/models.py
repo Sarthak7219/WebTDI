@@ -293,7 +293,23 @@ class Tribe(models.Model):
 
         return contributions
 
-
+    def dimension_contribution_to_tdi(self):
+        households = self.household.all()
+        dimension_contribution_to_tdi=[]
+        total_tribal_development_score =0
+        total_D_DS=[]
+        for i in range(0,5):
+            count=0
+            for household in households:
+                D_DS=household.D_DS()[i]
+                count+=D_DS
+            total_D_DS.append(count)
+        for household in households:
+                tribal_development_score=household.tribal_development_score()
+                total_tribal_development_score+=tribal_development_score
+        for i in total_D_DS:
+            dimension_contribution_to_tdi.append(round((i/total_tribal_development_score)*100,2))
+        return dimension_contribution_to_tdi
 
         
 
