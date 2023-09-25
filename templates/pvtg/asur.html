@@ -1,330 +1,288 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <link rel="stylesheet" href="../../media/css/global.css" />
-    <link rel="stylesheet" href="../../media/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
-    />
-    
-  </head>
-  <body>
-    <div class="setup-materials">
-      <div class="navbar1">
-        <div class="web-tdi1">Web TDI</div>
-        <div class="opt1-group">
-          <div class="opt11">opt1</div>
-          <div class="opt21">opt2</div>
-          <div class="opt21">opt3</div>
-          <div class="opt21">opt4</div>
-          <div class="opt21">opt5</div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+  <link rel="stylesheet" href="../../media/css/global.css" />
+  <link rel="stylesheet" href="../../media/css/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" />
+
+</head>
+
+<body>
+  <div class="setup-materials">
+    <div class="navbar1">
+      <div class="web-tdi1">Web TDI</div>
+      <div class="opt1-group">
+        <div class="opt11">opt1</div>
+        <div class="opt21">opt2</div>
+        <div class="opt21">opt3</div>
+        <div class="opt21">opt4</div>
+        <div class="opt21">opt5</div>
+      </div>
+      <div class="login-group">
+        <div class="login1">Login</div>
+        <div class="signup1">SignUp</div>
+      </div>
+    </div>
+    <div class="page2-parent">
+      <div class="page2">
+        <div class="frame-parent">
+          <div class="frame-group">
+            <div class="group">
+              <img class="vector-icon" alt="" src="../../media/images/" />
+
+              <div class="percentage-contribution-of">
+                Censored And Uncensored
+              </div>
+            </div>
+            <!-- <img class="frame-child" alt="" src="../../media/images/percentage-graph.png" /> -->
+            <div class="percentage-graph">
+              <div class="censored"><canvas id="censored-graph" width="288" height="579"></canvas>
+                <div id="my-data_censored1" data-my-data="{{tribe.get_censored_tribal_indicator_score.0}}"></div>
+                <div id="my-data_censored2" data-my-data="{{tribe.get_censored_tribal_indicator_score.1}}"></div>
+                <div id="my-data_censored3" data-my-data="{{tribe.get_censored_tribal_indicator_score.2 }}"></div>
+                <div id="my-data_censored4" data-my-data="{{ tribe.get_censored_tribal_indicator_score.3}}"></div>
+                <div id="my-data_censored5" data-my-data="{{tribe.get_censored_tribal_indicator_score.4}}"></div>
+                <div id="my-data_censored6" data-my-data="{{tribe.get_censored_tribal_indicator_score.5}}"></div>
+                <div id="my-data_censored7" data-my-data="{{tribe.get_censored_tribal_indicator_score.6}}"></div>
+                <div id="my-data_censored8" data-my-data="{{tribe.get_censored_tribal_indicator_score.7}}"></div>
+                <div id="my-data_censored9" data-my-data="{{tribe.get_censored_tribal_indicator_score.8}}"></div>
+                <div id="my-data_censored10" data-my-data="{{tribe.get_censored_tribal_indicator_score.9}}"></div>
+                <div id="my-data_censored11" data-my-data="{{tribe.get_censored_tribal_indicator_score.10}}"></div>
+                <div id="my-data_censored12" data-my-data="{{tribe.get_censored_tribal_indicator_score.11}}"></div>
+                <div id="my-data_censored13" data-my-data="{{tribe.get_censored_tribal_indicator_score.12}}"></div>
+                <div id="my-data_censored14" data-my-data="{{tribe.get_censored_tribal_indicator_score.13}}"></div>
+                <div id="my-data_censored15" data-my-data="{{tribe.get_censored_tribal_indicator_score.14}}"></div>
+                <div id="my-data_censored16" data-my-data="{{tribe.get_censored_tribal_indicator_score.15}}"></div>
+                <div id="my-data_censored17" data-my-data="{{tribe.get_censored_tribal_indicator_score.16}}"></div>
+                <div id="my-data_censored18" data-my-data="{{tribe.get_censored_tribal_indicator_score.17}}"></div>
+              </div>
+              <div class="uncensored"><canvas id="uncensored-graph" width="288" height="579"></canvas>
+                <div id="my-data_uncensored1" data-my-data="{{tribe.get_tribal_indicator_members.0}}"></div>
+                <div id="my-data_uncensored2" data-my-data="{{tribe.get_tribal_indicator_members.1}}"></div>
+                <div id="my-data_uncensored3" data-my-data="{{tribe.get_tribal_indicator_members.2 }}"></div>
+                <div id="my-data_uncensored4" data-my-data="{{ tribe.get_tribal_indicator_members.3}}"></div>
+                <div id="my-data_uncensored5" data-my-data="{{tribe.get_tribal_indicator_members.4}}"></div>
+                <div id="my-data_uncensored6" data-my-data="{{tribe.get_tribal_indicator_members.5}}"></div>
+                <div id="my-data_uncensored7" data-my-data="{{tribe.get_tribal_indicator_members.6}}"></div>
+                <div id="my-data_uncensored8" data-my-data="{{tribe.get_tribal_indicator_members.7}}"></div>
+                <div id="my-data_uncensored9" data-my-data="{{tribe.get_tribal_indicator_members.8}}"></div>
+                <div id="my-data_uncensored10" data-my-data="{{tribe.get_tribal_indicator_members.9}}"></div>
+                <div id="my-data_uncensored11" data-my-data="{{tribe.get_tribal_indicator_members.10}}"></div>
+                <div id="my-data_uncensored12" data-my-data="{{tribe.get_tribal_indicator_members.11}}"></div>
+                <div id="my-data_uncensored13" data-my-data="{{tribe.get_tribal_indicator_members.12}}"></div>
+                <div id="my-data_uncensored14" data-my-data="{{tribe.get_tribal_indicator_members.13}}"></div>
+                <div id="my-data_uncensored15" data-my-data="{{tribe.get_tribal_indicator_members.14}}"></div>
+                <div id="my-data_uncensored16" data-my-data="{{tribe.get_tribal_indicator_members.15}}"></div>
+                <div id="my-data_uncensored17" data-my-data="{{tribe.get_tribal_indicator_members.16}}"></div>
+                <div id="my-data_uncensored18" data-my-data="{{tribe.get_tribal_indicator_members.17}}"></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="group-parent">
+            <div class="group1">
+              <img class="vector-icon1" alt="" src="../../media/images/vector1.svg" />
+
+              <div class="percentage-contribution-of1">
+
+              </div>
+            </div>
+            <div class="group-child">
+              <img src="../../media/images/asur-image.png" alt="" style="width: 100%;">
+            </div>
+          </div>
         </div>
-        <div class="login-group">
-          <div class="login1">Login</div>
-          <div class="signup1">SignUp</div>
+        <div class="frame-container">
+          <div class="frame-div">
+            <div class="frame">
+              <img class="rectangle-icon" alt="" src="../../media/images/map.png" />
+            </div>
+            <div class="group2">
+              <div class="percentage-contribution-of2">
+                Percentage contribution of each Dimension and Indicator to TDI
+                Score
+              </div>
+            </div>
+          </div>
+          <div class="score-graph-1-parent">
+
+            <div>
+              <canvas id="graph2"></canvas>
+              <div id="my-graph2-data"></div>
+
+            </div>
+
+            <div class="group2">
+
+              <div class="score">Score</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="page2-parent">
-        <div class="page2">
-          <div class="frame-parent">
-            <div class="frame-group">
-                <div class="group">
-                    <img class="vector-icon" alt="" src="../../media/images/" />
-    
-                    <div class="percentage-contribution-of">
-                      Censored And Uncensored
-                    </div>
-                  </div>
-              <!-- <img class="frame-child" alt="" src="../../media/images/percentage-graph.png" /> -->
-                <div class="percentage-graph">
-                    <div class="censored"><canvas id="censored-graph"  height="400"></canvas>
-                      <div id="my-data_censored1" data-my-data="{{tribe.get_censored_tribal_indicator_score.0}}"></div>
-                      <div id="my-data_censored2" data-my-data="{{tribe.get_censored_tribal_indicator_score.1}}"></div>
-                      <div id="my-data_censored3" data-my-data="{{tribe.get_censored_tribal_indicator_score.2 }}"></div>
-                      <div id="my-data_censored4" data-my-data="{{ tribe.get_censored_tribal_indicator_score.3}}"></div>
-                      <div id="my-data_censored5" data-my-data="{{tribe.get_censored_tribal_indicator_score.4}}"></div>
-                      <div id="my-data_censored6" data-my-data="{{tribe.get_censored_tribal_indicator_score.5}}"></div>
-                      <div id="my-data_censored7" data-my-data="{{tribe.get_censored_tribal_indicator_score.6}}"></div>
-                      <div id="my-data_censored8" data-my-data="{{tribe.get_censored_tribal_indicator_score.7}}"></div>
-                      <div id="my-data_censored9" data-my-data="{{tribe.get_censored_tribal_indicator_score.8}}"></div>
-                      <div id="my-data_censored10" data-my-data="{{tribe.get_censored_tribal_indicator_score.9}}"></div>
-                      <div id="my-data_censored11" data-my-data="{{tribe.get_censored_tribal_indicator_score.10}}"></div>
-                      <div id="my-data_censored12" data-my-data="{{tribe.get_censored_tribal_indicator_score.11}}"></div>
-                      <div id="my-data_censored13" data-my-data="{{tribe.get_censored_tribal_indicator_score.12}}"></div>
-                      <div id="my-data_censored14" data-my-data="{{tribe.get_censored_tribal_indicator_score.13}}"></div>
-                      <div id="my-data_censored15" data-my-data="{{tribe.get_censored_tribal_indicator_score.14}}"></div>
-                      <div id="my-data_censored16" data-my-data="{{tribe.get_censored_tribal_indicator_score.15}}"></div>
-                      <div id="my-data_censored17" data-my-data="{{tribe.get_censored_tribal_indicator_score.16}}"></div>
-                      <div id="my-data_censored18" data-my-data="{{tribe.get_censored_tribal_indicator_score.17}}"></div>
-                    </div>
-                    <div class="uncensored"><canvas id="uncensored-graph" height="400"></canvas>
-                      <div id="my-data_uncensored1" data-my-data="{{tribe.get_tribal_indicator_members.0}}"></div>
-                      <div id="my-data_uncensored2" data-my-data="{{tribe.get_tribal_indicator_members.1}}"></div>
-                      <div id="my-data_uncensored3" data-my-data="{{tribe.get_tribal_indicator_members.2 }}"></div>
-                      <div id="my-data_uncensored4" data-my-data="{{ tribe.get_tribal_indicator_members.3}}"></div>
-                      <div id="my-data_uncensored5" data-my-data="{{tribe.get_tribal_indicator_members.4}}"></div>
-                      <div id="my-data_uncensored6" data-my-data="{{tribe.get_tribal_indicator_members.5}}"></div>
-                      <div id="my-data_uncensored7" data-my-data="{{tribe.get_tribal_indicator_members.6}}"></div>
-                      <div id="my-data_uncensored8" data-my-data="{{tribe.get_tribal_indicator_members.7}}"></div>
-                      <div id="my-data_uncensored9" data-my-data="{{tribe.get_tribal_indicator_members.8}}"></div>
-                      <div id="my-data_uncensored10" data-my-data="{{tribe.get_tribal_indicator_members.9}}"></div>
-                      <div id="my-data_uncensored11" data-my-data="{{tribe.get_tribal_indicator_members.10}}"></div>
-                      <div id="my-data_uncensored12" data-my-data="{{tribe.get_tribal_indicator_members.11}}"></div>
-                      <div id="my-data_uncensored13" data-my-data="{{tribe.get_tribal_indicator_members.12}}"></div>
-                      <div id="my-data_uncensored14" data-my-data="{{tribe.get_tribal_indicator_members.13}}"></div>
-                      <div id="my-data_uncensored15" data-my-data="{{tribe.get_tribal_indicator_members.14}}"></div>
-                      <div id="my-data_uncensored16" data-my-data="{{tribe.get_tribal_indicator_members.15}}"></div>
-                      <div id="my-data_uncensored17" data-my-data="{{tribe.get_tribal_indicator_members.16}}"></div>
-                      <div id="my-data_uncensored18" data-my-data="{{tribe.get_tribal_indicator_members.17}}"></div>
-                    </div>
-                </div>
-             
-            </div>
-            <div class="group-parent">
-              <div class="group1">
-                <img class="vector-icon1" alt="" src="../../media/images/vector1.svg" />
+      <div class="page1">
+        <div class="tribe-logo-parent">
+          <img class="tribe-logo-icon" alt="" src="../../media/images/Tribe-logo-name.png" />
 
-                <div class="percentage-contribution-of1">
-                 
-                </div>
+          <div class="frame1" style="background-image: url(../../media/images/asur.jpg);">
+            <div class="photo-desc" style="background-color: #f2f2f277;">
+              <div class="image-location-">
+                Image Location - Village Husmu , Neharhat , Jharkhand
               </div>
-              <div class="group-child">
-                <img src="../../media/images/asur-image.png" alt="" style="width: 100%;">
-              </div>
-            </div>
-          </div>
-          <div class="frame-container">
-            <div class="frame-div">
-              <div class="frame">
-                <img
-                  class="rectangle-icon"
-                  alt=""
-                  src="../../media/images/map.png"
-                />
-              </div>
-              <div class="group2">
-                <div class="percentage-contribution-of2">
-                  Percentage contribution of each Dimension and Indicator to TDI
-                  Score
-                </div>
-              </div>
-            </div>
-            <div class="score-graph-1-parent" >
-              
-              <div>
-                <canvas id="graph2"></canvas>
-                <div id="my-graph2-data"></div>
-              
-              </div>
-
-              <div class="group2">
-
-                <div class="score">Score</div>
+              <div class="an-asur-man">
+                An Asur man stands tall in his home
               </div>
             </div>
           </div>
         </div>
-        <div class="page1">
-          <div class="tribe-logo-parent">
-            <img
-              class="tribe-logo-icon"
-              alt=""
-              src="../../media/images/Tribe-logo-name.png"
-            />
-
-            <div class="frame1" style="background-image: url(../../media/images/asur.jpg);">
-              <div class="photo-desc" style="background-color: #f2f2f277;">
-                <div class="image-location-">
-                  Image Location - Village Husmu , Neharhat , Jharkhand
-                </div>
-                <div class="an-asur-man">
-                  An Asur man stands tall in his home
-                </div>
-              </div>
+        <div class="frame2">
+          <div class="frame3">
+            <div class="dimensions">Dimensions</div>
+            <div class="rectangle-wrapper">
+              <img class="rectangle-icon1" alt="" src="../../media/images/Picture2.png" />
             </div>
           </div>
-          <div class="frame2">
-            <div class="frame3">
-              <div class="dimensions">Dimensions</div>
-              <div class="rectangle-wrapper">
-                <img
-                  class="rectangle-icon1"
-                  alt=""
-                  src="../../media/images/Picture2.png"
-                />
+          <div class="frame-parent1">
+            <div class="frame-wrapper">
+              <img src="../../media/images/background-blue.png" alt="Here is an image">
+              <div class="a-snapshot-of-tdi-among-asur-p-parent">
+                <div class="a-snapshot-of">
+                  A snapshot of TDI among Asur PVTG
+                </div>
+                <div class="asur">Asur</div>
               </div>
             </div>
-            <div class="frame-parent1">
-              <div class="frame-wrapper">
-                <img src="../../media/images/background-blue.png" alt="Here is an image">
-                <div class="a-snapshot-of-tdi-among-asur-p-parent">
-                  <div class="a-snapshot-of">
-                    A snapshot of TDI among Asur PVTG
-                  </div>
-                  <div class="asur">Asur</div>
+
+
+            <div class="frame4">
+              <div class="group4">
+
+                <div class="percentage-contribution-of3">
+                  Percentage contribution of each Dimension and Indicator to
+                  TDI Score
                 </div>
               </div>
-              
+            </div>
+            <div class="indicators-wrapper">
+              <div class="indicators">Indicators</div>
+            </div>
+            <div class="frame-parent2">
+              <div class="health-parent">
+                <div class="pie-box">
+                  <div class="health1">
 
-              <div class="frame4">
-                <div class="group4">
-                  
-                  <div class="percentage-contribution-of3">
-                    Percentage contribution of each Dimension and Indicator to
-                    TDI Score
+
+                    <div id="my-data-health" data-my-data="{{indicator_contributions_to_dimension}}"></div>
+
+
                   </div>
-                </div>
-              </div>
-              <div class="indicators-wrapper">
-                <div class="indicators">Indicators</div>
-              </div>
-              <div class="frame-parent2">
-                <div class="health-parent">
-                  <div class="pie-box">
-                    <div class="health1">
-                     
+                  <img class="vector-icon6" alt="" src="../../media/images/health-icon.png" />
 
-                      <div id="my-data-health" data-my-data="{{indicator_contributions_to_dimension}}"></div>
-                      
-                    
-                          </div>
-                    <img
-                      class="vector-icon6"
-                      alt=""
-                      src="../../media/images/health-icon.png"
-                    />
 
-                    
 
-                    <div class="chronic-diseases-immunisation-container">
-                      <p class="chronic-diseases">Chronic Diseases</p>
-                      <p class="chronic-diseases">Immunisation</p>
-                      <p class="chronic-diseases">Maternal Care</p>
-                      <p class="chronic-diseases">Child Mortality</p>
-                    </div>
-                    <!-- <img
+                  <div class="chronic-diseases-immunisation-container">
+                    <p class="chronic-diseases">Chronic Diseases</p>
+                    <p class="chronic-diseases">Immunisation</p>
+                    <p class="chronic-diseases">Maternal Care</p>
+                    <p class="chronic-diseases">Child Mortality</p>
+                  </div>
+                  <!-- <img
                       class="health-pie-icon-1"
                       alt=""
                       src="../../media/images/healthpieicon-1@2x.png"
                     /> -->
-                    <div class="pie-icon-1"><canvas class="canvas-pie" id="health-pie"> 
+                  <div class="pie-icon-1"><canvas class="canvas-pie" id="health-pie">
                     </canvas></div>
-                    
-                  </div>
-                  <div class="pie-box">
-                    
-                    
-                    
 
-                    <div class="institutional-credit-ownership-container">
-                      <p class="chronic-diseases">Institutional Credit</p>
-                      <p class="chronic-diseases">Ownership</p>
-                      <p class="chronic-diseases">Sanitation</p>
-                      <p class="chronic-diseases">Fuel</p>
-                      <p class="chronic-diseases">Drinkng Water</p>
-                      <p class="chronic-diseases">Electricity</p>
-                    </div>
-                    <div class="standard-of-living">Standard of Living</div>
-                    <div class="sol1">
-                     
-
-                      <div id="my-data-sol"></div>
-                      
-                    
-                          </div>
-                    <img
-                      class="sol-icon-1"
-                      alt=""
-                      src="../../media/images/sol-icon.png"
-                    />
-                    <div class="pie-icon-1"><canvas class="canvas-pie" id="sol-pie"> 
-                    </canvas></div>
-                  </div>
-                  <div class="pie-box">
-                    <div class="governance1">
-                     
-
-                      <div id="my-data-governance"></div>
-                      
-                    
-                          </div>
-                    <img
-                      class="governance-icon-1"
-                      alt=""
-                      src="../../media/images/governance-icon.png"
-                    />
-
-                    <img
-                      class="vector-icon17"
-                      alt=""
-                      src="../../media/images/vector16.svg"
-                    />
-
-                    <div class="governance1">GOVERNANCE</div>
-                    <div class="execution-of-voting">
-                      Execution Of Voting Rights
-                    </div>
-                    <img
-                      class="vector-icon18"
-                      alt=""
-                      src="../../media/images/vector17.svg"
-                    />
-
-                    <div class="participation-in-government">
-                      Participation in Government meetings
-                    </div>
-                    <div class="pie-icon-1"><canvas class="canvas-pie" id="governance-pie"> 
-                    </canvas></div>
-                    
-                  </div>
                 </div>
-                <div class="education-parent">
-                  <div class="pie-box">
-                   
+                <div class="pie-box">
 
-                    <div class="drop-out">Drop Out</div>
-                    <div class="years-of-schooling">Years of Schooling</div>
-                    
 
-                    <div class="education1">Education</div>
-                   
-                     
 
-                      <div id="my-data-education"></div>
-                      
-                    
-                    
-                    <img
-                      class="education-icon-1"
-                      alt=""
-                      src="../../media/images/education-icon.png"
-                    />
 
-                    <div class="pie-icon-1"><canvas class="canvas-pie" id="education-pie"> 
-                    </canvas></div>
+                  <div class="institutional-credit-ownership-container">
+                    <p class="chronic-diseases">Institutional Credit</p>
+                    <p class="chronic-diseases">Ownership</p>
+                    <p class="chronic-diseases">Sanitation</p>
+                    <p class="chronic-diseases">Fuel</p>
+                    <p class="chronic-diseases">Drinkng Water</p>
+                    <p class="chronic-diseases">Electricity</p>
                   </div>
-                  <div class="pie-box">
-                    
+                  <div class="standard-of-living">Standard of Living</div>
+                  <div class="sol1">
 
-                    <div class="arts">Arts</div>
-                    
 
-                    <div class="lanuage">Lanuage</div>
-                    <img
-                      class="culture-icon-1"
-                      alt=""
-                      src="../../media/images/culture-icon.png"
-                    />
+                    <div id="my-data-sol"></div>
 
-                    <div class="pie-icon-1"><canvas class="canvas-pie" id="culture-pie"> 
+
+                  </div>
+                  <img class="sol-icon-1" alt="" src="../../media/images/sol-icon.png" />
+                  <div class="pie-icon-1"><canvas class="canvas-pie" id="sol-pie">
+                    </canvas></div>
+                </div>
+                <div class="pie-box">
+                  <div class="governance1">
+
+
+                    <div id="my-data-governance"></div>
+
+
+                  </div>
+                  <img class="governance-icon-1" alt="" src="../../media/images/governance-icon.png" />
+
+                  <img class="vector-icon17" alt="" src="../../media/images/vector16.svg" />
+
+                  <div class="governance1">GOVERNANCE</div>
+                  <div class="execution-of-voting">
+                    Execution Of Voting Rights
+                  </div>
+                  <img class="vector-icon18" alt="" src="../../media/images/vector17.svg" />
+
+                  <div class="participation-in-government">
+                    Participation in Government meetings
+                  </div>
+                  <div class="pie-icon-1"><canvas class="canvas-pie" id="governance-pie">
                     </canvas></div>
 
-                    <div class="culture1">Culture</div>
-                  </div>
+                </div>
+              </div>
+              <div class="education-parent">
+                <div class="pie-box">
+
+
+                  <div class="drop-out">Drop Out</div>
+                  <div class="years-of-schooling">Years of Schooling</div>
+
+
+                  <div class="education1">Education</div>
+
+
+
+                  <div id="my-data-education"></div>
+
+
+
+                  <img class="education-icon-1" alt="" src="../../media/images/education-icon.png" />
+
+                  <div class="pie-icon-1"><canvas class="canvas-pie" id="education-pie">
+                    </canvas></div>
+                </div>
+                <div class="pie-box">
+
+
+                  <div class="arts">Arts</div>
+
+
+                  <div class="lanuage">Lanuage</div>
+                  <img class="culture-icon-1" alt="" src="../../media/images/culture-icon.png" />
+
+                  <div class="pie-icon-1"><canvas class="canvas-pie" id="culture-pie">
+                    </canvas></div>
+
+                  <div class="culture1">Culture</div>
                 </div>
               </div>
             </div>
@@ -332,312 +290,336 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <script>
+
+<!-- JAVASCRIPT -->
+
+<!-- CDN LINKS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"
+    integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- ****** -->
+
+
+<!-- CHART JS -->
+  <script>
+
+//UNSENSORED-GRAPH
     var myDataArray = []; // Create an array to store the data
 
     for (var i = 1; i <= 18; i++) {
-        var myDattaElement = document.getElementById(`my-data_uncensored${i}`);
-        var myDatta = myDattaElement.getAttribute("data-my-data");
-        myDataArray.push(myDatta); // Store the data in the array
+      var myDattaElement = document.getElementById(`my-data_uncensored${i}`);
+      var myDatta = myDattaElement.getAttribute("data-my-data");
+      myDataArray.push(myDatta); // Store the data in the array
     }
 
 
-    
-    const data1 = {
-      labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Level of Education', 'Drop-out', 'Institutional Credit', 'Land Ownership', 'Sanitation','Cooking Fuel','Source of Drinking Water','Electricity','Assets','Language','Arts and Culture','Voted','Meetings'],
-        datasets: [
-          {
-            label: 'Sales',
-            data: myDataArray,
-            fill: false,
-            backgroundColor: 'rgba(75,192,192,0.4)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderWidth: 1,
-          },
-        ],
-      };
-      
-      const config1 = {
-        type: 'bar',
-        data: data1,
-        options: {
-          indexAxis: 'y',
-          scales: {
-            xAxes: [
-              {
-                ticks: {
-                  stepSize: 1,
-                  beginAtZero: true,
-                  maxTicksLimit: 16,
-                  autoSkip: false
-                },
+
+    const uncensored_data = {
+      labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security', 'Level of Education', 'Drop-out', 'Institutional Credit', 'Land Ownership', 'Sanitation', 'Cooking Fuel', 'Source of Drinking Water', 'Electricity', 'Assets', 'Language', 'Arts and Culture', 'Voted', 'Meetings'],
+      datasets: [
+        {
+          label: 'Sales',
+          data: myDataArray,
+          fill: false,
+          backgroundColor: 'rgba(75,192,192,0.4)',
+          borderColor: 'rgba(75,192,192,1)',
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    const config_uncensored = {
+      type: 'bar',
+      data: uncensored_data,
+      options: {
+        indexAxis: 'y',
+        scales: {
+          xAxes: [
+            {
+              ticks: {
+                stepSize: 1,
+                beginAtZero: true,
+                autoSkip: false,
+                
               },
-            ],
-            yAxes: [
-              {
-                ticks: {
-                  stepSize: 1,
-                  beginAtZero: true,
-                  maxTicksLimit: 16,
-                  autoSkip: false
-                },
+              
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                stepSize: 1,
+                beginAtZero: true,
+                maxTicksLimit: 16,
+                autoSkip: false
               },
-            ],
-          },
-          plugins:{
-            datalabels:{
-              anchor:"end",
-              align:"top"
-            }
+              
+            },
+          ],
+        },
+        plugins: {
+          datalabels: {
+            anchor: "end",
+            align: "right"
           }
-        },
-        plugins :[ChartDataLabels]
-      };
-      
-    const myChart2 = new Chart(document.getElementById('uncensored-graph'), config1);
-    
+        }
+      },
+      plugins: [ChartDataLabels]
+    };
+
+    const uncensored_graph = new Chart(document.getElementById('uncensored-graph'), config_uncensored);
+//*******************************************
+
+
+//CENSORED-GRAPH
     var myDataArray = []; // Create an array to store the data
 
     for (var i = 1; i <= 18; i++) {
-        var myDattaElement = document.getElementById(`my-data_censored${i}`);
-        var myDatta = myDattaElement.getAttribute("data-my-data");
-        myDataArray.push(myDatta); // Store the data in the array
+      var myDattaElement = document.getElementById(`my-data_censored${i}`);
+      var myDatta = myDattaElement.getAttribute("data-my-data");
+      myDataArray.push(myDatta); // Store the data in the array
     }
 
 
-    
-    const datacensored = {
-      labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Level of Education', 'Drop-out', 'Institutional Credit', 'Land Ownership', 'Sanitation','Cooking Fuel','Source of Drinking Water','Electricity','Assets','Language','Arts and Culture','Voted','Meetings'],
-        datasets: [
-          {
-            label: 'Sales',
-            data: myDataArray,
-            fill: false,
-            backgroundColor: 'rgba(75,192,192,0.4)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderWidth: 1,
-          },
-        ],
-      };
-      
-      const configcensored = {
-        type: 'bar',
-        data: datacensored,
-        options: {
-          indexAxis: 'y',
-          scales: {
-            xAxes: [
-              {
-                ticks: {
-                  stepSize: 1,
-                  beginAtZero: true,
-                  autoSkip: false
-                },
-              },
-            ],
-            yAxes: [
-              {
-                ticks: {
-                  stepSize: 1,
-                  beginAtZero: true,
-                  maxTicksLimit: 16,
-                  autoSkip: false
-                },
-              },
-            ],
-          },
+    const censored_data = {
+      labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security', 'Level of Education', 'Drop-out', 'Institutional Credit', 'Land Ownership', 'Sanitation', 'Cooking Fuel', 'Source of Drinking Water', 'Electricity', 'Assets', 'Language', 'Arts and Culture', 'Voted', 'Meetings'],
+      datasets: [
+        {
+          label: 'Sales',
+          data: myDataArray,
+          fill: false,
+          backgroundColor: 'rgba(75,192,192,0.4)',
+          borderColor: 'rgba(75,192,192,1)',
+          borderWidth: 1,
+          
         },
-      };
-      
-    const myChartcensored = new Chart(document.getElementById('censored-graph'), configcensored);
-    
+      ],
+    };
 
-    
+    const config_censored = {
+      type: 'bar',
+      data: censored_data,
+      options: {
+        indexAxis: 'y',
+        scales: {
+          xAxes: [
+            {
+              ticks: {
+                stepSize: 1,
+                beginAtZero: true,
+                autoSkip: false
+              },
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                stepSize: 1,
+                beginAtZero: true,
+                maxTicksLimit: 16,
+                autoSkip: false
+              },
+            },
+          ],
+        },
+        plugins: {
+          datalabels: {
+            anchor: "end",
+            align: "right"
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    };
+
+    const censored_graph = new Chart(document.getElementById('censored-graph'), config_censored);
+//********************************
 
 
-    
-      
+
+
+
+
+
 
 
 //Pie chart health
-var myDattaElement = document.getElementById('my-data-health');
-var health_data = {{health_contributions_to_dimension| safe}};
-const data2 = {
-  
-  datasets: [{
-    label: '',
-    data: health_data,
-    backgroundColor: [
-      '#315493',
-      '#3B64AD',
-      '#4472C4',
-      '#8FA2D4',
-      '',
-    ],
-    hoverOffset: 4
-  }]
-};
+    var myDattaElement = document.getElementById('my-data-health');
+    var health_data = {{ health_contributions_to_dimension| safe}};
+    const data2 = {
 
-const config2 = {
-  type: 'doughnut',
-  data: data2,
-};
-const health = new Chart(document.getElementById('health-pie'), config2);
+      datasets: [{
+        label: '',
+        data: health_data,
+        backgroundColor: [
+          '#315493',
+          '#3B64AD',
+          '#4472C4',
+          '#8FA2D4',
+          '',
+        ],
+        hoverOffset: 4
+      }]
+    };
 
-
-//Pie chart education
-var myDattaElement = document.getElementById('my-data-education');
-var education_data = {{education_contributions_to_dimension| safe}};
-
-const data3 = {
-  // labels: [
-  //   'Red',
-  //   'Blue',
-  //   'Yellow'
-  // ],
-  datasets: [{
-    label: '',
-    data: education_data,
-    backgroundColor: [
-      '#538233',
-      '#A1C490',
-    ],
-    hoverOffset: 4,
-  }]
-};
-
-const config3 = {
-  type: 'doughnut',
-  data: data3,
-};
-const education = new Chart(document.getElementById('education-pie'), config3);
-
-//Pie chart end Education
+    const config2 = {
+      type: 'doughnut',
+      data: data2,
+    };
+    const health = new Chart(document.getElementById('health-pie'), config2);
 
 
-//Pie chart sol
-var myDattaElement = document.getElementById('my-data-sol');
-var sol_data = {{sol_contributions_to_dimension| safe}};
-const data4 = {
-  // labels: [
-  //   'Red',
-  //   'Blue',
-  //   'Yellow'
-  // ],
-  datasets: [{
-    label: '',
-    data: sol_data,
-    backgroundColor: [
-      '#C09000',
-      '#E2AA00',
-      '#FFC000',
-      '#FFD184',
-      '#FFE0B5',
-      '#FFD9A0',
-      
-    ],
-    hoverOffset: 4
-  }]
-};
+//Pie chart education *********
+    var myDattaElement = document.getElementById('my-data-education');
+    var education_data = {{ education_contributions_to_dimension| safe}};
 
-const config4 = {
-  type: 'doughnut',
-  data: data4,
-};
-const sol = new Chart(document.getElementById('sol-pie'), config4);
+    const data3 = {
+      // labels: [
+      //   'Red',
+      //   'Blue',
+      //   'Yellow'
+      // ],
+      datasets: [{
+        label: '',
+        data: education_data,
+        backgroundColor: [
+          '#538233',
+          '#A1C490',
+        ],
+        hoverOffset: 4,
+      }]
+    };
 
-//Pie chart end Education
+    const config3 = {
+      type: 'doughnut',
+      data: data3,
+    };
+    const education = new Chart(document.getElementById('education-pie'), config3);
 
-//Pie chart culture
-var myDattaElement = document.getElementById('my-data-culture');
-var culture_data = {{culture_contributions_to_dimension| safe}};
-const data5 = {
-  // labels: [
-  //   'Red',
-  //   'Blue',
-  //   'Yellow'
-  // ],
-  datasets: [{
-    label: '',
-    data: culture_data,
-    backgroundColor: [
-      '#5F5F5F',
-      'B3B3B3',
-      
-    ],
-    hoverOffset: 4
-  }]
-};
-
-const config5 = {
-  type: 'doughnut',
-  data: data5,
-};
-const culture = new Chart(document.getElementById('culture-pie'), config5);
+//*******************
 
 
+//Pie chart sol ***********
+    var myDattaElement = document.getElementById('my-data-sol');
+    var sol_data = {{ sol_contributions_to_dimension| safe}};
+    const data4 = {
+      // labels: [
+      //   'Red',
+      //   'Blue',
+      //   'Yellow'
+      // ],
+      datasets: [{
+        label: '',
+        data: sol_data,
+        backgroundColor: [
+          '#C09000',
+          '#E2AA00',
+          '#FFC000',
+          '#FFD184',
+          '#FFE0B5',
+          '#FFD9A0',
 
-//Pie chart governance
-var myDattaElement = document.getElementById('my-data-governance');
-var governance_data = {{governance_contributions_to_dimension| safe}};
-const data6 = {
-  // labels: [
-  //   'Red',
-  //   'Blue',
-  //   'Yellow'
-  // ],
-  datasets: [{
-    label: '',
-    data: governance_data,
-    backgroundColor: [
-      '#F5C7B8',
-      '#F1A78A',
-    ],
-    hoverOffset: 4
-  }]
-};
+        ],
+        hoverOffset: 4
+      }]
+    };
 
-const config6 = {
-  type: 'doughnut',
-  data: data6,
-};
-const governance = new Chart(document.getElementById('governance-pie'), config6);
+    const config4 = {
+      type: 'doughnut',
+      data: data4,
+    };
+    const sol = new Chart(document.getElementById('sol-pie'), config4);
 
-//Pie chart end governance
+//********************
+
+//Pie chart culture ********
+    var myDattaElement = document.getElementById('my-data-culture');
+    var culture_data = {{ culture_contributions_to_dimension| safe}};
+    const data5 = {
+      // labels: [
+      //   'Red',
+      //   'Blue',
+      //   'Yellow'
+      // ],
+      datasets: [{
+        label: '',
+        data: culture_data,
+        backgroundColor: [
+          '#5F5F5F',
+          'B3B3B3',
+
+        ],
+        hoverOffset: 4
+      }]
+    };
+
+    const config5 = {
+      type: 'doughnut',
+      data: data5,
+    };
+    const culture = new Chart(document.getElementById('culture-pie'), config5);
+//**************
 
 
+//Pie chart governance ******
+    var myDattaElement = document.getElementById('my-data-governance');
+    var governance_data = {{ governance_contributions_to_dimension| safe}};
+    const data6 = {
+      // labels: [
+      //   'Red',
+      //   'Blue',
+      //   'Yellow'
+      // ],
+      datasets: [{
+        label: '',
+        data: governance_data,
+        backgroundColor: [
+          '#F5C7B8',
+          '#F1A78A',
+        ],
+        hoverOffset: 4
+      }]
+    };
 
-var graph2_data = {{tribal_dimensional_index| safe}};
-const ctx = document.getElementById('graph2');
+    const config6 = {
+      type: 'doughnut',
+      data: data6,
+    };
+    const governance = new Chart(document.getElementById('governance-pie'), config6);
+
+//************************
 
 
-// Your single integer value
-var tdi ={{tribe.tribal_index}};
+//Dimension Index And TDI Graph *********
+    var graph2_data = {{ tribal_dimensional_index| safe}};
+    const ctx = document.getElementById('graph2');
 
-// Create the data array with both the list of values and the single integer value
-const data = {
-  labels: ['Health Development Index','Education Development Index','Sol Development Index','Culture Development Index','Governance Development Index','Tribal Development Index'],
-  datasets: [
-    {
-      label: ['Health Development Index','Education Development Index','Sol Development Index','Culture Development Index','Governance Development Index','Tribal Development Index'],
-      data: [...graph2_data, tdi], // Add the additional value to the data list
-      backgroundColor: [
-        '#4472C4',
-        '#ED7D31',
-        '#A5A5A5',
-        '#FFC000',
-        '#5B9BD5',
-        '#70AD47', // Color for the additional value
+
+    
+    var tdi = {{ tribe.tribal_index }};
+
+    const data = {
+      labels: ['Health Development Index', 'Education Development Index', 'Sol Development Index', 'Culture Development Index', 'Governance Development Index', 'Tribal Development Index'],
+      datasets: [
+        {
+          // label: ['Health Development Index','Education Development Index','Sol Development Index','Culture Development Index','Governance Development Index','Tribal Development Index'],
+          data: [...graph2_data, tdi], // Add the additional value to the data list
+          backgroundColor: [
+            '#4472C4',
+            '#ED7D31',
+            '#A5A5A5',
+            '#FFC000',
+            '#5B9BD5',
+            '#70AD47', // Color for the additional value
+          ],
+          borderWidth: 1,
+        },
       ],
-      borderWidth: 1,
-    },
-  ],
-};
-const options = {
+    };
+    const options = {
       plugins: {
         datalabels: {
           display: true,
@@ -648,44 +630,47 @@ const options = {
         display: false
       }
     };
-// Create the chart
-new Chart(ctx, {
-  type: 'bar',
-  data: data,
-  options: {
-          indexAxis: 'x',
-          scales: {
-            xAxes: [
-              {
-                ticks: {
-                  stepSize: 10,
-                  beginAtZero: true,
-                },
+    // Create the chart
+    new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: {
+        indexAxis: 'x',
+        scales: {
+          xAxes: [
+            {
+              ticks: {
+                stepSize: 10,
+                beginAtZero: true,
               },
-            ],
-          },
-          plugins:{
-            datalabels:{
-              anchor:"end",
-              align:"top"
-            }
-          }
+            },
+          ],
         },
-        plugins :[ChartDataLabels]
-});
+        plugins: {
+          datalabels: {
+            anchor: "end",
+            align: "top"
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+
+//**********************
 
 
 
 
 
-    
-     
 
 
 
 
-    </script>
-    
-    
-  </body>
+
+
+  </script>
+
+
+</body>
+
 </html>

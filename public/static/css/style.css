@@ -90,10 +90,13 @@
     flex: 50%;
     border: 1px solid black;
 }
-#censored-graph{
-  height: 650px;
-  width: 200px;
+#censored-graph, #uncensored-graph{
+  display: block;
+  box-sizing: border-box;
+  height: 463px;
+  width: 90%;
 }
+
 .frame-group,
 .group {
   position: absolute;
