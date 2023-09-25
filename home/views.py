@@ -17,7 +17,8 @@ def asur_view(request):
     
     tribal_dimensional_index=tribe.tribal_dimensional_index()
     # tribal_index=tribe.tribal_index()
-
+    dimension_contribution_to_tdi = tribe.dimension_contribution_to_tdi()
+    
     context = {
         'household' : household,
         'total_tribals' : total_tribals,
@@ -28,7 +29,8 @@ def asur_view(request):
         'culture_contributions_to_dimension':culture_contributions_to_dimension,
         'governance_contributions_to_dimension':governance_contributions_to_dimension,
         'tribal_dimensional_index' :tribal_dimensional_index,
-        # 'tribal_index':tribal_index
+        'dimension_contribution_to_tdi' :dimension_contribution_to_tdi
+        
     }
     return render(request,'pvtg/asur.html',context=context)
 

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../../media/css/global.css" />
   <link rel="stylesheet" href="../../media/css/style.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 
@@ -155,7 +156,31 @@
                 <div class="asur">Asur</div>
               </div>
             </div>
-
+            <div class="table-top">
+              <table  class="table table-striped table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Overview</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    
+                    <td  scope="row">Incidence (I)</td>
+                    <td>Intensity (A)</td>
+                    <td>TDI (I X A)</td>
+                  </tr>
+                  <tr>
+                  
+                    <td scope="row">{{tribe.tribal_incidence}}</td>
+                    <td>{{tribe.tribal_intensity}}</td>
+                    <td>{{tribe.tribal_index}}</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+           </div>
 
             <div class="frame4">
               <div class="group4">
@@ -306,97 +331,6 @@
 <!-- CHART JS -->
   <script>
 
-//DIMENTION CONTRIBUTION VERTICAL BAR
-// const vertical_bar = {{ tribal_dimensional_index| safe }};
-const vertical_graph_element = document.getElementById('vertical-bar-graph');
-var data_health={{tribe.dimensional_contribution_to_index.0}};
-var data_education={{tribe.dimensional_contribution_to_index.1}};
-var data_sol={{tribe.dimensional_contribution_to_index.2}};
-var data_culture={{tribe.dimensional_contribution_to_index.3}};
-var data_goverance={{tribe.dimensional_contribution_to_index.4}};
-
-const vertical_bar_data = {
-  labels: ['Dimensions'],
-  datasets: [
-    {
-      label: 'Governance', // Removed square brackets
-      data:data_health , // Replace with your actual data for 'Governance'
-      backgroundColor: '#C55A11', // Color for 'Governance'
-    },
-    {
-      label: 'Culture', // Removed square brackets
-      data: data_education, // Replace with your actual data for 'Culture'
-      backgroundColor: '#BFBFBF', // Color for 'Culture'
-    },
-    {
-      label: 'Sol', // Removed square brackets
-      data:data_sol, // Replace with your actual data for 'Sol'
-      backgroundColor: '#FFD966', // Color for 'Sol'
-    },
-    {
-      label: 'Education', // Removed square brackets
-      data:data_culture, // Replace with your actual data for 'Education'
-      backgroundColor: '#A9D18E', // Color for 'Education'
-    },
-    {
-      label: 'Health', // Removed square brackets
-      data:data_goverance, // Replace with your actual data for 'Health'
-      backgroundColor: '#5B9BD5', // Color for 'Health'
-    },
-  ],
-};
-
-const config_vertical_bar = {
-  type: 'bar',
-  data: vertical_bar_data,
-  options: {
-    indexAxis: 'x',
-    scales: {
-      x: {
-        stacked: true,
-        beginAtZero: true,
-      },
-      y: {
-        display: false,
-        stacked: true,
-        beginAtZero: true,
-        maxTicksLimit: 16,
-        autoSkip: false,
-      },
-    },
-    
-    plugins: {
-      datalabels: {
-        anchor: 'center', // Center the labels inside the bars
-        align: 'center', // Align the labels to the center
-        color: 'black', // Label color
-        font: {
-          weight: 'bold', // Label font weight
-        },
-        formatter: function (value, context) {
-          const label = vertical_bar_data.labels[context.dataIndex];
-          const dataset = vertical_bar_data.datasets[context.datasetIndex];
-          const colorIndex = context.datasetIndex; // Get the color index
-
-          // Create a legend string
-          const legend =  dataset.label +','+ value;
-          
-          return legend;
-        },
-        display: 'auto',
-      },
-      legend: {
-        display: false, // Hide the legend
-      },
-    },
-  },
-  plugins: [ChartDataLabels]
-};
-
-
-const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar);
-
-            
 //UNSENSORED-GRAPH
     var myDataArray = []; // Create an array to store the data
     

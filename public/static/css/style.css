@@ -375,13 +375,13 @@
 }
 .percentage-contribution-of3 {
   position: absolute;
-  left: 59px;
   letter-spacing: -0.01em;
   line-height: 150%;
   font-weight: 500;
   display: inline-block;
-  width: 439.51px;
-  background-color: gray;
+  width: 100%;
+  background-color: #F2F2F2;
+  padding: 2px;
 }
 .group4 {
   position: relative;
@@ -528,6 +528,28 @@
   box-sizing: border-box;
 
 }
+.table-top {
+  width: 557px;
+}
+
+.table-top .table {
+  background-color: #4caeb9;
+  max-width: 100%;
+  margin-bottom: 0px;
+}
+
+.table thead th {
+  height: 15px; /* Adjust the height as needed */
+}
+
+.table tbody tr {
+  height: 15px; /* Adjust the height for the data rows if necessary */
+}
+
+.table tbody td {
+  padding: 0px;
+}
+
 
 
 .sol-pie{
