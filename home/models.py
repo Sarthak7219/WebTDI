@@ -99,6 +99,77 @@ class Tribe(models.Model):
             indicator_score = (i/total_members)
             ans.append(round(indicator_score,2))
         return ans
+    
+    def get_censored_tribal_indicator_score(self):
+        households = self.household.all() 
+        CD_members = 0
+        IM_members = 0
+        MC_members = 0
+        CM_members = 0
+        FS_members = 0
+        LE_members = 0
+        DRO_members = 0
+        IC_members   =0
+        OW_members   =0
+        SANI_members =0
+        FUEL_members =0
+        DRWA_members =0
+        ELECTR_members=0
+        ASS_members  =0
+        LAN_members  =0
+        ARTS_members =0
+        EV_members   =0
+        MEET_members =0
+
+
+        for i in households:
+            tribal_household_index=i.household_tribal_index()
+            if tribal_household_index>=0.03:
+                CD_members += i.CD_score * i.size
+                IM_members += i.IM_score * i.size
+                MC_members += i.MC_score * i.size
+                CM_members += i.CM_score * i.size
+                FS_members += i.FS_score * i.size
+                LE_members += i.LE_score * i.size
+                DRO_members += i.DRO_score * i.size
+                IC_members   += i.IC_score * i.size
+                OW_members    += i.OW_score * i.size
+                SANI_members   += i.SANI_score * i.size
+                FUEL_members   += i.FUEL_score * i.size
+                DRWA_members   += i.DRWA_score * i.size
+                ELECTR_members += i.ELECTR_score * i.size
+                ASS_members   += i.ASS_score * i.size
+                LAN_members   += i.LAN_score * i.size
+                ARTS_members   += i.ARTS_score * i.size
+                EV_members   += i.EV_score * i.size
+                MEET_members += i.MEET_score * i.size
+            else:
+                CD_members += 0
+                IM_members += 0
+                MC_members += 0
+                CM_members += 0
+                FS_members += 0
+                LE_members += 0
+                DRO_members += 0
+                IC_members   +=0
+                OW_members   +=0
+                SANI_members +=0
+                FUEL_members +=0
+                DRWA_members +=0
+                ELECTR_members+=0
+                ASS_members  +=0
+                LAN_members  +=0
+                ARTS_members +=0
+                EV_members   +=0
+                MEET_members +=0
+        sum=[CD_members,IM_members,MC_members,CM_members,FS_members,LE_members,DRO_members,IC_members,OW_members ,SANI_members  ,FUEL_members  ,DRWA_members  ,ELECTR_members,ASS_members  , LAN_members  ,ARTS_members ,EV_members,MEET_members]
+            
+        ans = []
+        total_members = self.get_total_tribals()
+        for i in sum:
+            indicator_score = (i/total_members)
+            ans.append(round(indicator_score,2))
+        return ans
 
 
     def tribal_dimensional_incidence(self):
@@ -158,8 +229,8 @@ class Tribe(models.Model):
 
     
     def tribal_index(self):
-        tribal_incidence = self.tribal_incidence()[i]
-        tribal_intensity=self.tribal_intensity()[i]    
+        tribal_incidence = self.tribal_incidence()
+        tribal_intensity=self.tribal_intensity()  
         tribal_index=tribal_incidence*tribal_intensity
         return tribal_index
     
@@ -433,7 +504,11 @@ class Household(models.Model):
                 ans = 0.0  # Handle the case where total_members_across_onedimensionally_developed_households is zero\
             return ans
 
-    
+    def household_tribal_index(self):
+        household_tribal_intensity=self.household_tribal_intensity()
+        household_tribal_incidence=self.household_tribal_incidence()
+        return household_tribal_intensity*household_tribal_incidence
+
 
       
 
