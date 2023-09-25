@@ -36,8 +36,7 @@
                     <img class="vector-icon" alt="" src="../../media/images/" />
     
                     <div class="percentage-contribution-of">
-                      Percentage contribution of each Dimension and Indicator to TDI
-                      Score
+                      Censored And Uncensored
                     </div>
                   </div>
               <!-- <img class="frame-child" alt="" src="../../media/images/percentage-graph.png" /> -->
@@ -71,8 +70,7 @@
                 <img class="vector-icon1" alt="" src="../../media/images/vector1.svg" />
 
                 <div class="percentage-contribution-of1">
-                  Percentage contribution of each Dimension and Indicator to TDI
-                  Score
+                 
                 </div>
               </div>
               <div class="group-child">
@@ -530,26 +528,24 @@ const governance = new Chart(document.getElementById('governance-pie'), config6)
 var graph2_data = {{tribal_dimensional_index| safe}};
 const ctx = document.getElementById('graph2');
 
-// Your list of values
-const dataList = [10, 20, 30, 40, 50];
 
 // Your single integer value
 var tdi =0.7;
 
 // Create the data array with both the list of values and the single integer value
 const data = {
-  labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Additional Value'],
+  labels: ['Health Development Index','Education Development Index','Sol Development Index','Culture Development Index','Governance Development Index','Tribal Development Index'],
   datasets: [
     {
-      label: 'Data List',
+      label: ['Health Development Index','Education Development Index','Sol Development Index','Culture Development Index','Governance Development Index','Tribal Development Index'],
       data: [...graph2_data, tdi], // Add the additional value to the data list
       backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(153, 102, 255)',
-        'rgb(0, 0, 0)', // Color for the additional value
+        '#4472C4',
+        '#ED7D31',
+        '#A5A5A5',
+        '#FFC000',
+        '#5B9BD5',
+        '#70AD47', // Color for the additional value
       ],
       borderWidth: 1,
     },
