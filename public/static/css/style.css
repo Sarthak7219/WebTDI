@@ -97,6 +97,12 @@
   width: 90%;
 }
 
+#vertical-bar-graph {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
 .frame-group,
 .group {
   position: absolute;
@@ -636,6 +642,8 @@
   width: 112% !important;
 }
 
+
+ 
 .health-parent {
   display: flex;
   flex-direction: column;
