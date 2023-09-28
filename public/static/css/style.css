@@ -41,7 +41,7 @@
   width: 62px;
 }
 .login-group,
-.navbar1 {
+.navbar {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -52,7 +52,7 @@
   justify-content: flex-start;
   gap: var(--gap-lgi);
 }
-.navbar1 {
+.navbar {
   background: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fff;
   width: 1540px;
   padding: var(--padding-4xs) var(--padding-36xl);
@@ -97,7 +97,13 @@
   width: 90%;
 }
 
-.frame-group,
+#vertical-bar-graph {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+.censored-uncensored-frame,
 .group {
   position: absolute;
   width: 603.41px;
@@ -107,7 +113,7 @@
   left: calc(50% - 301.71px);
   height: 26.79px;
 }
-.frame-group {
+.censored-uncensored-frame {
   top: 0;
   left: 46px;
   height: 516.95px;
@@ -184,7 +190,7 @@
   line-height: 150%;
   font-weight: 500;
 }
-.frame-div,
+.map-frame,
 .group2 {
   position: absolute;
   width: 650px;
@@ -194,7 +200,7 @@
   height: 27px;
   background-color: #F2F2F2;
 }
-.frame-div {
+.map-frame {
   top: 0;
   left: 0;
   height: 309.13px;
@@ -214,7 +220,7 @@
   line-height: 150%;
   font-weight: 500;
 }
-.score-graph-1-parent {
+.score-graph-frame {
   position: absolute;
   top: 0;
   left: 723px;
@@ -263,17 +269,17 @@
   font-size: 13.64px;
   width: 228.28px;
 }
-.photo-desc {
+.tribe-photo-desc{
   position: relative;
   width: 412.67px;
   height: 34.16px;
 }
-.frame1,
-.tribe-logo-parent {
+.tribe-image-main,
+.frame1 {
   display: flex;
   align-items: flex-end;
 }
-.frame1 {
+.tribe-image-main {
   width: 411px;
   height: 585px;
   overflow: hidden;
@@ -285,7 +291,7 @@
   background-repeat: no-repeat;
   background-position: top;
 }
-.tribe-logo-parent {
+.frame1 {
   width: 516px;
   flex-direction: row;
   padding: var(--padding-11xs) var(--padding-0) var(--padding-0);
@@ -305,7 +311,7 @@
   height: 561px;
   object-fit: cover;
 }
-.frame3,
+.frame2-1,
 .rectangle-wrapper {
   width: 133.96px;
   display: flex;
@@ -319,7 +325,7 @@
   align-items: flex-end;
   justify-content: flex-start;
 }
-.frame3 {
+.frame2-1 {
   height: 592px;
   overflow: hidden;
   flex-shrink: 0;
@@ -350,7 +356,7 @@
   width: 328.39px;
   height: 63.71px;
 }
-.frame-wrapper {
+.tribe-heading {
   position: relative;
   width: 557px;
   height: 72.77px;
@@ -388,7 +394,7 @@
   width: 557px;
   height: 23px;
 }
-.frame4 {
+.head1 {
   width: 558px;
   overflow: hidden;
   display: flex;
@@ -414,6 +420,7 @@
 }
 .health1 {
   position: absolute;
+  margin-top: 3px;
   left: calc(50% - 59.03px);
   letter-spacing: -0.01em;
   line-height: 150%;
@@ -446,9 +453,13 @@
 .vector-icon9 {
   height: 5.4px;
 }
-.health-container,.education-container,.sol-container,.culture-container,.governance-container{
+
+.chronic-diseases {
+  margin: 0;
+}
+.chronic-diseases-immunisation-container {
   position: absolute;
-  left: calc(50% - 64.4px);
+  margin-left: 35px;
   font-size: 8.99px;
   letter-spacing: -0.01em;
   line-height: 37%;
@@ -484,6 +495,15 @@
   height: 92.81px;
   margin-bottom: 28.56px;
 }
+
+.pie-inside-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: center;
+}
+
 .vector-icon11,
 .vector-icon12 {
   position: absolute;
@@ -514,6 +534,7 @@
   width: 64.58px;
 }
 .standard-of-living {
+  margin-top: 3px;
   left: calc(50% - 64.25px);
   font-size: 10.32px;
   letter-spacing: -0.01em;
@@ -537,11 +558,11 @@
   box-sizing: border-box;
 
 }
-.table-top {
+.overview-table {
   width: 557px;
 }
 
-.table-top .table {
+.overview-table .table {
   background-color: #4caeb9;
   max-width: 100%;
   margin-bottom: 0px;
@@ -592,6 +613,7 @@
 }
 .governance1 {
   left: calc(50% - 79.51px);
+  margin-top: 3px;
   font-size: 10.32px;
   line-height: 150%;
   color: var(--color-saddlebrown);
@@ -648,7 +670,9 @@
 }
 
 
-.health-parent {
+
+ 
+.pie-frame-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -685,7 +709,7 @@
 }
 .education1 {
   position: absolute;
-
+  margin-top: 3px;
   left: calc(50% - 62.99px);
   font-size: 10.32px;
   letter-spacing: -0.01em;
@@ -761,7 +785,7 @@
 }
 .culture1 {
   position: absolute;
-
+  margin-top: 3px;
   left: calc(50% - 60.3px);
   font-size: 10.32px;
   letter-spacing: -0.01em;
@@ -772,17 +796,17 @@
   width: 36.16px;
 }
 
-.education-parent,
-.frame-parent2 {
+.pie-frame-right,
+.pie-frame {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
 }
-.education-parent {
+.pie-frame-right {
   flex-direction: column;
   font-size: 8.22px;
 }
-.frame-parent2 {
+.pie-frame {
   width: 436px;
   height: 334px;
   flex-direction: row;
@@ -792,13 +816,13 @@
   font-size: 10.32px;
   color: var(--color-black);
 }
-.frame-parent1,
+.frame2-2,
 .frame2,
 .page1 {
   display: flex;
   align-items: center;
 }
-.frame-parent1 {
+.frame2-2 {
   flex-direction: column;
   justify-content: flex-start;
   gap: var(--gap-3xl);
@@ -820,7 +844,6 @@
 }
 .page1 {
   margin: 0 !important;
-  position: absolute;
   top: 23px;
   left: 0.5px;
   width: 1376px;
@@ -828,7 +851,7 @@
   font-size: 9.44px;
   color: var(--color-black);
 }
-.page2-parent,
+.main-content,
 .setup-materials {
   position: relative;
   display: flex;
@@ -836,9 +859,8 @@
   align-items: center;
   justify-content: flex-start;
 }
-.page2-parent {
+.main-content {
   height: 1787px;
-  padding: 724px var(--padding-12xs);
   box-sizing: border-box;
   gap: 12px;
   font-size: 15.52px;
@@ -846,7 +868,7 @@
 }
 .setup-materials {
   background-color: var(--color-white);
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   text-align: left;
   font-size: 13.71px;
@@ -854,14 +876,14 @@
   font-family: var(--font-inter);
 }
 @media screen and (max-width: 420px) {
-  .navbar1,
+  .navbar,
   .opt1-group {
     flex-direction: column;
     gap: var(--gap-mini);
     align-items: center;
     justify-content: flex-start;
   }
-  .navbar1 {
+  .navbar {
     gap: var(--gap-3xs);
     justify-content: center;
   }
