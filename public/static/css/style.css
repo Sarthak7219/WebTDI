@@ -414,7 +414,6 @@
 }
 .health1 {
   position: absolute;
-
   left: calc(50% - 59.03px);
   letter-spacing: -0.01em;
   line-height: 150%;
@@ -447,20 +446,30 @@
 .vector-icon9 {
   height: 5.4px;
 }
-
-.chronic-diseases {
-  margin: 0;
-}
-.chronic-diseases-immunisation-container {
+.health-container,.education-container,.sol-container,.culture-container,.governance-container{
   position: absolute;
   left: calc(50% - 64.4px);
   font-size: 8.99px;
   letter-spacing: -0.01em;
-  line-height: 137%;
+  line-height: 37%;
   font-weight: 500;
   color: var(--color-black);
   display: inline-block;
-  width: 73.62px;
+  top: 25px; /* Adjusted top value */
+  right: 80px;
+  display: block;
+  width: 300px; 
+  position: absolute; 
+  left: -50px;
+}
+
+
+.health-container p{
+  margin-bottom: 0.7rem;
+}
+.education-container p{
+  margin-bottom: 0.7rem;
+
 }
 .health-pie-icon-1 {
   position: absolute;
@@ -622,19 +631,22 @@
   left: 113.01px;
   display: block;
   box-sizing: border-box;
-  height: 91px;
-  width: 91px;
+  height: 101px;
+  width: 101px;
+}
+.health{
+  margin-bottom: 0.5rem;;
+}
+.canvas-pie {
+  display: block;
+  box-sizing: border-box;
+  height: 112%;
+  right: 90px; /* Add or modify this line */
+  top: -11px;
+  width: 111%;
+  position: absolute;
 }
 
-.canvas-pie{
-  display: block;
-  position: absolute;
-  box-sizing: border-box;
-  height: 112% !important;
-  right: -8px !important;
-  top: -10px !important;
-  width: 112% !important;
-}
 
 .health-parent {
   display: flex;

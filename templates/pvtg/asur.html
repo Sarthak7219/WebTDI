@@ -143,7 +143,7 @@
           <div class="frame3">
             <div class="dimensions">Dimensions</div>
             <div class="rectangle-wrapper">
-              <canvas class="canvas-pie" id="vertical-bar-graph" >
+              <!-- <canvas class="canvas-pie" id="vertical-bar-graph" width="388" height="1379"> -->
               </canvas>
             </div>
           </div>
@@ -199,43 +199,36 @@
               <div class="health-parent">
                 <div class="pie-box">
                   <div class="health1">
-
-
-                    <div id="my-data-health" data-my-data="{{indicator_contributions_to_dimension}}"></div>
-
-
-                  </div>
+                  <div id="my-data-health" data-my-data="{{indicator_contributions_to_dimension}}"></div>
+                  
                   <img class="vector-icon6" alt="" src="../../media/images/health-icon.png" />
-
-
-
-                  <div class="chronic-diseases-immunisation-container">
-                    <p class="chronic-diseases">Chronic Diseases</p>
-                    <p class="chronic-diseases">Immunisation</p>
-                    <p class="chronic-diseases">Maternal Care</p>
-                    <p class="chronic-diseases">Child Mortality</p>
+                  <div class="health-container" >
+                    <p class="health">Chronic Diseases</p>
+                    <p class="health"  >Immunisation</p>
+                    <p class="health"  >Maternal Care</p>
+                    <p class="health"  >Child Mortality</p>
                   </div>
-                  <!-- <img
-                      class="health-pie-icon-1"
-                      alt=""
-                      src="../../media/images/healthpieicon-1@2x.png"
-                    /> -->
-                  <div class="pie-icon-1"><canvas class="canvas-pie" id="health-pie">
-                    </canvas></div>
+                  <div class="pie-icon-1"><canvas class="canvas-pie" id="health-pie" >
+                  </canvas></div>
+                </div>
 
                 </div>
+
+
+
+
                 <div class="pie-box">
 
 
 
 
-                  <div class="institutional-credit-ownership-container">
-                    <p class="chronic-diseases">Institutional Credit</p>
-                    <p class="chronic-diseases">Ownership</p>
-                    <p class="chronic-diseases">Sanitation</p>
-                    <p class="chronic-diseases">Fuel</p>
-                    <p class="chronic-diseases">Drinkng Water</p>
-                    <p class="chronic-diseases">Electricity</p>
+                  <div class="sol-container">
+                    <p class="sol">Institutional Credit</p>
+                    <p class="sol">Ownership</p>
+                    <p class="sol">Sanitation</p>
+                    <p class="sol">Fuel</p>
+                    <p class="sol">Drinkng Water</p>
+                    <p class="sol">Electricity</p>
                   </div>
                   <div class="standard-of-living">Standard of Living</div>
                   <div class="sol1">
@@ -278,13 +271,11 @@
               <div class="education-parent">
                 <div class="pie-box">
 
-
-                  <div class="drop-out">Drop Out</div>
-                  <div class="years-of-schooling">Years of Schooling</div>
-
-
-                  <div class="education1">Education</div>
-
+                  <div class="education-container">
+                  <div class="education">Drop Out</div>
+                  <div class="education">Years of Schooling</div>
+                  <div class="education">Education</div>
+                
 
 
                   <div id="my-data-education"></div>
@@ -295,6 +286,8 @@
 
                   <div class="pie-icon-1"><canvas class="canvas-pie" id="education-pie">
                     </canvas></div>
+
+                </div>
                 </div>
                 <div class="pie-box">
 
@@ -567,9 +560,9 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
     var myDattaElement = document.getElementById('my-data-health');
     var health_data = {{ health_contributions_to_dimension| safe}};
     const data2 = {
-
+      
       datasets: [{
-        label: '',
+        label:'',
         data: health_data,
         backgroundColor: [
           '#315493',

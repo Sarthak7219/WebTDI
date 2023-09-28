@@ -1,4 +1,6 @@
 from django.db import models
+import decimal
+from decimal import Decimal,InvalidOperation
 # from import_export import resources, fields
 # from import_export.widgets import ForeignKeyWidget
 
@@ -320,11 +322,12 @@ class Household(models.Model):
     tribeID = models.ForeignKey(Tribe, on_delete=models.CASCADE, related_name="household", null=True, blank=True)
     tribe_name = models.CharField(max_length=20, null=True, blank=True)
     size = models.IntegerField(null= True, blank=True)
-
+    # decimal_field = models.DecimalField(max_digits=10, decimal_places=2,null= True, blank=True)
     # HEALTH
     CD_score = models.IntegerField(null = True, blank=True)
     IM_score = models.IntegerField(null = True, blank=True)
-    MC_score = models.IntegerField(null = True, blank=True)
+    MC_score = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+
     CM_score = models.IntegerField(null = True, blank=True)
     FS_score = models.IntegerField(null = True, blank=True)
 
@@ -348,6 +351,45 @@ class Household(models.Model):
     #GOVERNANCE
     EV_score = models.BooleanField(null=True, blank=True)
     MEET_score = models.BooleanField(null=True, blank=True)
+ 
+
+
+    
+    def save(self, *args, **kwargs):
+        # Handle value conversion before saving
+        if self.MC_score is not None:
+            try:
+                self.MC_score = self.convert_to_decimal(self.MC_score)
+            except InvalidOperation as e:
+                # Handle the exception (e.g., log the error, set to a default value)
+                self.MC_score = None  # Set to None or a default value
+                # Log the error or print it for debugging purposes
+                print(f"Error converting to Decimal: {e}")
+        super(Household, self).save(*args, **kwargs)
+
+    @staticmethod
+    def convert_to_decimal(value):
+        if value is None or value == "NA":
+            return None  # Handle "NA" or None as None or another suitable value
+        try:
+            return Decimal(value)
+        except InvalidOperation as e:
+            # Handle other conversion errors if necessary
+            # Log the error or print it for debugging purposes
+            print(f"Error converting to Decimal: {e}")
+            return None
+# With this code, it will check for "NA" or None values before attempting to convert to Decimal, and it will handle those cases gracefully without raising the "decimal.InvalidOperation" error.
+
+# Remember to adjust the code according to your specific Django model and import process. Additionally, make sure that your data is correctly formatted and does not contain unexpected non-numeric values that might cause issues during the import.
+
+
+
+
+
+
+
+
+
 
 
     def no_of_indicators(self):
