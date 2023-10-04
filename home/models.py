@@ -1,7 +1,7 @@
 from django.db import models
-# import decimal
-# from decimal import Decimal,InvalidOperation
-# from import_export import resources, fields
+import decimal
+from decimal import Decimal,InvalidOperation
+from import_export import resources, fields
 # from import_export.widgets import ForeignKeyWidget
 
 # Create your models here.
@@ -52,126 +52,43 @@ class Tribe(models.Model):
 
         return ans
 
-    def get_tribal_indicator_members(self):
-        households = self.household.all() 
-        CD_members = 0
-        IM_members = 0
-        MC_members = 0
-        CM_members = 0
-        FS_members = 0
-        LE_members = 0
-        DRO_members = 0
-        IC_members   =0
-        OW_members   =0
-        SANI_members =0
-        FUEL_members =0
-        DRWA_members =0
-        ELECTR_members=0
-        ASS_members  =0
-        LAN_members  =0
-        ARTS_members =0
-        EV_members   =0
-        MEET_members =0
-
-        for i in households:
-            CD_members += i.CD_score * i.size
-            IM_members += i.IM_score * i.size
-            MC_members += i.MC_score * i.size
-            CM_members += i.CM_score * i.size
-            FS_members += i.FS_score * i.size
-            LE_members += i.LE_score * i.size
-            DRO_members += i.DRO_score * i.size
-            IC_members   += i.IC_score * i.size
-            OW_members    += i.OW_score * i.size
-            SANI_members   += i.SANI_score * i.size
-            FUEL_members   += i.FUEL_score * i.size
-            DRWA_members   += i.DRWA_score * i.size
-            ELECTR_members += i.ELECTR_score * i.size
-            ASS_members   += i.ASS_score * i.size
-            LAN_members   += i.LAN_score * i.size
-            ARTS_members   += i.ARTS_score * i.size
-            EV_members   += i.EV_score * i.size
-            MEET_members += i.MEET_score * i.size
-            
-        sum=[CD_members,IM_members,MC_members,CM_members,FS_members,LE_members,DRO_members,IC_members,OW_members ,SANI_members  ,FUEL_members  ,DRWA_members  ,ELECTR_members,ASS_members  , LAN_members  ,ARTS_members ,EV_members,MEET_members]
-            
-        ans = []
-        total_members = self.get_total_tribals()
-        for i in sum:
-            indicator_score = (i/total_members)
-            ans.append(round(indicator_score,2))
-        return ans
     
-    def get_censored_tribal_indicator_score(self):
-        households = self.household.all() 
-        CD_members = 0
-        IM_members = 0
-        MC_members = 0
-        CM_members = 0
-        FS_members = 0
-        LE_members = 0
-        DRO_members = 0
-        IC_members   =0
-        OW_members   =0
-        SANI_members =0
-        FUEL_members =0
-        DRWA_members =0
-        ELECTR_members=0
-        ASS_members  =0
-        LAN_members  =0
-        ARTS_members =0
-        EV_members   =0
-        MEET_members =0
 
-
-        for i in households:
-            tribal_household_index=i.household_tribal_index()
-            if tribal_household_index>=0.03:
-                CD_members += i.CD_score * i.size
-                IM_members += i.IM_score * i.size
-                MC_members += i.MC_score * i.size
-                CM_members += i.CM_score * i.size
-                FS_members += i.FS_score * i.size
-                LE_members += i.LE_score * i.size
-                DRO_members += i.DRO_score * i.size
-                IC_members   += i.IC_score * i.size
-                OW_members    += i.OW_score * i.size
-                SANI_members   += i.SANI_score * i.size
-                FUEL_members   += i.FUEL_score * i.size
-                DRWA_members   += i.DRWA_score * i.size
-                ELECTR_members += i.ELECTR_score * i.size
-                ASS_members   += i.ASS_score * i.size
-                LAN_members   += i.LAN_score * i.size
-                ARTS_members   += i.ARTS_score * i.size
-                EV_members   += i.EV_score * i.size
-                MEET_members += i.MEET_score * i.size
-            else:
-                CD_members += 0
-                IM_members += 0
-                MC_members += 0
-                CM_members += 0
-                FS_members += 0
-                LE_members += 0
-                DRO_members += 0
-                IC_members   +=0
-                OW_members   +=0
-                SANI_members +=0
-                FUEL_members +=0
-                DRWA_members +=0
-                ELECTR_members+=0
-                ASS_members  +=0
-                LAN_members  +=0
-                ARTS_members +=0
-                EV_members   +=0
-                MEET_members +=0
-        sum=[CD_members,IM_members,MC_members,CM_members,FS_members,LE_members,DRO_members,IC_members,OW_members ,SANI_members  ,FUEL_members  ,DRWA_members  ,ELECTR_members,ASS_members  , LAN_members  ,ARTS_members ,EV_members,MEET_members]
+    
+    # def get_censored_tribal_indicator_score(self):
+    #     households = self.household.all() 
         
-        ans = []
-        total_members = self.get_total_tribals()
-        for i in sum:
-            indicator_score = (i/total_members)
-            ans.append(round(indicator_score,2))
-        return ans
+    #     # Use a dictionary to store indicator scores
+    #     indicator_scores = {
+    #         'CD': 0, 'IM': 0, 'MC': 0, 'CM': 0, 'FS': 0,
+    #         'LE': 0, 'DRO': 0, 'IC': 0, 'OW': 0, 'SANI': 0,
+    #         'FUEL': 0, 'DRWA': 0, 'ELECTR': 0, 'ASS': 0,
+    #         'LAN': 0, 'ARTS': 0, 'EV': 0, 'MEET': 0
+    #     }
+
+    #     for household in households:
+    #         tribal_household_index = household.household_tribal_index()
+
+    #         if tribal_household_index >= 0.03:
+    #             # Accumulate scores only if the index is greater than or equal to 0.03
+    #             for indicator in indicator_scores:
+    #                 score_attr = f"{indicator}_score"
+                    
+    #                 # Check if the household has the score attribute and it is not None
+    #                 if hasattr(household, score_attr) and getattr(household, score_attr) is not None:
+    #                     indicator_scores[indicator] += getattr(household, score_attr) * household.size
+
+    #     # Calculate total members
+    #     total_members = self.get_total_tribals()
+
+    #     # Calculate indicator scores as a proportion of total members
+    #     indicator_contributions = []
+    #     for indicator, score in indicator_scores.items():
+    #         indicator_score = (score / total_members) if total_members != 0 else 0
+    #         indicator_contributions.append(round(indicator_score, 2))
+
+    #     return indicator_contributions
+
     def dimensional_contribution_to_index(self):
         tribe_household=self.household.all()
         get_total_tribals=self.get_total_tribals()
@@ -253,11 +170,12 @@ class Tribe(models.Model):
     
     def total_members_multi_dimensionally_developed_households(self):
         households = self.household.all()
-        multi_dim_dev_mem = 0
+        
         cnt = 0  # Reset cnt for each dimension
         for household in households:
-                if household.is_multidimensionally_developed:
-                    multi_dim_dev_mem+=household.size
+                multi_dim_dev_mem = 0
+                if household.is_multidimensionally_developed():
+                    multi_dim_dev_mem=household.size
                 cnt += multi_dim_dev_mem
         return cnt
     
@@ -310,6 +228,7 @@ class Tribe(models.Model):
 
         return contributions
 
+
     def dimension_contribution_to_tdi(self):
         households = self.household.all()
         dimension_contribution_to_tdi=[]
@@ -325,10 +244,82 @@ class Tribe(models.Model):
                 tribal_development_score=household.tribal_development_score()
                 total_tribal_development_score+=tribal_development_score
         for i in total_D_DS:
-            dimension_contribution_to_tdi.append(round((i/total_tribal_development_score)*100,2))
+            if total_tribal_development_score !=0:
+             dimension_contribution_to_tdi.append(round((i/total_tribal_development_score)*100,2))
         return dimension_contribution_to_tdi
 
         
+    def get_censored_tribal_indicator_score(self):
+        households = self.household.all() 
+        CD_members = 0
+        IM_members = 0
+        MC_members = 0
+        CM_members = 0
+        FS_members = 0
+        LE_members = 0
+        DRO_members = 0
+        IC_members   =0
+        OW_members   =0
+        SANI_members =0
+        FUEL_members =0
+        DRWA_members =0
+        ELECTR_members=0
+        ASS_members  =0
+        LAN_members  =0
+        ARTS_members =0
+        EV_members   =0
+        MEET_members =0
+
+
+        for i in households:
+            tribal_household_index=i.household_tribal_index()
+            if tribal_household_index>=0.03:
+                CD_members += i.CD_score * i.size if i.CD_score is not None else 0
+                IM_members += i.IM_score * i.size if i.IM_score is not None else 0
+                MC_members += i.MC_score * i.size if i.MC_score is not None else 0
+                CM_members += i.CM_score * i.size if i.CM_score is not None else 0
+                FS_members += i.FS_score * i.size if i.FS_score is not None else 0
+                LE_members += i.LE_score * i.size if i.LE_score is not None else 0
+                DRO_members += i.DRO_score * i.size if i.DRO_score is not None else 0
+                IC_members   += i.IC_score * i.size if i.IC_score is not None else 0
+                OW_members    += i.OW_score * i.size if i.OW_score is not None else 0
+                SANI_members   += i.SANI_score * i.size if i.SANI_score is not None else 0
+                FUEL_members   += i.FUEL_score * i.size if i.FUEL_score is not None else 0
+                DRWA_members   += i.DRWA_score * i.size if i.DRWA_score is not None else 0
+                ELECTR_members += i.ELECTR_score * i.size if i.ELECTR_score is not None else 0
+                ASS_members   += i.ASS_score * i.size if i.ASS_score is not None else 0
+                LAN_members   += i.LAN_score * i.size if i.LAN_score is not None else 0
+                ARTS_members   += i.ARTS_score * i.size if i.ARTS_score is not None else 0
+                EV_members   += i.EV_score * i.size if i.EV_score is not None else 0
+                MEET_members += i.MEET_score * i.size if i.MEET_score is not None else 0
+            else:
+                CD_members += 0
+                IM_members += 0
+                MC_members += 0
+                CM_members += 0
+                FS_members += 0
+                LE_members += 0
+                DRO_members += 0
+                IC_members   +=0
+                OW_members   +=0
+                SANI_members +=0
+                FUEL_members +=0
+                DRWA_members +=0
+                ELECTR_members+=0
+                ASS_members  +=0
+                LAN_members  +=0
+                ARTS_members +=0
+                EV_members   +=0
+                MEET_members +=0
+        sum=[CD_members,IM_members,MC_members,CM_members,FS_members,LE_members,DRO_members,IC_members,OW_members ,SANI_members  ,FUEL_members  ,DRWA_members  ,ELECTR_members,ASS_members  , LAN_members  ,ARTS_members ,EV_members,MEET_members]
+        
+        ans = []
+        total_members = self.get_total_tribals()
+        for i in sum:
+            indicator_score = (i/total_members)
+            ans.append(round(indicator_score,2))
+        print(ans)
+        return ans
 
         
 
@@ -370,33 +361,7 @@ class Household(models.Model):
 
 
     
-#     def save(self, *args, **kwargs):
-#         # Handle value conversion before saving
-#         if self.MC_score is not None:
-#             try:
-#                 self.MC_score = self.convert_to_decimal(self.MC_score)
-#             except InvalidOperation as e:
-#                 # Handle the exception (e.g., log the error, set to a default value)
-#                 self.MC_score = None  # Set to None or a default value
-#                 # Log the error or print it for debugging purposes
-#                 print(f"Error converting to Decimal: {e}")
-#         super(Household, self).save(*args, **kwargs)
-
-#     @staticmethod
-#     def convert_to_decimal(value):
-#         if value is None or value == "NA":
-#             return None  # Handle "NA" or None as None or another suitable value
-#         try:
-#             return Decimal(value)
-#         except InvalidOperation as e:
-#             # Handle other conversion errors if necessary
-#             # Log the error or print it for debugging purposes
-#             print(f"Error converting to Decimal: {e}")
-#             return None
-# # With this code, it will check for "NA" or None values before attempting to convert to Decimal, and it will handle those cases gracefully without raising the "decimal.InvalidOperation" error.
-
-# # Remember to adjust the code according to your specific Django model and import process. Additionally, make sure that your data is correctly formatted and does not contain unexpected non-numeric values that might cause issues during the import.
-
+    
 
 
 
@@ -421,6 +386,8 @@ class Household(models.Model):
             for score in i:
                 if score is not None:
                     cnt += 1
+                else:
+                    continue
             ans.append(cnt)
         return ans
     
@@ -439,6 +406,8 @@ class Household(models.Model):
             for score in i:
                 if score is not None:
                     cnt += score
+                else:
+                    continue
             ans.append(cnt)
         return ans
 
@@ -458,8 +427,14 @@ class Household(models.Model):
             index = scores.index(i)
             dimension_indicators_array = []
             for j in i:
-                output=j*weightage[index]
-                dimension_indicators_array.append(output)
+
+                if j is None:
+                    continue
+
+                else:
+
+                    output=j*weightage[index]
+                    dimension_indicators_array.append(output)
             ans.append(dimension_indicators_array)
     
         
@@ -539,7 +514,7 @@ class Household(models.Model):
         
         prod = (is_multidimensionally_developed)*(self.size)
         ans = prod/total_tribals
-        return ans
+        return round(ans,2)
 
     
 
@@ -567,327 +542,48 @@ class Household(models.Model):
         
         # Calculate the total members across one-dimensionally developed households once before the loop
             total_members_multi_dimensionally_developed_households = self.tribeID.total_members_multi_dimensionally_developed_households()
-            if self.is_multidimensionally_developed:
+            members_in_developed_households=0
+            if self.is_multidimensionally_developed():
               members_in_developed_households = self.size  # Call the method as a function
             score = self.tribal_development_score()
             
             if total_members_multi_dimensionally_developed_households > 0:
-                ans = (score * members_in_developed_households * 5) / total_members_multi_dimensionally_developed_households
+                ans = (score * members_in_developed_households ) / total_members_multi_dimensionally_developed_households
             else:
                 ans = 0.0  # Handle the case where total_members_across_onedimensionally_developed_households is zero\
-            return ans
+            return round(ans,2)
 
     def household_tribal_index(self):
         household_tribal_intensity=self.household_tribal_intensity()
+        print('incedence and intensity')
+        print(household_tribal_intensity)
+
         household_tribal_incidence=self.household_tribal_incidence()
-        return household_tribal_intensity*household_tribal_incidence
+        print(household_tribal_incidence)
+        return round((household_tribal_intensity*household_tribal_incidence)*100,2)
 
 
       
 
     
-    # def developed_indicators_members(self):
-    #     scores_H = [self.CD_score, self.IM_score, self.MC_score, self.CM_score, self.FS_score]
-    #     scores_E = [self.LE_score, self.DRO_score]
-    #     scores_S = [self.IC_score, self.OW_score, self.SANI_score, self.FUEL_score, self.DRWA_score, self.ELECTR_score, self.ASS_score]
-    #     scores_C =[self.LAN_score, self.ARTS_score]
-    #     scores_G = [self.EV_score, self.MEET_score]
+    def developed_indicators_members(self):
+        scores_H = [self.CD_score, self.IM_score, self.MC_score, self.CM_score, self.FS_score]
+        scores_E = [self.LE_score, self.DRO_score]
+        scores_S = [self.IC_score, self.OW_score, self.SANI_score, self.FUEL_score, self.DRWA_score, self.ELECTR_score, self.ASS_score]
+        scores_C =[self.LAN_score, self.ARTS_score]
+        scores_G = [self.EV_score, self.MEET_score]
 
-    #     scores = [scores_H, scores_E, scores_S, scores_C, scores_G]
-    #     ans = []
+        scores = [scores_H, scores_E, scores_S, scores_C, scores_G]
+        ans = []
     
-    #     for i in scores:
-    #         cnt = 0 
-    #         for score in i:
-    #             if score is not None:
-    #                 cnt += score*self.size
-    #         ans.append(cnt)
-    #     return ans
+        for i in scores:
+            cnt = 0 
+            for score in i:
+                if score is not None:
+                    cnt += score*self.size
+            ans.append(cnt)
+        return ans
 
     
 
       
-# class HouseholdResource(resources.ModelResource):
-#     # Map the 'tribe' field in the Excel file to the 'tribe' ForeignKey field in the model.
-#     tribe = fields.Field(
-#         column_name='tribe',
-#         attribute='tribe',
-#         widget=ForeignKeyWidget(Tribe, 'name')
-#     )
-
-#     class Meta:
-#         model = Household
-#         skip_unchanged = True
-#         report_skipped = False
-
-
-        
-        
-        
-
-
-    
-    # def no_of_H_indicators(self):
-    #     scores = [self.CD_score, self.IM_score, self.MC_score, self.CM_score, self.FS_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += 1
-    #     return ans
-    
-    # def H_developed_indicators(self):
-    #     scores = [self.CD_score, self.IM_score, self.MC_score, self.CM_score, self.FS_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += score
-    #     return ans
-    
-    
-    # def H_calculate_weightage(self):
-    #     if self.no_of_H_indicators():
-    #         ans = 0.2 * (1 / self.no_of_H_indicators())
-    #         return round(ans,2)
-    #     else:
-    #         return 0
-    
-    # def H_DS(self):
-    #     weightage = self.H_calculate_weightage()
-    #     ans = weightage * self.H_developed_indicators()
-    #     return round(ans,2)
-    
-    # def H_is_developed(self):
-    #     if self.H_DS() > 0.033 :
-    #         return 1
-    #     else:
-    #         return 0 
-        
-    
-
-    # def H_is_multidimensionally_developed(self):
-    #     res = sum([self.H_developed_indicators(), self.H_developed_indicators(), self.H_developed_indicators(), self.H_developed_indicators(), self.H_developed_indicators()])
-    #     if res > 1:
-    #         return 1
-    #     else:
-    #         return 0
-        
-    # def members_of_developed_households(self):
-    #     ans = (int(self.H_is_developed()))*(int(self.size))
-    #     return round(ans,2)
-    
-    # ################
-
-    # #EDUCATION
-    # ###############
-
-    
-
-
-    
-    # def no_of_E_indicators(self):
-    #     scores = [self.LE_score, self.DRO_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += 1
-    #     return ans
-    
-    # def E_developed_indicators(self):
-    #     scores = [self.LE_score, self.DRO_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += score
-    #     return ans
-    
-    
-    # def E_calculate_weightage(self):
-    #     if self.no_of_E_indicators():
-    #         return 0.2 * (1 / self.no_of_E_indicators())
-    #     else:
-    #         return 0
-    
-    # def E_DS(self):
-    #     weightage = self.E_calculate_weightage()
-    #     return weightage * self.E_developed_indicators()
-    
-    # def E_is_developed(self):
-    #     if self.E_DS() > 0.033 :
-    #         return 1
-    #     else:
-    #         return 0 
-        
-    
-
-    # def E_is_multidimensionally_developed(self):
-    #     res = sum([self.E_developed_indicators(), self.E_developed_indicators(), self.E_developed_indicators(), self.E_developed_indicators(), self.E_developed_indicators()])
-    #     if res > 1:
-    #         return 1
-    #     else:
-    #         return 0
-        
-    # def members_of_developed_households(self):
-    #     return (int(self.E_is_developed()))*(int(self.size))
-
-    # ##########
-
-    # #SOL
-    # ########
-    
-
-
-    
-    # def no_of_S_indicators(self):
-    #     scores = [self.IC_score, self.OW_score, self.SANI_score, self.FUEL_score, self.DRWA_score, self.ELECTR_score, self.ASS_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += 1
-    #     return ans
-    
-    # def S_developed_indicators(self):
-    #     scores = [self.IC_score, self.OW_score, self.SANI_score, self.FUEL_score, self.DRWA_score, self.ELECTR_score, self.ASS_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += score
-    #     return ans
-    
-    
-    # def S_calculate_weightage(self):
-    #     if self.no_of_S_indicators():
-    #         return 0.2 * (1 / self.no_of_S_indicators())
-    #     else:
-    #         return 0
-    
-    # def S_DS(self):
-    #     weightage = self.S_calculate_weightage()
-    #     return weightage * self.S_developed_indicators()
-    
-    # def S_is_developed(self):
-    #     if self.S_DS() > 0.033 :
-    #         return 1
-    #     else:
-    #         return 0 
-        
-    
-
-    # def S_is_multidimensionally_developed(self):
-    #     res = sum([self.S_developed_indicators(), self.S_developed_indicators(), self.S_developed_indicators(), self.S_developed_indicators(), self.S_developed_indicators()])
-    #     if res > 1:
-    #         return 1
-    #     else:
-    #         return 0
-        
-    # def members_of_developed_households(self):
-    #     return (int(self.S_is_developed()))*(int(self.size))
-    
-    # ##########
-
-    # #CULTURE
-    # ##########
-    
-
-
-    
-    # def no_of_C_indicators(self):
-    #     scores = [self.LAN_score, self.ARTS_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += 1
-    #     return ans
-    
-    # def C_developed_indicators(self):
-    #     scores = [self.LAN_score, self.ARTS_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += score
-    #     return ans
-    
-    
-    # def C_calculate_weightage(self):
-    #     if self.no_of_C_indicators():
-    #         return 0.2 * (1 / self.no_of_C_indicators())
-    #     else:
-    #         return 0
-    
-    # def C_DS(self):
-    #     weightage = self.C_calculate_weightage()
-    #     return weightage * self.C_developed_indicators()
-    
-    # def C_is_developed(self):
-    #     if self.C_DS() > 0.033 :
-    #         return 1
-    #     else:
-    #         return 0 
-        
-    
-
-    # def C_is_multidimensionally_developed(self):
-    #     res = sum([self.C_developed_indicators(), self.C_developed_indicators(), self.C_developed_indicators(), self.C_developed_indicators(), self.C_developed_indicators()])
-    #     if res > 1:
-    #         return 1
-    #     else:
-    #         return 0
-        
-    # def members_of_developed_households(self):
-    #     return (int(self.C_is_developed()))*(int(self.size))
-    
-    # ###########
-
-    # #GOVERNANCE
-    # ###########
-    
-
-
-    
-    # def no_of_G_indicators(self):
-    #     scores = [self.EV_score, self.MEET_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += 1
-    #     return ans
-    
-    # def G_developed_indicators(self):
-    #     scores = [self.EV_score, self.MEET_score]
-    #     ans = 0
-    #     for score in scores:
-    #         if score is not None:
-    #             ans += score
-    #     return ans
-    
-    
-    # def G_calculate_weightage(self):
-    #     if self.no_of_G_indicators():
-    #         return 0.2 * (1 / self.no_of_G_indicators())
-    #     else:
-    #         return 0
-    
-    # def G_DS(self):
-    #     weightage = self.G_calculate_weightage()
-    #     return weightage * self.G_developed_indicators()
-    
-    # def G_is_developed(self):
-    #     if self.G_DS() > 0.033 :
-    #         return 1
-    #     else:
-    #         return 0 
-        
-    
-
-    # def G_is_multidimensionally_developed(self):
-    #     res = sum([self.G_developed_indicators(), self.G_developed_indicators(), self.G_developed_indicators(), self.G_developed_indicators(), self.G_developed_indicators()])
-    #     if res > 1:
-    #         return 1
-    #     else:
-    #         return 0
-        
-    # def members_of_developed_households(self):
-    #     return (int(self.G_is_developed()))*(int(self.size))
-    
-    ##############
-
-
