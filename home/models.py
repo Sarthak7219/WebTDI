@@ -400,6 +400,16 @@ class Household(models.Model):
             ans.append(cnt)
         return ans
 
+    def calculate_weightage(self):
+        ans = []
+        for i in range(0, 5):
+            if self.no_of_indicators()[i]:
+                cnt = 0.2 * (1 / self.no_of_indicators()[i])
+            else:
+                cnt = 0
+            ans.append(round(cnt,2))
+
+        return ans 
 
     def test_indicators(self):
 
@@ -416,23 +426,19 @@ class Household(models.Model):
             index = scores.index(i)
             dimension_indicators_array = []
             for j in i:
-                output=j*weightage[index]
-                dimension_indicators_array.append(output)
+                if j is not None and weightage[index] is not None:
+                    output = j * weightage[index]
+                    dimension_indicators_array.append(output)
+                else:
+                    output = None
             ans.append(dimension_indicators_array)
+        return ans
+               
+                
     
         
-        return ans
     
-    def calculate_weightage(self):
-        ans = []
-        for i in range(0, 5):
-            if self.no_of_indicators()[i]:
-                cnt = 0.2 * (1 / self.no_of_indicators()[i])
-            else:
-                cnt = 0
-            ans.append(round(cnt,2))
-
-        return ans
+    
     
     def D_DS(self):
         ans = []

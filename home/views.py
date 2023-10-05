@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Household, Tribe
+from django.http import HttpResponse
 # Create your views here.
 def home_view(request):
     return render(request,'home/homepage.html')
@@ -114,3 +115,36 @@ def test_view(request):
 
     }
     return render(request, 'pvtg/test.html', context)
+
+def form_view(request):
+    if request.method == "POST":
+        tribe = request.POST.get('tribe_name')
+        size = request.POST.get('HH_size')
+        HH_object = Household.objects.create(
+            tribe_name = tribe,
+            size = size,
+            CD_score = request.POST.get('CD_score'),
+            IM_score = request.POST.get('IM_score'),
+            MC_score = request.POST.get('MC_score'),
+            CM_score = request.POST.get('CM_score'),
+            FS_score = request.POST.get('FS_score'),
+            LE_score = request.POST.get('LE_score'),
+            DRO_score = request.POST.get('DRO_score'),
+            IC_score = request.POST.get('IC_score'),
+            OW_score = request.POST.get('OW_score'),
+            SANI_score = request.POST.get('SANI_score'),
+            FUEL_score = request.POST.get('FUEL_score'),
+            DRWA_score = request.POST.get('DRWA_score'),
+            ELECTR_score = request.POST.get('ELECTR_score'),
+            ASS_score = request.POST.get('ASS_score'),
+            LAN_score = request.POST.get('LAN_score'),
+            ARTS_score = request.POST.get('ARTS_score'),
+            EV_score = request.POST.get('EV_score'),
+            MEET_score = request.POST.get('MEET_score'),
+        )
+        HH_object.save()
+        print('***************')
+        return HttpResponse("Household added successfully!")
+
+
+    return render(request, 'form/form.html')

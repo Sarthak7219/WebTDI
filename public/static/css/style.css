@@ -858,6 +858,30 @@
   color: var(--color-black);
   font-family: var(--font-inter);
 }
+
+.score-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Style for the CD_score label */
+.score-label {
+  margin-right: 10px;
+  font-weight: bold; /* Add bold font for the label */
+}
+
+/* Style for the radio buttons container */
+.radio-container {
+  display: flex;
+  flex-direction: row; /* Arrange radio buttons horizontally */
+}
+
+/* Add margin to radio buttons to separate them */
+.form-check-label {
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 420px) {
   .navbar,
   .opt1-group {
@@ -871,3 +895,4 @@
     justify-content: center;
   }
 }
+
