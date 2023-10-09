@@ -54,7 +54,7 @@
 }
 .navbar {
   background: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fff;
-  width: 1540px;
+  width: 100%;
   padding: var(--padding-4xs) var(--padding-36xl);
   box-sizing: border-box;
   justify-content: space-between;
@@ -88,7 +88,6 @@
 }
 .censored , .uncensored{
     flex: 50%;
-    border: 1px solid black;
 }
 #censored-graph, #uncensored-graph{
   display: block;
@@ -111,6 +110,7 @@
 .group {
   top: 26.79px;
   left: calc(50% - 301.71px);
+  background-color: #F2F2F2;
   height: 26.79px;
 }
 .censored-uncensored-frame {
@@ -135,10 +135,12 @@
   position: absolute;
   top: 406.19px;
   right: 0;
-  width: 587.28px;
+  text-align: center;
+  width: 100%;
   height: 26.07px;
+  background-color: #F2F2F2;
 }
-.group-child,
+
 .group-parent {
   position: absolute;
   top: 0;
@@ -149,9 +151,13 @@
 .group-parent {
   top: 110.76px;
   right: -0.09px;
-  width: 587.28px;
+  width: 46%;
   height: 406.19px;
   font-size: 15.1px;
+}
+
+.group-child{
+  width: 100%;
 }
 .frame-parent {
   position: absolute;
@@ -189,6 +195,7 @@
   letter-spacing: -0.01em;
   line-height: 150%;
   font-weight: 500;
+
 }
 .map-frame,
 .group2 {
@@ -199,7 +206,53 @@
   left: calc(50% - 325px);
   height: 27px;
   background-color: #F2F2F2;
+  
 }
+
+.graph2-box{
+  margin-top: 30px;
+}
+
+.graph2-labels{
+  font-size: 10px;
+  padding: 8px 15px;
+}
+
+.graph2-labels:before{
+  content: '\f0c8';
+  background-color: black;
+  border-radius: 2px;
+  padding-left: 6px;
+  margin-right: 4px;
+}
+
+#hdi:before{
+  background-color: #4472C4;
+  color: #4472C4;
+}
+#edi:before{
+  background-color: #ED7D31;
+  color: #ED7D31;
+}
+#sdi:before{
+  background-color: #A5A5A5;
+  color: #A5A5A5;
+}
+#cdi:before{
+  background-color: #FFC000;
+  color: #FFC000;
+}
+#gdi:before{
+  background-color: #5B9BD5;
+  color: #5B9BD5;
+}
+#tdi:before{
+  background-color: #70AD47;
+  color: #70AD47;
+}
+
+
+
 .map-frame {
   top: 0;
   left: 0;
@@ -360,13 +413,14 @@
   position: relative;
   width: 557px;
   height: 72.77px;
-  background-image: url("../images/asur.jpg" );
-
-  
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
   color: var(--color-white);
+}
+
+.tribe-heading img{
+  max-width: 100%;
 }
 .frame-item {
   max-height: 100%;               
@@ -390,17 +444,12 @@
   padding: 2px;
 }
 .group4 {
-  position: relative;
-  width: 557px;
+  width: 100%;
   height: 23px;
 }
 .head1 {
-  width: 558px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  margin: 18px 0px;
+  width: 100%;
   font-size: 13.38px;
 }
 .indicators {
@@ -411,6 +460,7 @@
   font-weight: 500;
 }
 .indicators-wrapper {
+  margin-bottom: 18px;
   width: 68px;
   display: flex;
   flex-direction: column;
@@ -421,20 +471,14 @@
 .health1 {
   position: absolute;
   margin-top: 3px;
-  left: calc(50% - 59.03px);
+  left: calc(50% - 62.88px);
   letter-spacing: -0.01em;
   line-height: 150%;
   font-weight: 500;
   display: inline-block;
   width: 32.29px;
 }
-.vector-icon6 {
-  position: absolute;
-  left: calc(50% - 104.81px);
-  width: 199.89px;
-  height: 92.81px;
-  object-fit: cover;
-}
+
 .vector-icon10,
 .vector-icon7,
 .vector-icon8,
@@ -457,16 +501,114 @@
 .chronic-diseases {
   margin: 0;
 }
-.pie-chart-labels{
+
+.chronic-diseases::before{
+  content: '\f0c8';
+  background-color: black;
+  border-radius: 2px;
+  padding-left: 4px;
+  margin-right: 3px;
+}
+/* HEALTH */
+#cd::before{
+  background-color: #315493;
+  color: #315493;
+}
+#im::before{
+  background-color: #3B64AD;
+  color: #3B64AD;
+}
+#mc::before{
+  background-color: #4472C4;
+  color: #4472C4;
+}
+#cm::before{
+  background-color: #8FA2D4;
+  color: #8FA2D4;
+}
+
+/* EDUCATION */
+#do::before{
+  background-color: #A1C490;
+  color: #A1C490;
+}
+#yos::before{
+  background-color: #538233;
+  color: #538233;
+}
+
+/* SOL */
+#ic::before{
+  background-color: #C09000;
+  color: #C09000;
+}
+#ow::before{
+  background-color: #E2AA00;
+  color: #E2AA00;
+}
+#san::before{
+  background-color: #FFC000;
+  color: #FFC000;
+}
+#fu::before{
+  background-color: #FFD184;
+  color: #FFD184;
+}
+#dw::before{
+  background-color: #FFE0B5;
+  color: #FFE0B5;
+}
+#el::before{
+  background-color: #FFD9A0;
+  color: #FFD9A0;
+}
+
+/* CULTURE */
+#ar::before{
+  background-color: #B3B3B3;
+  color: #B3B3B3;
+}
+#lan::before{
+  background-color: #5F5F5F;
+  color: #5F5F5F;
+}
+
+/* GOVERNANCE */
+#eov::before{
+  background-color: #F5C7B8;
+  color: #F5C7B8;
+}
+#pgm::before{
+  background-color: #F1A78A;
+  color: #F1A78A;
+}
+
+
+
+.chronic-diseases-immunisation-container {
   position: absolute;
   margin-left: 35px;
   font-size: 8.99px;
   letter-spacing: -0.01em;
-  line-height: 137%;
+  line-height: 37%;
   font-weight: 500;
   color: var(--color-black);
   display: inline-block;
-  width: 73.62px;
+  top: 25px; /* Adjusted top value */
+  right: 80px;
+  display: block;
+  width: 300px; 
+  position: absolute; 
+  left: -50px;
+}
+
+
+.health-container p{
+  margin-bottom: 0.7rem;
+}
+.education-container p{
+  margin-bottom: 0.7rem;
+
 }
 .health-pie-icon-1 {
   position: absolute;
@@ -479,7 +621,7 @@
   position: relative;
   width: 205.71px;
   height: 92.81px;
-  margin-bottom: 28.56px;
+  margin-bottom: 15.56px;
 }
 
 .pie-inside-box{
@@ -521,20 +663,18 @@
 }
 .standard-of-living {
   margin-top: 3px;
-  left: calc(50% - 64.25px);
-  font-size: 10.32px;
+  left: calc(50% - 62.88px);
+  font-size: 9.32px;
   letter-spacing: -0.01em;
   line-height: 150%;
   color: var(--color-olive);
   width: 89.12px;
 }
-.sol-icon-1,
-.sol-pie-icon-1 {
+.pie-chart-frame {
   position: absolute;
   left: 0;
   width: 204.06px;
   height: 92.49px;
-  object-fit: cover;
 }
 .sol-pie-icon-1 {
   left: 113.01px;
@@ -545,14 +685,13 @@
 
 }
 .overview-table {
-  width: 557px;
+  width: 542.412px;
 }
 
-.overview-table .table {
-  background-color: #4caeb9;
-  max-width: 100%;
-  margin-bottom: 0px;
+.overview-table th, .overview-table tr, .overview-table td{
+  padding-left: 10px;
 }
+
 
 .table thead th {
   height: 15px; /* Adjust the height as needed */
@@ -577,13 +716,7 @@
   width: 111%;
   position: absolute;
 }
-.governance-icon-1 {
-  position: absolute;
-  left: 0;
-  width: 202.77px;
-  height: 93.14px;
-  object-fit: cover;
-}
+
 .vector-icon17 {
   position: absolute;
   left: calc(50% - 93.36px);
@@ -598,7 +731,7 @@
   display: inline-block;
 }
 .governance1 {
-  left: calc(50% - 79.51px);
+  left: calc(50% - 62.88px);
   margin-top: 3px;
   font-size: 10.32px;
   line-height: 150%;
@@ -639,20 +772,30 @@
   left: 113.01px;
   display: block;
   box-sizing: border-box;
-  height: 91px;
-  width: 91px;
+  height: 101px;
+  width: 101px;
 }
-
-.canvas-pie{
+.health{
+  margin-bottom: 0.5rem;;
+}
+.canvas-pie {
   display: block;
-  position: absolute;
   box-sizing: border-box;
-  height: 112% !important;
-  right: -8px !important;
-  top: -10px !important;
-  width: 112% !important;
+  height: 112%;
+  width: 111%;
+  position: relative;
+  bottom: 5px;
+  left: 1px;
 }
 
+.pie-chart-labels{
+  max-width: 50%;
+  padding-left: 18px;
+  padding-top: 5px;
+  position: relative;
+  left: 15px;
+  font-size: 8.22px;
+}
 
  
 .pie-frame-left {
@@ -702,15 +845,7 @@
   display: inline-block;
   width: 49.08px;
 }
-.education-icon-1,
-.education-pie-icon-1 {
-  position: absolute;
 
-  left: 0;
-  width: 207.29px;
-  height: 94.42px;
-  object-fit: cover;
-}
 .education-pie-icon-1 {
   left: 116.24px;
   width: 94.28px;
@@ -751,15 +886,7 @@
   display: inline-block;
   width: 40.04px;
 }
-.culture-icon-1,
-.culture-pie-icon-1 {
-  position: absolute;
 
-  left: 0;
-  width: 201.48px;
-  height: 90.57px;
-  object-fit: cover;
-}
 .culture-pie-icon-1 {
 
   left: 111.01px;
@@ -812,6 +939,16 @@
   font-size: 17.24px;
   color: var(--color-gray-200);
 }
+
+.frame2-2-1{
+  width: 542.412px;
+  position: relative;
+  left: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .frame2,
 .page1 {
   flex-direction: row;
@@ -826,7 +963,8 @@
   font-size: 13.38px;
 }
 .page1 {
-  margin: 0 !important;
+  margin-top: 20px;
+  margin-bottom: 50px;
   top: 23px;
   left: 0.5px;
   width: 1376px;
@@ -851,12 +989,10 @@
 }
 .setup-materials {
   background-color: var(--color-white);
-  width: 100vw;
   overflow: hidden;
   text-align: left;
   font-size: 13.71px;
   color: var(--color-black);
-  font-family: var(--font-inter);
 }
 
 .score-box {

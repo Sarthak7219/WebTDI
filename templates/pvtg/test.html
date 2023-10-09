@@ -6,29 +6,25 @@
 </head>
 <body>
     <h1>TEST</h1>
+    
 
-    {{tribe.indicator_contributions_to_dimension}}
+     {{tribe.indicator_contributions_to_dimension}}
     
 
 
     For Asur :
 
-    <!-- Total Number of Tribals : {{total_tribals}}
+    Total Number of Tribals : {{total_tribals}}
     {% for i in tribe.get_censored_tribal_indicator_score %}
      <p>indivcator_score : {{i}}</p>
     {% endfor %}
     <h2>CD_score</h2>
-    {{tribe.dimensional_score.0}}
-    {{tribe.get_tribal_indicator_members.3}}
-    {{tribe.indicator_contribution_to_dimension}}
+   
     
     {% for i in tribe.tribal_dimensional_incidence %}
     <li><h5>tribal_dimensional_incidence = {{i}}</h5></li>
-    {% endfor %} -->
-    {% for i in tribe.dimensional_contribution_to_index %}
-    <li><h5>dimensional_contribution_to_index = {{i}}</h5></li>
     {% endfor %}
-    <!-- {% for i in tribe.tribal_dimensional_intensity %}
+    {% for i in tribe.tribal_dimensional_intensity %}
     <li><h5>tribal_dimensional_intensity = {{i}}</h5></li>
     {% endfor %}
     {% for i in tribe.total_members_across_onedimensionally_developed_households %}
@@ -38,7 +34,7 @@
     <li>tribal_dimensional_index = {{i}}</li>
     {% endfor %}
     tribal_incidence={{tribe.tribal_incidence}}
-    tribal_intensity={{tribe.tribal_intensity}} -->
+    tribal_intensity={{tribe.tribal_intensity}}
 
     {% for i in household %}
     <hr>
@@ -99,7 +95,10 @@
             <li>household_dimensional_intensity = {{i.household_dimensional_intensity.4}}</li>
 
 
-            <li>Is HH multidimensionally developed = {{i.is_multidimensionally_developed.0}}</li>
+            <li>Is HH multidimensionally developed = {{i.is_multidimensionally_developed}}</li>
+
+            <li>household_tribal_index = {{i.household_tribal_incedence}}</li>
+            <li>household_tribal_index = {{i.household_tribal_intensity}}</li>
             <li>household_tribal_index = {{i.household_tribal_index}}</li>
             
         </ul>

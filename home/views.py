@@ -117,6 +117,10 @@ def test_view(request):
     return render(request, 'pvtg/test.html', context)
 
 def form_view(request):
+    tribes = Tribe.objects.all()
+    context = {
+        'tribes':tribes,
+    }
     if request.method == "POST":
         tribe = request.POST.get('tribe_name')
         size = request.POST.get('HH_size')
@@ -143,8 +147,7 @@ def form_view(request):
             MEET_score = request.POST.get('MEET_score'),
         )
         HH_object.save()
-        print('***************')
         return HttpResponse("Household added successfully!")
 
 
-    return render(request, 'form/form.html')
+    return render(request, 'form/form.html',context=context)

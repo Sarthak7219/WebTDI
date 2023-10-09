@@ -8,14 +8,18 @@
   <link rel="stylesheet" href="../../media/css/global.css" />
   <link rel="stylesheet" href="../../media/css/style.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body>
   <div class="setup-materials">
 
-    
+
     <!-- NAVBAR -->
     <div class="navbar">
       <div class="web-tdi1">Web TDI</div>
@@ -62,7 +66,7 @@
           </div>
           <div class="frame2-2">
             <div class="tribe-heading">
-              <img src="../../media/images/background-blue.png" alt="Here is an image">
+              <img src="../../media/images/background-blue1.png" alt="Here is an image">
               <div class="a-snapshot-of-tdi-among-asur-p-parent">
                 <div class="a-snapshot-of">
                   A snapshot of TDI among Asur PVTG
@@ -72,191 +76,191 @@
             </div>
 
 
-            <!-- OVERVIEW TABLE -->
-            <div class="overview-table">
-              <table  class="table table-striped ">
+            <div class="frame2-2-1">
+              <!-- OVERVIEW TABLE -->
+              <div>
+                <table class="overview-table">
+                  <thead>
+                    <tr bgcolor="#2E75B6" style="color: white;">
+                      <th colspan="3" style="padding: 8px;">Overview</th>
+                    </tr>
+                    <tr bgcolor="#BDD7EE" style="color: #2F2D72;">
+                      <th>Incidence (I)</th>
+                      <th>Intensity (A)</th>
+                      <th>TDI (I X A)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr bgcolor="#DEEBF7" style="color: black;">
+                      <td>{{tribe.tribal_incidence}}</td>
+                      <td>{{tribe.tribal_intensity}}</td>
+                      <td>{{tribe.tribal_index}}</td>
+                    </tr>
 
-                <thead>
-                  <tr>
-                    <th scope="col">Overview</th>
-                  </tr>
-                </thead>
-                    
-                <tbody>
+                  </tbody>
+                </table>
+              </div>
+              <!-- ------- -->
 
-                  <tr>
-                    <td  scope="row">Incidence (I)</td>
-                    <td>Intensity (A)</td>
-                    <td>TDI (I X A)</td>
-                  </tr>
 
-                  <tr>
-                    <td scope="row">{{tribe.tribal_incidence}}</td>
-                    <td>{{tribe.tribal_intensity}}</td>
-                    <td>{{tribe.tribal_index}}</td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-           </div>
-            <!-- ------- -->
-                  
-                    
-                
 
-            <div class="head1">
-              <div class="group4">
 
-                <div class="percentage-contribution-of3">
-                  Percentage contribution of each Dimension and Indicator to
-                  TDI Score
+              <div class="head1">
+                <div class="group4">
+
+                  <div class="percentage-contribution-of3">
+                    Percentage contribution of each Dimension and Indicator to
+                    TDI Score
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="indicators-wrapper">
-              <div class="indicators">Indicators</div>
-            </div>
-            <div class="pie-frame">
-
-              <!-- PIE FRAME LEFT -->
-              <div class="pie-frame-left">
-
-                <div class="pie-box">
-                  <div class="health1">
-                    <div>HEALTH</div>
-
-                    <div id="my-data-health" data-my-data="{{indicator_contributions_to_dimension}}"></div>
-
-
-                  </div>
-                  <img class="vector-icon6" alt="" src="../../media/images/health-icon.png" />
-
-                  <div class="pie-inside-box">
-                    <!-- LABELS -->
-                    <div class="pie-chart-labels">
-                      <p class="chronic-diseases">Chronic Diseases</p>
-                      <p class="chronic-diseases">Immunisation</p>
-                      <p class="chronic-diseases">Maternal Care</p>
-                      <p class="chronic-diseases">Child Mortality</p>
-                    </div>
-                    <!-- ------ -->
-                    
-                    <!-- PIE CHART -->
-                    <div class="pie-icon-1"><canvas class="canvas-pie" id="health-pie">
-                      </canvas></div>
-                    <!-- ------ -->
-                  </div>
-                </div>
-
-                <div class="pie-box">
-
-                  <div class="sol1">
-                    <div class="standard-of-living">STANDARD OF LIVING</div>
-                    <div id="my-data-sol"></div>
-                  </div>
-              
-                  <img class="sol-icon-1" alt="" src="../../media/images/sol-icon.png" />
-                  <div class="pie-inside-box">
-                    <!-- LABELS -->
-                    <div class="pie-chart-labels">
-                        <p class="chronic-diseases">Institutional Credit</p>
-                        <p class="chronic-diseases">Ownership</p>
-                        <p class="chronic-diseases">Sanitation</p>
-                        <p class="chronic-diseases">Fuel</p>
-                        <p class="chronic-diseases">Drinkng Water</p>
-                        <p class="chronic-diseases">Electricity</p>
-                    </div>
-                    <!-- ------ -->
-                    <!-- PIE CHART -->
-                    <div class="pie-icon-1">
-                      <canvas class="canvas-pie" id="sol-pie"></canvas>
-                    </div>
-                    <!-- ------ -->
-                  </div>
-                </div>
-
-                <div class="pie-box">
-
-                  <div class="governance1">
-                    <div>GOVERNANCE</div>
-                    <div id="my-data-governance"></div>
-                  </div>
-              
-                  <img class="governance-icon-1" alt="" src="../../media/images/governance-icon.png" />
-                  <div class="pie-inside-box">
-                    <!-- LABELS -->
-                    <div class="pie-chart-labels">
-                        <p class="chronic-diseases">Execution Of Voting Rights</p>
-                        <p class="chronic-diseases">Participation in Government meetings</p>
-                    </div>
-                    <!-- ------ -->
-                    <!-- PIE CHART -->
-                    <div class="pie-icon-1">
-                      <canvas class="canvas-pie" id="governance-pie"></canvas>
-                    </div>
-                    <!-- ------ -->
-                  </div>
-                </div>
-
+              <div class="indicators-wrapper">
+                <div class="indicators">Indicators</div>
               </div>
-              <!-- -------- -->
+              <div class="pie-frame">
 
-              <!-- PIE FRAME RIGHT -->
-              <div class="pie-frame-right">
-                
-                <div class="pie-box">
+                <!-- PIE FRAME LEFT -->
+                <div class="pie-frame-left">
 
-                  <div class="education1">
-                    <div>EDUCATION</div>
-                    <div id="my-data-education"></div>
-                  </div>
-              
-                  <img class="education-icon-1" alt="" src="../../media/images/education-icon.png" />
-                  <div class="pie-inside-box">
-                    <!-- LABELS -->
-                    <div class="pie-chart-labels">
-                        <p class="chronic-diseases">Drop Out</p>
-                        <p class="chronic-diseases">Years of Schooling</p>
+                  <div class="pie-box">
+                    <div class="health1">
+                      <div>HEALTH</div>
+
+                      <div id="my-data-health" data-my-data="{{indicator_contributions_to_dimension}}"></div>
+
+
                     </div>
-                    <!-- ------ -->
-                    <!-- PIE CHART -->
-                    <div class="pie-icon-1">
-                      <canvas class="canvas-pie" id="education-pie"></canvas>
+                    <img class="pie-chart-frame" alt="" src="../../media/images/health-icon1.png" />
+
+                    <div class="pie-inside-box">
+                      <!-- LABELS -->
+                      <div class="pie-chart-labels">
+                        <p class="chronic-diseases" id="cd">Chronic Diseases</p>
+                        <p class="chronic-diseases" id="im">Immunisation</p>
+                        <p class="chronic-diseases" id="mc">Maternal Care</p>
+                        <p class="chronic-diseases" id="cm">Child Mortality</p>
+                      </div>
+                      <!-- ------ -->
+
+                      <!-- PIE CHART -->
+                      <div class="pie-icon-1"><canvas class="canvas-pie" id="health-pie">
+                        </canvas></div>
+                      <!-- ------ -->
                     </div>
-                    <!-- ------ -->
                   </div>
+
+                  <div class="pie-box">
+
+                    <div class="sol1">
+                      <div class="standard-of-living">STANDARD OF LIVING</div>
+                      <div id="my-data-sol"></div>
+                    </div>
+
+                    <img class="pie-chart-frame" alt="" src="../../media/images/sol-icon.png" />
+                    <div class="pie-inside-box">
+                      <!-- LABELS -->
+                      <div class="pie-chart-labels" style="line-height: 1.3;">
+                        <p class="chronic-diseases" id="ic">Institutional Credit</p>
+                        <p class="chronic-diseases" id="ow">Ownership</p>
+                        <p class="chronic-diseases" id="san">Sanitation</p>
+                        <p class="chronic-diseases" id="fu">Fuel</p>
+                        <p class="chronic-diseases" id="dw">Drinkng Water</p>
+                        <p class="chronic-diseases" id="el">Electricity</p>
+                      </div>
+                      <!-- ------ -->
+                      <!-- PIE CHART -->
+                      <div class="pie-icon-1">
+                        <canvas class="canvas-pie" id="sol-pie"></canvas>
+                      </div>
+                      <!-- ------ -->
+                    </div>
+                  </div>
+
+                  <div class="pie-box">
+
+                    <div class="governance1">
+                      <div>GOVERNANCE</div>
+                      <div id="my-data-governance"></div>
+                    </div>
+
+                    <img class="pie-chart-frame" alt="" src="../../media/images/governance-icon.png" />
+                    <div class="pie-inside-box">
+                      <!-- LABELS -->
+                      <div class="pie-chart-labels">
+                        <p class="chronic-diseases" id="eov">Execution Of
+                          Voting Rights</p>
+                        <p class="chronic-diseases" id="pgm">Participation in
+                          Government meetings</p>
+                      </div>
+                      <!-- ------ -->
+                      <!-- PIE CHART -->
+                      <div class="pie-icon-1">
+                        <canvas class="canvas-pie" id="governance-pie"></canvas>
+                      </div>
+                      <!-- ------ -->
+                    </div>
+                  </div>
+
                 </div>
-                
-                <div class="pie-box">
+                <!-- -------- -->
 
-                  <div class="culture1">
-                    <div>CULTURE</div>
-                    <div id="my-data-culture"></div>
-                  </div>
-              
-                  <img class="culture-icon-1" alt="" src="../../media/images/culture-icon.png" />
-                  <div class="pie-inside-box">
-                    <!-- LABELS -->
-                    <div class="pie-chart-labels">
-                        <p class="chronic-diseases">Arts</p>
-                        <p class="chronic-diseases">Language</p>
+                <!-- PIE FRAME RIGHT -->
+                <div class="pie-frame-right">
+
+                  <div class="pie-box">
+
+                    <div class="education1">
+                      <div>EDUCATION</div>
+                      <div id="my-data-education"></div>
                     </div>
-                    <!-- ------ -->
-                    <!-- PIE CHART -->
-                    <div class="pie-icon-1">
-                      <canvas class="canvas-pie" id="culture-pie"></canvas>
+
+                    <img class="pie-chart-frame" alt="" src="../../media/images/education-icon.png" />
+                    <div class="pie-inside-box">
+                      <!-- LABELS -->
+                      <div class="pie-chart-labels">
+                        <p class="chronic-diseases" id="yos">Years of Schooling</p>
+                        <p class="chronic-diseases" id="do">Drop Out</p>
+                      </div>
+                      <!-- ------ -->
+                      <!-- PIE CHART -->
+                      <div class="pie-icon-1">
+                        <canvas class="canvas-pie" id="education-pie"></canvas>
+                      </div>
+                      <!-- ------ -->
                     </div>
-                    <!-- ------ -->
                   </div>
+
+                  <div class="pie-box">
+
+                    <div class="culture1">
+                      <div>CULTURE</div>
+                      <div id="my-data-culture"></div>
+                    </div>
+
+                    <img class="pie-chart-frame" alt="" src="../../media/images/culture-icon.png" />
+                    <div class="pie-inside-box">
+                      <!-- LABELS -->
+                      <div class="pie-chart-labels">
+                        <p class="chronic-diseases" id="lan">Language</p>
+                        <p class="chronic-diseases" id="ar">Arts</p>
+                      </div>
+                      <!-- ------ -->
+                      <!-- PIE CHART -->
+                      <div class="pie-icon-1">
+                        <canvas class="canvas-pie" id="culture-pie"></canvas>
+                      </div>
+                      <!-- ------ -->
+                    </div>
+                  </div>
+
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- ------- -->
-      
+
       <!-- PAGE-2 -->
       <div class="page2">
         <div class="frame-container">
@@ -272,17 +276,30 @@
             </div>
           </div>
           <div class="score-graph-frame">
-
-            <div>
-              <canvas id="graph2"></canvas>
-              <div id="my-graph2-data"></div>
-
-            </div>
-
             <div class="group2">
 
               <div class="score">Score</div>
             </div>
+            <div class="graph2-box d-flex flex-column align-items-center">
+              <canvas id="graph2"></canvas>
+              <div id="my-graph2-data"></div>
+              <table class="mt-3">
+                <tr>
+                  <td class="graph2-labels" id="hdi">Health Development Index</td>
+                  <td class="graph2-labels" id="edi">Education Development Index</td>
+                  <td class="graph2-labels" id="sdi">Sol Development Index</td>
+                </tr>
+                <tr>
+                  <td class="graph2-labels" id="cdi">Culture Development Index</td>
+                  <td class="graph2-labels" id="gdi">Governance Development Index</td>
+                  <td class="graph2-labels" id="tdi">Tribal Development Index</td>
+                </tr>
+              </table>
+
+            </div>
+
+
+
           </div>
         </div>
         <div class="frame-parent">
@@ -290,7 +307,6 @@
           <!-- CENSORED AND UNCENSORED BOX -->
           <div class="censored-uncensored-frame">
             <div class="group">
-              <img class="vector-icon" alt="" src="../../media/images/" />
 
               <div class="percentage-contribution-of">
                 Censored And Uncensored
@@ -344,139 +360,137 @@
           <!-- --------- -->
 
           <!-- BOTTOM RIGHT TRIBE IMAGE -->
-          <div class="group-parent"> 
-            <div class="group1">
-              <img class="vector-icon1" alt="" src="../../media/images/vector1.svg" />
+          <div class="group-parent">
 
-              <div class="percentage-contribution-of1">
-
-              </div>
-            </div>
             <div class="group-child">
               <img src="../../media/images/asur-image.png" alt="" style="width: 100%;">
+            </div>
+            <div class="group1">
+              "Traditional Asur dwellings harmonizing with the landscape in Neterhat, Jharkhand"
             </div>
           </div>
           <!-- ------- -->
 
         </div>
-        
+
       </div>
       <!-- ------- -->
 
     </div>
   </div>
-      
 
 
 
-<!-- JAVASCRIPT -->
 
-<!-- CDN LINKS -->
+  <!-- JAVASCRIPT -->
+
+  <!-- CDN LINKS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"
     integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- ****** -->
+  <!-- ****** -->
 
 
-<!-- CHART JS -->
+  <!-- CHART JS -->
   <script>
 
-//DIMENTION CONTRIBUTION VERTICAL BAR
-// const vertical_bar = {{ tribal_dimensional_index| safe }};
-const vertical_graph_element = document.getElementById('vertical-bar-graph');
-var data_health={{dimension_contribution_to_tdi.0}};
-var data_education={{dimension_contribution_to_tdi.1}};
-var data_sol={{dimension_contribution_to_tdi.2}};
-var data_culture={{dimension_contribution_to_tdi.3}};
-var data_goverance={{dimension_contribution_to_tdi.4}};
+    //DIMENTION CONTRIBUTION VERTICAL BAR
+    // const vertical_bar = {{ tribal_dimensional_index| safe }};
+    const vertical_graph_element = document.getElementById('vertical-bar-graph');
+    var data_health = {{ dimension_contribution_to_tdi.0}};
+    var data_education = {{ dimension_contribution_to_tdi.1}};
+    var data_sol = {{ dimension_contribution_to_tdi.2}};
+    var data_culture = {{ dimension_contribution_to_tdi.3}};
+    var data_goverance = {{ dimension_contribution_to_tdi.4}};
 
-console.log(data_health);
-const vertical_bar_data = {
-  labels: ['Dimensions'],
-  datasets: [
-    {
-      label: 'Health', // Removed square brackets
-      data:[data_health], // Replace with your actual data for 'Health'
-      backgroundColor: '#5B9BD5', // Color for 'Health'
-    },
-    {
-      label: 'Sol', // Removed square brackets
-      data:[data_sol], // Replace with your actual data for 'Sol'
-      backgroundColor: '#FFD966', // Color for 'Sol'
-    },
-    {
-      label: 'Education', // Removed square brackets
-      data:[data_education], // Replace with your actual data for 'Education'
-      backgroundColor: '#A9D18E', // Color for 'Education'
-    },
-    {
-      label: 'Culture', // Removed square brackets
-      data: [data_culture], // Replace with your actual data for 'Culture'
-      backgroundColor: '#BFBFBF', // Color for 'Culture'
-    },
-    {
-      label: 'Governance', // Removed square brackets
-      data:[data_goverance] , // Replace with your actual data for 'Governance'
-      backgroundColor: '#C55A11', // Color for 'Governance'
-    },
-  ],
-};
-
-const config_vertical_bar = {
-  type: 'bar',
-  data: vertical_bar_data,
-  options: {
-    barPercentage: 2,
-    categoryPercentage: 1,
-    indexAxis: 'x',
-    aspectRatio: 0.02,
-    scales: {
-      x: {
-        stacked: true,
-        beginAtZero: true,
-      },
-      y: {
-        display: false,
-        stacked: true,
-        beginAtZero: true,
-        maxTicksLimit: 16,
-        autoSkip: false,
-      },
-    },
-    
-    plugins: {
-      datalabels: {
-        anchor: 'center', // Center the labels inside the bars
-        align: 'center', // Align the labels to the center
-        color: 'black', // Label color
-        font: {
-          weight: 'bold', // Label font weight
+    console.log(data_health);
+    const vertical_bar_data = {
+      labels: ['Dimensions'],
+      datasets: [
+        {
+          label: 'Health', // Removed square brackets
+          data: [data_health], // Replace with your actual data for 'Health'
+          backgroundColor: '#5B9BD5', // Color for 'Health'
         },
-        formatter: function (value, context) {
-          const label = vertical_bar_data.labels[context.dataIndex];
-          const dataset = vertical_bar_data.datasets[context.datasetIndex];
-          const colorIndex = context.datasetIndex; // Get the color index
-
-          // Create a legend string
-          const legend =  dataset.label +','+ value;
-          
-          return legend;
+        {
+          label: 'Sol', // Removed square brackets
+          data: [data_sol], // Replace with your actual data for 'Sol'
+          backgroundColor: '#FFD966', // Color for 'Sol'
         },
-        display: 'auto',
+        {
+          label: 'Education', // Removed square brackets
+          data: [data_education], // Replace with your actual data for 'Education'
+          backgroundColor: '#A9D18E', // Color for 'Education'
+        },
+        {
+          label: 'Culture', // Removed square brackets
+          data: [data_culture], // Replace with your actual data for 'Culture'
+          backgroundColor: '#BFBFBF', // Color for 'Culture'
+        },
+        {
+          label: 'Governance', // Removed square brackets
+          data: [data_goverance], // Replace with your actual data for 'Governance'
+          backgroundColor: '#C55A11', // Color for 'Governance'
+        },
+      ],
+    };
+
+    const config_vertical_bar = {
+      type: 'bar',
+      data: vertical_bar_data,
+      options: {
+        barPercentage: 2,
+        categoryPercentage: 1,
+        indexAxis: 'x',
+        aspectRatio: 0.02,
+        scales: {
+          x: {
+            stacked: true,
+            beginAtZero: true,
+            display: false
+          },
+          y: {
+            display: false,
+            stacked: true,
+            beginAtZero: true,
+            maxTicksLimit: 16,
+            autoSkip: false,
+          },
+        },
+
+        plugins: {
+          datalabels: {
+            anchor: 'center', // Center the labels inside the bars
+            align: 'center', // Align the labels to the center
+            color: 'black', // Label color
+            font: {
+              weight: 'bold', // Label font weight
+            },
+            formatter: function (value, context) {
+              const label = vertical_bar_data.labels[context.dataIndex];
+              const dataset = vertical_bar_data.datasets[context.datasetIndex];
+              const colorIndex = context.datasetIndex; // Get the color index
+
+              // Create a legend string
+              const legend = dataset.label + ',' + value;
+
+              return legend;
+            },
+            display: 'auto',
+          },
+          legend: {
+            display: false, // Hide the legend
+          },
+        },
       },
-      legend: {
-        display: false, // Hide the legend
-      },
-    },
-  },
-  plugins: [ChartDataLabels]
-};
+      plugins: [ChartDataLabels]
+    };
 
 
-const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar);
+    const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar);
 
-//UNSENSORED-GRAPH
+    //UNSENSORED-GRAPH
     var myDataArray = []; // Create an array to store the data
 
     for (var i = 1; i <= 18; i++) {
@@ -532,9 +546,9 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
                 stepSize: 1,
                 beginAtZero: true,
                 autoSkip: false,
-                
+
               },
-              
+
             },
           ],
           yAxes: [
@@ -545,9 +559,22 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
                 maxTicksLimit: 16,
                 autoSkip: false
               },
-              
+
             },
           ],
+
+          x: {
+            grid: {
+              drawOnChartArea: false,
+              display: false
+            }
+          },
+          y: {
+            grid: {
+              drawOnChartArea: false,
+              display: false
+            }
+          }
         },
         plugins: {
           datalabels: {
@@ -560,10 +587,10 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
     };
 
     const uncensored_graph = new Chart(document.getElementById('uncensored-graph'), config_uncensored);
-//*******************************************
+    //*******************************************
 
 
-//CENSORED-GRAPH
+    //CENSORED-GRAPH
     var myDataArray = []; // Create an array to store the data
 
     for (var i = 1; i <= 18; i++) {
@@ -605,8 +632,8 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
         },
       ],
     };
-        
-        
+
+
 
     const config_censored = {
       type: 'bar',
@@ -633,6 +660,19 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
               },
             },
           ],
+
+          x: {
+            grid: {
+              drawOnChartArea: false,
+              display: false
+            }
+          },
+          y: {
+            grid: {
+              drawOnChartArea: false,
+              display: false
+            }
+          }
         },
         plugins: {
           datalabels: {
@@ -645,7 +685,7 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
     };
 
     const censored_graph = new Chart(document.getElementById('censored-graph'), config_censored);
-//********************************
+    //********************************
 
 
 
@@ -655,7 +695,7 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
 
 
 
-//Pie chart health
+    //Pie chart health
     var myDattaElement = document.getElementById('my-data-health');
     var health_data = {{ health_contributions_to_dimension| safe}};
     const data2 = {
@@ -681,7 +721,7 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
     const health = new Chart(document.getElementById('health-pie'), config2);
 
 
-//Pie chart education *********
+    //Pie chart education *********
     var myDattaElement = document.getElementById('my-data-education');
     var education_data = {{ education_contributions_to_dimension| safe}};
 
@@ -708,10 +748,10 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
     };
     const education = new Chart(document.getElementById('education-pie'), config3);
 
-//*******************
+    //*******************
 
 
-//Pie chart sol ***********
+    //Pie chart sol ***********
     var myDattaElement = document.getElementById('my-data-sol');
     var sol_data = {{ sol_contributions_to_dimension| safe}};
     const data4 = {
@@ -742,9 +782,9 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
     };
     const sol = new Chart(document.getElementById('sol-pie'), config4);
 
-//********************
+    //********************
 
-//Pie chart culture ********
+    //Pie chart culture ********
     var myDattaElement = document.getElementById('my-data-culture');
     var culture_data = {{ culture_contributions_to_dimension| safe}};
     const data5 = {
@@ -770,10 +810,10 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
       data: data5,
     };
     const culture = new Chart(document.getElementById('culture-pie'), config5);
-//**************
+    //**************
 
 
-//Pie chart governance ******
+    //Pie chart governance ******
     var myDattaElement = document.getElementById('my-data-governance');
     var governance_data = {{ governance_contributions_to_dimension| safe}};
     const data6 = {
@@ -799,15 +839,15 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
     };
     const governance = new Chart(document.getElementById('governance-pie'), config6);
 
-//************************
+    //************************
 
 
-//Dimension Index And TDI Graph *********
+    //Dimension Index And TDI Graph *********
     var graph2_data = {{ tribal_dimensional_index| safe}};
     const ctx = document.getElementById('graph2');
 
 
-    
+
     var tdi = {{ tribe.tribal_index }};
 
     const data = {
@@ -831,7 +871,7 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
     const options = {
       plugins: {
         datalabels: {
-          display: true,
+          display: false,
           color: "black"
         }
       },
@@ -849,11 +889,27 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
           xAxes: [
             {
               ticks: {
-                stepSize: 10,
+                stepSize: 20,
                 beginAtZero: true,
               },
+
             },
           ],
+
+          x: {
+            grid: {
+              drawOnChartArea: false,
+              display: false,
+            },
+            ticks: {
+              display: false
+            }
+          },
+          y: {
+            ticks: {
+              stepSize: 0.2
+            }
+          }
         },
         plugins: {
           datalabels: {
@@ -865,7 +921,7 @@ const vertical_bar_graph = new Chart(vertical_graph_element, config_vertical_bar
       plugins: [ChartDataLabels]
     });
 
-//**********************
+    //**********************
 
 
 
