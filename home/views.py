@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib import messages
+
 from .models import Household, Tribe
 from django.http import HttpResponse
 # Create your views here.
@@ -7,10 +9,10 @@ def home_view(request):
 
 def asur_view(request):
     tribe = Tribe.objects.get(id=2)
-    total_tribals = tribe.get_total_tribals()
+    total_tribals = tribe.get_total_tribals
     household = Household.objects.all()
     
-    contributions_to_dimension = tribe.indicator_contributions_to_dimension()
+    contributions_to_dimension = tribe.indicator_contributions_to_dimension
 
     health_contributions_to_dimension = contributions_to_dimension[0] if contributions_to_dimension and len(contributions_to_dimension) > 0 else None
     education_contributions_to_dimension = contributions_to_dimension[1] if contributions_to_dimension and len(contributions_to_dimension) > 1 else None
@@ -18,8 +20,8 @@ def asur_view(request):
     culture_contributions_to_dimension = contributions_to_dimension[3] if contributions_to_dimension and len(contributions_to_dimension) > 3 else None
     governance_contributions_to_dimension = contributions_to_dimension[4] if contributions_to_dimension and len(contributions_to_dimension) > 4 else None
 
-    tribal_dimensional_index = tribe.tribal_dimensional_index()
-    dimension_contribution_to_tdi = tribe.dimension_contribution_to_tdi()
+    tribal_dimensional_index = tribe.tribal_dimensional_index
+    dimension_contribution_to_tdi = tribe.dimension_contribution_to_tdi
 
     context = {
         'household': household,
@@ -104,7 +106,7 @@ def asur_view(request):
 def test_view(request):
     
     tribe = Tribe.objects.get(id = 2)
-    total_tribals = tribe.get_total_tribals()
+    total_tribals = tribe.get_total_tribals
     household = Household.objects.all()
     
     
@@ -124,10 +126,19 @@ def form_view(request):
         'tribes':tribes,
     }
     if request.method == "POST":
-        tribe = request.POST.get('tribe_name')
+        tribe_id = request.POST.get('tribe_id')
         size = request.POST.get('HH_size')
+
+        try:
+            tribe = Tribe.objects.get(id=tribe_id)
+        except Tribe.DoesNotExist:
+            # Handle the case where the selected tribe doesn't exist
+            return HttpResponse('Selected tribe does not exist')
+        
+        
+        
         HH_object = Household.objects.create(
-            tribe_name = tribe,
+            tribeID = tribe,
             size = size,
             CD_score = request.POST.get('CD_score'),
             IM_score = request.POST.get('IM_score'),
@@ -149,7 +160,8 @@ def form_view(request):
             MEET_score = request.POST.get('MEET_score'),
         )
         HH_object.save()
-        return HttpResponse("Household added successfully!")
+        messages.success(request, 'Household added successfully!!!')
+        return redirect('form')
 
 
     return render(request, 'form/form.html',context=context)
