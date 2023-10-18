@@ -2,15 +2,22 @@
 
 {% block content %}
 
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 <form method="post">
   {% csrf_token %}
 
   <div class="mb-3 mt-5">
     <label for="tribe_name" class="form-label">Tribe Name</label>
     <div>
-      <select>
+      <select name="tribe_id">
         {% for tribe in tribes %}
-        <option value="">{{tribe.name}}</option>
+        <option value={{tribe.id}}>{{tribe.name}}</option>
         {% endfor %}
       </select>
     </div>
@@ -40,7 +47,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="CD_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="CD_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -61,7 +68,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="IM_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="IM_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -82,7 +89,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="MC_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="MC_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -103,7 +110,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="CM_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="CM_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -124,7 +131,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="FS_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="FS_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -151,7 +158,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="LE_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="LE_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -172,7 +179,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="DRO_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="DRO_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -199,7 +206,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="IC_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="IC_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -220,7 +227,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="OW_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="OW_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -241,7 +248,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="SANI_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="SANI_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -262,7 +269,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="FUEL_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="FUEL_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -283,7 +290,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="DRWA_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="DRWA_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -304,7 +311,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="ELECTR_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="ELECTR_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -325,7 +332,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="ASS_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="ASS_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -352,7 +359,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="LAN_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="LAN_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -373,7 +380,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="ARTS_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="ARTS_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -400,7 +407,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="EV_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="EV_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>
@@ -423,7 +430,7 @@
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="MEET_score" id="inlineRadio3" value="NA">
+              <input class="form-check-input" type="radio" name="MEET_score" id="inlineRadio3" value="">
               <label class="form-check-label" for="inlineRadio3">NA</label>
             </div>
           </div>

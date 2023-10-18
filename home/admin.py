@@ -15,7 +15,6 @@ class ViewAdmin(ImportExportModelAdmin,admin.ModelAdmin):
 
 admin.site.register(Household, ViewAdmin)
 # class HouseholdAdmin(ImportExportModelAdmin):
-#     resource_class = HouseholdResource
 #     list_display = ['size', 'tribe']
 
 admin.site.register(Tribe)

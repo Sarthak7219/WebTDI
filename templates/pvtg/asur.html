@@ -3,10 +3,12 @@
 {% block content %}
 <div class=main-content><!-- PAGE-1 -->
   <div class=page1>
-    <div class=frame1><img alt="" src=../../media/images/Tribe-logo-name.png class=tribe-logo-icon>
-      <div class=tribe-image-main style="background-image: url(../../media/images/asur.jpg);">
+    <div class=frame1><img alt="" src=../../media/{{tribe.tribe_image.first.logo_image}} class=tribe-logo-icon>
+      <div class=tribe-image-main style="background-image: url(../../media/{{tribe.tribe_image.first.main_image}});">
         <div class=tribe-photo-desc style=background-color:#f2f2f277>
-          <div class=image-location->Image Location - Village Husmu , Neharhat , Jharkhand</div>
+          <div class=image-location->
+            {{tribe.tribe_image.first.location}}
+          </div>
           <div class=an-asur-man>An Asur man stands tall in his home</div>
         </div>
       </div>
@@ -206,7 +208,8 @@
         </div>
       </div><!-- --------- --><!-- BOTTOM RIGHT TRIBE IMAGE -->
       <div class=group-parent>
-        <div class=group-child><img alt="" src=../../media/images/asur-image.png style=width:100%></div>
+        <div class=group-child><img alt="" src=../../media/{{tribe.tribe_image.first.village_image}} style=width:100%>
+        </div>
         <div class=group1>"Traditional Asur dwellings harmonizing with the landscape in Neterhat, Jharkhand"</div>
       </div><!-- ------- -->
     </div>
