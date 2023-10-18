@@ -1,38 +1,41 @@
 from django.shortcuts import render
 from .models import Household, Tribe
+from django.http import HttpResponse
 # Create your views here.
 def home_view(request):
     return render(request,'home/homepage.html')
 
 def asur_view(request):
-    tribe = Tribe.objects.get(id = 2)
+    tribe = Tribe.objects.get(id=2)
     total_tribals = tribe.get_total_tribals()
     household = Household.objects.all()
     
-    health_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[0]
-    education_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[1]
-    sol_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[2]
-    culture_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[3]
-    governance_contributions_to_dimension=tribe.indicator_contributions_to_dimension()[4]
-    
-    tribal_dimensional_index=tribe.tribal_dimensional_index()
-    # tribal_index=tribe.tribal_index()
+    contributions_to_dimension = tribe.indicator_contributions_to_dimension()
+
+    health_contributions_to_dimension = contributions_to_dimension[0] if contributions_to_dimension and len(contributions_to_dimension) > 0 else None
+    education_contributions_to_dimension = contributions_to_dimension[1] if contributions_to_dimension and len(contributions_to_dimension) > 1 else None
+    sol_contributions_to_dimension = contributions_to_dimension[2] if contributions_to_dimension and len(contributions_to_dimension) > 2 else None
+    culture_contributions_to_dimension = contributions_to_dimension[3] if contributions_to_dimension and len(contributions_to_dimension) > 3 else None
+    governance_contributions_to_dimension = contributions_to_dimension[4] if contributions_to_dimension and len(contributions_to_dimension) > 4 else None
+
+    tribal_dimensional_index = tribe.tribal_dimensional_index()
     dimension_contribution_to_tdi = tribe.dimension_contribution_to_tdi()
-    
+
     context = {
-        'household' : household,
-        'total_tribals' : total_tribals,
-        'tribe' : tribe,
-        'health_contributions_to_dimension' : health_contributions_to_dimension,
-        'education_contributions_to_dimension':education_contributions_to_dimension,
-        'sol_contributions_to_dimension':sol_contributions_to_dimension,
-        'culture_contributions_to_dimension':culture_contributions_to_dimension,
-        'governance_contributions_to_dimension':governance_contributions_to_dimension,
-        'tribal_dimensional_index' :tribal_dimensional_index,
-        'dimension_contribution_to_tdi' :dimension_contribution_to_tdi
-        
+        'household': household,
+        'total_tribals': total_tribals,
+        'tribe': tribe,
+        'health_contributions_to_dimension': health_contributions_to_dimension,
+        'education_contributions_to_dimension': education_contributions_to_dimension,
+        'sol_contributions_to_dimension': sol_contributions_to_dimension,
+        'culture_contributions_to_dimension': culture_contributions_to_dimension,
+        'governance_contributions_to_dimension': governance_contributions_to_dimension,
+        'tribal_dimensional_index': tribal_dimensional_index,
+        'dimension_contribution_to_tdi': dimension_contribution_to_tdi
     }
-    return render(request,'pvtg/asur.html',context=context)
+
+    return render(request, 'pvtg/asur.html', context=context)
+
 
 # def asur_view(request):
      
@@ -114,3 +117,39 @@ def test_view(request):
 
     }
     return render(request, 'pvtg/test.html', context)
+
+def form_view(request):
+    tribes = Tribe.objects.all()
+    context = {
+        'tribes':tribes,
+    }
+    if request.method == "POST":
+        tribe = request.POST.get('tribe_name')
+        size = request.POST.get('HH_size')
+        HH_object = Household.objects.create(
+            tribe_name = tribe,
+            size = size,
+            CD_score = request.POST.get('CD_score'),
+            IM_score = request.POST.get('IM_score'),
+            MC_score = request.POST.get('MC_score'),
+            CM_score = request.POST.get('CM_score'),
+            FS_score = request.POST.get('FS_score'),
+            LE_score = request.POST.get('LE_score'),
+            DRO_score = request.POST.get('DRO_score'),
+            IC_score = request.POST.get('IC_score'),
+            OW_score = request.POST.get('OW_score'),
+            SANI_score = request.POST.get('SANI_score'),
+            FUEL_score = request.POST.get('FUEL_score'),
+            DRWA_score = request.POST.get('DRWA_score'),
+            ELECTR_score = request.POST.get('ELECTR_score'),
+            ASS_score = request.POST.get('ASS_score'),
+            LAN_score = request.POST.get('LAN_score'),
+            ARTS_score = request.POST.get('ARTS_score'),
+            EV_score = request.POST.get('EV_score'),
+            MEET_score = request.POST.get('MEET_score'),
+        )
+        HH_object.save()
+        return HttpResponse("Household added successfully!")
+
+
+    return render(request, 'form/form.html',context=context)
