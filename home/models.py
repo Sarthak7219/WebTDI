@@ -114,7 +114,10 @@ class Tribe(models.Model):
 
         for household in tribe_households:
             household_tribal_incidence = household.household_tribal_incidence()
+            print(household_tribal_incidence)
             ans += household_tribal_incidence
+            print('hello')
+            print(ans)
 
         return int(round(ans * 100, 2))
 
@@ -419,7 +422,7 @@ class Household(models.Model):
         is_multidimensionally_developed = self.is_multidimensionally_developed()
         
         if total_tribals > 0:
-            ans = round((is_multidimensionally_developed * self.size) / total_tribals, 2)
+            ans = round(((is_multidimensionally_developed * self.size) / total_tribals), 2)
         else:
             ans = 0.0  # Handle the case where there are no tribals to avoid division by zero
         return ans
@@ -442,7 +445,7 @@ class Household(models.Model):
             score = D_DS_values[i]
 
             if total_members > 0:
-                ans = round((score * members_in_households * 5) / total_members, 3)
+                ans = round(((score * members_in_households * 5) / total_members), 2)
             else:
                 ans = 0.0  # Handle the case where total_members is zero
 
