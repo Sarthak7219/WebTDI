@@ -3,10 +3,12 @@
 {% block content %}
 <div class=main-content><!-- PAGE-1 -->
   <div class=page1>
-    <div class=frame1><img alt="" src=../../media/images/Tribe-logo-name.png class=tribe-logo-icon>
-      <div class=tribe-image-main style="background-image: url(../../media/images/asur.jpg);">
+    <div class=frame1><img alt="" src=../../media/{{tribe.tribe_image.first.logo_image}} class=tribe-logo-icon>
+      <div class=tribe-image-main style="background-image: url(../../media/{{tribe.tribe_image.first.main_image}});">
         <div class=tribe-photo-desc style=background-color:#f2f2f277>
-          <div class=image-location->Image Location - Village Husmu , Neharhat , Jharkhand</div>
+          <div class=image-location->
+            {{tribe.tribe_image.first.location}}
+          </div>
           <div class=an-asur-man>An Asur man stands tall in his home</div>
         </div>
       </div>
@@ -184,29 +186,30 @@
             <div id=my-data_censored18 data-my-data={{tribe.get_censored_tribal_indicator_score.17}}></div>
           </div>
           <div class=uncensored><canvas id=uncensored-graph height=579 width=288></canvas>
-            <div id=my-data_uncensored1 data-my-data={{tribe.get_tribal_indicator_members.0}}></div>
-            <div id=my-data_uncensored2 data-my-data={{tribe.get_tribal_indicator_members.1}}></div>
-            <div id=my-data_uncensored3 data-my-data="{{tribe.get_tribal_indicator_members.2 }}"></div>
-            <div id=my-data_uncensored4 data-my-data="{{ tribe.get_tribal_indicator_members.3}}"></div>
-            <div id=my-data_uncensored5 data-my-data={{tribe.get_tribal_indicator_members.4}}></div>
-            <div id=my-data_uncensored6 data-my-data={{tribe.get_tribal_indicator_members.5}}></div>
-            <div id=my-data_uncensored7 data-my-data={{tribe.get_tribal_indicator_members.6}}></div>
-            <div id=my-data_uncensored8 data-my-data={{tribe.get_tribal_indicator_members.7}}></div>
-            <div id=my-data_uncensored9 data-my-data={{tribe.get_tribal_indicator_members.8}}></div>
-            <div id=my-data_uncensored10 data-my-data={{tribe.get_tribal_indicator_members.9}}></div>
-            <div id=my-data_uncensored11 data-my-data={{tribe.get_tribal_indicator_members.10}}></div>
-            <div id=my-data_uncensored12 data-my-data={{tribe.get_tribal_indicator_members.11}}></div>
-            <div id=my-data_uncensored13 data-my-data={{tribe.get_tribal_indicator_members.12}}></div>
-            <div id=my-data_uncensored14 data-my-data={{tribe.get_tribal_indicator_members.13}}></div>
-            <div id=my-data_uncensored15 data-my-data={{tribe.get_tribal_indicator_members.14}}></div>
-            <div id=my-data_uncensored16 data-my-data={{tribe.get_tribal_indicator_members.15}}></div>
-            <div id=my-data_uncensored17 data-my-data={{tribe.get_tribal_indicator_members.16}}></div>
-            <div id=my-data_uncensored18 data-my-data={{tribe.get_tribal_indicator_members.17}}></div>
+            <div id=my-data_uncensored1 data-my-data={{tribe.get_uncensored_tribal_indicator_score.0}}></div>
+            <div id=my-data_uncensored2 data-my-data={{tribe.get_uncensored_tribal_indicator_score.1}}></div>
+            <div id=my-data_uncensored3 data-my-data="{{tribe.get_uncensored_tribal_indicator_score.2 }}"></div>
+            <div id=my-data_uncensored4 data-my-data="{{ tribe.get_uncensored_tribal_indicator_score.3}}"></div>
+            <div id=my-data_uncensored5 data-my-data={{tribe.get_uncensored_tribal_indicator_score.4}}></div>
+            <div id=my-data_uncensored6 data-my-data={{tribe.get_uncensored_tribal_indicator_score.5}}></div>
+            <div id=my-data_uncensored7 data-my-data={{tribe.get_uncensored_tribal_indicator_score.6}}></div>
+            <div id=my-data_uncensored8 data-my-data={{tribe.get_uncensored_tribal_indicator_score.7}}></div>
+            <div id=my-data_uncensored9 data-my-data={{tribe.get_uncensored_tribal_indicator_score.8}}></div>
+            <div id=my-data_uncensored10 data-my-data={{tribe.get_uncensored_tribal_indicator_score.9}}></div>
+            <div id=my-data_uncensored11 data-my-data={{tribe.get_uncensored_tribal_indicator_score.10}}></div>
+            <div id=my-data_uncensored12 data-my-data={{tribe.get_uncensored_tribal_indicator_score.11}}></div>
+            <div id=my-data_uncensored13 data-my-data={{tribe.get_uncensored_tribal_indicator_score.12}}></div>
+            <div id=my-data_uncensored14 data-my-data={{tribe.get_uncensored_tribal_indicator_score.13}}></div>
+            <div id=my-data_uncensored15 data-my-data={{tribe.get_uncensored_tribal_indicator_score.14}}></div>
+            <div id=my-data_uncensored16 data-my-data={{tribe.get_uncensored_tribal_indicator_score.15}}></div>
+            <div id=my-data_uncensored17 data-my-data={{tribe.get_uncensored_tribal_indicator_score.16}}></div>
+            <div id=my-data_uncensored18 data-my-data={{tribe.get_uncensored_tribal_indicator_score.17}}></div>
           </div>
         </div>
       </div><!-- --------- --><!-- BOTTOM RIGHT TRIBE IMAGE -->
       <div class=group-parent>
-        <div class=group-child><img alt="" src=../../media/images/asur-image.png style=width:100%></div>
+        <div class=group-child><img alt="" src=../../media/{{tribe.tribe_image.first.village_image}} style=width:100%>
+        </div>
         <div class=group1>"Traditional Asur dwellings harmonizing with the landscape in Neterhat, Jharkhand"</div>
       </div><!-- ------- -->
     </div>

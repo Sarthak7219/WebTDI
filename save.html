@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 members_H = [CD_members, IM_members, MC_members, CM_members, FS_members]
 members_E = [LE_members, DRO_members]
 members_S = [IC_members, OW_members, SANI_members, FUEL_members, DRWA_members, ELECTR_members, ASS_members]
@@ -6,27 +7,33 @@ members_C =[LAN_members, ARTS_members]
 members_G = [EV_members, MEET_members]
 =======
 <table class="table table-striped ">
+=======
+CD_score = models.BooleanField(null = True, blank=True)
+IM_score = models.BooleanField(null = True, blank=True)
+MC_score = models.BooleanField(null = True, blank=True)
+>>>>>>> eaa0b0bfb5f7189ffb1585016e23fe1b31db0613
 
-  <thead>
-    <tr>
-      <th scope="col">Overview</th>
-    </tr>
-  </thead>
+CM_score = models.BooleanField(null = True, blank=True)
+FS_score = models.BooleanField(null = True, blank=True)
 
-  <tbody>
+# EDUCATION
+LE_score = models.BooleanField(null = True, blank=True)
+DRO_score = models.BooleanField(null = True, blank=True)
 
-    <tr>
-      <td scope="row">Incidence (I)</td>
-      <td>Intensity (A)</td>
-      <td>TDI (I X A)</td>
-    </tr>
+#SOL
+IC_score = models.BooleanField(null = True, blank=True)
+OW_score = models.BooleanField(null = True, blank=True)
+SANI_score = models.BooleanField(null = True, blank=True)
+FUEL_score = models.BooleanField(null = True, blank=True)
+DRWA_score = models.BooleanField(null = True, blank=True)
+ELECTR_score = models.BooleanField(null = True, blank=True)
+ASS_score = models.BooleanField(null = True, blank=True)
 
-    <tr>
-      <td scope="row">{{tribe.tribal_incidence}}</td>
-      <td>{{tribe.tribal_intensity}}</td>
-      <td>{{tribe.tribal_index}}</td>
-    </tr>
+#CULTURE
+LAN_score = models.BooleanField(null = True, blank=True)
+ARTS_score = models.BooleanField(null = True, blank=True)
 
+<<<<<<< HEAD
   </tbody>
 </table>
 
@@ -53,3 +60,8 @@ members_G = [EV_members, MEET_members]
   </tbody>
 </table>
 >>>>>>> 368874dfcd567dfcdb0de7aa7a9e81f1616d32ab
+=======
+#GOVERNANCE
+EV_score = models.BooleanField(null = True, blank=True)
+MEET_score = models.BooleanField(null = True, blank=True)
+>>>>>>> eaa0b0bfb5f7189ffb1585016e23fe1b31db0613
