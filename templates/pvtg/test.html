@@ -70,6 +70,12 @@
         <li>indicator_score : {{i}}</li>
         {% endfor %}
     </ul>
+    <h3>Uncensored indicator scores</h3>
+    <ul>
+        {% for i in tribe.get_uncensored_tribal_indicator_score %}
+        <li>indicator_score : {{i}}</li>
+        {% endfor %}
+    </ul>
 
 
 
