@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-
+from django.http import Http404
 from .models import Household, Tribe
 from django.http import HttpResponse
 # Create your views here.
@@ -13,7 +13,16 @@ def home_view(request):
 
 def tribe_detail_view(request, slug):
     tribes = Tribe.objects.all()
-    tribe = Tribe.objects.get(slug=slug)
+    if slug is not None:
+        try:
+            tribe = Tribe.objects.get(slug=slug)
+        except Tribe.DoesNotExist:
+            raise Http404
+        except tribe.MultipleObjectsReturned:
+            tribe=tribe.objects.filter(slug=slug).first()
+        except:
+            raise Http404
+
     total_tribals = tribe.get_total_tribals
     household = Household.objects.all()
     

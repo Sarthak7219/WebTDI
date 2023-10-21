@@ -13,6 +13,7 @@ class Tribe(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, null=True, blank=True)
     incidence = models.FloatField(null=True, blank=True)
+    slug=models.SlugField(unique=True,blank=True,null=True)
     intensity = models.FloatField(null=True, blank=True)
     tdi = models.FloatField(null=True, blank=True)
 
