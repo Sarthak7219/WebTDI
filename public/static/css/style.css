@@ -326,8 +326,7 @@
 .tribe-logo-icon {
   position: relative;
   width: 94.19px;
-  height: 350.57px;
-  object-fit: cover
+  max-height: 100%;
 }
 
 .vector-icon4 {
@@ -341,27 +340,26 @@
   position: absolute;
   letter-spacing: -.01em;
   line-height: 150%;
-  font-weight: 500;
   display: inline-block
 }
 
 .image-location- {
   top: 18.78px;
-  left: calc(50% - 114.68px);
-  width: 243.8px
 }
 
 .an-asur-man {
   top: 2.32px;
-  left: calc(50% - 106.37px);
-  font-size: 13.64px;
-  width: 228.28px
+  font-size: 10px;
+  font-weight: 1000;
 }
 
 .tribe-photo-desc {
   position: relative;
   width: 412.67px;
-  height: 34.16px
+  height: 34.16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .frame1,.tribe-image-main {
@@ -369,9 +367,13 @@
   align-items: flex-end
 }
 
+.frame1{
+  height: 585px;
+}
+
 .tribe-image-main {
   width: 411px;
-  height: 585px;
+  height: 100%;
   overflow: hidden;
   flex-shrink: 0;
   flex-direction: column;
@@ -442,7 +444,6 @@
 .asur {
   top: 0;
   font-size: 28.83px;
-  width: 69.86px
 }
 
 .a-snapshot-of-tdi-among-asur-p-parent {

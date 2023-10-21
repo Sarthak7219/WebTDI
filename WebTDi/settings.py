@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'import_export',
-    'accounts'
+    'accounts',
+    'district_wise'
 ]
 
 MIDDLEWARE = [

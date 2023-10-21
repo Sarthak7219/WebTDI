@@ -5,19 +5,24 @@ from .models import Household, Tribe
 from django.http import HttpResponse
 # Create your views here.
 def home_view(request):
-    return render(request,'home/homepage.html')
+    tribes = Tribe.objects.all()
+    context = {
+        'tribes' : tribes
+    }
+    return render(request,'home/homepage.html',context=context)
 
-
-def asur_detail_view(request,slug=None):
+def tribe_detail_view(request, slug):
+    tribes = Tribe.objects.all()
     if slug is not None:
         try:
-         tribe = Tribe.objects.get(slug=slug)
-        except tribe.DoesNotExist:
-          raise Http404
+            tribe = Tribe.objects.get(slug=slug)
+        except Tribe.DoesNotExist:
+            raise Http404
         except tribe.MultipleObjectsReturned:
-          article_obj=tribe.objects.filter(slug=slug).first()
+            tribe=tribe.objects.filter(slug=slug).first()
         except:
-          raise Http404
+            raise Http404
+
     total_tribals = tribe.get_total_tribals
     household = Household.objects.all()
     
@@ -36,6 +41,7 @@ def asur_detail_view(request,slug=None):
         'household': household,
         'total_tribals': total_tribals,
         'tribe': tribe,
+        'tribes' : tribes,
         'health_contributions_to_dimension': health_contributions_to_dimension,
         'education_contributions_to_dimension': education_contributions_to_dimension,
         'sol_contributions_to_dimension': sol_contributions_to_dimension,
