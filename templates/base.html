@@ -52,14 +52,9 @@
                 PVTGS
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/asur">Asur, Agaria</a></li>
-                <li><a class="dropdown-item" href="#">Birjia</a></li>
-                <li><a class="dropdown-item" href="#">Birhor</a></li>
-                <li><a class="dropdown-item" href="#">Savar</a></li>
-                <li><a class="dropdown-item" href="#">Parhaiya</a></li>
-                <li><a class="dropdown-item" href="#">Korwa</a></li>
-                <li><a class="dropdown-item" href="#">Sauria Paharia</a></li>
-                <li><a class="dropdown-item" href="#">Mal Paharia, Kumarbhag Paharia</a></li>
+                {% for tribe in tribes %}
+                <li><a class="dropdown-item" href="{% url 'tribe_detail' tribe.slug %}">{{tribe.name}}</a></li>
+                {% endfor %}
               </ul>
             </li>
             <form class="d-flex" role="search">

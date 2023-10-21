@@ -5,10 +5,15 @@ from .models import Household, Tribe
 from django.http import HttpResponse
 # Create your views here.
 def home_view(request):
-    return render(request,'home/homepage.html')
+    tribes = Tribe.objects.all()
+    context = {
+        'tribes' : tribes
+    }
+    return render(request,'home/homepage.html',context=context)
 
-def asur_view(request):
-    tribe = Tribe.objects.get(id=2)
+def tribe_detail_view(request, slug):
+    tribes = Tribe.objects.all()
+    tribe = Tribe.objects.get(slug=slug)
     total_tribals = tribe.get_total_tribals
     household = Household.objects.all()
     
@@ -27,6 +32,7 @@ def asur_view(request):
         'household': household,
         'total_tribals': total_tribals,
         'tribe': tribe,
+        'tribes' : tribes,
         'health_contributions_to_dimension': health_contributions_to_dimension,
         'education_contributions_to_dimension': education_contributions_to_dimension,
         'sol_contributions_to_dimension': sol_contributions_to_dimension,

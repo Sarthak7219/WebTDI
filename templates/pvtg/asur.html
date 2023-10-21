@@ -9,7 +9,7 @@
           <div class=image-location->
             {{tribe.tribe_image.first.location}}
           </div>
-          <div class=an-asur-man>An Asur man stands tall in his home</div>
+          <div class=an-asur-man>{{tribe.tribe_image.first.main_desc}}</div>
         </div>
       </div>
     </div>
@@ -21,8 +21,8 @@
       <div class=frame2-2>
         <div class=tribe-heading><img alt="Here is an image" src=../../media/images/background-blue1.png>
           <div class=a-snapshot-of-tdi-among-asur-p-parent>
-            <div class=a-snapshot-of>A snapshot of TDI among Asur PVTG</div>
-            <div class=asur>Asur</div>
+            <div class=a-snapshot-of>A snapshot of TDI among {{tribe.name}} PVTG</div>
+            <div class=asur>{{tribe.name}}</div>
           </div>
         </div>
         <div class=frame2-2-1><!-- OVERVIEW TABLE -->
@@ -210,7 +210,7 @@
       <div class=group-parent>
         <div class=group-child><img alt="" src=../../media/{{tribe.tribe_image.first.village_image}} style=width:100%>
         </div>
-        <div class=group1>"Traditional Asur dwellings harmonizing with the landscape in Neterhat, Jharkhand"</div>
+        <div class=group1>"{{tribe.tribe_image.first.village_desc}}"</div>
       </div><!-- ------- -->
     </div>
   </div><!-- ------- -->

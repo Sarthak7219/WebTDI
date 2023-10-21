@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Sum
 from django.core.cache import cache
+from django.utils.text import slugify
 
 
 
@@ -10,10 +11,15 @@ from django.core.cache import cache
 
 class Tribe(models.Model):
     name = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     incidence = models.FloatField(null=True, blank=True)
     intensity = models.FloatField(null=True, blank=True)
     tdi = models.FloatField(null=True, blank=True)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Tribe, self).save(*args, **kwargs)
+    
     def __str__(self):
         return self.name 
 
@@ -147,7 +153,7 @@ class Tribe(models.Model):
             for household in households:
                 ans[i] += household.household_dimensional_incidence[i]
 
-        ans = [round(val, 3) for val in ans]
+        ans = [round(val, 4) for val in ans]
 
         return ans
 
@@ -414,8 +420,15 @@ class Tribe_Image(models.Model):
     tribe = models.ForeignKey(Tribe, on_delete=models.CASCADE, related_name='tribe_image', null=True, blank=True)
     logo_image=models.ImageField(upload_to='images')
     main_image=models.ImageField(upload_to='images')
+    main_desc = models.CharField(max_length=100,null=True, blank=True)
     village_image=models.ImageField(upload_to='images')
+    village_desc = models.CharField(max_length=100,null=True, blank=True)
     location=models.CharField(max_length=50, null=True, blank=True)
+    map_image = models.ImageField(upload_to='images')
+    date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.tribe.name} images"
 
 
 class Household(models.Model):
@@ -538,7 +551,7 @@ class Household(models.Model):
 
         weightage = self.calculate_weightage
         developed_indicators = self.developed_indicators
-        ans = [round(w * d, 2) for w, d in zip(weightage, developed_indicators)]
+        ans = [w * d for w, d in zip(weightage, developed_indicators)]
 
         self._cached_D_DS = ans
         return ans
@@ -580,7 +593,7 @@ class Household(models.Model):
             return self._cached_members_of_developed_households
 
         is_dev = self.is_developed
-        members = [round(is_dev[i] * self.size, 2) for i in range(5)]
+        members = [is_dev[i] * self.size for i in range(5)]
         self._cached_members_of_developed_households = members
         return members
 
@@ -599,7 +612,7 @@ class Household(models.Model):
                 incidence_value = members_of_developed_households[i] / total_tribals
             else:
                 incidence_value = 0.0  # Handle the case where there are no households to avoid division by zero
-            incidence.append(round(incidence_value, 2))
+            incidence.append(incidence_value)
 
         self._cached_household_dimensional_incidence = incidence
         return incidence
@@ -638,7 +651,7 @@ class Household(models.Model):
             score = D_DS_values[i]
 
             if total_members > 0:
-                ans = round((score * members_in_households * 5) / total_members, 3)
+                ans = (score * members_in_households * 5) / total_members
             else:
                 ans = 0.0  # Handle the case where total_members is zero
 
@@ -658,7 +671,7 @@ class Household(models.Model):
         score = self.tribal_development_score
 
         if total_members_multi_dimensionally_developed_households > 0:
-            ans = round((score * members_in_developed_households) / total_members_multi_dimensionally_developed_households, 2)
+            ans = (score * members_in_developed_households) / total_members_multi_dimensionally_developed_households
         else:
             ans = 0.0  # Handle the case where total_members_multi_dimensionally_developed_households is zero
 
@@ -672,7 +685,7 @@ class Household(models.Model):
 
         household_tribal_intensity = self.household_tribal_intensity
         household_tribal_incidence = self.household_tribal_incidence
-        index = round((household_tribal_intensity * household_tribal_incidence) * 100, 2)
+        index = round((household_tribal_intensity * household_tribal_incidence) * 100, 5)
 
         self._cached_household_tribal_index = index
         return index
@@ -694,7 +707,7 @@ class Household(models.Model):
         for indicator_group in scores:
             total_sum += sum([score for score in indicator_group if score is not None])
 
-        result = round(total_sum * self.size, 2)
+        result = round(total_sum * self.size, 4)
 
         self._cached_developed_indicators_members = result
         return result
