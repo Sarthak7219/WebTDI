@@ -8,6 +8,7 @@ urlpatterns = [
   
     # path('<slug>/',name='tribe_detail'),
     path('test2/',test2_view,name='tribe_detail'),
+    path('bokaro/',district_view,name='tribe_detail'),
    
 ]
 

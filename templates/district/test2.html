@@ -23,8 +23,19 @@
     {%endfor%}
     {% for district in districts%}
     <br>
-    {{district.get_health_ind_score}}
+    {{district.get_health_score}}
     <br>
     {%endfor%}
+    {% for district in districts%}
+    <br>
+    {{district.get_education_score}}
+    <br>
+    {%endfor%}
+    <!-- 
+    {% for district in districts%}
+    <br>
+    {{district.get_sol_score}}
+    <br>
+    {%endfor%} -->
 </body>
 </html>

@@ -136,14 +136,15 @@ class District(models.Model):
         return (sum/j)
     
     def get_education_norm_ind_score(self):
-        districts = self.get_all_objects()
-        Enrollment = self.Enrollment
-        Equity =self.Equity
-        E_DropRate =self.E_DropRate
-        arr=[   Enrollment,Equity,E_DropRate
-                ]
         
+        
+        districts = self.get_all_objects()
         for district in districts:
+            Enrollment = district.Enrollment
+            Equity =district.Equity
+            E_DropRate =district.E_DropRate
+            arr=[   Enrollment,Equity,E_DropRate
+                ]
             max_arr=[]
             min_arr=[]
             for i in arr:
@@ -168,40 +169,40 @@ class District(models.Model):
             j=j+1
         return (sum/j)
     
-    def get_sol_norm_ind_score(self):
-        districts = self.get_all_objects()
-        S_CoFu = self.S_CoFu
-        S_DrWa = self.S_DrWa
-        S_Sani = self.S_Sani
-        S_Elec = self.S_Elec
+    # def get_sol_norm_ind_score(self):
+    #     districts = self.get_all_objects()
+    #     S_CoFu = self.S_CoFu
+    #     S_DrWa = self.S_DrWa
+    #     S_Sani = self.S_Sani
+    #     S_Elec = self.S_Elec
 
-        arr=[   S_CoFu,S_DrWa,S_Sani,S_Elec
-                ]
+    #     arr=[   S_CoFu,S_DrWa,S_Sani,S_Elec
+    #             ]
         
-        for district in districts:
-            max_arr=[]
-            min_arr=[]
-            for i in arr:
-                max_val = max(i, default=0)
-                min_value=min(i, default=0)
-                max_arr.append(max_val)
-                min_arr.append(min_value)
-        norm_arr=[]
-        for i in range(0,8):
-            ans=((max_arr[i]-arr[i])/(max_arr[i]-min_arr[i]))
-            norm_arr.append(round(ans,3))
-        return norm_arr
+    #     for district in districts:
+    #         max_arr=[]
+    #         min_arr=[]
+    #         for i in arr:
+    #             max_val = max(i, default=0)
+    #             min_value=min(i, default=0)
+    #             max_arr.append(max_val)
+    #             min_arr.append(min_value)
+    #     norm_arr=[]
+    #     for i in range(0,8):
+    #         ans=((max_arr[i]-arr[i])/(max_arr[i]-min_arr[i]))
+    #         norm_arr.append(round(ans,3))
+    #     return norm_arr
 
 
 
-    def get_sol_score(self):
-        get_sol_ind_score_values=self.get_sol_norm_ind_score()
-        sum=0
-        j=0
-        for i in get_sol_ind_score_values:
-            sum+=i
-            j=j+1
-        return (sum/j)
+    # def get_sol_score(self):
+    #     get_sol_ind_score_values=self.get_sol_norm_ind_score()
+    #     sum=0
+    #     j=0
+    #     for i in get_sol_ind_score_values:
+    #         sum+=i
+    #         j=j+1
+    #     return (sum/j)
     
     
             
