@@ -3,8 +3,8 @@
 {% block content %}
 <div class=main-content><!-- PAGE-1 -->
   <div class=page1>
-    <div class=frame1><img alt="" src=../../media/{{tribe.tribe_image.first.logo_image}} class=tribe-logo-icon>
-      <div class=tribe-image-main style="background-image: url(../../media/{{tribe.tribe_image.first.main_image}});">
+    <div class=frame1><img alt="" src=../media/{{tribe.tribe_image.first.logo_image}} class=tribe-logo-icon>
+      <div class=tribe-image-main style="background-image: url(../media/{{tribe.tribe_image.first.main_image}});">
         <div class=tribe-photo-desc style=background-color:#f2f2f277>
           <div class=image-location->
             {{tribe.tribe_image.first.location}}
@@ -19,7 +19,7 @@
         <div class=rectangle-wrapper><canvas id=vertical-bar-graph class=vertical-graph height=560></canvas></div>
       </div>
       <div class=frame2-2>
-        <div class=tribe-heading><img alt="Here is an image" src=../../media/images/background-blue1.png>
+        <div class=tribe-heading><img alt="Here is an image" src=../media/images/background-blue1.png>
           <div class=a-snapshot-of-tdi-among-asur-p-parent>
             <div class=a-snapshot-of>A snapshot of TDI among {{tribe.name}} PVTG</div>
             <div class=asur>{{tribe.name}}</div>
@@ -57,7 +57,7 @@
                 <div class=health1>
                   <div>HEALTH</div>
                   <div id=my-data-health data-my-data={{indicator_contributions_to_dimension}}></div>
-                </div><img alt="" src=../../media/images/health-icon1.png class=pie-chart-frame>
+                </div><img alt="" src=../media/images/health-icon1.png class=pie-chart-frame>
                 <div class=pie-inside-box><!-- LABELS -->
                   <div class=pie-chart-labels>
                     <p class=chronic-diseases id=cd>Chronic Diseases
@@ -72,7 +72,7 @@
                 <div class=sol1>
                   <div class=standard-of-living>STANDARD OF LIVING</div>
                   <div id=my-data-sol></div>
-                </div><img alt="" src=../../media/images/sol-icon.png class=pie-chart-frame>
+                </div><img alt="" src=../media/images/sol-icon.png class=pie-chart-frame>
                 <div class=pie-inside-box><!-- LABELS -->
                   <div class=pie-chart-labels style=line-height:1.3>
                     <p class=chronic-diseases id=ic>Institutional Credit
@@ -89,7 +89,7 @@
                 <div class=governance1>
                   <div>GOVERNANCE</div>
                   <div id=my-data-governance></div>
-                </div><img alt="" src=../../media/images/governance-icon.png class=pie-chart-frame>
+                </div><img alt="" src=../media/images/governance-icon.png class=pie-chart-frame>
                 <div class=pie-inside-box><!-- LABELS -->
                   <div class=pie-chart-labels>
                     <p class=chronic-diseases id=eov>Execution Of Voting Rights
@@ -104,7 +104,7 @@
                 <div class=education1>
                   <div>EDUCATION</div>
                   <div id=my-data-education></div>
-                </div><img alt="" src=../../media/images/education-icon.png class=pie-chart-frame>
+                </div><img alt="" src=../media/images/education-icon.png class=pie-chart-frame>
                 <div class=pie-inside-box><!-- LABELS -->
                   <div class=pie-chart-labels>
                     <p class=chronic-diseases id=yos>Years of Schooling
@@ -117,7 +117,7 @@
                 <div class=culture1>
                   <div>CULTURE</div>
                   <div id=my-data-culture></div>
-                </div><img alt="" src=../../media/images/culture-icon.png class=pie-chart-frame>
+                </div><img alt="" src=../media/images/culture-icon.png class=pie-chart-frame>
                 <div class=pie-inside-box><!-- LABELS -->
                   <div class=pie-chart-labels>
                     <p class=chronic-diseases id=lan>Language
@@ -135,7 +135,7 @@
   <div class=page2>
     <div class=frame-container>
       <div class=map-frame>
-        <div class=frame><img alt="" src=../../media/{{tribe.tribe_image.first.logo_image}} class=rectangle-icon></div>
+        <div class=frame><img alt="" src=../media/{{tribe.tribe_image.first.logo_image}} class=rectangle-icon></div>
         <div class=group2>
           <div class=map-head>Location on map</div>
         </div>
@@ -163,7 +163,7 @@
       <div class=censored-uncensored-frame>
         <div class=group>
           <div class=percentage-contribution-of>Censored And Uncensored</div>
-        </div><!-- <img class="frame-child" alt="" src="../../media/images/percentage-graph.png" /> -->
+        </div><!-- <img class="frame-child" alt="" src="../media/images/percentage-graph.png" /> -->
         <div class=percentage-graph>
           <div class=censored><canvas id=censored-graph height=579 width=288></canvas>
             <div id=my-data_censored1 data-my-data={{tribe.get_censored_tribal_indicator_score.0}}></div>
@@ -208,7 +208,7 @@
         </div>
       </div><!-- --------- --><!-- BOTTOM RIGHT TRIBE IMAGE -->
       <div class=group-parent>
-        <div class=group-child><img alt="" src=../../media/{{tribe.tribe_image.first.village_image}} style=width:100%>
+        <div class=group-child><img alt="" src=../media/{{tribe.tribe_image.first.village_image}} style=width:100%>
         </div>
         <div class=group1>"{{tribe.tribe_image.first.village_desc}}"</div>
       </div><!-- ------- -->
@@ -216,4 +216,10 @@
   </div><!-- ------- -->
 </div>
 
+{% endblock %}
+{% block extra_css %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}

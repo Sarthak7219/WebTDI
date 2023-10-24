@@ -5,10 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-  <link rel="stylesheet" href="../media/css/global.css" />
-  <link rel="stylesheet" href="../media/css/style.css" />
-  <link rel="stylesheet" href="../media/css/globaldistrict.css" />
-  <link rel="stylesheet" href="../media/css/index.css" />
+ 
+ 
+  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -17,7 +16,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
+    {% block extra_css %}{% endblock %}
 </head>
 
 <body>
@@ -27,7 +26,7 @@
 
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style='position: relative; width:100%;'>
       <div class="container-fluid ">
         <a class="navbar-brand" href="#">WebTDI</a>
 
@@ -66,12 +65,13 @@
 
         </div>
       </div>
-    </nav>
+    </nav> 
     <!-- ------- -->
-
     {% block content %}
 
     {% endblock %}
+
+    
   </div>
 
 
@@ -419,6 +419,31 @@
       data: data2,
     };
     const health = new Chart(document.getElementById('health-pie'), config2);
+
+
+    var myDattaElement = document.getElementById('my-data-health-district');
+    var health_data =myDattaElement.getAttribute('data-my-data')
+    const datadis1 = {
+
+      datasets: [{
+        label: '',
+        data:health_data ,
+        backgroundColor: [
+          '#315493',
+          '#3B64AD',
+          '#4472C4',
+          '#8FA2D4',
+         
+        ],
+        hoverOffset: 4
+      }]
+    };
+
+    const configdis1 = {
+      type: 'doughnut',
+      data: datadis1,
+    };
+    const health1 = new Chart(document.getElementById('health-pie-district'), configdis1); 
 
 
     //Pie chart education *********

@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="../media/css/index.css" />
-    <link rel="stylesheet" href="../media/css/globaldistrict.css" />
-    
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
-    />
-  </head>
-  <body>
+{% block content %}
     <div class="desktop-2">
       <div class="group-parent">
         <div class="group">
           <div class="group-group">
             <div class="group1">
-              <img class="vector-icon" alt="" src="./public/vector.svg" />
+              <img class="vector-icon" alt="" src="../media/imagesdis/background-blue.png" />
 
               <div class="bokaro">Bokaro :</div>
               <div class="district-wise-tdi-container">
@@ -29,7 +17,7 @@
             <img
               class="rectangle-icon"
               alt=""
-              src="./public/rectangle@2x.png"
+              src="../media/imagesdis/asurmap.png"
             />
           </div>
           <div class="group-container">
@@ -37,37 +25,26 @@
               <img
                 class="rectangle-icon1"
                 alt=""
-                src="./public/rectangle1@2x.png"
+                src="../media/imagesdis/Rectangle (2).png"
               />
 
               <div class="health-parent">
-                <div class="health">
-                  <div class="health1">Health</div>
-                  <img
-                    class="vector-icon1"
-                    alt=""
-                    src="./public/vector1@2x.png"
-                  />
+                <div class=pie-box>
+                  <div class=health1>
+                    <div>HEALTH</div>
+                    <div id="my-data-health-district" data-my-data="[20, 40, 30, 10]"></div>
 
-                  <img class="vector-icon2" alt="" src="./public/vector2.svg" />
-
-                  <img class="vector-icon3" alt="" src="./public/vector3.svg" />
-
-                  <img class="vector-icon4" alt="" src="./public/vector4.svg" />
-
-                  <img class="vector-icon5" alt="" src="./public/vector5.svg" />
-
-                  <div class="chronic-diseases-immunisation-container">
-                    <p class="chronic-diseases">Chronic Diseases</p>
-                    <p class="chronic-diseases">Immunisation</p>
-                    <p class="chronic-diseases">Maternal Care</p>
-                    <p class="chronic-diseases">Child Mortality</p>
+                  <img alt="" src=../media/images/health-icon1.png class=pie-chart-frame>
+                  <div class=pie-inside-box><!-- LABELS -->
+                    <div class=pie-chart-labels>
+                      <p class=chronic-diseases id=cd>Chronic Diseases
+                      <p class=chronic-diseases id=im>Immunisation
+                      <p class=chronic-diseases id=mc>Maternal Care
+                      <p class=chronic-diseases id=cm>Child Mortality
+                    </div><!-- ------ --><!-- PIE CHART -->
+                    <div class=pie-icon-1><canvas id=health-pie-district class=canvas-pie></canvas></div>
+                  </div><!-- ------ -->
                   </div>
-                  <img
-                    class="health-pie-icon-1"
-                    alt=""
-                    src="./public/healthpieicon-1@2x.png"
-                  />
                 </div>
                 <div class="sol">
                   <img class="vector-icon6" alt="" src="./public/vector6.svg" />
@@ -102,49 +79,22 @@
                   <img
                     class="sol-icon-1"
                     alt=""
-                    src="./public/solicon-1@2x.png"
+                    src="../media/imagesdis/sol-icon.png"
                   />
 
                   <img
                     class="sol-pie-icon-1"
                     alt=""
-                    src="./public/solpieicon-1@2x.png"
+                    src="../media/imagesdis/sol-pie-icon.png"
                   />
                 </div>
-                <div class="education">
-                  <img
-                    class="vector-icon12"
-                    alt=""
-                    src="./public/vector12.svg"
-                  />
-
-                  <div class="drop-out">Drop Out</div>
-                  <div class="years-of-schooling">Years of Schooling</div>
-                  <img
-                    class="vector-icon13"
-                    alt=""
-                    src="./public/vector13.svg"
-                  />
-
-                  <div class="education1">Education</div>
-                  <img
-                    class="education-icon-1"
-                    alt=""
-                    src="./public/educationicon-1@2x.png"
-                  />
-
-                  <img
-                    class="education-pie-icon-1"
-                    alt=""
-                    src="./public/educationpieicon-1@2x.png"
-                  />
-                </div>
+                
                 <div class="governance-wrapper">
                   <div class="governance">
                     <img
                       class="governance-icon-1"
                       alt=""
-                      src="./public/governanceicon-1@2x.png"
+                      src="../media/imagesdis/education-icon.png"
                     />
 
                     <img
@@ -153,7 +103,7 @@
                       src="./public/vector14.svg"
                     />
 
-                    <div class="governance1">GOVERNANCE</div>
+                    <div class="governance1">Education</div>
                     <div class="execution-of-voting">
                       Execution Of Voting Rights
                     </div>
@@ -169,41 +119,11 @@
                     <img
                       class="governance-pie-icon-1"
                       alt=""
-                      src="./public/governancepieicon-1@2x.png"
+                      src="../media/imagesdis/education-pie-icon.png"
                     />
                   </div>
                 </div>
-                <div class="culture-wrapper">
-                  <div class="culture">
-                    <img
-                      class="vector-icon16"
-                      alt=""
-                      src="./public/vector16.svg"
-                    />
-
-                    <div class="arts">Arts</div>
-                    <img
-                      class="vector-icon17"
-                      alt=""
-                      src="./public/vector17.svg"
-                    />
-
-                    <div class="lanuage">Lanuage</div>
-                    <img
-                      class="culture-icon-1"
-                      alt=""
-                      src="./public/cultureicon-1@2x.png"
-                    />
-
-                    <img
-                      class="culture-pie-icon-1"
-                      alt=""
-                      src="./public/culturepieicon-1@2x.png"
-                    />
-
-                    <div class="culture1">Culture</div>
-                  </div>
-                </div>
+               
               </div>
             </div>
             <div class="group-child"></div>
@@ -215,32 +135,37 @@
         </div>
         <div class="group-div">
           <div class="vector-parent">
-            <img class="vector-icon18" alt="" src="./public/vector18.svg" />
+           
 
             <img
               class="score-graph-1-icon"
               alt=""
-              src="./public/scoregraph-1@2x.png"
+              src="../media/imagesdis/score-graph 1.png"
             />
 
-            <div class="percentage-contribution-of1">
-              Percentage contribution of each Dimension and Indicator to TDI
-              Score
+            <div class="percentage-contribution-of2">
+              Dimension wise Index Score and Overall TDI Score
             </div>
           </div>
           <div class="frame-parent">
-            <img class="group-item" alt="" src="./public/frame-12@2x.png" />
+            <img class="group-item" alt="" src="../media/imagesdis/Frame 12.png" />
 
-            <img class="vector-icon18" alt="" src="./public/vector19.svg" />
+            
 
             <div class="percentage-contribution-of1">
-              Percentage contribution of each Dimension and Indicator to TDI
-              Score
+              Indicator wise Development Score
+
             </div>
           </div>
         </div>
       </div>
-      <div class="navbar"></div>
+     
     </div>
-  </body>
-</html>
+ 
+{% endblock %}
+{% block extra_css %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/globaldistrict.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
