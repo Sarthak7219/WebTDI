@@ -1,14 +1,14 @@
-from django.contrib import admin
 from django.urls import path
-from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import *
+
 
 urlpatterns = [
-    path('', home_view,name='home'),
-    path('<slug>/',tribe_detail_view,name='tribe_detail'),
+
     path('test/',test_view,name='test'),
     path('form/',form_view,name='form'),
+    path('<slug>/',tribe_detail_view,name='tribe_detail'),
 
 ]
 

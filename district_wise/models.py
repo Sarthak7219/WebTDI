@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-
-
+import math
 
 
 class District(models.Model):
@@ -9,6 +8,7 @@ class District(models.Model):
     name = models.CharField(max_length=30,unique=True)
     st_population = models.IntegerField()
     total_population = models.IntegerField()
+    #HEALTH
     W_BMI = models.FloatField()
     C_UW = models.FloatField()
     AN_W = models.FloatField()
@@ -17,13 +17,19 @@ class District(models.Model):
     AHC_Full_ANC = models.FloatField()
     AHC_PNC = models.FloatField()
     AHC_HI = models.FloatField()
+
+    #EDUCATION
     Enrollment = models.FloatField()
     Equity = models.FloatField()
     E_DropRate = models.FloatField()
+
+    #SOL
     S_Sani = models.FloatField()
     S_CoFu = models.FloatField()
     S_DrWa = models.FloatField()
     S_Elec = models.FloatField()
+
+    
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -36,173 +42,134 @@ class District(models.Model):
         ans = self.st_population/self.total_population
         return ans
     
-    def get_health_multiplier_indicator_score(self):
-        W_BMI_score = self.W_BMI*self.get_multiplier()
-        C_UW_score = self.C_UW*self.get_multiplier()
-        AN_W_score = self.AN_W*self.get_multiplier()
-        AN_C_score = self.AN_C*self.get_multiplier()
-        AHC_ANC_score = self.AHC_ANC*self.get_multiplier()
-        AHC_Full_ANC_score = self.AHC_Full_ANC*self.get_multiplier()
-        AHC_PNC_score = self.AHC_PNC*self.get_multiplier()
-        AHC_HI_score = self.AHC_HI*self.get_multiplier()
-        
+
+    def get_indicator_st_scores(self):
+        multiplier = self.get_multiplier()
+
+        #HEALTH
+        W_BMI_score = self.W_BMI*multiplier
+        C_UW_score = self.C_UW*multiplier
+        AN_W_score = self.AN_W*multiplier
+        AN_C_score = self.AN_C*multiplier
+        AHC_ANC_score = self.AHC_ANC*multiplier
+        AHC_Full_ANC_score = self.AHC_Full_ANC*multiplier
+        AHC_PNC_score = self.AHC_PNC*multiplier
+        AHC_HI_score = self.AHC_HI*multiplier
+
+        #EDUCATION
+        Enrollment_score = self.Enrollment
+        Equity_score = self.Equity
+        E_DropRate_score = self.E_DropRate
+
+        #SOL
+        S_Sani_score = self.S_Sani*multiplier
+        S_CoFu_score = self.S_CoFu*multiplier
+        S_DrWa_score = self.S_DrWa*multiplier
+        S_Elec_score = self.S_Elec*multiplier
+
         ind_arr = [
-            W_BMI_score,C_UW_score,
-            AN_W_score,AN_C_score,
-            AHC_ANC_score, AHC_Full_ANC_score, AHC_PNC_score,
-            AHC_HI_score
-            ]
-        rounded_ind_arr = [round(value, 3) for value  in ind_arr]
-     
+            W_BMI_score,C_UW_score,AN_W_score,AN_C_score,AHC_ANC_score,AHC_Full_ANC_score,AHC_PNC_score,AHC_HI_score,Enrollment_score, Equity_score, E_DropRate_score,S_Sani_score,S_CoFu_score,S_DrWa_score,S_Elec_score
+            ]  #Index 0 to 6 are subindicators of health
+
+        rounded_ind_arr = [round(value, 1) for value in ind_arr]
         return rounded_ind_arr
     
+    #get all districts
     @classmethod
     def get_all_objects(cls):
         return cls.objects.all()
     
-    def get_health_norm_ind_score(self):
-        districts = self.get_all_objects()
-        W_BMI_score=[]
-        C_UW_score=[]
-        AN_W_score=[]
-        AN_C_score=[]
-        AHC_ANC_score=[]
-        AHC_Full_ANC_score=[]
-        AHC_PNC_score=[]
-        AHC_HI_score=[]
-        arr=[   W_BMI_score,C_UW_score,
-                AN_W_score,AN_C_score,
-                AHC_ANC_score, AHC_Full_ANC_score, AHC_PNC_score,
-                AHC_HI_score
-                ]
-        
-        for district in districts:
-            W_BMI_score.append(district.get_health_multiplier_indicator_score()[0]),
-            C_UW_score.append(district.get_health_multiplier_indicator_score()[1]),
-            AN_W_score.append(district.get_health_multiplier_indicator_score()[2]),
-            AN_C_score.append(district.get_health_multiplier_indicator_score()[3]),
-            AHC_ANC_score.append(district.get_health_multiplier_indicator_score()[4]),
-            AHC_Full_ANC_score.append(district.get_health_multiplier_indicator_score()[5]),
-            AHC_PNC_score.append(district.get_health_multiplier_indicator_score()[6]),
-            AHC_HI_score.append(district.get_health_multiplier_indicator_score()[7]),
-        max_arr=[]
-        min_arr=[]
-        for i in arr:
-            max_val = max(i, default=0)
-            min_value=min(i, default=0)
-            max_arr.append(max_val)
-            min_arr.append(min_value)
-        
-        arr=self.get_health_multiplier_indicator_score()
-        norm_arr=[]
-        for i in range(0,8):
-            ans=((max_arr[i]-arr[i])/(max_arr[i]-min_arr[i]))
-            norm_arr.append(round(ans,3))
-        return norm_arr
-    
-    def get_health_ind_score(self):
-        W_BMI_score=self.get_health_norm_ind_score()[0]
-        C_UW_score=self.get_health_norm_ind_score()[1]
-        AN_W_score=self.get_health_norm_ind_score()[2]
-        AN_C_score=self.get_health_norm_ind_score()[3]
-        AHC_ANC_score=self.get_health_norm_ind_score()[4]
-        AHC_Full_ANC_score=self.get_health_norm_ind_score()[5]
-        AHC_PNC_score=self.get_health_norm_ind_score()[6]
-        AHC_HI_score=self.get_health_norm_ind_score()[7]
 
-        ind_arr = [
-            [W_BMI_score,C_UW_score],
-            [AN_W_score,AN_C_score],
-            [AHC_ANC_score, AHC_Full_ANC_score, AHC_PNC_score],
-            [AHC_HI_score]
-            ]
-        ind_score=[]
-        for i in ind_arr:
-            ans=0
-            p=0
+    # Class-level variables to store the calculated values
+    _max_arr = None
+    _min_arr = None
+
+    #Get max and min scores for all indicators/sub I
+    def get_max_min_ind_scores(self):
+        # Check if the values have already been calculated and stored
+        if District._max_arr is not None and District._min_arr is not None:
+            return District._max_arr, District._min_arr
+
+        districts = self.get_all_objects()
+        max_arr = [0.0] * 15
+        min_arr = [0.0] * 15
+
+        for i in range(15):
+            one_ind_scores = []
+            for district in districts:
+                score = district.get_indicator_st_scores()[i]
+                one_ind_scores.append(score)
+            max_val = max(one_ind_scores)
+            min_val = min(one_ind_scores)
+            max_arr[i] = round(max_val,1)
+            min_arr[i] = round(min_val,1)
+
+        # Store the calculated values in class-level variables
+        District._max_arr = max_arr
+        District._min_arr = min_arr
+
+        return [max_arr, min_arr]
+
+        
+    
+    def get_normalized_ind_scores(self):
+
+        max_arr = self.get_max_min_ind_scores()[0]
+        min_arr = self.get_max_min_ind_scores()[1]
+        norm_arr = [0.0]*15
+        scores = self.get_indicator_st_scores()
+
+        for i in range(15):
+            max = max_arr[i]
+            min = min_arr[i]
+            act_val = scores[i]
+            norm_value = (max-act_val)/(max-min)
+            norm_arr[i] = norm_value
+
+        x = 6  # Round off number
+
+        norm_arr_final = [
+            [round((norm_arr[0] + norm_arr[1]) / 2, x), round((norm_arr[2] + norm_arr[3]) / 2, x), round((norm_arr[4] + norm_arr[5] + norm_arr[6]) / 3, x), round(norm_arr[7], x)],
+            [round(norm_arr[8], x), round(norm_arr[9], x), round(norm_arr[10], x)],
+            [round(norm_arr[11], x), round(norm_arr[12], x), round(norm_arr[13], x), round(norm_arr[14], x)]
+        ]
+
+        return norm_arr_final
+    
+    def get_dimension_scores(self):
+        norm_arr = self.get_normalized_ind_scores()
+        dimension_arr = []
+        for i in norm_arr:
+            sum =0
             for j in i:
-                ans+=j
-                p=p+1
-            ind_score.append(ans/p)
-        return ind_score
+                sum += j
+            avg = sum/len(i)
+            dimension_arr.append(round(avg,3))
+
+        return dimension_arr
     
-    def get_health_score(self):
-        get_health_ind_score_values=self.get_health_ind_score()
-        sum=0
-        j=0
-        for i in get_health_ind_score_values:
-            sum+=i
-            j=j+1
-        return (sum/j)
-    
-    def get_education_norm_ind_score(self):
-        districts = self.get_all_objects()
-        Enrollment = self.Enrollment
-        Equity =self.Equity
-        E_DropRate =self.E_DropRate
-        arr=[   Enrollment,Equity,E_DropRate
-                ]
+    def get_tdi_score(self):
+        dimension_scores = self.get_dimension_scores()
+        total = sum(dimension_scores)
+        length = len(dimension_scores)
+        prod = 1
+
+        for i in dimension_scores:
+            prod = prod*i
+
+        arithmetic_tdi = round(total/length,3)
+        geometric_tdi = round(math.pow(prod, 1/length),3)
+
+        return [arithmetic_tdi, geometric_tdi]
         
-        for district in districts:
-            max_arr=[]
-            min_arr=[]
-            for i in arr:
-                max_val = max(i, default=0)
-                min_value=min(i, default=0)
-                max_arr.append(max_val)
-                min_arr.append(min_value)
-        norm_arr=[]
-        for i in range(0,8):
-            ans=((max_arr[i]-arr[i])/(max_arr[i]-min_arr[i]))
-            norm_arr.append(round(ans,3))
-        return norm_arr
+
+                
 
 
 
-    def get_education_score(self):
-        get_education_ind_score_values=self.get_education_norm_ind_score()
-        sum=0
-        j=0
-        for i in get_education_ind_score_values:
-            sum+=i
-            j=j+1
-        return (sum/j)
-    
-    def get_sol_norm_ind_score(self):
-        districts = self.get_all_objects()
-        S_CoFu = self.S_CoFu
-        S_DrWa = self.S_DrWa
-        S_Sani = self.S_Sani
-        S_Elec = self.S_Elec
-
-        arr=[   S_CoFu,S_DrWa,S_Sani,S_Elec
-                ]
-        
-        for district in districts:
-            max_arr=[]
-            min_arr=[]
-            for i in arr:
-                max_val = max(i, default=0)
-                min_value=min(i, default=0)
-                max_arr.append(max_val)
-                min_arr.append(min_value)
-        norm_arr=[]
-        for i in range(0,8):
-            ans=((max_arr[i]-arr[i])/(max_arr[i]-min_arr[i]))
-            norm_arr.append(round(ans,3))
-        return norm_arr
 
 
 
-    def get_sol_score(self):
-        get_sol_ind_score_values=self.get_sol_norm_ind_score()
-        sum=0
-        j=0
-        for i in get_sol_ind_score_values:
-            sum+=i
-            j=j+1
-        return (sum/j)
-    
     
             
                 

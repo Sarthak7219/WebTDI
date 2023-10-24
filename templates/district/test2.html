@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
+    <style>
+        body {
+            font-family: serif;
+        }
+    </style>
 </head>
+
 <body>
-    {% for district in districts%}
-    {{district.get_health_multiplier_indicator_score}}
     <br>
-    {%endfor%}
-    {{max_arr}}
-    <br><br>
-    {{min_arr}}
-    <!-- {% for district in districts%}
-    {{district.get_max_min}}
-    <br>
-    {%endfor%} -->
-    {% for district in districts%}
-    {{district.get_health_norm_ind_score}}
-    <br>
-    {%endfor%}
-    {% for district in districts%}
-    <br>
-    {{district.get_health_ind_score}}
-    <br>
-    {%endfor%}
+    <ul>
+        <li>Indicator / Sub Indicator wise MAX and MIN values :<br>
+            MIN = {{max_min_arr.1}}<br>
+            MAX = {{max_min_arr.0}}
+        </li>
+        {% for district in districts%}
+        <hr>
+        <li>
+            <p>
+                Normalized Indicator Scores = {{district.get_normalized_ind_scores}}
+            </p>
+            <p>
+                Dimensional Scores = {{district.get_dimension_scores}}
+            </p>
+            <p>
+                Arithmetic TDI = {{district.get_tdi_score.0}}<br>
+                Geometric TDI = {{district.get_tdi_score.1}}
+            </p>
+        </li>
+        <br>
+        {%endfor%}
+    </ul>
+
 </body>
+
 </html>
