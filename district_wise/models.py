@@ -12,12 +12,12 @@ class District(models.Model):
     W_BMI = models.FloatField()
     C_UW = models.FloatField()
     AN_W = models.FloatField()
-    AN_C = models.FloatField()
+    AN_C = models.FloatField()  
     AHC_ANC = models.FloatField()
     AHC_Full_ANC = models.FloatField()
     AHC_PNC = models.FloatField()
     AHC_HI = models.FloatField()
-
+    
     #EDUCATION
     Enrollment = models.FloatField()
     Equity = models.FloatField()
@@ -123,8 +123,12 @@ class District(models.Model):
             max = max_arr[i]
             min = min_arr[i]
             act_val = scores[i]
-            norm_value = (max-act_val)/(max-min)
+            if(i>=0 and i<4 or i==9 or i==10):
+                norm_value = (max-act_val)/(max-min)
+            else:
+                norm_value = (act_val-min)/(max-min)
             norm_arr[i] = norm_value
+       
 
         x = 6  # Round off number
 
