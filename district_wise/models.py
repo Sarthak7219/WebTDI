@@ -165,7 +165,14 @@ class District(models.Model):
         geometric_tdi = round(math.pow(prod, 1/length),3)
 
         return [arithmetic_tdi, geometric_tdi]
-        
+
+
+    def get_dimension_contribution_tdi(self):
+        dimension_arr = self.get_dimension_scores()
+        total = sum(dimension_arr)
+        ans = [round((dimension_arr[0]/total)*100), round((dimension_arr[1]/total)*100), round((dimension_arr[2]/total)*100)]
+        return ans
+
 
                 
 

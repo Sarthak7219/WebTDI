@@ -433,6 +433,7 @@ class Tribe_Image(models.Model):
 
 
 class Household(models.Model):
+    
     tribeID = models.ForeignKey(Tribe, on_delete=models.CASCADE, related_name="household", null=True, blank=True)
     size = models.IntegerField(null= True, blank=True)
     # decimal_field = models.DecimalField(max_digits=10, decimal_places=2,null= True, blank=True)

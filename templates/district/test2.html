@@ -18,6 +18,7 @@
         <li>Indicator / Sub Indicator wise MAX and MIN values :<br>
             MIN = {{max_min_arr.1}}<br>
             MAX = {{max_min_arr.0}}
+
         </li>
         {% for district in districts%}
         <hr>
@@ -31,6 +32,9 @@
             <p>
                 Arithmetic TDI = {{district.get_tdi_score.0}}<br>
                 Geometric TDI = {{district.get_tdi_score.1}}
+            </p>
+            <p>
+                Dimension Contribution to Index = {{district.get_dimension_contribution_tdi}}
             </p>
         </li>
         <br>
