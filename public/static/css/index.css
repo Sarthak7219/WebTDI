@@ -255,9 +255,14 @@
   object-fit: cover;
 }
 .education-pie-icon-1 {
-  left: 116.24px;
-  width: 94.28px;
-  height: 93.78px
+  position: relative;
+    top: -39px;
+    right: -18px;
+    display: block;
+    box-sizing: border-box;
+    height: 101px;
+    width: 101px;
+
 }
 .education {
   position: absolute;
@@ -427,7 +432,7 @@
   position: absolute;
   height: 100%;
   width: 133.96px;
-  background-color: pink;
+    
 }
 .percentage-contribution-of {
   position: absolute;

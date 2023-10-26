@@ -14,36 +14,6 @@
 
 <body>
     <br>
-<<<<<<< HEAD
-    {%endfor%}
-    {{max_arr}}
-    <br><br>
-    {{min_arr}}
-    <!-- {% for district in districts%}
-    {{district.get_max_min}}
-    <br>
-    {%endfor%} -->
-    {% for district in districts%}
-    {{district.get_health_norm_ind_score}}
-    <br>
-    {%endfor%}
-    {% for district in districts%}
-    <br>
-    {{district.get_health_score}}
-    <br>
-    {%endfor%}
-    {% for district in districts%}
-    <br>
-    {{district.get_education_score}}
-    <br>
-    {%endfor%}
-    <!-- 
-    {% for district in districts%}
-    <br>
-    {{district.get_sol_score}}
-    <br>
-    {%endfor%} -->
-=======
     <ul>
         <li>Indicator / Sub Indicator wise MAX and MIN values :<br>
             MIN = {{max_min_arr.1}}<br>
@@ -53,6 +23,7 @@
         <hr>
         <li>
             <p>
+                {{district.get_normalized_final_ind_scores}}
                 Normalized Indicator Scores = {{district.get_normalized_ind_scores}}
             </p>
             <p>
@@ -67,7 +38,6 @@
         {%endfor%}
     </ul>
 
->>>>>>> 2ffe00b3ea1cf2f272c338e52066565ed101f5a9
 </body>
 
 </html>

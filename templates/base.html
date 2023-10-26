@@ -594,7 +594,7 @@
   
         datasets: [{
           label: '',
-          data:[20,30,40,10] ,
+          data:{{health_ind_contri_to_dim}} ,
           backgroundColor: [
             '#315493',
             '#3B64AD',
@@ -619,7 +619,7 @@
   
         datasets: [{
           label: '',
-          data:[20,30,40,10] ,
+          data:{{education_ind_contri_to_dim}} ,
           backgroundColor: [
             '#315493',
             '#3B64AD',
@@ -644,7 +644,7 @@
   
         datasets: [{
           label: '',
-          data:[20,30,40,10] ,
+          data:{{sol_ind_contri_to_dim}} ,
           backgroundColor: [
             '#315493',
             '#3B64AD',
@@ -702,11 +702,11 @@
    
 
     const censored_data_district = {
-      labels: ['Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Maternal Care', 'Under 5 child mortality', 'Food Security'],
+      labels: [ 'Under 5 child mortality', 'Food Security','Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Maternal Care', 'Under 5 child mortality', 'Food Security','Chronic Disease', 'Immunisation', 'Maternal Care', 'Under 5 child mortality', 'Food Security','Chronic Disease', 'Immunisation', 'Maternal Care'],
       datasets: [
         {
           label: 'Censored',
-          data: [20,30,10,50,70,20,40,30,60,10,20,30,40],
+          data: {{normalized_final_ind_scores}},
           fill: false,
           backgroundColor: [
             '#BDD7EE',
@@ -756,7 +756,7 @@
               ticks: {
                 stepSize: 1,
                 beginAtZero: true,
-                maxTicksLimit: 20,
+                maxTicksLimit: 21,
                 autoSkip: false
               },
             },
@@ -787,7 +787,86 @@
 
     const censored_graph_district = new Chart(document.getElementById('censored-graph-district'), config_censored_district);
 
-  
+    const vertical_graph_element_district = document.getElementById('vertical-bar-graph-district');
+    
+
+    
+    const vertical_bar_data_district = {
+      labels: ['Dimensions'],
+      datasets: [
+        
+        {
+          label: 'Sol', // Removed square brackets
+          data: [{{sol_contri_to_tdi_sol}}], // Replace with your actual data for 'Sol'
+          backgroundColor: '#FFD966', // Color for 'Sol'
+        },
+        {
+          label: 'Education', // Removed square brackets
+          data: [{{education_contri_to_tdi}}], // Replace with your actual data for 'Education'
+          backgroundColor: '#A9D18E', // Color for 'Education'
+        },
+        {
+          label: 'Health', // Removed square brackets
+          data: [{{health_contri_to_tdi}}], // Replace with your actual data for 'Health'
+          backgroundColor: '#5B9BD5', // Color for 'Health'
+        },
+      ],
+    };
+
+    const config_vertical_bar_district = {
+      type: 'bar',
+      data: vertical_bar_data_district,
+      options: {
+        barPercentage: 2,
+        categoryPercentage: 1,
+        indexAxis: 'x',
+        aspectRatio: 0.02,
+        scales: {
+          x: {
+            stacked: true,
+            beginAtZero: true,
+            display: false
+          },
+          y: {
+            display: false,
+            stacked: true,
+            beginAtZero: true,
+            maxTicksLimit: 16,
+            autoSkip: false,
+          },
+        },
+
+        plugins: {
+          datalabels: {
+            anchor: 'center', // Center the labels inside the bars
+            align: 'center', // Align the labels to the center
+            color: 'white', // Label color
+            font: {
+              weight: 'bold', // Label font weight
+            },
+            formatter: function (value, context) {
+              const label = vertical_bar_data_district.labels[context.dataIndex];
+              const dataset = vertical_bar_data_district.datasets[context.datasetIndex];
+              const colorIndex = context.datasetIndex; // Get the color index
+
+              // Create a legend string
+              const legend = dataset.label + ',' + value;
+
+              return legend;
+            },
+            display: 'auto',
+          },
+          legend: {
+            display: false, // Hide the legend
+          },
+        },
+      },
+      plugins: [ChartDataLabels]
+    };
+
+
+    const vertical_bar_graph = new Chart(vertical_graph_element_district, config_vertical_bar_district);
+
      </script>
      
    

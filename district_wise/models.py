@@ -128,20 +128,33 @@ class District(models.Model):
             else:
                 norm_value = (act_val-min)/(max-min)
             norm_arr[i] = norm_value
-       
-
+        
+        return norm_arr
         x = 6  # Round off number
 
+    def  get_normalized_final_ind_scores(self):
+            x = 6 
+            norm_arr=self.get_normalized_ind_scores()
+            norm_arr_final = [
+                norm_arr[0],norm_arr[1],round((norm_arr[0] + norm_arr[1]) / 2, x), norm_arr[2],norm_arr[3],round((norm_arr[2] + norm_arr[3]) / 2, x),norm_arr[4], norm_arr[5], norm_arr[6],round((norm_arr[4] + norm_arr[5] + norm_arr[6]) / 3, x), round(norm_arr[7], x),
+                round(norm_arr[8], x), round(norm_arr[9], x), round(norm_arr[10], x),
+                round(norm_arr[11], x), round(norm_arr[12], x), round(norm_arr[13], x), round(norm_arr[14], x)]
+            
+            print(norm_arr_final)
+            return norm_arr_final
+    
+    def get_avg_ind_scores(self):
+        norm_arr=self.get_normalized_ind_scores()
         norm_arr_final = [
-            [round((norm_arr[0] + norm_arr[1]) / 2, x), round((norm_arr[2] + norm_arr[3]) / 2, x), round((norm_arr[4] + norm_arr[5] + norm_arr[6]) / 3, x), round(norm_arr[7], x)],
-            [round(norm_arr[8], x), round(norm_arr[9], x), round(norm_arr[10], x)],
-            [round(norm_arr[11], x), round(norm_arr[12], x), round(norm_arr[13], x), round(norm_arr[14], x)]
+        [(norm_arr[0] + norm_arr[1]) / 2, (norm_arr[2] + norm_arr[3]) / 2, (norm_arr[4] + norm_arr[5] + norm_arr[6]) / 3,
+        norm_arr[7]],
+        [norm_arr[8], norm_arr[9], norm_arr[10]],
+        [norm_arr[11], norm_arr[12], norm_arr[13], norm_arr[14]]
         ]
-
         return norm_arr_final
     
     def get_dimension_scores(self):
-        norm_arr = self.get_normalized_ind_scores()
+        norm_arr = self.get_avg_ind_scores()
         dimension_arr = []
         for i in norm_arr:
             sum =0
@@ -152,7 +165,7 @@ class District(models.Model):
 
         return dimension_arr
     
-    def get_Ddi_score(self):
+    def get_tdi_score(self):
         dimension_scores = self.get_dimension_scores()
         total = sum(dimension_scores)
         length = len(dimension_scores)
@@ -165,8 +178,41 @@ class District(models.Model):
         geometric_tdi = round(math.pow(prod, 1/length),3)
 
         return [arithmetic_tdi, geometric_tdi]
+    
+
+    def get_indicator_contri_to_dimension(self):
+        normalized_ind_scores = self.get_avg_ind_scores()
+        ind_sum = []
+        
+        for i in normalized_ind_scores:
+            sum = 0
+            for j in i:
+                sum += j
+            ind_sum.append(sum)
         
 
+        indicator_contri_to_dimension = []
+
+        for i in range(0,3):
+            ind_contri_arr = []
+            for k in range(len(normalized_ind_scores[i])):
+                if ind_sum[i]!=0:
+                 ind_contri = normalized_ind_scores[i][k] / ind_sum[i]
+                 ind_contri_arr.append(ind_contri*100)
+            indicator_contri_to_dimension.append(ind_contri_arr)
+        
+        return indicator_contri_to_dimension
+    
+    def get_dimension_contribution_tdi(self):
+        dimension_arr = self.get_dimension_scores()
+        total = sum(dimension_arr)
+        ans = [round((dimension_arr[0]/total)*100), round((dimension_arr[1]/total)*100), round((dimension_arr[2]/total)*100)]
+        return ans
+    
+   
+            
+
+        
                 
 
 
