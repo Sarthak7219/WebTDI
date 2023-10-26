@@ -42,7 +42,7 @@
 }
 .group-group {
   position: absolute;
-  height: 76.37%;
+  height: 100%;
   width: 42.29%;
   right: 57.71%;
   left: 0;
@@ -55,15 +55,11 @@
   height: 468px;
   object-fit: cover;
 }
-.health1 {
+.pie-chart-frame {
   position: absolute;
-  top: -78.95px;
-  left: calc(50% - 57.24px);
-  letter-spacing: -0.01em;
-  line-height: 150%;
-  font-weight: 500;
-  display: inline-block;
-  width: 32.21px;
+  left: 0;
+  width: 204.06px;
+  height: 92.49px
 }
 .vector-icon1 {
   position: absolute;
@@ -100,35 +96,36 @@
 .chronic-diseases {
   margin: 0;
 }
-.chronic-diseases-immunisation-container {
+.pie-icon-1 {
+  position: relative;
+  top:-15px;
+  left: 96.01px;
+  display: block;
+  box-sizing: border-box;
+  height: 101px;
+  width: 101px;
+
+
+}
+.health1 {
   position: absolute;
-  top: -64.87px;
-  left: calc(50% - 62.59px);
-  font-size: 8.99px;
-  letter-spacing: -0.01em;
-  line-height: 137%;
+  margin-top: 3px;
+  left: calc(50% - 62.88px);
+  letter-spacing: -.01em;
+  line-height: 150%;
   font-weight: 500;
-  color: var(--color-black);
   display: inline-block;
-  width: 73.44px;
+  width: 32.29px
 }
-.health,
 .health-pie-icon-1 {
   position: absolute;
+  left: 115.3px;
+  width: 90.41px;
   height: 90.57px;
+  object-fit: cover
 }
-.health-pie-icon-1 {
-  top: -90.57px;
-  left: 111.72px;
-  width: 90.18px;
-  object-fit: cover;
-}
-.health {
-  top: 115.57px;
-  left: calc(50% - 101.01px);
-  width: 201.91px;
-  color: #2e75b6;
-}
+
+
 .vector-icon6,
 .vector-icon7 {
   position: absolute;
@@ -162,8 +159,8 @@
 .vector-icon11 {
   top: -68.49px;
 }
-.institutional-credit-ownership-container,
-.standard-of-living {
+.institutional-credit-ownership-container
+ {
   position: absolute;
   top: -71.49px;
   left: calc(50% - 64.52px);
@@ -174,16 +171,23 @@
   width: 64.42px;
 }
 .standard-of-living {
-  top: -86.49px;
-  left: calc(50% - 70.5px);
-  font-size: 10.32px;
-  letter-spacing: -0.01em;
-  line-height: 150%;
-  color: #7f6000;
-  width: 88.9px;
+  position: absolute;
+  left: calc(50% - 62.88px);
+  letter-spacing: -.05em;
+  line-height: 121%;
+  font-weight: 500;
+  display: inline-block;
+  width: 64.58px
 }
-.sol-icon-1,
-.sol-pie-icon-1 {
+.standard-of-living {
+  margin-top: 3px;
+  font-size: 9.32px;
+  letter-spacing: -.01em;
+  line-height: 150%;
+  color: var(--color-olive);
+  width: 89.12px
+}
+.sol-icon-1 {
   position: absolute;
   top: -92.49px;
   left: 0;
@@ -191,12 +195,7 @@
   height: 92.49px;
   object-fit: cover;
 }
-.sol-pie-icon-1 {
-  top: -91.21px;
-  left: 112.73px;
-  width: 92.12px;
-  height: 91.21px;
-}
+
 .sol {
   position: absolute;
   top: 398px;
@@ -236,18 +235,18 @@
 }
 .education1 {
   position: absolute;
-  
-  left: calc(50% - 65.82px);
+  margin-top: 3px;
+  left: calc(50% - 62.99px);
   font-size: 10.32px;
-  letter-spacing: -0.01em;
+  letter-spacing: -.01em;
   line-height: 150%;
   font-weight: 500;
-  color: #385723;
+  color: var(--color-darkolivegreen);
   display: inline-block;
-  width: 48.96px;
+  width: 49.08px
 }
-.education-icon-1,
-.education-pie-icon-1 {
+.education-icon-1
+{
   position: absolute;
  
   left: 0;
@@ -256,9 +255,9 @@
   object-fit: cover;
 }
 .education-pie-icon-1 {
-  left: 115.95px;
-  width: 94.05px;
-  height: 93.78px;
+  left: 116.24px;
+  width: 94.28px;
+  height: 93.78px
 }
 .education {
   position: absolute;
@@ -268,13 +267,12 @@
   height: 94.42px;
   font-size: 8.22px;
 }
-.governance-icon-1 {
-  position: absolute;
-  top: -93.14px;
-  left: 0;
-  width: 202.77px;
-  height: 93.14px;
-  object-fit: cover;
+.sol-pie-icon-1 {
+  left: 113.01px;
+  width: 92.34px;
+  height: 91.21px;
+  display: block;
+  box-sizing: border-box
 }
 .vector-icon14 {
   position: absolute;
@@ -321,30 +319,8 @@
   display: inline-block;
   width: 102.68px;
 }
-.governance-pie-icon-1 {
-  position: absolute;
-  top: -93.78px;
-  left: 114.78px;
-  width: 94.28px;
-  height: 93.78px;
-  object-fit: cover;
-}
-.governance {
-  position: relative;
-  width: 209.06px;
-  height: 93.78px;
-}
-.governance-wrapper {
-  position: absolute;
-  top: 255.49px;
-  left: 1px;
-  width: 209px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 8.99px;
-}
+
+
 .vector-icon16 {
   position: absolute;
   top: -36.61px;
@@ -379,55 +355,12 @@
   display: inline-block;
   width: 40.04px;
 }
-.culture-icon-1,
-.culture-pie-icon-1 {
-  position: absolute;
-  top: -92.76px;
-  left: 0;
-  width: 201.48px;
-  height: 90.57px;
-  object-fit: cover;
-}
-.culture-pie-icon-1 {
-  top: -93.78px;
-  left: 111.01px;
-  width: 94.28px;
-  height: 93.78px;
-}
-.culture1 {
-  position: absolute;
-  top: -85.03px;
-  left: calc(50% - 60.3px);
-  font-size: 10.32px;
-  letter-spacing: -0.01em;
-  line-height: 150%;
-  font-weight: 500;
-  color: #7f7f7f;
-  display: inline-block;
-  width: 36.16px;
-}
-.culture {
-  position: relative;
-  width: 205.29px;
-  height: 93.78px;
-}
-.culture-wrapper {
-  position: absolute;
-  top: 467px;
-  left: 1px;
-  width: 205px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-size: 9.73px;
-}
+
+
 .health-parent {
   position: absolute;
-  top: -18px;
   left: calc(50% + 38.5px);
   width: 210px;
-  height: 560.78px;
 }
 .pie-box {
   position: relative;
@@ -435,7 +368,6 @@
   height: 92.81px;
   margin-bottom: 15.56px
 }
-
 .health1 {
   position: absolute;
   margin-top: 3px;
@@ -446,13 +378,7 @@
   display: inline-block;
   width: 32.29px
 }
-.pie-inside-box {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  align-items: center
-}
+
 .pie-chart-labels {
   max-width: 50%;
   padding-left: 18px;
@@ -464,13 +390,7 @@
 .chronic-diseases {
   margin: 0
 }
-.chronic-diseases::before,.graph2-labels:before {
-  content: "";
-  background-color: #000;
-  border-radius: 2px;
-  padding-left: 6px;
-  margin-right: 4px
-}
+
 .chronic-diseases::before {
   padding-left: 4px;
   margin-right: 3px
@@ -493,16 +413,21 @@
 .group-child,
 .rectangle-parent {
   position: absolute;
-  top: 186px;
+  top: 156px;
   left: 43px;
   width: 497px;
   height: 408px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.group-child {
-  top: 60px;
+
+.rectangle-wrapper{
   left: 0;
-  width: 661px;
-  height: 60px;
+  position: absolute;
+  height: 100%;
+  width: 133.96px;
+  background-color: pink;
 }
 .percentage-contribution-of {
   position: absolute;
@@ -517,8 +442,10 @@
   width: 556px;
   height: 27px;
   background-color: #7f7f7f;
-  text-align: ;
+  text-align:center ;
 }
+
+
 .group-container {
   position: absolute;
   left: 607px;
@@ -529,7 +456,7 @@
 }
 .group {
   position: absolute;
-  height: 51.84%;
+  height: 654px;
   width: 100%;
   right: 0;
   left: 0;
@@ -564,7 +491,6 @@
 .percentage-contribution-of2 {
   position: absolute;
   top: 2.9px;
-  left: calc(50% - 278.3px);
   letter-spacing: -0.01em;
   line-height: 150%;
   font-weight: 500;
@@ -576,12 +502,13 @@
 .group-item,
 .vector-parent {
   position: absolute;
-  width: 561px;
+  flex: 50%;
 }
 .vector-parent {
   top: 0;
   left: calc(50% + 33px);
   height: 620px;
+  
 }
 .group-item {
   top: 117px;
@@ -589,15 +516,35 @@
   height: 541px;
   object-fit: cover;
 }
+.censored{
+  margin-top: 70px;
+  height: 430px;
+  top: 190PX;
+}
+
+.group_dis {
+  top: 26.79px;
+  left: calc(50% - 301.71px);
+  background-color: #f2f2f2;
+  height: 26.79px
+}
+
+.censored-uncensored-frame {
+  top: 0;
+  left: 46px;
+  height: 516.95px
+}
 .frame-parent,
 .group-div {
   position: absolute;
-  height: 648px;
+  height: 620px;
+  flex: 50%;
 }
 .frame-parent {
   top: 0;
   left: 0;
   width: 661px;
+  float: 50%;
 }
 .group-div {
   top: 703.01px;

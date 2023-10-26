@@ -3,7 +3,7 @@
 {% block content %}
     <div class="desktop-2">
       <div class="group-parent">
-        <div class="group">
+        <div class="group" style="width: auto;">
           <div class="group-group">
             <div class="group1">
               <img class="vector-icon" alt="" src="../media/imagesdis/background-blue.png" />
@@ -22,19 +22,16 @@
           </div>
           <div class="group-container">
             <div class="rectangle-parent">
-              <img
-                class="rectangle-icon1"
-                alt=""
-                src="../media/imagesdis/Rectangle (2).png"
-              />
+              <div class=rectangle-wrapper><canvas id=vertical-bar-graph-district class=vertical-graph style="width: 20px;
+              height: 10px;"></canvas></div>
 
               <div class="health-parent">
                 <div class=pie-box>
                   <div class=health1>
                     <div>HEALTH</div>
                     <div id="my-data-health-district" data-my-data="[20, 40, 30, 10]"></div>
-
-                  <img alt="" src=../media/images/health-icon1.png class=pie-chart-frame>
+                  </div>
+                  <img alt="" src=../media/imagesdis/health-icon.png class=pie-chart-frame>
                   <div class=pie-inside-box><!-- LABELS -->
                     <div class=pie-chart-labels>
                       <p class=chronic-diseases id=cd>Chronic Diseases
@@ -42,91 +39,50 @@
                       <p class=chronic-diseases id=mc>Maternal Care
                       <p class=chronic-diseases id=cm>Child Mortality
                     </div><!-- ------ --><!-- PIE CHART -->
-                    <div class=pie-icon-1><canvas id=health-pie-district class=canvas-pie></canvas></div>
+                    <div class=pie-icon-1><canvas id=health-pie-district style="  position: relative;
+                      top: -39px;
+                      right: -18px;" class=canvas-pie></canvas></div>
                   </div><!-- ------ -->
+                  
+                </div>
+                <div class=pie-box>
+                  <div class=education1>
+                    <div>EDUCATION</div>
+                    <div id=my-data-education-district></div>
+                  </div><img alt="" src=../media/imagesdis/education-icon.png class=pie-chart-frame>
+                  <div class=pie-inside-box><!-- LABELS -->
+                    <div class=pie-chart-labels>
+                      <p class=chronic-diseases id=yos>Years of Schooling
+                      <p class=chronic-diseases id=do>Drop Out
+                    </div><!-- ------ --><!-- PIE CHART -->
+                    <div class=pie-icon-1><canvas id=education-pie-district style="  position: relative;
+                      top: -39px;
+                      right: -18px;" class=canvas-pie></canvas></div><!-- ------ -->
                   </div>
                 </div>
-                <div class="sol">
-                  <img class="vector-icon6" alt="" src="./public/vector6.svg" />
-
-                  <img class="vector-icon7" alt="" src="./public/vector7.svg" />
-
-                  <img class="vector-icon8" alt="" src="./public/vector8.svg" />
-
-                  <img class="vector-icon9" alt="" src="./public/vector9.svg" />
-
-                  <img
-                    class="vector-icon10"
-                    alt=""
-                    src="./public/vector10.svg"
-                  />
-
-                  <img
-                    class="vector-icon11"
-                    alt=""
-                    src="./public/vector11.svg"
-                  />
-
-                  <div class="institutional-credit-ownership-container">
-                    <p class="chronic-diseases">Institutional Credit</p>
-                    <p class="chronic-diseases">Ownership</p>
-                    <p class="chronic-diseases">Sanitation</p>
-                    <p class="chronic-diseases">Fuel</p>
-                    <p class="chronic-diseases">Drinkng Water</p>
-                    <p class="chronic-diseases">Electricity</p>
+                <div class=pie-box>
+                  <div class=sol1>
+                    <div class=standard-of-living>STANDARD OF LIVING</div>
+                    <div id=my-data-sol-district></div>
+                  </div><img alt="" src=../media/imagesdis/sol-icon.png class=pie-chart-frame>
+                  <div class=pie-inside-box><!-- LABELS -->
+                    <div class=pie-chart-labels style=line-height:1.3>
+                      <p class=chronic-diseases id=ic>Institutional Credit
+                      <p class=chronic-diseases id=ow>Ownership
+                      <p class=chronic-diseases id=san>Sanitation
+                      <p class=chronic-diseases id=fu>Fuel
+                      <p class=chronic-diseases id=dw>Drinkng Water
+                      <p class=chronic-diseases id=el>Electricity
+                    </div><!-- ------ --><!-- PIE CHART -->
+                    <div class=pie-icon-1><canvas id=sol-pie-district style="  position: relative;
+                      top: -64px;
+                    right: -15px;" class=canvas-pie></canvas></div><!-- ------ -->
                   </div>
-                  <div class="standard-of-living">Standard of Living</div>
-                  <img
-                    class="sol-icon-1"
-                    alt=""
-                    src="../media/imagesdis/sol-icon.png"
-                  />
-
-                  <img
-                    class="sol-pie-icon-1"
-                    alt=""
-                    src="../media/imagesdis/sol-pie-icon.png"
-                  />
                 </div>
                 
-                <div class="governance-wrapper">
-                  <div class="governance">
-                    <img
-                      class="governance-icon-1"
-                      alt=""
-                      src="../media/imagesdis/education-icon.png"
-                    />
-
-                    <img
-                      class="vector-icon14"
-                      alt=""
-                      src="./public/vector14.svg"
-                    />
-
-                    <div class="governance1">Education</div>
-                    <div class="execution-of-voting">
-                      Execution Of Voting Rights
-                    </div>
-                    <img
-                      class="vector-icon15"
-                      alt=""
-                      src="./public/vector15.svg"
-                    />
-
-                    <div class="participation-in-government">
-                      Participation in Government meetings
-                    </div>
-                    <img
-                      class="governance-pie-icon-1"
-                      alt=""
-                      src="../media/imagesdis/education-pie-icon.png"
-                    />
-                  </div>
-                </div>
                
               </div>
             </div>
-            <div class="group-child"></div>
             <div class="percentage-contribution-of">
               Percentage contribution of each Dimension and Indicator to TDI
               Score
@@ -134,33 +90,72 @@
           </div>
         </div>
         <div class="group-div">
-          <div class="vector-parent">
+          
+          <div class="frame-parent">
+            <div class=group_dist>
+              <div class=percentage-contribution-of>Censored And Uncensored</div>
+            </div>
+            <div class=percentage-graph >
+            <div class=censored><canvas id=censored-graph-district ></canvas>
+              <!-- <div id=my-data_censored1 data-my-data={{tribe.get_censored_tribal_indicator_score.0}}></div>
+              <div id=my-data_censored2 data-my-data={{tribe.get_censored_tribal_indicator_score.1}}></div>
+              <div id=my-data_censored3 data-my-data="{{tribe.get_censored_tribal_indicator_score.2 }}"></div>
+              <div id=my-data_censored4 data-my-data="{{ tribe.get_censored_tribal_indicator_score.3}}"></div>
+              <div id=my-data_censored5 data-my-data={{tribe.get_censored_tribal_indicator_score.4}}></div>
+              <div id=my-data_censored6 data-my-data={{tribe.get_censored_tribal_indicator_score.5}}></div>
+              <div id=my-data_censored7 data-my-data={{tribe.get_censored_tribal_indicator_score.6}}></div>
+              <div id=my-data_censored8 data-my-data={{tribe.get_censored_tribal_indicator_score.7}}></div>
+              <div id=my-data_censored9 data-my-data={{tribe.get_censored_tribal_indicator_score.8}}></div>
+              <div id=my-data_censored10 data-my-data={{tribe.get_censored_tribal_indicator_score.9}}></div>
+              <div id=my-data_censored11 data-my-data={{tribe.get_censored_tribal_indicator_score.10}}></div>
+              <div id=my-data_censored12 data-my-data={{tribe.get_censored_tribal_indicator_score.11}}></div>
+              <div id=my-data_censored13 data-my-data={{tribe.get_censored_tribal_indicator_score.12}}></div>
+              <div id=my-data_censored14 data-my-data={{tribe.get_censored_tribal_indicator_score.13}}></div>
+              <div id=my-data_censored15 data-my-data={{tribe.get_censored_tribal_indicator_score.14}}></div>
+              <div id=my-data_censored16 data-my-data={{tribe.get_censored_tribal_indicator_score.15}}></div>
+              <div id=my-data_censored17 data-my-data={{tribe.get_censored_tribal_indicator_score.16}}></div>
+              <div id=my-data_censored18 data-my-data={{tribe.get_censored_tribal_indicator_score.17}}></div> -->
+            </div>
            
 
-            <img
-              class="score-graph-1-icon"
-              alt=""
-              src="../media/imagesdis/score-graph 1.png"
-            />
+          </div>
+
+            
+          </div>
+          <div class="vector-parent" style="width: 613px;">
+           
+
+            <div class=score-graph-frame style="position: absolute;
+            top: 90px;">
+              <div class=group2>
+                <div class=score>Score</div>
+              </div>
+              <div class="align-items-center d-flex flex-column graph2-box">
+                <canvas id="graph2_dis"></canvas>
+                <div id=my-graph2-data></div>
+                <table class=mt-3 style="margin-left: 80px;">
+                  <tr>
+                    <td class=graph2-labels id=hdi>Health Development Index
+                    <td class=graph2-labels id=edi>Education Development Index
+                    <td class=graph2-labels id=sdi>Sol Development Index
+                  <tr>
+                    
+                    <td class=graph2-labels id=tdi>Tribal Development Index
+                </table>
+              </div>
+            </div>
 
             <div class="percentage-contribution-of2">
               Dimension wise Index Score and Overall TDI Score
-            </div>
-          </div>
-          <div class="frame-parent">
-            <img class="group-item" alt="" src="../media/imagesdis/Frame 12.png" />
-
-            
-
-            <div class="percentage-contribution-of1">
-              Indicator wise Development Score
-
             </div>
           </div>
         </div>
       </div>
      
     </div>
+   
+    
+    
  
 {% endblock %}
 {% block extra_css %}

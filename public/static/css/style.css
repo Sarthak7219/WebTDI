@@ -128,6 +128,7 @@
 
 .group {
   top: 26.79px;
+  height: 654px;
   left: calc(50% - 301.71px);
   background-color: #f2f2f2;
   height: 26.79px
@@ -239,7 +240,7 @@
   padding: 8px 15px
 }
 
-.chronic-diseases::before,.graph2-labels:before {
+::before,.graph2-labels:before {
   content: "";
   background-color: #000;
   border-radius: 2px;
@@ -895,7 +896,8 @@
   width: 49.08px
 }
 
-.education-pie-icon-1 {
+.education-
+ {
   left: 116.24px;
   width: 94.28px;
   height: 93.78px
