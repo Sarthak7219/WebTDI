@@ -1,219 +1,289 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class=main-content><!-- PAGE-1 -->
-  <div class=page1>
-    <div class=frame1><img alt="" src=../../media/{{tribe.tribe_image.first.logo_image}} class=tribe-logo-icon>
-      <div class=tribe-image-main style="background-image: url(../../media/{{tribe.tribe_image.first.main_image}});">
-        <div class=tribe-photo-desc style=background-color:#f2f2f277>
-          <div class=image-location->
-            {{tribe.tribe_image.first.location}}
-          </div>
-          <div class=an-asur-man>An Asur man stands tall in his home</div>
-        </div>
+<div class="setup-materials">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style='position: relative; width:100%;'>
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="#">WebTDI</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'form' %}">FORM</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              TRIBES
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Asur</a></li>
+            </ul>
+
+
+
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              District
+            </a>
+
+            <ul class="dropdown-menu">
+              {% for i in districts %}
+              <li><a class="dropdown-item" href="/district/{{i.name}}/{{i.year}}">{{i.name}}</a></li>
+              {% endfor %}
+            </ul>
+
+
+
+
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              PVTGS
+            </a>
+            <ul class="dropdown-menu">
+              {% for tribe in tribes %}
+              <li><a class="dropdown-item" href="{% url 'tribe_detail' tribe.slug %}">{{tribe.name}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+
       </div>
     </div>
-    <div class=frame2>
-      <div class=frame2-1>
-        <div class=dimensions>Dimensions</div>
-        <div class=rectangle-wrapper><canvas id=vertical-bar-graph class=vertical-graph height=560></canvas></div>
-      </div>
-      <div class=frame2-2>
-        <div class=tribe-heading><img alt="Here is an image" src=../../media/images/background-blue1.png>
-          <div class=a-snapshot-of-tdi-among-asur-p-parent>
-            <div class=a-snapshot-of>A snapshot of TDI among Asur PVTG</div>
-            <div class=asur>Asur</div>
+  </nav>
+
+  <div class=main-content><!-- PAGE-1 -->
+    <div class=page1-tribe>
+      <div class=frame1>
+        <div class="tribe-logo-icon">
+          <img alt="" src=../media/{{tribe.tribe_image.first.logo_image}} id="logo-image">
+        </div>
+        <div class=tribe-image-main style="background-image: url(../media/{{tribe.tribe_image.first.main_image}});">
+          <div class=tribe-photo-desc style=background-color:#f2f2f277>
+            <div class=image-location->
+              {{tribe.tribe_image.first.location}}
+            </div>
+            <div class=an-asur-man>{{tribe.tribe_image.first.main_desc}}</div>
           </div>
         </div>
-        <div class=frame2-2-1><!-- OVERVIEW TABLE -->
-          <div>
-            <table class=overview-table>
-              <thead>
-                <tr bgcolor=#2E75B6 style=color:#fff>
-                  <th colspan=3 style=padding:8px>Overview
-                <tr bgcolor=#BDD7EE style=color:#2f2d72>
-                  <th>Incidence (I)
-                  <th>Intensity (A)
-                  <th>TDI (I X A)
-              <tbody>
-                <tr bgcolor=#DEEBF7 style=color:#000>
-                  <td>{{tribe.tribal_incidence}}%
-                  <td>{{tribe.tribal_intensity}}%
-                  <td>{{tribe.tribal_index}}
+      </div>
+      <div class=frame2>
+        <div class=frame2-1>
+          <div class=dimensions>Dimensions</div>
+          <div class=rectangle-wrapper><canvas id=vertical-bar-graph class=vertical-graph height=560></canvas></div>
+        </div>
+        <div class=frame2-2>
+          <div class=tribe-heading><img alt="Here is an image" src=../media/images/background-blue1.png>
+            <div class=a-snapshot-of-tdi-among-asur-p-parent>
+              <div class=a-snapshot-of>A snapshot of TDI among {{tribe.name}} PVTG</div>
+              <div class=asur>{{tribe.name}}</div>
+            </div>
+          </div>
+          <div class=frame2-2-1><!-- OVERVIEW TABLE -->
+            <div>
+              <table class=overview-table>
+                <thead>
+                  <tr bgcolor=#2E75B6 style=color:#fff>
+                    <th colspan=3 style=padding:8px>Overview
+                  <tr bgcolor=#BDD7EE style=color:#2f2d72>
+                    <th>Incidence (I)
+                    <th>Intensity (A)
+                    <th>TDI (I X A)
+                <tbody>
+                  <tr bgcolor=#DEEBF7 style=color:#000>
+                    <td>{{tribe.tribal_incidence}}%
+                    <td>{{tribe.tribal_intensity}}%
+                    <td>{{tribe.tribal_index}}
+              </table>
+            </div><!-- ------- -->
+            <div class=head1>
+              <div class=group4>
+                <div class=percentage-contribution-of3>Percentage contribution of each Dimension and Indicator to TDI
+                  Score</div>
+              </div>
+            </div>
+            <div class=indicators-wrapper>
+              <div class=indicators>Indicators</div>
+            </div>
+            <div class=pie-frame><!-- PIE FRAME LEFT -->
+              <div class=pie-frame-left>
+                <div class=pie-box>
+                  <div class=health1>
+                    <div>HEALTH</div>
+                    <div id=my-data-health data-my-data={{indicator_contributions_to_dimension}}></div>
+                  </div><img alt="" src=../media/images/health-icon.png class=pie-chart-frame>
+                  <div class=pie-inside-box><!-- LABELS -->
+                    <div class=pie-chart-labels>
+                      <p class=chronic-diseases id=cd>Chronic Diseases
+                      <p class=chronic-diseases id=im>Immunisation
+                      <p class=chronic-diseases id=mc>Maternal Care
+                      <p class=chronic-diseases id=cm>Child Mortality
+                    </div><!-- ------ --><!-- PIE CHART -->
+                    <div class=pie-icon-1><canvas id=health-pie class=canvas-pie></canvas></div><!-- ------ -->
+                  </div>
+                </div>
+                <div class=pie-box>
+                  <div class=sol1>
+                    <div class=standard-of-living>STANDARD OF LIVING</div>
+                    <div id=my-data-sol></div>
+                  </div><img alt="" src=../media/images/sol-icon.png class=pie-chart-frame>
+                  <div class=pie-inside-box><!-- LABELS -->
+                    <div class=pie-chart-labels style=line-height:1.3>
+                      <p class=chronic-diseases id=ic>Institutional Credit
+                      <p class=chronic-diseases id=ow>Ownership
+                      <p class=chronic-diseases id=san>Sanitation
+                      <p class=chronic-diseases id=fu>Fuel
+                      <p class=chronic-diseases id=dw>Drinkng Water
+                      <p class=chronic-diseases id=el>Electricity
+                    </div><!-- ------ --><!-- PIE CHART -->
+                    <div class=pie-icon-1><canvas id=sol-pie class=canvas-pie></canvas></div><!-- ------ -->
+                  </div>
+                </div>
+                <div class=pie-box>
+                  <div class=governance1>
+                    <div>GOVERNANCE</div>
+                    <div id=my-data-governance></div>
+                  </div><img alt="" src=../media/images/governance-icon.png class=pie-chart-frame>
+                  <div class=pie-inside-box><!-- LABELS -->
+                    <div class=pie-chart-labels>
+                      <p class=chronic-diseases id=eov>Execution Of Voting Rights
+                      <p class=chronic-diseases id=pgm>Participation in Government meetings
+                    </div><!-- ------ --><!-- PIE CHART -->
+                    <div class=pie-icon-1><canvas id=governance-pie class=canvas-pie></canvas></div><!-- ------ -->
+                  </div>
+                </div>
+              </div><!-- -------- --><!-- PIE FRAME RIGHT -->
+              <div class=pie-frame-right>
+                <div class=pie-box>
+                  <div class=education1>
+                    <div>EDUCATION</div>
+                    <div id=my-data-education></div>
+                  </div><img alt="" src=../media/images/education-icon.png class=pie-chart-frame>
+                  <div class=pie-inside-box><!-- LABELS -->
+                    <div class=pie-chart-labels>
+                      <p class=chronic-diseases id=yos>Years of Schooling
+                      <p class=chronic-diseases id=do>Drop Out
+                    </div><!-- ------ --><!-- PIE CHART -->
+                    <div class=pie-icon-1><canvas id=education-pie class=canvas-pie></canvas></div><!-- ------ -->
+                  </div>
+                </div>
+                <div class=pie-box>
+                  <div class=culture1>
+                    <div>CULTURE</div>
+                    <div id=my-data-culture></div>
+                  </div><img alt="" src=../media/images/culture-icon.png class=pie-chart-frame>
+                  <div class=pie-inside-box><!-- LABELS -->
+                    <div class=pie-chart-labels>
+                      <p class=chronic-diseases id=lan>Language
+                      <p class=chronic-diseases id=ar>Arts
+                    </div><!-- ------ --><!-- PIE CHART -->
+                    <div class=pie-icon-1><canvas id=culture-pie class=canvas-pie></canvas></div><!-- ------ -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- ------- --><!-- PAGE-2 -->
+    <div class=page2-tribe>
+      <div class=frame-container>
+        <div class=map-frame>
+          <div class=frame><img alt="" src=../media/{{tribe.tribe_image.first.map_image}} class=rectangle-icon></div>
+          <div class=group2>
+            <div class=map-head>Location on map</div>
+          </div>
+        </div>
+        <div class=score-graph-frame>
+          <div class=group2>
+            <div class=score>Score</div>
+          </div>
+          <div class="align-items-center d-flex flex-column graph2-box"><canvas id=graph2></canvas>
+            <div id=my-graph2-data></div>
+            <table class=mt-3>
+              <tr>
+                <td class=graph2-labels id=hdi>Health Development Index
+                <td class=graph2-labels id=edi>Education Development Index
+                <td class=graph2-labels id=sdi>Sol Development Index
+              <tr>
+                <td class=graph2-labels id=cdi>Culture Development Index
+                <td class=graph2-labels id=gdi>Governance Development Index
+                <td class=graph2-labels id=tdi>Tribal Development Index
             </table>
-          </div><!-- ------- -->
-          <div class=head1>
-            <div class=group4>
-              <div class=percentage-contribution-of3>Percentage contribution of each Dimension and Indicator to TDI
-                Score</div>
+          </div>
+        </div>
+      </div>
+      <div class=frame-parent><!-- CENSORED AND UNCENSORED BOX -->
+        <div class=censored-uncensored-frame>
+          <div class=group>
+            <div class=percentage-contribution-of>Censored And Uncensored</div>
+          </div><!-- <img class="frame-child" alt="" src="../media/images/percentage-graph.png" /> -->
+          <div class=percentage-graph>
+            <div class=censored><canvas id=censored-graph height=579 width=288></canvas>
+              <div id=my-data_censored1 data-my-data={{tribe.get_censored_tribal_indicator_score.0}}></div>
+              <div id=my-data_censored2 data-my-data={{tribe.get_censored_tribal_indicator_score.1}}></div>
+              <div id=my-data_censored3 data-my-data="{{tribe.get_censored_tribal_indicator_score.2 }}"></div>
+              <div id=my-data_censored4 data-my-data="{{ tribe.get_censored_tribal_indicator_score.3}}"></div>
+              <div id=my-data_censored5 data-my-data={{tribe.get_censored_tribal_indicator_score.4}}></div>
+              <div id=my-data_censored6 data-my-data={{tribe.get_censored_tribal_indicator_score.5}}></div>
+              <div id=my-data_censored7 data-my-data={{tribe.get_censored_tribal_indicator_score.6}}></div>
+              <div id=my-data_censored8 data-my-data={{tribe.get_censored_tribal_indicator_score.7}}></div>
+              <div id=my-data_censored9 data-my-data={{tribe.get_censored_tribal_indicator_score.8}}></div>
+              <div id=my-data_censored10 data-my-data={{tribe.get_censored_tribal_indicator_score.9}}></div>
+              <div id=my-data_censored11 data-my-data={{tribe.get_censored_tribal_indicator_score.10}}></div>
+              <div id=my-data_censored12 data-my-data={{tribe.get_censored_tribal_indicator_score.11}}></div>
+              <div id=my-data_censored13 data-my-data={{tribe.get_censored_tribal_indicator_score.12}}></div>
+              <div id=my-data_censored14 data-my-data={{tribe.get_censored_tribal_indicator_score.13}}></div>
+              <div id=my-data_censored15 data-my-data={{tribe.get_censored_tribal_indicator_score.14}}></div>
+              <div id=my-data_censored16 data-my-data={{tribe.get_censored_tribal_indicator_score.15}}></div>
+              <div id=my-data_censored17 data-my-data={{tribe.get_censored_tribal_indicator_score.16}}></div>
+              <div id=my-data_censored18 data-my-data={{tribe.get_censored_tribal_indicator_score.17}}></div>
+            </div>
+            <div class=uncensored><canvas id=uncensored-graph height=579 width=288></canvas>
+              <div id=my-data_uncensored1 data-my-data={{tribe.get_uncensored_tribal_indicator_score.0}}></div>
+              <div id=my-data_uncensored2 data-my-data={{tribe.get_uncensored_tribal_indicator_score.1}}></div>
+              <div id=my-data_uncensored3 data-my-data="{{tribe.get_uncensored_tribal_indicator_score.2 }}"></div>
+              <div id=my-data_uncensored4 data-my-data="{{ tribe.get_uncensored_tribal_indicator_score.3}}"></div>
+              <div id=my-data_uncensored5 data-my-data={{tribe.get_uncensored_tribal_indicator_score.4}}></div>
+              <div id=my-data_uncensored6 data-my-data={{tribe.get_uncensored_tribal_indicator_score.5}}></div>
+              <div id=my-data_uncensored7 data-my-data={{tribe.get_uncensored_tribal_indicator_score.6}}></div>
+              <div id=my-data_uncensored8 data-my-data={{tribe.get_uncensored_tribal_indicator_score.7}}></div>
+              <div id=my-data_uncensored9 data-my-data={{tribe.get_uncensored_tribal_indicator_score.8}}></div>
+              <div id=my-data_uncensored10 data-my-data={{tribe.get_uncensored_tribal_indicator_score.9}}></div>
+              <div id=my-data_uncensored11 data-my-data={{tribe.get_uncensored_tribal_indicator_score.10}}></div>
+              <div id=my-data_uncensored12 data-my-data={{tribe.get_uncensored_tribal_indicator_score.11}}></div>
+              <div id=my-data_uncensored13 data-my-data={{tribe.get_uncensored_tribal_indicator_score.12}}></div>
+              <div id=my-data_uncensored14 data-my-data={{tribe.get_uncensored_tribal_indicator_score.13}}></div>
+              <div id=my-data_uncensored15 data-my-data={{tribe.get_uncensored_tribal_indicator_score.14}}></div>
+              <div id=my-data_uncensored16 data-my-data={{tribe.get_uncensored_tribal_indicator_score.15}}></div>
+              <div id=my-data_uncensored17 data-my-data={{tribe.get_uncensored_tribal_indicator_score.16}}></div>
+              <div id=my-data_uncensored18 data-my-data={{tribe.get_uncensored_tribal_indicator_score.17}}></div>
             </div>
           </div>
-          <div class=indicators-wrapper>
-            <div class=indicators>Indicators</div>
+        </div><!-- --------- --><!-- BOTTOM RIGHT TRIBE IMAGE -->
+        <div class=group-parent>
+          <div class=group-child><img alt="" src=../media/{{tribe.tribe_image.first.village_image}} style=width:100%>
           </div>
-          <div class=pie-frame><!-- PIE FRAME LEFT -->
-            <div class=pie-frame-left>
-              <div class=pie-box>
-                <div class=health1>
-                  <div>HEALTH</div>
-                  <div id=my-data-health data-my-data={{indicator_contributions_to_dimension}}></div>
-                </div><img alt="" src=../../media/images/health-icon1.png class=pie-chart-frame>
-                <div class=pie-inside-box><!-- LABELS -->
-                  <div class=pie-chart-labels>
-                    <p class=chronic-diseases id=cd>Chronic Diseases
-                    <p class=chronic-diseases id=im>Immunisation
-                    <p class=chronic-diseases id=mc>Maternal Care
-                    <p class=chronic-diseases id=cm>Child Mortality
-                  </div><!-- ------ --><!-- PIE CHART -->
-                  <div class=pie-icon-1><canvas id=health-pie class=canvas-pie></canvas></div><!-- ------ -->
-                </div>
-              </div>
-              <div class=pie-box>
-                <div class=sol1>
-                  <div class=standard-of-living>STANDARD OF LIVING</div>
-                  <div id=my-data-sol></div>
-                </div><img alt="" src=../../media/images/sol-icon.png class=pie-chart-frame>
-                <div class=pie-inside-box><!-- LABELS -->
-                  <div class=pie-chart-labels style=line-height:1.3>
-                    <p class=chronic-diseases id=ic>Institutional Credit
-                    <p class=chronic-diseases id=ow>Ownership
-                    <p class=chronic-diseases id=san>Sanitation
-                    <p class=chronic-diseases id=fu>Fuel
-                    <p class=chronic-diseases id=dw>Drinkng Water
-                    <p class=chronic-diseases id=el>Electricity
-                  </div><!-- ------ --><!-- PIE CHART -->
-                  <div class=pie-icon-1><canvas id=sol-pie class=canvas-pie></canvas></div><!-- ------ -->
-                </div>
-              </div>
-              <div class=pie-box>
-                <div class=governance1>
-                  <div>GOVERNANCE</div>
-                  <div id=my-data-governance></div>
-                </div><img alt="" src=../../media/images/governance-icon.png class=pie-chart-frame>
-                <div class=pie-inside-box><!-- LABELS -->
-                  <div class=pie-chart-labels>
-                    <p class=chronic-diseases id=eov>Execution Of Voting Rights
-                    <p class=chronic-diseases id=pgm>Participation in Government meetings
-                  </div><!-- ------ --><!-- PIE CHART -->
-                  <div class=pie-icon-1><canvas id=governance-pie class=canvas-pie></canvas></div><!-- ------ -->
-                </div>
-              </div>
-            </div><!-- -------- --><!-- PIE FRAME RIGHT -->
-            <div class=pie-frame-right>
-              <div class=pie-box>
-                <div class=education1>
-                  <div>EDUCATION</div>
-                  <div id=my-data-education></div>
-                </div><img alt="" src=../../media/images/education-icon.png class=pie-chart-frame>
-                <div class=pie-inside-box><!-- LABELS -->
-                  <div class=pie-chart-labels>
-                    <p class=chronic-diseases id=yos>Years of Schooling
-                    <p class=chronic-diseases id=do>Drop Out
-                  </div><!-- ------ --><!-- PIE CHART -->
-                  <div class=pie-icon-1><canvas id=education-pie class=canvas-pie></canvas></div><!-- ------ -->
-                </div>
-              </div>
-              <div class=pie-box>
-                <div class=culture1>
-                  <div>CULTURE</div>
-                  <div id=my-data-culture></div>
-                </div><img alt="" src=../../media/images/culture-icon.png class=pie-chart-frame>
-                <div class=pie-inside-box><!-- LABELS -->
-                  <div class=pie-chart-labels>
-                    <p class=chronic-diseases id=lan>Language
-                    <p class=chronic-diseases id=ar>Arts
-                  </div><!-- ------ --><!-- PIE CHART -->
-                  <div class=pie-icon-1><canvas id=culture-pie class=canvas-pie></canvas></div><!-- ------ -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <div class=group1>"{{tribe.tribe_image.first.village_desc}}"</div>
+        </div><!-- ------- -->
       </div>
-    </div>
-  </div><!-- ------- --><!-- PAGE-2 -->
-  <div class=page2>
-    <div class=frame-container>
-      <div class=map-frame>
-        <div class=frame><img alt="" src=../../media/images/map.png class=rectangle-icon></div>
-        <div class=group2>
-          <div class=map-head>Location on map</div>
-        </div>
-      </div>
-      <div class=score-graph-frame>
-        <div class=group2>
-          <div class=score>Score</div>
-        </div>
-        <div class="align-items-center d-flex flex-column graph2-box"><canvas id=graph2></canvas>
-          <div id=my-graph2-data></div>
-          <table class=mt-3>
-            <tr>
-              <td class=graph2-labels id=hdi>Health Development Index
-              <td class=graph2-labels id=edi>Education Development Index
-              <td class=graph2-labels id=sdi>Sol Development Index
-            <tr>
-              <td class=graph2-labels id=cdi>Culture Development Index
-              <td class=graph2-labels id=gdi>Governance Development Index
-              <td class=graph2-labels id=tdi>Tribal Development Index
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class=frame-parent><!-- CENSORED AND UNCENSORED BOX -->
-      <div class=censored-uncensored-frame>
-        <div class=group>
-          <div class=percentage-contribution-of>Censored And Uncensored</div>
-        </div><!-- <img class="frame-child" alt="" src="../../media/images/percentage-graph.png" /> -->
-        <div class=percentage-graph>
-          <div class=censored><canvas id=censored-graph height=579 width=288></canvas>
-            <div id=my-data_censored1 data-my-data={{tribe.get_censored_tribal_indicator_score.0}}></div>
-            <div id=my-data_censored2 data-my-data={{tribe.get_censored_tribal_indicator_score.1}}></div>
-            <div id=my-data_censored3 data-my-data="{{tribe.get_censored_tribal_indicator_score.2 }}"></div>
-            <div id=my-data_censored4 data-my-data="{{ tribe.get_censored_tribal_indicator_score.3}}"></div>
-            <div id=my-data_censored5 data-my-data={{tribe.get_censored_tribal_indicator_score.4}}></div>
-            <div id=my-data_censored6 data-my-data={{tribe.get_censored_tribal_indicator_score.5}}></div>
-            <div id=my-data_censored7 data-my-data={{tribe.get_censored_tribal_indicator_score.6}}></div>
-            <div id=my-data_censored8 data-my-data={{tribe.get_censored_tribal_indicator_score.7}}></div>
-            <div id=my-data_censored9 data-my-data={{tribe.get_censored_tribal_indicator_score.8}}></div>
-            <div id=my-data_censored10 data-my-data={{tribe.get_censored_tribal_indicator_score.9}}></div>
-            <div id=my-data_censored11 data-my-data={{tribe.get_censored_tribal_indicator_score.10}}></div>
-            <div id=my-data_censored12 data-my-data={{tribe.get_censored_tribal_indicator_score.11}}></div>
-            <div id=my-data_censored13 data-my-data={{tribe.get_censored_tribal_indicator_score.12}}></div>
-            <div id=my-data_censored14 data-my-data={{tribe.get_censored_tribal_indicator_score.13}}></div>
-            <div id=my-data_censored15 data-my-data={{tribe.get_censored_tribal_indicator_score.14}}></div>
-            <div id=my-data_censored16 data-my-data={{tribe.get_censored_tribal_indicator_score.15}}></div>
-            <div id=my-data_censored17 data-my-data={{tribe.get_censored_tribal_indicator_score.16}}></div>
-            <div id=my-data_censored18 data-my-data={{tribe.get_censored_tribal_indicator_score.17}}></div>
-          </div>
-          <div class=uncensored><canvas id=uncensored-graph height=579 width=288></canvas>
-            <div id=my-data_uncensored1 data-my-data={{tribe.get_tribal_indicator_members.0}}></div>
-            <div id=my-data_uncensored2 data-my-data={{tribe.get_tribal_indicator_members.1}}></div>
-            <div id=my-data_uncensored3 data-my-data="{{tribe.get_tribal_indicator_members.2 }}"></div>
-            <div id=my-data_uncensored4 data-my-data="{{ tribe.get_tribal_indicator_members.3}}"></div>
-            <div id=my-data_uncensored5 data-my-data={{tribe.get_tribal_indicator_members.4}}></div>
-            <div id=my-data_uncensored6 data-my-data={{tribe.get_tribal_indicator_members.5}}></div>
-            <div id=my-data_uncensored7 data-my-data={{tribe.get_tribal_indicator_members.6}}></div>
-            <div id=my-data_uncensored8 data-my-data={{tribe.get_tribal_indicator_members.7}}></div>
-            <div id=my-data_uncensored9 data-my-data={{tribe.get_tribal_indicator_members.8}}></div>
-            <div id=my-data_uncensored10 data-my-data={{tribe.get_tribal_indicator_members.9}}></div>
-            <div id=my-data_uncensored11 data-my-data={{tribe.get_tribal_indicator_members.10}}></div>
-            <div id=my-data_uncensored12 data-my-data={{tribe.get_tribal_indicator_members.11}}></div>
-            <div id=my-data_uncensored13 data-my-data={{tribe.get_tribal_indicator_members.12}}></div>
-            <div id=my-data_uncensored14 data-my-data={{tribe.get_tribal_indicator_members.13}}></div>
-            <div id=my-data_uncensored15 data-my-data={{tribe.get_tribal_indicator_members.14}}></div>
-            <div id=my-data_uncensored16 data-my-data={{tribe.get_tribal_indicator_members.15}}></div>
-            <div id=my-data_uncensored17 data-my-data={{tribe.get_tribal_indicator_members.16}}></div>
-            <div id=my-data_uncensored18 data-my-data={{tribe.get_tribal_indicator_members.17}}></div>
-          </div>
-        </div>
-      </div><!-- --------- --><!-- BOTTOM RIGHT TRIBE IMAGE -->
-      <div class=group-parent>
-        <div class=group-child><img alt="" src=../../media/{{tribe.tribe_image.first.village_image}} style=width:100%>
-        </div>
-        <div class=group1>"Traditional Asur dwellings harmonizing with the landscape in Neterhat, Jharkhand"</div>
-      </div><!-- ------- -->
-    </div>
-  </div><!-- ------- -->
+    </div><!-- ------- -->
+  </div>
 </div>
 
+{% endblock %}
+{% block extra_css %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/global.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}

@@ -1,16 +1,27 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-
+from django.http import Http404
 from .models import Household, Tribe
+from district_wise.models import District
 from django.http import HttpResponse
 # Create your views here.
-def home_view(request):
-    return render(request,'home/homepage.html')
 
-def asur_view(request):
-    tribe = Tribe.objects.get(id=2)
+
+def tribe_detail_view(request, slug):
+    tribes = Tribe.objects.all()
+    if slug is not None:
+        try:
+            tribe = Tribe.objects.get(slug=slug)
+        except Tribe.DoesNotExist:
+            raise Http404
+        except tribe.MultipleObjectsReturned:
+            tribe=tribe.objects.filter(slug=slug).first()
+        except:
+            raise Http404
+
     total_tribals = tribe.get_total_tribals
     household = Household.objects.all()
+    districts = District.objects.all()
     
     contributions_to_dimension = tribe.indicator_contributions_to_dimension
 
@@ -23,17 +34,23 @@ def asur_view(request):
     tribal_dimensional_index = tribe.tribal_dimensional_index
     dimension_contribution_to_tdi = tribe.dimension_contribution_to_tdi
 
+    
+    
     context = {
         'household': household,
         'total_tribals': total_tribals,
         'tribe': tribe,
+        'tribes' : tribes,
         'health_contributions_to_dimension': health_contributions_to_dimension,
         'education_contributions_to_dimension': education_contributions_to_dimension,
         'sol_contributions_to_dimension': sol_contributions_to_dimension,
         'culture_contributions_to_dimension': culture_contributions_to_dimension,
         'governance_contributions_to_dimension': governance_contributions_to_dimension,
         'tribal_dimensional_index': tribal_dimensional_index,
-        'dimension_contribution_to_tdi': dimension_contribution_to_tdi
+        'dimension_contribution_to_tdi': dimension_contribution_to_tdi,
+        'districts' : districts,
+        
+
     }
 
     return render(request, 'pvtg/asur.html', context=context)

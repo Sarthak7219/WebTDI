@@ -1,0 +1,612 @@
+.vector-icon {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  right: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.bokaro {
+  position: absolute;
+  left: 1.19%;
+  line-height: 150%;
+  font-weight: 500;
+  font-size: 35px;
+  color: white;
+  padding: 20px;
+}
+.bokaro,
+.distr {
+  letter-spacing: -0.01em;
+}
+
+.district-wise-tdi-container {
+  position: absolute;
+  left: 27.43%;
+  font-size: 24.83px;
+  line-height: 150%;
+  font-weight: 500;
+}
+.group1 {
+  position: absolute;
+  height: 13.85%;
+  width: 100%;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rectangle-icon {
+  position: absolute;
+  left: calc(50% - 244.5px);
+  width: 490px;
+  top:20%;
+  height: 469px;
+  object-fit: cover;
+}
+.group-group {
+  position: absolute;
+  height: 100%;
+  width: 42.29%;
+  right: 57.71%;
+  left: 0;
+}
+.rectangle-icon1 {
+  position: absolute;
+  top: -62px;
+  left: 0;
+  width: 157px;
+  height: 468px;
+  object-fit: cover;
+}
+.pie-chart-frame {
+  position: absolute;
+  left: 0;
+  width: 204.06px;
+  height: 92.49px
+}
+.vector-icon1 {
+  position: absolute;
+  top: -92.5px;
+  left: calc(50% - 102.91px);
+  width: 199.41px;
+  height: 92.81px;
+  object-fit: cover;
+}
+.vector-icon2,
+.vector-icon3,
+.vector-icon4,
+.vector-icon5 {
+  position: absolute;
+  top: -48.43px;
+  left: calc(50% - 71.72px);
+  width: 5.41px;
+  height: 5.4px;
+}
+.vector-icon3,
+.vector-icon4,
+.vector-icon5 {
+  top: -60.52px;
+  height: 5.28px;
+}
+.vector-icon4,
+.vector-icon5 {
+  top: -36.23px;
+  height: 5.4px;
+}
+.vector-icon5 {
+  top: -24.66px;
+}
+.chronic-diseases {
+  margin: 0;
+}
+.pie-icon-1 {
+  position: relative;
+  top:-15px;
+  left: 96.01px;
+  display: block;
+  box-sizing: border-box;
+  height: 101px;
+  width: 101px;
+
+
+}
+.health1 {
+  position: absolute;
+  margin-top: 3px;
+  left: calc(50% - 62.88px);
+  letter-spacing: -.01em;
+  line-height: 150%;
+  font-weight: 500;
+  display: inline-block;
+  width: 32.29px
+}
+.health-pie-icon-1 {
+  position: absolute;
+  left: 115.3px;
+  width: 90.41px;
+  height: 90.57px;
+  object-fit: cover
+}
+
+
+.vector-icon6,
+.vector-icon7 {
+  position: absolute;
+  top: -20.49px;
+  left: calc(50% - 77.48px);
+  width: 4.84px;
+  height: 4.72px;
+}
+.vector-icon7 {
+  top: -29.49px;
+}
+.vector-icon10,
+.vector-icon11,
+.vector-icon8,
+.vector-icon9 {
+  position: absolute;
+  top: -38.49px;
+  left: calc(50% - 77.48px);
+  width: 4.84px;
+  height: 4.83px;
+}
+.vector-icon10,
+.vector-icon11,
+.vector-icon9 {
+  top: -47.49px;
+}
+.vector-icon10,
+.vector-icon11 {
+  top: -58.49px;
+}
+.vector-icon11 {
+  top: -68.49px;
+}
+.institutional-credit-ownership-container
+ {
+  position: absolute;
+  top: -71.49px;
+  left: calc(50% - 64.52px);
+  letter-spacing: -0.05em;
+  line-height: 121%;
+  font-weight: 500;
+  display: inline-block;
+  width: 64.42px;
+}
+.standard-of-living {
+  position: absolute;
+  left: calc(50% - 62.88px);
+  letter-spacing: -.05em;
+  line-height: 121%;
+  font-weight: 500;
+  display: inline-block;
+  width: 64.58px
+}
+.standard-of-living {
+  margin-top: 3px;
+  font-size: 9.32px;
+  letter-spacing: -.01em;
+  line-height: 150%;
+  color: var(--color-olive);
+  width: 89.12px
+}
+.sol-icon-1 {
+  position: absolute;
+  top: -92.49px;
+  left: 0;
+  width: 203.56px;
+  height: 92.49px;
+  object-fit: cover;
+}
+
+.sol {
+  position: absolute;
+  top: 398px;
+  left: calc(50% - 104px);
+  width: 204.85px;
+  height: 92.49px;
+  font-size: 8.05px;
+}
+.vector-icon12 {
+  position: absolute;
+
+  left: calc(50% - 80.07px);
+  width: 4.95px;
+  height: 4.93px;
+}
+.drop-out,
+.years-of-schooling {
+  position: absolute;
+  left: calc(50% - 63px);
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-weight: 500;
+  display: inline-block;
+  width: 35.43px;
+}
+.years-of-schooling {
+  
+  left: calc(50% - 66px);
+  width: 72.15px;
+}
+.vector-icon13 {
+  position: absolute;
+  
+  left: calc(50% - 81.06px);
+  width: 4.95px;
+  height: 4.83px;
+}
+.education1 {
+  position: absolute;
+  margin-top: 3px;
+  left: calc(50% - 62.99px);
+  font-size: 10.32px;
+  letter-spacing: -.01em;
+  line-height: 150%;
+  font-weight: 500;
+  color: var(--color-darkolivegreen);
+  display: inline-block;
+  width: 49.08px
+}
+.education-icon-1
+{
+  position: absolute;
+ 
+  left: 0;
+  width: 206.78px;
+  height: 94.42px;
+  object-fit: cover;
+}
+.education-pie-icon-1 {
+  position: relative;
+    top: -39px;
+    right: -18px;
+    display: block;
+    box-sizing: border-box;
+    height: 101px;
+    width: 101px;
+
+}
+.education {
+  position: absolute;
+  top: 438.42px;
+  left: calc(50% - 105px);
+  width: 210px;
+  height: 94.42px;
+  font-size: 8.22px;
+}
+.sol-pie-icon-1 {
+  left: 113.01px;
+  width: 92.34px;
+  height: 91.21px;
+  display: block;
+  box-sizing: border-box
+}
+.vector-icon14 {
+  position: absolute;
+  top: -62.2px;
+  left: calc(50% - 93.36px);
+  width: 5.31px;
+  height: 5.4px;
+}
+.execution-of-voting,
+.governance1 {
+  position: absolute;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  display: inline-block;
+}
+.governance1 {
+  top: -84.79px;
+  left: calc(50% - 79.51px);
+  font-size: 10.32px;
+  line-height: 150%;
+  color: #843c0c;
+  width: 71.68px;
+}
+.execution-of-voting {
+  top: -66.16px;
+  left: calc(50% - 83.39px);
+  line-height: 141%;
+  width: 91.7px;
+}
+.vector-icon15 {
+  position: absolute;
+  top: -33.7px;
+  left: calc(50% - 93.36px);
+  width: 5.31px;
+  height: 5.4px;
+}
+.participation-in-government {
+  position: absolute;
+  top: -39.18px;
+  left: calc(50% - 83.39px);
+  letter-spacing: -0.01em;
+  line-height: 142%;
+  font-weight: 500;
+  display: inline-block;
+  width: 102.68px;
+}
+
+
+.vector-icon16 {
+  position: absolute;
+  top: -36.61px;
+  left: calc(50% - 68.48px);
+  width: 5.31px;
+  height: 5.4px;
+}
+.arts {
+  position: absolute;
+  top: -41.75px;
+  left: calc(50% - 61.38px);
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-weight: 500;
+  display: inline-block;
+  width: 20.02px;
+}
+.vector-icon17 {
+  position: absolute;
+  top: -56.75px;
+  left: calc(50% - 69.15px);
+  width: 5.31px;
+  height: 5.4px;
+}
+.lanuage {
+  position: absolute;
+  top: -61.66px;
+  left: calc(50% - 61.38px);
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-weight: 500;
+  display: inline-block;
+  width: 40.04px;
+}
+
+
+.health-parent {
+  position: absolute;
+  left: calc(50% + 38.5px);
+  width: 210px;
+}
+.pie-box {
+  position: relative;
+  width: 205.71px;
+  height: 92.81px;
+  margin-bottom: 15.56px
+}
+.health1 {
+  position: absolute;
+  margin-top: 3px;
+  left: calc(50% - 62.88px);
+  letter-spacing: -.01em;
+  line-height: 150%;
+  font-weight: 500;
+  display: inline-block;
+  width: 32.29px
+}
+
+.pie-chart-labels {
+  max-width: 50%;
+  padding-left: 18px;
+  padding-top: 5px;
+  position: relative;
+  left: 15px;
+  font-size: 8.22px
+}
+.chronic-diseases {
+  margin: 0
+}
+
+.chronic-diseases::before {
+  padding-left: 4px;
+  margin-right: 3px
+}
+.chronic-diseases-immunisation-container {
+  margin-left: 35px;
+  font-size: 8.99px;
+  letter-spacing: -.01em;
+  line-height: 37%;
+  font-weight: 500;
+  color: var(--color-black);
+  top: 25px;
+  right: 80px;
+  display: block;
+  width: 300px;
+  position: absolute;
+  left: -50px
+}
+
+.group-child,
+.rectangle-parent {
+  position: absolute;
+  top: 156px;
+  left: 43px;
+  width: 497px;
+  height: 408px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rectangle-wrapper{
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 145.96px;
+    
+}
+.percentage-contribution-of {
+  position: absolute;
+  top: 6px;
+  left: calc(50% - 278.5px);
+  font-size: 15.52px;
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-weight: 500;
+  color: var(--color-gray-100);
+  display: inline-block;
+  width: 556px;
+  height: 27px;
+  background-color: #E0EBF6;
+  text-align:center ;
+}
+
+
+.group-container {
+  position: absolute;
+  left: 607px;
+  width: 561px;
+  height: 654px;
+  font-size: 10.32px;
+  color: var(--color-black);
+}
+.group {
+  position: absolute;
+  height: 654px;
+  width: 100%;
+  right: 0;
+  left: 0;
+}
+.vector-icon18 {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 330.5px);
+  width: 661px;
+  height: 27px;
+}
+.score-graph-1-icon {
+  position: absolute;
+  top: 207px;
+  left: -10px;
+  width: 561px;
+  height: 313px;
+  object-fit: cover;
+}
+.percentage-contribution-of1 {
+  position: absolute;
+  top: 2.9px;
+  left: calc(50% - 278.3px);
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-weight: 500;
+  display: inline-block;
+  width: 605.58px;
+  background-color: #7f7f7f;
+  text-align: center;
+}
+.percentage-contribution-of2 {
+  position: absolute;
+  top: 2.9px;
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-weight: 500;
+  display: inline-block;
+  width: 555.58px;
+  background-color: #7f7f7f;
+  text-align: center;
+}
+.group-item,
+.vector-parent {
+  position: absolute;
+  flex: 50%;
+}
+.vector-parent {
+  top: 0;
+  left: calc(50% + 33px);
+  height: 620px;
+  
+}
+.group-item {
+  top: 117px;
+  left: 90px;
+  height: 541px;
+  object-fit: cover;
+}
+.censored{
+  margin-top: 70px;
+  height: 430px;
+  top: 190PX;
+}
+
+.group_dis {
+  top: 26.79px;
+  left: calc(50% - 301.71px);
+  background-color: #f2f2f2;
+  height: 26.79px
+}
+
+.censored-uncensored-frame {
+  top: 0;
+  left: 46px;
+  height: 516.95px
+}
+.frame-parent,
+.group-div {
+  position: absolute;
+  height: 620px;
+  flex: 50%;
+}
+
+
+.frame-parent {
+  top: 0;
+  left: 0;
+  width: 661px;
+  float: 50%;
+}
+.group-div {
+  top: 703.01px;
+  left: calc(50% - 694px);
+  width:100%;
+  font-size: 15.52px;
+  color: var(--color-gray-100);
+}
+.group-parent {
+  position: absolute;
+  height: 76.63%;
+  width: 90.13%;
+  top: 25.73%;
+  right: 5.06%;
+  bottom: 17.64%;
+  left: 4.81%;
+  margin-left: 50px;
+ 
+}
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fff;
+  width: 1540px;
+  height: 50px;
+}
+.desktop-2 {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 2024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 33.68px;
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}
+
+.vertical-graph{
+  width: 100% !important ;
+}
+
+@media screen and (max-width: 420px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+}

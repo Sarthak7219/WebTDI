@@ -1,5 +1,8 @@
 from django.db import models
 from django.db.models import Sum
+from django.core.cache import cache
+from django.utils.text import slugify
+
 
 
 # Create your models here.
@@ -8,10 +11,17 @@ from django.db.models import Sum
 
 class Tribe(models.Model):
     name = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     incidence = models.FloatField(null=True, blank=True)
+    slug=models.SlugField(unique=True,blank=True,null=True)
     intensity = models.FloatField(null=True, blank=True)
     tdi = models.FloatField(null=True, blank=True)
 
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Tribe, self).save(*args, **kwargs)
+    
     def __str__(self):
         return self.name 
 
@@ -60,41 +70,6 @@ class Tribe(models.Model):
         return ans
 
     
-
-    
-    # def get_censored_tribal_indicator_score(self):
-    #     households = self.household.all() 
-        
-    #     # Use a dictionary to store indicator scores
-    #     indicator_scores = {
-    #         'CD': 0, 'IM': 0, 'MC': 0, 'CM': 0, 'FS': 0,
-    #         'LE': 0, 'DRO': 0, 'IC': 0, 'OW': 0, 'SANI': 0,
-    #         'FUEL': 0, 'DRWA': 0, 'ELECTR': 0, 'ASS': 0,
-    #         'LAN': 0, 'ARTS': 0, 'EV': 0, 'MEET': 0
-    #     }
-
-    #     for household in households:
-    #         tribal_household_index = household.household_tribal_index()
-
-    #         if tribal_household_index >= 0.03:
-    #             # Accumulate scores only if the index is greater than or equal to 0.03
-    #             for indicator in indicator_scores:
-    #                 score_attr = f"{indicator}_score"
-                    
-    #                 # Check if the household has the score attribute and it is not None
-    #                 if hasattr(household, score_attr) and getattr(household, score_attr) is not None:
-    #                     indicator_scores[indicator] += getattr(household, score_attr) * household.size
-
-    #     # Calculate total members
-    #     total_members = self.get_total_tribals()
-
-    #     # Calculate indicator scores as a proportion of total members
-    #     indicator_contributions = []
-    #     for indicator, score in indicator_scores.items():
-    #         indicator_score = (score / total_members) if total_members != 0 else 0
-    #         indicator_contributions.append(round(indicator_score, 2))
-
-    #     return indicator_contributions
 
     @property
     def dimensional_contribution_to_index(self):
@@ -145,7 +120,7 @@ class Tribe(models.Model):
             for household in households:
                 ans[i] += household.household_dimensional_incidence[i]
 
-        ans = [round(val, 3) for val in ans]
+        ans = [round(val, 4) for val in ans]
 
         return ans
 
@@ -157,7 +132,7 @@ class Tribe(models.Model):
             household_tribal_incidence = household.household_tribal_incidence
             ans += household_tribal_incidence
 
-        return int(round(ans * 100, 2))
+        return int(round(ans * 100, 3))
 
     def _calculate_tribal_dimensional_intensity(self):
         ans = [0] * 5
@@ -220,11 +195,7 @@ class Tribe(models.Model):
             self._dimension_contribution_to_tdi = self._calculate_dimension_contribution_to_tdi()
         return self._dimension_contribution_to_tdi
     
-    @property
-    def get_censored_tribal_indicator_score(self):
-        if not hasattr(self, '_get_censored_tribal_indicator_score'):
-            self._get_censored_tribal_indicator_score = self._calculate_censored_tribal_indicator_score()
-        return self._get_censored_tribal_indicator_score
+
 
     def _calculate_tribal_intensity(self):
         households = self.household.all()
@@ -261,17 +232,21 @@ class Tribe(models.Model):
     def _calculate_indicators_score(self):
         households = self.household.all()
         total = []
-        
-        if households:
-            total = [list(indicators) for indicators in households[0].test_indicators]
 
-            for household in households[1:]:
+        if households:
+            # Initialize the 'total' list with the test indicators of the first household
+            total = [[0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]
+
+            for household in households:
                 indicators = household.test_indicators
                 for i in range(len(indicators)):
                     for j in range(len(indicators[i])):
-                        total[i][j] += indicators[i][j]
+                        if indicators[i][j] is not None:
+                            total[i][j] += indicators[i][j]
 
         return total
+
+
 
     def _calculate_dimensional_score(self):
         households = self.household.all()
@@ -321,39 +296,121 @@ class Tribe(models.Model):
         
 
 
-    def _calculate_censored_tribal_indicator_score(self):
+ 
+    @property
+    def get_censored_tribal_indicator_score(self):
+        cache_key = 'censored_tribal_indicator_score_' + str(self.id)
+        cached_value = cache.get(cache_key)
+
+        if cached_value is not None:
+            return cached_value
+
         households = self.household.all()
-        indicators = [
-            'CD_score', 'IM_score', 'MC_score', 'CM_score', 'FS_score', 'LE_score',
-            'DRO_score', 'IC_score', 'OW_score', 'SANI_score', 'FUEL_score', 'DRWA_score',
-            'ELECTR_score', 'ASS_score', 'LAN_score', 'ARTS_score', 'EV_score', 'MEET_score'
-        ]
-
-        indicator_members = [0] * len(indicators)
-
-        for household in households:
-            tribal_household_index = household.household_tribal_index
-            for idx, indicator in enumerate(indicators):
-                indicator_value = getattr(household, indicator, None)
-                if tribal_household_index >= 0.03 and indicator_value is not None:
-                    indicator_members[idx] += indicator_value * household.size
+        scores = {
+            'CD_score': 0,
+            'IM_score': 0,
+            'MC_score': 0,
+            'CM_score': 0,
+            'FS_score': 0,
+            'LE_score': 0,
+            'DRO_score': 0,
+            'IC_score': 0,
+            'OW_score': 0,
+            'SANI_score': 0,
+            'FUEL_score': 0,
+            'DRWA_score': 0,
+            'ELECTR_score': 0,
+            'ASS_score': 0,
+            'LAN_score': 0,
+            'ARTS_score': 0,
+            'EV_score': 0,
+            'MEET_score': 0
+        }
 
         total_members = self.get_total_tribals
-        indicator_scores = [round(member / total_members, 2) for member in indicator_members]
-        return indicator_scores
+
+        for household in households:
+                tribal_development_score = household.tribal_development_score
+
+                if tribal_development_score > 0.33:
+                    for key in scores:
+                        score = getattr(household, key)
+                        scores[key] += score * household.size if score is not None else 0
+
+        if total_members > 0:
+                ans = [round(scores[key] / total_members, 2) for key in scores]
+        else:
+            error_message = "Number of household members cannot be zero"
+            raise ValueError(error_message)  # Set ans to an empty list or another appropriate value when total_members is zero
+        return ans
+            
+
+
+        
+    @property
+    def get_uncensored_tribal_indicator_score(self):
+        cache_key = 'uncensored_tribal_indicator_score_' + str(self.id)
+        cached_value = cache.get(cache_key)
+
+        if cached_value is not None:
+            return cached_value
+
+        households = self.household.all()
+        scores = {
+            'CD_score': 0,
+            'IM_score': 0,
+            'MC_score': 0,
+            'CM_score': 0,
+            'FS_score': 0,
+            'LE_score': 0,
+            'DRO_score': 0,
+            'IC_score': 0,
+            'OW_score': 0,
+            'SANI_score': 0,
+            'FUEL_score': 0,
+            'DRWA_score': 0,
+            'ELECTR_score': 0,
+            'ASS_score': 0,
+            'LAN_score': 0,
+            'ARTS_score': 0,
+            'EV_score': 0,
+            'MEET_score': 0
+        }
+
+        total_members = self.get_total_tribals
+
+        for household in households:
+            for key in scores:
+                score = getattr(household, key)
+                scores[key] += score * household.size if score is not None else 0
+
+        ans = [round(scores[key] / total_members, 2) for key in scores]
+
+        cache.set(cache_key, ans)
+        return ans
+
 
 
 
 class Tribe_Image(models.Model):
     tribe = models.ForeignKey(Tribe, on_delete=models.CASCADE, related_name='tribe_image', null=True, blank=True)
-    logo_image=models.ImageField(upload_to='images')
-    main_image=models.ImageField(upload_to='images')
-    village_image=models.ImageField(upload_to='images')
+    logo_image=models.ImageField(upload_to='images/logo_images')
+    main_image=models.ImageField(upload_to='images/main_images')
+    main_desc = models.CharField(max_length=100,null=True, blank=True)
+    village_image=models.ImageField(upload_to='images/village_images')
+    village_desc = models.CharField(max_length=100,null=True, blank=True)
     location=models.CharField(max_length=50, null=True, blank=True)
+    map_image = models.ImageField(upload_to='images/map_images')
+    date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.tribe.name} images"
 
 
 class Household(models.Model):
+    
     tribeID = models.ForeignKey(Tribe, on_delete=models.CASCADE, related_name="household", null=True, blank=True)
+    tribe_name = models.CharField(max_length=30,null=True, blank=True)
     size = models.IntegerField(null= True, blank=True)
     # decimal_field = models.DecimalField(max_digits=10, decimal_places=2,null= True, blank=True)
     # HEALTH
@@ -460,10 +517,13 @@ class Household(models.Model):
             for j, w in zip(i, weightage):
                 if j is not None:
                     dimension_indicators_array.append(round(j * w, 2))
+                else:
+                    dimension_indicators_array.append(None)  # Append None if j is None
             ans.append(dimension_indicators_array)
 
         self._cached_test_indicators = ans
         return ans
+
 
     @property
     def D_DS(self):
@@ -472,7 +532,7 @@ class Household(models.Model):
 
         weightage = self.calculate_weightage
         developed_indicators = self.developed_indicators
-        ans = [round(w * d, 2) for w, d in zip(weightage, developed_indicators)]
+        ans = [w * d for w, d in zip(weightage, developed_indicators)]
 
         self._cached_D_DS = ans
         return ans
@@ -514,7 +574,7 @@ class Household(models.Model):
             return self._cached_members_of_developed_households
 
         is_dev = self.is_developed
-        members = [round(is_dev[i] * self.size, 2) for i in range(5)]
+        members = [is_dev[i] * self.size for i in range(5)]
         self._cached_members_of_developed_households = members
         return members
 
@@ -533,7 +593,7 @@ class Household(models.Model):
                 incidence_value = members_of_developed_households[i] / total_tribals
             else:
                 incidence_value = 0.0  # Handle the case where there are no households to avoid division by zero
-            incidence.append(round(incidence_value, 2))
+            incidence.append(incidence_value)
 
         self._cached_household_dimensional_incidence = incidence
         return incidence
@@ -548,7 +608,7 @@ class Household(models.Model):
         is_multidimensionally_developed = self.is_multidimensionally_developed
 
         if total_tribals > 0:
-            ans = round((is_multidimensionally_developed * self.size) / total_tribals, 2)
+            ans = (is_multidimensionally_developed * self.size) / total_tribals
         else:
             ans = 0.0  # Handle the case where there are no tribals to avoid division by zero
         self._cached_household_tribal_incidence = ans
@@ -572,7 +632,7 @@ class Household(models.Model):
             score = D_DS_values[i]
 
             if total_members > 0:
-                ans = round((score * members_in_households * 5) / total_members, 3)
+                ans = (score * members_in_households * 5) / total_members
             else:
                 ans = 0.0  # Handle the case where total_members is zero
 
@@ -592,7 +652,7 @@ class Household(models.Model):
         score = self.tribal_development_score
 
         if total_members_multi_dimensionally_developed_households > 0:
-            ans = round((score * members_in_developed_households) / total_members_multi_dimensionally_developed_households, 2)
+            ans = (score * members_in_developed_households) / total_members_multi_dimensionally_developed_households
         else:
             ans = 0.0  # Handle the case where total_members_multi_dimensionally_developed_households is zero
 
@@ -606,7 +666,7 @@ class Household(models.Model):
 
         household_tribal_intensity = self.household_tribal_intensity
         household_tribal_incidence = self.household_tribal_incidence
-        index = round((household_tribal_intensity * household_tribal_incidence) * 100, 2)
+        index = round((household_tribal_intensity * household_tribal_incidence) * 100, 5)
 
         self._cached_household_tribal_index = index
         return index
@@ -628,7 +688,7 @@ class Household(models.Model):
         for indicator_group in scores:
             total_sum += sum([score for score in indicator_group if score is not None])
 
-        result = round(total_sum * self.size, 2)
+        result = round(total_sum * self.size, 4)
 
         self._cached_developed_indicators_members = result
         return result
