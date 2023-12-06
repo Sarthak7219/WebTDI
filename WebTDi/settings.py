@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'WebTDi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'webtdi',
+        'USER': 'sarthak',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',  # or the hostname where your MySQL server is running
+        'PORT': '3306',      # or the port on which your MySQL server is listening
     }
 }
 
@@ -119,17 +123,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+# Corrected STATICFILES_DIRS
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'public/static'),
+]
 
-STATICFILES_DIR = {
-    os.path.join(BASE_DIR , "public/static")
-}
-
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'public/static') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static')  # Adjust the path accordingly
 MEDIA_URL = '/media/'
 
 

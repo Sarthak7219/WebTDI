@@ -33,7 +33,7 @@ def login_view(request):
     if form.is_valid():
       user=form.get_user()
       login(request,user)
-      return redirect("/")
+      return redirect("home/homepage.html")
   else:
       form=AuthenticationForm(request)
   context={

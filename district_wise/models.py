@@ -3,40 +3,41 @@ from django.utils.text import slugify
 import math
 
 
+
 class District(models.Model):
-    code = models.IntegerField(null=True, blank=True, unique=True)
-    name = models.CharField(max_length=30,unique=True)
-    st_population = models.IntegerField()
-    total_population = models.IntegerField()
+    code = models.FloatField(null=True, blank=True)
+    name = models.CharField(null=True, blank=True,max_length=30)
+    year=models.FloatField(null=True, blank=True)
+    st_population = models.FloatField(null=True, blank=True,)
+    total_population = models.FloatField(null=True, blank=True,)
     #HEALTH
-    W_BMI = models.FloatField()
-    C_UW = models.FloatField()
-    AN_W = models.FloatField()
-    AN_C = models.FloatField()  
-    AHC_ANC = models.FloatField()
-    AHC_Full_ANC = models.FloatField()
-    AHC_PNC = models.FloatField()
-    AHC_HI = models.FloatField()
+    W_BMI = models.FloatField(null=True, blank=True,)
+    C_UW = models.FloatField(null=True, blank=True,)
+    AN_W = models.FloatField(null=True, blank=True,)
+    AN_C = models.FloatField(null=True, blank=True,)  
+    AHC_ANC = models.FloatField(null=True, blank=True,)
+    AHC_Full_ANC = models.FloatField(null=True, blank=True,)
+    AHC_PNC = models.FloatField(null=True, blank=True,)
+    AHC_HI = models.FloatField(null=True, blank=True,)
     
     #EDUCATION
-    Enrollment = models.FloatField()
-    Equity = models.FloatField()
-    E_DropRate = models.FloatField()
+    Enrollment = models.FloatField(null=True, blank=True,)
+    Equity = models.FloatField(null=True, blank=True,)
+    E_DropRate = models.FloatField(null=True, blank=True,)
 
     #SOL
-    S_Sani = models.FloatField()
-    S_CoFu = models.FloatField()
-    S_DrWa = models.FloatField()
-    S_Elec = models.FloatField()
+    S_Sani = models.FloatField(null=True, blank=True,)
+    S_CoFu = models.FloatField(null=True, blank=True,)
+    S_DrWa = models.FloatField(null=True, blank=True,)
+    S_Elec = models.FloatField(null=True, blank=True)
 
     
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(District, self).save(*args, **kwargs)
     
-    def __str__(self):
-        return self.name
+    
+    
+    # def _str_(self):
+    #     return self.name
 
     def get_multiplier(self):
         ans = self.st_population/self.total_population
@@ -128,20 +129,33 @@ class District(models.Model):
             else:
                 norm_value = (act_val-min)/(max-min)
             norm_arr[i] = norm_value
-       
-
+        
+        return norm_arr
         x = 6  # Round off number
 
+    def  get_normalized_final_ind_scores(self):
+            x = 2
+            norm_arr=self.get_normalized_ind_scores()
+            norm_arr_final = [
+                round(norm_arr[0],x),round(norm_arr[1],x),round((norm_arr[0] + norm_arr[1]) / 2, x), round(norm_arr[2],x),round(norm_arr[3],x),round((norm_arr[2] + norm_arr[3]) / 2, x),round(norm_arr[4],x), round(norm_arr[5],x), round(norm_arr[6],x),round((norm_arr[4] + norm_arr[5] + norm_arr[6]) / 3, x), round(norm_arr[7], x),
+                round(norm_arr[8], x), round(norm_arr[9], x), round(norm_arr[10], x),
+                round(norm_arr[11], x), round(norm_arr[12], x), round(norm_arr[13], x), round(norm_arr[14], x)]
+            
+            print(norm_arr_final)
+            return norm_arr_final
+    
+    def get_avg_ind_scores(self):
+        norm_arr=self.get_normalized_ind_scores()
         norm_arr_final = [
-            [round((norm_arr[0] + norm_arr[1]) / 2, x), round((norm_arr[2] + norm_arr[3]) / 2, x), round((norm_arr[4] + norm_arr[5] + norm_arr[6]) / 3, x), round(norm_arr[7], x)],
-            [round(norm_arr[8], x), round(norm_arr[9], x), round(norm_arr[10], x)],
-            [round(norm_arr[11], x), round(norm_arr[12], x), round(norm_arr[13], x), round(norm_arr[14], x)]
+        [(norm_arr[0] + norm_arr[1]) / 2, (norm_arr[2] + norm_arr[3]) / 2, (norm_arr[4] + norm_arr[5] + norm_arr[6]) / 3,
+        norm_arr[7]],
+        [norm_arr[8], norm_arr[9], norm_arr[10]],
+        [norm_arr[11], norm_arr[12], norm_arr[13], norm_arr[14]]
         ]
-
         return norm_arr_final
     
     def get_dimension_scores(self):
-        norm_arr = self.get_normalized_ind_scores()
+        norm_arr = self.get_avg_ind_scores()
         dimension_arr = []
         for i in norm_arr:
             sum =0
@@ -152,6 +166,14 @@ class District(models.Model):
 
         return dimension_arr
     
+    # def get_score(self):
+    #     dimension_scores = self.get_dimension_scores()
+    #     normalized_final_ind_scores=self.get_normalized_final_ind_scores()
+    #     avg_ind_scores=self.get_avg_ind_scores()
+    #     arr=[dimension_scores]
+
+
+
     def get_tdi_score(self):
         dimension_scores = self.get_dimension_scores()
         total = sum(dimension_scores)
@@ -165,32 +187,40 @@ class District(models.Model):
         geometric_tdi = round(math.pow(prod, 1/length),3)
 
         return [arithmetic_tdi, geometric_tdi]
+    
 
+    def get_indicator_contri_to_dimension(self):
+        normalized_ind_scores = self.get_avg_ind_scores()
+        ind_sum = []
+        
+        for i in normalized_ind_scores:
+            sum = 0
+            for j in i:
+                sum += j
+            ind_sum.append(sum)
+        
 
+        indicator_contri_to_dimension = []
+
+        for i in range(0,3):
+            ind_contri_arr = []
+            for k in range(len(normalized_ind_scores[i])):
+                if ind_sum[i]!=0:
+                 ind_contri = normalized_ind_scores[i][k] / ind_sum[i]
+                 ind_contri_arr.append(ind_contri*100)
+            indicator_contri_to_dimension.append(ind_contri_arr)
+        
+        return indicator_contri_to_dimension
+    
     def get_dimension_contribution_tdi(self):
         dimension_arr = self.get_dimension_scores()
         total = sum(dimension_arr)
         ans = [round((dimension_arr[0]/total)*100), round((dimension_arr[1]/total)*100), round((dimension_arr[2]/total)*100)]
         return ans
-
-
-                
-
-
-
-
-
-
     
-            
-                
 
-
-
-
-
-
-
-
-        
-    
+    def get_score(self):
+        dimension_scores = self.get_dimension_scores()
+        normalized_final_ind_scores=self.get_normalized_final_ind_scores()
+        arr=[normalized_final_ind_scores[0],normalized_final_ind_scores[1],normalized_final_ind_scores[2],normalized_final_ind_scores[3],normalized_final_ind_scores[4],normalized_final_ind_scores[5],normalized_final_ind_scores[6],normalized_final_ind_scores[7],normalized_final_ind_scores[8],normalized_final_ind_scores[9],normalized_final_ind_scores[10],normalized_final_ind_scores[11],dimension_scores[0],normalized_final_ind_scores[12],normalized_final_ind_scores[13],normalized_final_ind_scores[14],dimension_scores[1],normalized_final_ind_scores[15],normalized_final_ind_scores[16],normalized_final_ind_scores[17],normalized_final_ind_scores[17],dimension_scores[2]]
+        return arr

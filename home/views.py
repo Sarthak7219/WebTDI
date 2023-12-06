@@ -2,14 +2,10 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import Http404
 from .models import Household, Tribe
+from district_wise.models import District
 from django.http import HttpResponse
 # Create your views here.
-def home_view(request):
-    tribes = Tribe.objects.all()
-    context = {
-        'tribes' : tribes
-    }
-    return render(request,'home/homepage.html',context=context)
+
 
 def tribe_detail_view(request, slug):
     tribes = Tribe.objects.all()
@@ -25,6 +21,7 @@ def tribe_detail_view(request, slug):
 
     total_tribals = tribe.get_total_tribals
     household = Household.objects.all()
+    districts = District.objects.all()
     
     contributions_to_dimension = tribe.indicator_contributions_to_dimension
 
@@ -37,6 +34,8 @@ def tribe_detail_view(request, slug):
     tribal_dimensional_index = tribe.tribal_dimensional_index
     dimension_contribution_to_tdi = tribe.dimension_contribution_to_tdi
 
+    
+    
     context = {
         'household': household,
         'total_tribals': total_tribals,
@@ -48,7 +47,10 @@ def tribe_detail_view(request, slug):
         'culture_contributions_to_dimension': culture_contributions_to_dimension,
         'governance_contributions_to_dimension': governance_contributions_to_dimension,
         'tribal_dimensional_index': tribal_dimensional_index,
-        'dimension_contribution_to_tdi': dimension_contribution_to_tdi
+        'dimension_contribution_to_tdi': dimension_contribution_to_tdi,
+        'districts' : districts,
+        
+
     }
 
     return render(request, 'pvtg/asur.html', context=context)
