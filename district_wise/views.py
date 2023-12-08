@@ -14,7 +14,7 @@ def district_view(request,slug1,slug2):
     tribes = Tribe.objects.all()
 
     if slug1 is not None and slug2 is not None:
-       district = District.objects.get(name=slug1, year=slug2)
+       district = District.objects.get(slug=slug1, year=slug2)
 
 
       

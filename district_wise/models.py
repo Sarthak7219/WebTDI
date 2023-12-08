@@ -7,6 +7,7 @@ import math
 class District(models.Model):
     code = models.FloatField(null=True, blank=True)
     name = models.CharField(null=True, blank=True,max_length=30)
+    slug=models.SlugField(unique=True,blank=True,null=True)
     year=models.FloatField(null=True, blank=True)
     st_population = models.FloatField(null=True, blank=True,)
     total_population = models.FloatField(null=True, blank=True,)
@@ -33,7 +34,9 @@ class District(models.Model):
 
     
 
-    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(District, self).save(*args, **kwargs)
     
     
     # def _str_(self):
@@ -141,7 +144,6 @@ class District(models.Model):
                 round(norm_arr[8], x), round(norm_arr[9], x), round(norm_arr[10], x),
                 round(norm_arr[11], x), round(norm_arr[12], x), round(norm_arr[13], x), round(norm_arr[14], x)]
             
-            print(norm_arr_final)
             return norm_arr_final
     
     def get_avg_ind_scores(self):

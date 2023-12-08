@@ -1080,6 +1080,8 @@
     right: 0;
     bottom: 0;
   }
+
+  
   .group-parent {
     position: absolute;
     top: 0;
@@ -1367,6 +1369,174 @@
     flex: 50%;
   }
 
+  .district-map-frame{
+    display: flex;
+
+  }
+
+  .district-details{
+    height: 100%;
+    padding: 15px;
+
+  }
+  .district-name, .district-values{
+    padding: 3px;
+    width: 145px;
+    margin-top: 4px;
+  }
+
+  .district-name h3,
+  .district-values {
+    display: none;
+    text-transform: uppercase;
+    max-width: 100%;
+  }
+  .map-details-frame{
+    height: 100%;
+    width: 100%;
+    margin: 15px;
+  }
+
+  .district-graph{
+    display: flex;
+    align-items: center;
+  }
+
+  .mapdiv{
+    padding: 20px;
+  }
+
+  svg{
+    border: 2px white solid;
+    
+}
+
+
+.mapdiv path {
+    stroke: #01171b;
+    stroke-width: .25;
+    transition: transform 0.4s, fill 0.4s;
+
+}
+
+.mapdiv path:hover {
+  fill: rgba(96, 95, 95, 0.143) !important;
+  cursor: pointer !important;
+}
+
+.maplabels1{
+    display: none;
+    
+}
+
+#bokaro {
+  fill: #C5E0B4;
+}
+
+#chatra {
+  fill: #D9D9D9;
+}
+
+#deoghar {
+  fill: #B3B3B3;
+}
+
+#dhanbad {
+  fill: #FFE0B5;
+}
+
+#dumka {
+  fill: #FFE699;
+}
+
+#garhwa {
+  fill: #F1A78A;
+}
+
+#giridih {
+  fill: #BDD7EE;
+}
+
+#godda {
+  fill: #F8CBAD;
+}
+
+#gumla {
+  fill: #A1C490;
+}
+
+#hazaribagh {
+  fill: #F5C7B8;
+}
+
+#jamtara {
+  fill: #FFC000;
+}
+
+#khunti {
+  fill: #FFD9A0;
+}
+
+#kodarma {
+  fill: #FFD184;
+}
+
+#latehar {
+  fill: #538233;
+}
+
+#lohardaga {
+  fill: #BDD7EE;
+}
+
+#pakur {
+  fill: #FFE699;
+}
+
+#palamu {
+  fill: #FFE699;
+}
+
+#pashchimi-singhbhum {
+  fill: #C5E0B4;
+}
+
+#purbi-singhbhum {
+  fill: #C5E0B4;
+}
+
+#ramgarh {
+  fill: #C09000;
+}
+
+#ranchi {
+  fill: #BDD7EE;
+}
+
+#sahibganj {
+  fill: #FFD184;
+}
+
+#saraikela-kharsawan {
+  fill: #F8CBAD;
+}
+
+#simdega {
+  fill: #BDD7EE;
+}
+
+
+.district-path {
+  z-index: 1; /* Adjust the value as needed */
+}
+
+.popover-box {
+  z-index: 2; /* Ensure a higher z-index for the popover box */
+}
+
+
+
+
   
 
   .page3-home {
@@ -1406,50 +1576,19 @@
     width: 1061px;
     height: 116px;
   }
-  .cover-page1-home-crc-1-icon,
-  .th-1-icon {
-    position: absolute;
-    top: 1.2px;
-    left: calc(50% - 454.3px);
-    width: 210.7px;
-    height: 274.8px;
-    object-fit: cover;
+
+
+ 
+  .books-frame {
+    display: flex;
+    justify-content:space-between ;
   }
-  .cover-page1-home-crc-1-icon {
-    top: 0;
-    left: calc(50% - 226.9px);
-    width: 209px;
-    height: 275.7px;
-  }
-  .architecture-book-cover-templa-icon,
-  .book-cover-page-4-crc-1-icon {
-    position: absolute;
-    top: 0;
-    left: calc(50% + 2.1px);
-    width: 224.7px;
-    height: 275.7px;
-    object-fit: cover;
-  }
-  .book-cover-page-4-crc-1-icon {
-    top: 0.4px;
-    left: calc(50% + 246.8px);
-    width: 202.5px;
-    height: 274.9px;
-  }
-  .books-frame,
+  
   .frame12 {
-    position: absolute;
-    top: 0;
-    left: 118px;
-    width: 902px;
-    height: 275.7px;
-  }
-  .frame12 {
-    top: 324px;
-    left: 1px;
     width: 1054px;
     height: 276px;
-    overflow: hidden;
+    position: relative;
+    top: 325px;
   }
   .read-more-button2 {
     position: relative;

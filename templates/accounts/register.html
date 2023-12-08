@@ -1,13 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
+
+
 {% if not request.user.is_authenticated %}
-<form method="POST">
-{% csrf_token %}
-{{form}}
-<button type="submit">Register</button>
-</form>
+<div class="accountsbox">
+    {% if form.errors %}
+    <p style="color: red;">There is an error with your form!</p>
+    {% endif %}
+    <div class="accounts-head">
+        <h2>Register your account</h2>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+
 {% else %}
-<h1>Hello! Already have an account.Do you want to <a href="/login">Login</a></h1>
-<h1>Hello! Already have an account.Do you want to <a href="/logout">Logout</a></h1>
+<h1>Hi</h1>
 {% endif %}
-{% endblock content %}
+{% endblock %}
+
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}

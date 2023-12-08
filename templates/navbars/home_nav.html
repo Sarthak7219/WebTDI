@@ -1,0 +1,62 @@
+{% block content %}
+<div class="desktop-1-child"></div>
+<div class="desktop-1-item"></div>
+<div class="desktop-1-inner"></div>
+
+<div class="navbar-1-icon"></div>
+<div class="haveq">
+    <div class="have-any-questions-container">
+        <span>Have any questions? </span>
+        <span class="span">+91 912345678</span>
+    </div>
+</div>
+
+<div class="navbar-2">
+    <div class="nav-2-left">
+        <div class="nav-home">
+            <div class="frame4">
+                <img class="vector-icon" alt="" src="/vector.svg" />
+
+                <div class="home"><a class="nav-buttons">HOME</a></div>
+            </div>
+            <div class="nav-home-child"></div>
+        </div>
+        <div class="research"><a href="#research" class="nav-buttons">RESEARCH</a></div>
+        <div class="team"><a href="#page6-home" class="nav-buttons">TEAM</a></div>
+        <div class="gallery"><a href="{% url 'home'%}" class="nav-buttons">GALLERY</a></div>
+        <div class="about"><a href="#page4-home" class="nav-buttons">About Us</a></div>
+        <div class="contact-us"><a href="{% url 'home'%}" class="nav-buttons">Contact us</a></div>
+        <div class="contact-us">
+            <ul class="dropdown-menu">
+                {% for tribe in tribes %}
+                <li><a class="dropdown-item" href="{% url 'tribe_detail' tribe.slug %}">{{tribe.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="nav-2-right">
+        <div class="contact-us1"><a href="{% url 'login'%}" class="nav-buttons">Login</a></div>
+        <div class="contact-us1"><a href="{% url 'register'%}" class="nav-buttons">Register</a></div>
+    </div>
+</div>
+<div class="main-logo">
+    <div class="frame14">
+        <div class="webtool"><a href="{% url 'home' %}" class="logo-link">Webtool</a></div>
+    </div>
+    <div class="frame15">
+        <a href="{% url 'home' %}">
+            <img class="screenshot-2023-10-11-223008-1" alt=""
+                src="/static/downloaded_images/Screenshot 2023-10-11 223008 1.png" /></a>
+        <div class="frame16">
+            <div class="tribal-development-index"><a href="{% url 'home' %}" class="logo-link">Tribal
+                    development index</a></div>
+
+        </div>
+    </div>
+</div>
+<img class="iitrlogo-1-icon" alt="" src="/static/downloaded_images/iitrLogo1.png" />
+{% endblock %}
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
