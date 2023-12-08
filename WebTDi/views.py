@@ -25,7 +25,7 @@ def home_view(request):
         'tribes' : tribes,
         'tribe_wise_tdi' : tribe_wise_tdi,
         'districts_name' : districts_name,
-        'district_wise_tdi' : district_wise_tdi
+        'district_wise_tdi' : district_wise_tdi,
     }
     return render(request,'home/homepage.html',context=context)
 

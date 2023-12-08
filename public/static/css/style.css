@@ -9,6 +9,19 @@
   font-size: var(--font-size-2xl)
 }
 
+.accountsbox{
+  width: 40%;
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px;
+  border: 1px solid rgba(60, 59, 59, 0.281);
+  border-radius: 20px;
+}
+
+.accounts-head{
+  margin-bottom: 30px;
+}
+
 .opt11,.opt21 {
   text-transform: uppercase;
   display: inline-block;

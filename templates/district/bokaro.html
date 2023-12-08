@@ -31,7 +31,7 @@
           </a>
           <ul class="dropdown-menu">
             {% for i in district %}
-            <li><a class="dropdown-item" href="/district/{{i.name}}/{{i.year}}">{{i.name}}</a></li>
+            <li><a class="dropdown-item" href="/district/{{i.slug}}/{{i.year}}">{{i.name}}</a></li>
             {% endfor %}
           </ul>
         </li>
