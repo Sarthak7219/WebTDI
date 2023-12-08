@@ -82,9 +82,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'webtdi',
-        'USER': 'sarthak',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',  # or the hostname where your MySQL server is running
+        'USER': 'admin',
+        'PASSWORD': 'Accpass1234',
+        'HOST': 'webtdi.cfcpo5wgsodm.eu-north-1.rds.amazonaws.com',  # or the hostname where your MySQL server is running
         'PORT': '3306',      # or the port on which your MySQL server is listening
     }
 }
