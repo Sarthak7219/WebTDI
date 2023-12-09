@@ -22,8 +22,7 @@ class Tribe(models.Model):
         self.slug = slugify(self.name)
         super(Tribe, self).save(*args, **kwargs)
     
-    def __str__(self):
-        return self.name 
+    
 
     @property
     def get_total_tribals(self):

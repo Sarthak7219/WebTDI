@@ -45,7 +45,6 @@
   left: calc(50% - 244.5px);
   width: 490px;
   top:20%;
-  height: 469px;
   object-fit: cover;
 }
 .group-group {
@@ -54,6 +53,9 @@
   width: 42.29%;
   right: 57.71%;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .rectangle-icon1 {
   position: absolute;
@@ -63,12 +65,7 @@
   height: 468px;
   object-fit: cover;
 }
-.pie-chart-frame {
-  position: absolute;
-  left: 0;
-  width: 204.06px;
-  height: 92.49px
-}
+
 .vector-icon1 {
   position: absolute;
   top: -92.5px;
@@ -101,37 +98,7 @@
 .vector-icon5 {
   top: -24.66px;
 }
-.chronic-diseases {
-  margin: 0;
-}
-.pie-icon-1 {
-  position: relative;
-  top:-15px;
-  left: 96.01px;
-  display: block;
-  box-sizing: border-box;
-  height: 101px;
-  width: 101px;
 
-
-}
-.health1 {
-  position: absolute;
-  margin-top: 3px;
-  left: calc(50% - 62.88px);
-  letter-spacing: -.01em;
-  line-height: 150%;
-  font-weight: 500;
-  display: inline-block;
-  width: 32.29px
-}
-.health-pie-icon-1 {
-  position: absolute;
-  left: 115.3px;
-  width: 90.41px;
-  height: 90.57px;
-  object-fit: cover
-}
 
 
 .vector-icon6,
@@ -178,31 +145,8 @@
   display: inline-block;
   width: 64.42px;
 }
-.standard-of-living {
-  position: absolute;
-  left: calc(50% - 62.88px);
-  letter-spacing: -.05em;
-  line-height: 121%;
-  font-weight: 500;
-  display: inline-block;
-  width: 64.58px
-}
-.standard-of-living {
-  margin-top: 3px;
-  font-size: 9.32px;
-  letter-spacing: -.01em;
-  line-height: 150%;
-  color: var(--color-olive);
-  width: 89.12px
-}
-.sol-icon-1 {
-  position: absolute;
-  top: -92.49px;
-  left: 0;
-  width: 203.56px;
-  height: 92.49px;
-  object-fit: cover;
-}
+
+
 
 .sol {
   position: absolute;
@@ -241,18 +185,7 @@
   width: 4.95px;
   height: 4.83px;
 }
-.education1 {
-  position: absolute;
-  margin-top: 3px;
-  left: calc(50% - 62.99px);
-  font-size: 10.32px;
-  letter-spacing: -.01em;
-  line-height: 150%;
-  font-weight: 500;
-  color: var(--color-darkolivegreen);
-  display: inline-block;
-  width: 49.08px
-}
+
 .education-icon-1
 {
   position: absolute;
@@ -262,16 +195,7 @@
   height: 94.42px;
   object-fit: cover;
 }
-.education-pie-icon-1 {
-  position: relative;
-    top: -39px;
-    right: -18px;
-    display: block;
-    box-sizing: border-box;
-    height: 101px;
-    width: 101px;
 
-}
 .education {
   position: absolute;
   top: 438.42px;
@@ -280,13 +204,7 @@
   height: 94.42px;
   font-size: 8.22px;
 }
-.sol-pie-icon-1 {
-  left: 113.01px;
-  width: 92.34px;
-  height: 91.21px;
-  display: block;
-  box-sizing: border-box
-}
+
 .vector-icon14 {
   position: absolute;
   top: -62.2px;
@@ -381,7 +299,7 @@
   height: 92.81px;
   margin-bottom: 15.56px
 }
-.health1 {
+.pie-box-inside {
   position: absolute;
   margin-top: 3px;
   left: calc(50% - 62.88px);
@@ -389,10 +307,26 @@
   line-height: 150%;
   font-weight: 500;
   display: inline-block;
-  width: 32.29px
+  width: 32.29px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif!important;
 }
 
-.pie-chart-labels {
+.pie-chart-frame {
+  position: absolute;
+  left: 0;
+  width: 204.06px;
+  height: 92.49px
+}
+
+.pie-inside-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: center
+}
+
+.pie-chart-labels-frame {
   max-width: 50%;
   padding-left: 18px;
   padding-top: 5px;
@@ -400,14 +334,36 @@
   left: 15px;
   font-size: 8.22px
 }
-.chronic-diseases {
+
+
+.pie-chart-labels {
   margin: 0
 }
 
-.chronic-diseases::before {
+.pie-chart-labels::before {
   padding-left: 4px;
   margin-right: 3px
 }
+
+.pie-icon-1 {
+  position: absolute;
+  left: 113.01px;
+  display: block;
+  box-sizing: border-box;
+  height: 101px;
+  width: 101px
+}
+
+.canvas-pie {
+  display: block;
+  box-sizing: border-box;
+  height: 112%;
+  width: 111%;
+  position: relative;
+  bottom: 5px;
+  left: 1px
+}
+
 .chronic-diseases-immunisation-container {
   margin-left: 35px;
   font-size: 8.99px;

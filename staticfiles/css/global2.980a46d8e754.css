@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --font-kiwi-maru: "Kiwi Maru";
+    --font-jetbrains-mono: "JetBrains Mono";
+    --font-inter: Inter;
+    --heading: "Noto Sans Hebrew";
+  
+    /* font sizes */
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --heading-size: 30px;
+    --font-size-smi-7: 12.7px;
+    --font-size-xs-3: 11.3px;
+    --font-size-xs-9: 11.9px;
+    --font-size-2xl-1: 21.1px;
+    --font-size-6xl-8: 25.8px;
+    --font-size-mini: 15px;
+    --font-size-2xs: 11px;
+  
+    /* Colors */
+    --color-white: #fff;
+    --color-black: #000;
+    --color-steelblue: #5b9bd5;
+    --color-goldenrod: #d69c2c;
+  
+    /* Gaps */
+    --gap-base: 16px;
+    --gap-mini: 15px;
+    --gap-xs: 12px;
+    --gap-smi: 13px;
+  
+    /* Paddings */
+    --padding-12xs-3: 0.3px;
+  
+    /* Border radiuses */
+    --br-xl: 20px;
+    --br-11xl: 30px;
+    --br-56xl: 75px;
+  }

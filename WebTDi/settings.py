@@ -85,9 +85,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'webtdi',
-        'USER': 'admin',
-        'PASSWORD': 'Accpass1234',
-        'HOST': 'webtdi.cfcpo5wgsodm.eu-north-1.rds.amazonaws.com',  # or the hostname where your MySQL server is running
+        'USER': 'root',
+        'PASSWORD': 'Tinky@123',
+        'HOST': 'localhost',  # or the hostname where your MySQL server is running
         'PORT': '3306',      # or the port on which your MySQL server is listening
     }
 }
@@ -135,6 +135,7 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static')  # Adjust the path accordingly
 MEDIA_URL = '/media/'
