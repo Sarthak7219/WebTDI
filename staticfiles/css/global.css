@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    line-height: normal;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif!important;
+  }
+  
+  :root {
+    /* fonts */
+    --font-inter: Inter;
+  
+    /* font sizes */
+    --font-size-sm-7: 13.7px;
+    --font-size-2xl: 21px;
+    --font-size-2xs-3: 10.3px;
+    --font-size-3xs-7: 9.7px;
+    --font-size-4xs-2: 8.2px;
+    --font-size-4xs: 9px;
+    --font-size-4xs-1: 8.1px;
+    --font-size-sm: 14px;
+    --font-size-sm-4: 13.4px;
+    --font-size-9xl-8: 28.8px;
+    --font-size-mid-2: 17.2px;
+    --font-size-sm-6: 13.6px;
+    --font-size-3xs-4: 9.4px;
+    --font-size-base-5: 15.5px;
+  
+    /* Colors */
+    --color-black: #000;
+    --color-white: #fff;
+    --color-gray-100: #7f7f7f;
+    --color-gray-200: #222828;
+    --color-darkolivegreen: #385723;
+    --color-saddlebrown: #843c0c;
+    --color-olive: #7f6000;
+    --color-steelblue: #2e75b6;
+  
+    /* Gaps */
+    --gap-3xs: 10px;
+    --gap-lgi: 19px;
+    --gap-mini: 15px;
+    --gap-3xl: 22px;
+    --gap-sm: 14px;
+    --gap-9xl-6: 28.6px;
+    --gap-2xs: 11px;
+  
+    /* Paddings */
+    --padding-4xs: 9px;
+    --padding-36xl: 55px;
+    --padding-12xs: 1px;
+    --padding-8xs: 5px;
+    --padding-0: 0px;
+    --padding-11xs: 2px;
+  }
+
+  
+  
