@@ -17,7 +17,7 @@ admin.site.register(Household, ViewAdmin)
 # class HouseholdAdmin(ImportExportModelAdmin):
 #     list_display = ['size', 'tribe']
 
-admin.site.register(Tribe)
+admin.site.register(Tribe, ViewAdmin)
 # class TribeAdmin(admin.ModelAdmin):
 #     list_display = [ 'name']
 
