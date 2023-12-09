@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-na_5rsgjn^vu^!se0ih!o^5h0!wtva1k+50^qa*bbwajcnx32b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -85,9 +85,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'webtdi',
-        'USER': 'root',
-        'PASSWORD': 'Tinky@123',
-        'HOST': 'localhost',  # or the hostname where your MySQL server is running
+        'USER': 'admin',
+        'PASSWORD': 'Accpass1234',
+        'HOST': 'webtdi.cfcpo5wgsodm.eu-north-1.rds.amazonaws.com',  # or the hostname where your MySQL server is running
         'PORT': '3306',      # or the port on which your MySQL server is listening
     }
 }
