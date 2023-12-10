@@ -1,37 +1,24 @@
 const vertical_graph_element_district = document.getElementById('vertical-bar-graph-district');
-var data_health = {{ dimension_contribution_to_tdi.0}};
-var data_education = {{ dimension_contribution_to_tdi.1}};
-var data_sol = {{ dimension_contribution_to_tdi.2}};
-var data_culture = {{ dimension_contribution_to_tdi.3}};
-var data_goverance = {{ dimension_contribution_to_tdi.4}};
+
 
 
 const vertical_bar_data_district = {
 labels: ['Dimensions'],
 datasets: [
-{
-label: 'Governance', // Removed square brackets
-data: [data_goverance], // Replace with your actual data for 'Governance'
-backgroundColor: '#C55A11', // Color for 'Governance'
-},
-{
-label: 'Culture', // Removed square brackets
-data: [data_culture], // Replace with your actual data for 'Culture'
-backgroundColor: '#BFBFBF', // Color for 'Culture'
-},
+
 {
 label: 'Sol', // Removed square brackets
-data: [data_sol], // Replace with your actual data for 'Sol'
+data: [{{ sol_contri_to_tdi_sol }}], // Replace with your actual data for 'Sol'
 backgroundColor: '#FFD966', // Color for 'Sol'
 },
 {
 label: 'Education', // Removed square brackets
-data: [data_education], // Replace with your actual data for 'Education'
+data: [{{ education_contri_to_tdi }}], // Replace with your actual data for 'Education'
 backgroundColor: '#A9D18E', // Color for 'Education'
 },
 {
 label: 'Health', // Removed square brackets
-data: [data_health], // Replace with your actual data for 'Health'
+data: [{{ health_contri_to_tdi }}], // Replace with your actual data for 'Health'
 backgroundColor: '#5B9BD5', // Color for 'Health'
 },
 ],

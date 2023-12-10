@@ -55,30 +55,32 @@
     </div>
   </div>
 </nav>
-<div class="group-parent" style="top: 12%">
+<div class="group-parent" style="top: 11%">
   <div class="group" style="width: auto">
     <div class="group-group">
-      <div class="group1">
-        <img class="vector-icon" alt="" src="/static/imagesdis/background-blue.png" />
-        <div class="bokaro">{{name}}</div>
-        <div class="district-wise-tdi-container">
-          <span class="distr">District Wise TDI Snapshot</span>
+      <div class="heading-frame">
+        <img alt="Here is an image" src="/static/imagesdis/background-blue.png">
+        <div class="heading-content">
+          <div class="heading-name">{{name}}</div>
+          <div class="subheading">A snapshot of TDI among {{name}} PVTG</div>
         </div>
       </div>
       <img class="rectangle-icon" alt="" src="/static/imagesdis/asurmap.png" />
     </div>
     <div class="group-container">
       <div class="rectangle-parent">
-        <div class="rectangle-wrapper">
-          <canvas id="vertical-bar-graph-district" class="vertical-graph"></canvas>
+        <div class=frame2-1>
+          <div class=dimensions>Dimensions</div>
+          <div class=rectangle-wrapper><canvas id=vertical-bar-graph-district class=vertical-graph height=560></canvas>
+          </div>
         </div>
 
         <div class="health-parent">
-          <div class=pie-box>
+          <div class="pie-box">
             <div class="pie-box-inside">
               <div>HEALTH</div>
-              <div id="my-data-health"></div>
-            </div><img alt="" src=/static/imagesdis/health-icon.png class=pie-chart-frame>
+              <div id="my-data-health-district"></div>
+            </div><img alt="" src=/static/imagesdis/health-icon.png class="pie-chart-frame">
             <div class="pie-inside-box"><!-- LABELS -->
               <div class=pie-chart-labels-frame>
                 <p class="pie-chart-labels">Chronic Diseases
@@ -86,29 +88,30 @@
                 <p class="pie-chart-labels">Maternal Care
                 <p class="pie-chart-labels">Child Mortality
               </div><!-- ------ --><!-- PIE CHART -->
-              <div class=pie-icon-1><canvas id=health-pie class=canvas-pie></canvas></div><!-- ------ -->
+              <div class="pie-icon-1"><canvas id="health-pie-district" class="canvas-pie"></canvas></div><!-- ------ -->
             </div>
           </div>
-          <div class=pie-box>
+          <div class="pie-box">
             <div class="pie-box-inside">
               <div>EDUCATION</div>
               <div id="my-data-education-district"></div>
-            </div><img alt="" src=/static/imagesdis/education-icon.png class=pie-chart-frame>
+            </div><img alt="" src="/static/imagesdis/education-icon.png" class="pie-chart-frame">
             <div class="pie-inside-box"><!-- LABELS -->
               <div class=pie-chart-labels-frame>
                 <p class="pie-chart-labels">Years of Schooling</p>
                 <p class="pie-chart-labels">Drop Out</p>
               </div><!-- ------ --><!-- PIE CHART -->
-              <div class=pie-icon-1><canvas id="education-pie-district" class=canvas-pie></canvas></div><!-- ------ -->
+              <div class=pie-icon-1><canvas id="education-pie-district" class="canvas-pie"></canvas></div>
+              <!-- ------ -->
             </div>
           </div>
-          <div class=pie-box>
+          <div class="pie-box">
             <div class="pie-box-inside">
               <div style="width: 89.12px; font-size: 9.32px;">STANDARD OF LIVING</div>
               <div id="my-data-sol-district"></div>
-            </div><img alt="" src=/static/imagesdis/sol-icon.png class=pie-chart-frame>
+            </div><img alt="" src="/static/imagesdis/sol-icon.png" class="pie-chart-frame">
             <div class="pie-inside-box"><!-- LABELS -->
-              <div class=pie-chart-labels-frame>
+              <div class="pie-chart-labels-frame">
                 <p class="pie-chart-labels">Institutional Credit</p>
                 <p class="pie-chart-labels">Ownership</p>
                 <p class="pie-chart-labels">Sanitation</p>
@@ -117,7 +120,7 @@
                 <p class="pie-chart-labels">Electricity</p>
 
               </div><!-- ------ --><!-- PIE CHART -->
-              <div class=pie-icon-1><canvas id="sol-pie-district" class=canvas-pie></canvas></div><!-- ------ -->
+              <div class="pie-icon-1"><canvas id="sol-pie-district" class="canvas-pie"></canvas></div><!-- ------ -->
             </div>
           </div>
         </div>
@@ -162,25 +165,11 @@
         <div class="group2">
           <div class="score">Score</div>
         </div>
-        <div class="align-items-center d-flex flex-column graph2-box">
+        <div class="align-items-center d-flex flex-column graph2-box" style="    height: 306px;
+        width: 612px;">
           <canvas id="graph2_dis"></canvas>
           <div id="my-graph2-data"></div>
-          <table class="mt-3" style="margin-left: 80px">
-            <tr>
-              <td class="graph2-labels" id="hdi">Health Development Index</td>
-              <td class="graph2-labels" id="edi">
-                Education Development Index
-              </td>
-              <td class="graph2-labels" id="sdi">
-                Sol Development Index
-            <tr>
-              <td class="graph2-labels" id="tdi">
-                Tribal Development Index
-              </td>
-            </tr>
-            </td>
-            </tr>
-          </table>
+
         </div>
       </div>
 

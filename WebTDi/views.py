@@ -23,6 +23,7 @@ def home_view(request):
 
     context = {
         'tribes' : tribes,
+        'districts' :districts,
         'tribe_wise_tdi' : tribe_wise_tdi,
         'districts_name' : districts_name,
         'district_wise_tdi' : district_wise_tdi,

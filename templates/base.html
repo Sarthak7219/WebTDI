@@ -154,6 +154,7 @@
 
         // Set the district name and values dynamically
         districtNameElement.textContent = districtId;
+        // districtValuesElement.textContent
 
 
         // Display the district name and values elements
@@ -771,10 +772,17 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+
 <!-- DISTRICT SCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+
+
   var myDattadis1Element = document.getElementById('my-data-health-district');
   var health_data = myDattadis1Element.getAttribute('data-my-data')
   const datadis1 = {
@@ -797,6 +805,7 @@
     type: 'doughnut',
     data: datadis1,
   };
+
   const health1 = new Chart(document.getElementById('health-pie-district'), configdis1);
 
 
@@ -846,6 +855,8 @@
     type: 'doughnut',
     data: datadis3,
   };
+
+
   const sol1 = new Chart(document.getElementById('sol-pie-district'), configdis3);
 
 
@@ -980,8 +991,15 @@
 
   const censored_graph_district = new Chart(document.getElementById('censored-graph-district'), config_censored_district);
 
-  const vertical_graph_element_district = document.getElementById('vertical-bar-graph-district');
 
+  // District-wise vertical graph
+
+  const vertical_graph_element_district = document.getElementById('vertical-bar-graph-district');
+  // var data_health = {{ dimension_contribution_to_tdi.0}};
+  // var data_education = {{ dimension_contribution_to_tdi.1}};
+  // var data_sol = {{ dimension_contribution_to_tdi.2}};
+  // var data_culture = {{ dimension_contribution_to_tdi.3}};
+  // var data_goverance = {{ dimension_contribution_to_tdi.4}};
 
 
   const vertical_bar_data_district = {
@@ -1004,13 +1022,13 @@
   backgroundColor: '#5B9BD5', // Color for 'Health'
         },
       ],
-    };
+  };
 
   const config_vertical_bar_district = {
     type: 'bar',
     data: vertical_bar_data_district,
     options: {
-      barPercentage: 2,
+      barPercentage: 1,
       categoryPercentage: 1,
       indexAxis: 'x',
       aspectRatio: 0.02,
@@ -1058,7 +1076,17 @@
   };
 
 
-  const vertical_bar_graph = new Chart(vertical_graph_element_district, config_vertical_bar_district);
+  const vertical_bar_graph_district = new Chart(vertical_graph_element_district, config_vertical_bar_district);
+
+
+
+
+
+
+
+
+
+
 
 </script>
 
