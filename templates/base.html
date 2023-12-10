@@ -151,10 +151,11 @@
       path.addEventListener('mouseover', function () {
         // Get the id attribute of the path
         const districtId = path.id;
+        // const district_tdi = {{ district.objects}};
 
         // Set the district name and values dynamically
         districtNameElement.textContent = districtId;
-        // districtValuesElement.textContent
+        // districtValuesElement.textContent = district_tdi;
 
 
         // Display the district name and values elements
@@ -169,6 +170,9 @@
       });
     });
   });
+
+
+
 
 
 </script>
@@ -872,7 +876,7 @@
 
       datasets: [{
         label: '',
-        data: [...{{ district_dimensional_index }}, ...{{ Ddi }}],
+        data: [...{{ district_dimensional_index }}, ...{{ tdi }}],
     backgroundColor: [
       '#4273B1',
       '#5E813F',
@@ -992,14 +996,13 @@
   const censored_graph_district = new Chart(document.getElementById('censored-graph-district'), config_censored_district);
 
 
-  // District-wise vertical graph
+  // District vertical graph
 
   const vertical_graph_element_district = document.getElementById('vertical-bar-graph-district');
-  // var data_health = {{ dimension_contribution_to_tdi.0}};
-  // var data_education = {{ dimension_contribution_to_tdi.1}};
-  // var data_sol = {{ dimension_contribution_to_tdi.2}};
-  // var data_culture = {{ dimension_contribution_to_tdi.3}};
-  // var data_goverance = {{ dimension_contribution_to_tdi.4}};
+  var sol_contri_to_tdi = {{ sol_contri_to_tdi }};
+  var education_contri_to_tdi = {{ education_contri_to_tdi }};
+  var health_contri_to_tdi = {{ health_contri_to_tdi }};
+
 
 
   const vertical_bar_data_district = {
@@ -1008,30 +1011,30 @@
 
       {
         label: 'Sol', // Removed square brackets
-        data: [{{ sol_contri_to_tdi_sol }}], // Replace with your actual data for 'Sol'
-    backgroundColor: '#FFD966', // Color for 'Sol'
-  },
-    {
-      label: 'Education', // Removed square brackets
-      data: [{{ education_contri_to_tdi }}], // Replace with your actual data for 'Education'
-    backgroundColor: '#A9D18E', // Color for 'Education'
-        },
-  {
-    label: 'Health', // Removed square brackets
-      data: [{{ health_contri_to_tdi }}], // Replace with your actual data for 'Health'
-  backgroundColor: '#5B9BD5', // Color for 'Health'
-        },
-      ],
+        data: [sol_contri_to_tdi], // Replace with your actual data for 'Sol'
+        backgroundColor: '#FFD966', // Color for 'Sol'
+      },
+      {
+        label: 'Education', // Removed square brackets
+        data: [education_contri_to_tdi], // Replace with your actual data for 'Education'
+        backgroundColor: '#A9D18E', // Color for 'Education'
+      },
+      {
+        label: 'Health', // Removed square brackets
+        data: [health_contri_to_tdi], // Replace with your actual data for 'Health'
+        backgroundColor: '#5B9BD5', // Color for 'Health'
+      },
+    ],
   };
 
   const config_vertical_bar_district = {
     type: 'bar',
     data: vertical_bar_data_district,
     options: {
+      maintainAspectRatio: false,
       barPercentage: 1,
       categoryPercentage: 1,
       indexAxis: 'x',
-      aspectRatio: 0.02,
       scales: {
         x: {
           stacked: true,
@@ -1042,15 +1045,16 @@
           display: false,
           stacked: true,
           beginAtZero: true,
-          maxTicksLimit: 16,
-          autoSkip: false,
+          // maxTicksLimit: 16,
+          // autoSkip: false,
         },
       },
 
       plugins: {
         datalabels: {
-          anchor: 'center', // Center the labels inside the bars
-          align: 'center', // Align the labels to the center
+          anchor: 'start', // Center the labels inside the bars
+          align: 'start', // Align the labels to the center
+          offset: 30,
           color: 'white', // Label color
           font: {
             weight: 'bold', // Label font weight
@@ -1058,13 +1062,15 @@
           formatter: function (value, context) {
             const label = vertical_bar_data_district.labels[context.dataIndex];
             const dataset = vertical_bar_data_district.datasets[context.datasetIndex];
-            const colorIndex = context.datasetIndex; // Get the color index
 
             // Create a legend string
-            const legend = dataset.label + ',' + value;
+            const legend = dataset.label + ' Index\nScore : ' + value + '%';
 
+
+            // Ensure legend stays inside the graph area
             return legend;
           },
+
           display: 'auto',
         },
         legend: {
@@ -1077,6 +1083,8 @@
 
 
   const vertical_bar_graph_district = new Chart(vertical_graph_element_district, config_vertical_bar_district);
+
+
 
 
 

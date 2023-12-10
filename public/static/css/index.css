@@ -43,7 +43,6 @@
 .heading-name {
   top: 0;
   font-size: 28.83px;
-  width: 69.86px;
   text-transform: capitalize;
 }
 
@@ -588,9 +587,11 @@
   font-family: var(--font-inter);
 }
 
-.vertical-graph{
-  width: 100% !important ;
+.district-name{
+  text-transform: capitalize;
 }
+
+
 
 @media screen and (max-width: 420px) {
   .navbar {
@@ -599,4 +600,35 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+.mapdiv{
+  padding-top: 170px;
+  padding-left: 20px;
+
+}
+
+svg{
+  border: 2px white solid;
+}
+
+
+.mapdiv path {
+  stroke: #01171b;
+  stroke-width: .25;
+  transition: transform 0.4s, fill 0.4s;
+
+}
+
+.mapdiv path:hover {
+fill: rgba(96, 95, 95, 0.143) !important;
+cursor: pointer !important;
+}
+
+.maplabels1{
+  fill: #01171b;
+  
+}
+.active{
+  fill: #FDC2C2;
 }

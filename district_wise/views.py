@@ -31,7 +31,7 @@ def district_view(request,slug1,slug2):
 
 
     district_dimensional_index=district.get_dimension_scores()
-    Ddi=district.get_tdi_score()
+    tdi=district.get_tdi_score()
     health_ind_contri_to_dim=district.get_indicator_contri_to_dimension()[0]
     education_ind_contri_to_dim=district.get_indicator_contri_to_dimension()[1]
     sol_ind_contri_to_dim=district.get_indicator_contri_to_dimension()[2]
@@ -45,7 +45,7 @@ def district_view(request,slug1,slug2):
     context={
       'district':districts,
       'district_dimensional_index':district_dimensional_index,
-      'Ddi':Ddi,
+      'tdi':tdi,
       'health_ind_contri_to_dim':health_ind_contri_to_dim,
       'education_ind_contri_to_dim':education_ind_contri_to_dim,
       'sol_ind_contri_to_dim':sol_ind_contri_to_dim,

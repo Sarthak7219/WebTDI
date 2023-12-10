@@ -1690,12 +1690,9 @@
     font-family: var(--font-jetbrains-mono);
   }
   .desktop-1 {
-    position: relative;
     background-color: var(--color-white);
     width: 100%;
-    height: 6472px;
-    overflow: hidden;
-    text-align: left;
+    
     font-size: var(--heading-size);
     color: var(--color-black);
     font-family: var(--heading);
