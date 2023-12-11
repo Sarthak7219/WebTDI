@@ -164,7 +164,7 @@ class District(models.Model):
             for j in i:
                 sum += j
             avg = sum/len(i)
-            dimension_arr.append(round(avg,3))
+            dimension_arr.append(round(avg,2))
 
         return dimension_arr
     
@@ -185,10 +185,10 @@ class District(models.Model):
         for i in dimension_scores:
             prod = prod*i
 
-        arithmetic_tdi = round(total/length,3)
-        geometric_tdi = round(math.pow(prod, 1/length),3)
+        arithmetic_tdi = round(total/length,2)
+        geometric_tdi = round(math.pow(prod, 1/length),2)
 
-        return [arithmetic_tdi, geometric_tdi]
+        return [geometric_tdi, arithmetic_tdi]
     
 
     def get_indicator_contri_to_dimension(self):
@@ -224,5 +224,5 @@ class District(models.Model):
     def get_score(self):
         dimension_scores = self.get_dimension_scores()
         normalized_final_ind_scores=self.get_normalized_final_ind_scores()
-        arr=[normalized_final_ind_scores[0],normalized_final_ind_scores[1],normalized_final_ind_scores[2],normalized_final_ind_scores[3],normalized_final_ind_scores[4],normalized_final_ind_scores[5],normalized_final_ind_scores[6],normalized_final_ind_scores[7],normalized_final_ind_scores[8],normalized_final_ind_scores[9],normalized_final_ind_scores[10],normalized_final_ind_scores[11],dimension_scores[0],normalized_final_ind_scores[12],normalized_final_ind_scores[13],normalized_final_ind_scores[14],dimension_scores[1],normalized_final_ind_scores[15],normalized_final_ind_scores[16],normalized_final_ind_scores[17],normalized_final_ind_scores[17],dimension_scores[2]]
+        arr=[normalized_final_ind_scores[0],normalized_final_ind_scores[1],normalized_final_ind_scores[2],normalized_final_ind_scores[3],normalized_final_ind_scores[4],normalized_final_ind_scores[5],normalized_final_ind_scores[6],normalized_final_ind_scores[7],normalized_final_ind_scores[8],normalized_final_ind_scores[9],normalized_final_ind_scores[10],dimension_scores[0],normalized_final_ind_scores[11],normalized_final_ind_scores[12],normalized_final_ind_scores[13],dimension_scores[1],normalized_final_ind_scores[14],normalized_final_ind_scores[15],normalized_final_ind_scores[16],normalized_final_ind_scores[17],dimension_scores[2]]
         return arr
