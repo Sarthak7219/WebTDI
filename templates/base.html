@@ -651,8 +651,6 @@
   const config6 = {
     type: 'doughnut',
     data: data6,
-
-    // plugins: [ChartDataLabels]
   };
   const governance = new Chart(document.getElementById('governance-pie'), config6);
 
@@ -685,7 +683,17 @@
       },
     ],
   };
-
+  const options = {
+    plugins: {
+      datalabels: {
+        display: false,
+        color: "black"
+      }
+    },
+    legend: {
+      display: false
+    }
+  };
   // Create the chart
   new Chart(ctx, {
     type: 'bar',
@@ -788,8 +796,6 @@
   const configdis2 = {
     type: 'doughnut',
     data: datadis2,
-
-
   };
   const eduaction1 = new Chart(document.getElementById('education-pie-district'), configdis2);
 
@@ -815,17 +821,6 @@
   const configdis3 = {
     type: 'doughnut',
     data: datadis3,
-
-    options: {
-      plugins: {
-        datalabels: {
-          anchor: "end",
-          align: "right"
-        }
-      }
-    }
-
-    plugins: [ChartDataLabels],
   };
 
 
