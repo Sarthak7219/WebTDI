@@ -9,6 +9,10 @@ from django.http import HttpResponse
 
 def tribe_detail_view(request, slug):
     tribes = Tribe.objects.all()
+    pvtg_tribes = Tribe.objects.filter(id__range=(1, 8))
+
+    # Query for 'other' tribes with id values from 9 to 29
+    other_tribes = Tribe.objects.filter(id__range=(9, 29))
     if slug is not None:
         try:
             tribe = Tribe.objects.get(slug=slug)
@@ -41,6 +45,8 @@ def tribe_detail_view(request, slug):
         'total_tribals': total_tribals,
         'tribe': tribe,
         'tribes' : tribes,
+        'pvtg_tribes':pvtg_tribes,
+        'other_tribes':other_tribes,
         'health_contributions_to_dimension': health_contributions_to_dimension,
         'education_contributions_to_dimension': education_contributions_to_dimension,
         'sol_contributions_to_dimension': sol_contributions_to_dimension,

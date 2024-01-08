@@ -1,8 +1,6 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-
-<div class="accountsbox">
+<div class="accountsbox login-container">
   {% if not request.user.is_authenticated %}
   <div class="accounts-head">
     <h2>Login to your account</h2>
@@ -12,37 +10,119 @@
 
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" name="username" placeholder="Username">
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        placeholder="Username"
+      />
     </div>
 
     <div class="form-group">
       <label for="Password">Password</label>
-      <input type="password" class="form-control" name="password" placeholder="Password">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="Password"
+      />
     </div>
 
     <div class="form-group">
       <a href="#" class="float-right">Forgot password?</a>
-      <label class="float-left custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input"
-          checked="">
+      <label class="float-left custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" checked="" />
         <div class="custom-control-label">Remember</div>
       </label>
-    </div><br><br>
+    </div>
+    <br /><br />
 
-    <button type="submit" class="btn btn-primary">Login</button><br>
+    <button type="submit" class="btn btn-primary">Login</button><br />
   </form>
-  <p class="text-center mt-4">Don't have account? <a href="{% url 'register' %}">Sign up</a></p>
+  <p class="text-center mt-4">
+    Don't have account? <a href="{% url 'register' %}">Sign up</a>
+  </p>
 
   {% else %}
-  <div class="accounts-head" style="text-align: center;">
-    You've Already logged in <b>{{user.username}}</b>. Do you want to <a href="{% url 'logout' %}">Logout</a> ?
+  <div class="accounts-head" style="text-align: center">
+    You've Already logged in <b>{{user.username}}</b>. Do you want to
+    <a href="{% url 'logout' %}">Logout</a> ?
   </div>
   {% endif %}
 </div>
 
+{% endblock %} {% block extra_css %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
 
+  .login-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 80%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
 
-{% endblock %}
-{% block extra_css %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+  h2 {
+    color: #343a40;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #495057;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .signup-link {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .signup-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+</style>
 {% endblock %}

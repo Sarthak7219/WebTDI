@@ -16,14 +16,13 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              TRIBES
+              Other_Tribe
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Asur</a></li>
+              {% for other in other_tribes %}
+              <li><a class="dropdown-item" href="{% url 'tribe_detail' other.slug %}">{{other.name}}</a></li>
+              {% endfor %}
             </ul>
-
-
-
           </li>
 
           <li class="nav-item dropdown">
@@ -47,8 +46,8 @@
               PVTGS
             </a>
             <ul class="dropdown-menu">
-              {% for tribe in tribes %}
-              <li><a class="dropdown-item" href="{% url 'tribe_detail' tribe.slug %}">{{tribe.name}}</a></li>
+              {% for pvtg in pvtg_tribes %}
+              <li><a class="dropdown-item" href="{% url 'tribe_detail' pvtg.slug %}">{{pvtg.name}}</a></li>
               {% endfor %}
             </ul>
           </li>
