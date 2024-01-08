@@ -31,26 +31,45 @@
           </a>
           <ul class="dropdown-menu">
             {% for i in district %}
-            <li><a class="dropdown-item" href="/district/{{i.slug}}/{{i.year}}">{{i.name}}</a></li>
-            {% endfor %}
-          </ul>
+            <li><a class="dropdown-item" href="/district/{{i.name}}/2022">{{i.name}}
+
+                {% comment %}
+            <li><a class="dropdown-item" href="/district/{{i.name}}/{{i.year}}">{{i.year}}
+
+              </a></li> {% endcomment %}
+
+            </a>
         </li>
+        {% endfor %}
+      </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Year
+        </a>
+        <ul class="dropdown-menu">
+          {% for year in unique_years %}
+          <li><a class="dropdown-item" href="{{ year }}">{{ year }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
 
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            PVTGS
-          </a>
-          <ul class="dropdown-menu">
-            {% for tribe in tribes %}
-            <li><a class="dropdown-item" href="{% url 'tribe_detail' tribe.slug %}">{{tribe.name}}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          PVTGS
+        </a>
+        <ul class="dropdown-menu">
+          {% for tribe in tribes %}
+          <li><a class="dropdown-item" href="{% url 'tribe_detail' tribe.slug %}">{{tribe.name}}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
 
     </div>
   </div>
@@ -446,10 +465,10 @@
             </div><img alt="" src=/static/imagesdis/health-icon.png class="pie-chart-frame">
             <div class="pie-inside-box"><!-- LABELS -->
               <div class=pie-chart-labels-frame>
-                <p class="pie-chart-labels">Nutrition
-                <p class="pie-chart-labels">Aneamic
-                <p class="pie-chart-labels">Maternal Care
-                <p class="pie-chart-labels">Health Insurance
+                <p class="pie-chart-labels" id="nu">Nutrition
+                <p class="pie-chart-labels" id="an">Aneamic
+                <p class="pie-chart-labels" id="mc">Maternal Care
+                <p class="pie-chart-labels" id="hi">Health Insurance
 
 
               </div><!-- ------ --><!-- PIE CHART -->
@@ -464,9 +483,9 @@
             </div><img alt="" src="/static/imagesdis/education-icon.png" class="pie-chart-frame">
             <div class="pie-inside-box"><!-- LABELS -->
               <div class=pie-chart-labels-frame>
-                <p class="pie-chart-labels">Enrollment</p>
-                <p class="pie-chart-labels">Equity</p>
-                <p class="pie-chart-labels">Drop Rate</p>
+                <p class="pie-chart-labels" id="en">Enrollment</p>
+                <p class="pie-chart-labels" id="eq">Equity</p>
+                <p class="pie-chart-labels" id="dr">Drop Rate</p>
               </div><!-- ------ --><!-- PIE CHART -->
               <div class=pie-icon-1><canvas id="education-pie-district" class="canvas-pie"></canvas></div>
               <!-- ------ -->
@@ -479,10 +498,10 @@
             </div><img alt="" src="/static/imagesdis/sol-icon.png" class="pie-chart-frame">
             <div class="pie-inside-box"><!-- LABELS -->
               <div class="pie-chart-labels-frame">
-                <p class="pie-chart-labels">Sanitation</p>
-                <p class="pie-chart-labels">Cooking Fuel</p>
-                <p class="pie-chart-labels">Drinkng Water</p>
-                <p class="pie-chart-labels">Electricity</p>
+                <p class="pie-chart-labels" id="san">Sanitation</p>
+                <p class="pie-chart-labels" id="cf">Cooking Fuel</p>
+                <p class="pie-chart-labels" id="dw">Drinkng Water</p>
+                <p class="pie-chart-labels" id="elec">Electricity</p>
 
 
               </div><!-- ------ --><!-- PIE CHART -->
@@ -530,14 +549,19 @@
     </div>
     <div class="vector-parent" style="width: 613px">
       <div class="score-graph-frame" style="position: absolute; top: 90px">
-        <div class="group2">
-          <div class="score">Score</div>
-        </div>
         <div class="align-items-center d-flex flex-column graph2-box" style="    height: 306px;
         width: 612px;">
           <canvas id="graph2_dis"></canvas>
           <div id="my-graph2-data"></div>
-
+          <table class=mt-3>
+            <tr>
+              <td class=graph2-labels id=hdi>Health Development Index
+              <td class=graph2-labels id=edi>Education Development Index
+              <td class=graph2-labels id=sdi>Sol Development Index
+            <tr>
+              <td class=graph2-labels id=gtdi>Geometric TDI
+              <td class=graph2-labels id=atdi>Arithmetic TDI
+          </table>
         </div>
       </div>
 
