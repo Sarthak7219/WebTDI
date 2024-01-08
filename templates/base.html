@@ -6,6 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <title>TDI - Webtool</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -31,7 +32,7 @@
 <body>
   {% if messages %} {% for message in messages %}
 
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" style="z-index: 10;">
     {{message}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
@@ -96,6 +97,13 @@
       scales: {
         y: {
           beginAtZero: true
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            boxWidth: 0,
+          }
         }
       }
     }
@@ -198,6 +206,14 @@
       scales: {
         y: {
           beginAtZero: true
+        }
+      },
+
+      plugins: {
+        legend: {
+          labels: {
+            boxWidth: 0,
+          }
         }
       }
     }
@@ -850,17 +866,34 @@
     borderWidth: 1
   }]
       },
+
     options: {
     scales: {
+
+      x: {
+        display: false,
+        grid: {
+          display: false,
+        }
+      },
       y: {
-        beginAtZero: true
+        beginAtZero: true,
+        ticks: {
+          stepSize: 0.1,
+        }
       }
     },
     plugins: {
       datalabels: {
         anchor: "start",
         align: "top"
+      },
+      legend: {
+        labels: {
+          boxWidth: 0,
+        }
       }
+
     }
   },
     plugins: [ChartDataLabels]
@@ -877,7 +910,7 @@
     labels: ['BMI', 'Children Under weight', 'Overall Nutrition Score', 'Anaemia-Women', 'Anaemia- children', 'Overall Aneamic Score', 'Antenatal checkup 1st trimister', 'Full Antenatal care', 'Post natal care', 'Overall Maternal Care Score', 'Health Insurance', 'Heath Score', 'ST Enrollment', 'Equity Outcome', 'Drop out', 'Education Score', 'Sanitation', 'Source of Cooking Fuel', 'Source of Drinking water', 'Electricity', 'Standard of Living Score'],
     datasets: [
       {
-        label: 'Censored',
+        label: '',
         data: {{ get_score }},
     fill: false,
     backgroundColor: [
@@ -905,9 +938,9 @@
 
 
     ],
-    // borderColor: 'rgba(75,192,192,1)',
+
     borderWidth: 1,
-    barThickness: 24,
+    barThickness: 'flex',
           },
         ],
       };
@@ -920,48 +953,45 @@
     options: {
       maintainAspectRatio: false,
       indexAxis: 'y',
+      barPercentage: 1,
       scales: {
-        xAxes: [
-          {
-            ticks: {
-              stepSize: 1,
-              beginAtZero: true,
-              autoSkip: false
-            },
-          },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              stepSize: 1,
-              beginAtZero: true,
-              maxTicksLimit: 21,
-              autoSkip: false
-            },
-          },
-        ],
 
         x: {
+
+          display: false,
+
           grid: {
-            drawOnChartArea: false,
             display: false
           }
         },
         y: {
+          ticks: {
+            font: {
+              weight: 'bold',
+            }
+          },
           grid: {
-            drawOnChartArea: false,
             display: false
           }
         }
       },
+
       plugins: {
         datalabels: {
-          anchor: "end",
-          align: "right"
+          anchor: "start",
+          align: "right",
+          font: {
+            weight: 'bold',
+          }
+        },
+        legend: {
+          labels: {
+            boxWidth: 0,
+          }
         }
       }
     },
-    // plugins: [ChartDataLabels]
+    plugins: [ChartDataLabels]
   };
 
   const censored_graph_district = new Chart(document.getElementById('censored-graph-district'), config_censored_district);

@@ -14,7 +14,7 @@ def district_view(request,slug1,slug2):
     tribes = Tribe.objects.all()
 
     if slug1 is not None and slug2 is not None:
-       district = District.objects.get(slug=slug1, year=slug2)
+       district = District.objects.get(name=slug1,year=slug2)
 
 
       
@@ -41,7 +41,7 @@ def district_view(request,slug1,slug2):
     education_contri_to_tdi=district.get_dimension_contribution_tdi()[1]
     sol_contri_to_tdi=district.get_dimension_contribution_tdi()[2]
     get_score=district.get_score()
-    
+    unique_years = set(district.year for district in districts)
     context={
       'district':districts,
       'district_dimensional_index':district_dimensional_index,
@@ -57,6 +57,7 @@ def district_view(request,slug1,slug2):
       'name' : slug1,
       'tribes' : tribes,
       'get_score':get_score,
+      'unique_years': unique_years
 
        
 
@@ -129,7 +130,7 @@ def form_view(request):
             # Handle the case where 'year' is not a valid integer
             messages.error(request, 'Invalid year value. Please provide a valid integer for the year.')
             return HttpResponseBadRequest("Invalid year value.")
-        messages.success(request, 'Household added successfully!!!')
+        messages.success(request, 'District added successfully!!!')
         print(name)
         print(year)
         return redirect('district_view', slug1=name[0], slug2=year)

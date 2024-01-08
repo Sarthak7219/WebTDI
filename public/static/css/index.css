@@ -348,9 +348,71 @@
 }
 
 .pie-chart-labels::before {
-  padding-left: 4px;
-  margin-right: 3px
+  width: 8px;
+  height: 8px;
+  content: '';
+  display: inline-block;
+  margin-top: 1px;
+  margin-right: 3px;
 }
+
+
+#nu::before {
+  background-color: #315493;
+  color: #315493
+}
+
+#an::before {
+  background-color: #3b64ad;
+  color: #3b64ad
+}
+
+#mc::before {
+  background-color: #4472c4;
+  color: #4472c4
+}
+
+#hi::before {
+  background-color: #8fa2d4;
+  color: #8fa2d4
+}
+
+#en::before {
+  background-color: #a1c490;
+  color: #a1c490
+}
+
+#eq::before {
+  background-color: #538233;
+  color: #538233
+}
+#dr::before {
+  background-color: #538233;
+  color: #538233
+}
+
+#san::before {
+  background-color: #c09000;
+  color: #c09000
+}
+
+#cf::before {
+  background-color: #e2aa00;
+  color: #e2aa00
+}
+
+#dw::before {
+  background-color: #ffc000;
+  color: #ffc000
+}
+
+#elec::before {
+  background-color: #ffd184;
+  color: #ffd184
+}
+
+
+
 
 .pie-icon-1 {
   position: absolute;
@@ -635,4 +697,42 @@ cursor: pointer !important;
 }
 .active{
   fill: #FDC2C2;
+}
+
+.graph2-labels {
+  font-size: 10px;
+  padding: 8px 15px
+}
+
+.graph2-labels:before {
+  content: "";
+  border-radius: 2px;
+  width: 13px;
+  display: inline-block;
+  height: 13px;
+  padding-left: 6px;
+  margin-right: 4px
+} 
+
+#hdi:before {
+  background-color: #4273B1;
+  color: #4273B1
+}
+
+#edi:before {
+  background-color: #5E813F;
+  color: #5E813F
+}
+
+#sdi:before {
+  background-color: #B89230;
+  color: #B89230
+}
+#gtdi:before {
+  background-color: #B86029;
+  color: #B86029
+}
+#atdi:before {
+  background-color: #385492;
+  color: #385492
 }

@@ -33,7 +33,7 @@
 
             <ul class="dropdown-menu">
               {% for i in districts %}
-              <li><a class="dropdown-item" href="/district/{{i.name}}/{{i.year}}">{{i.name}}</a></li>
+              <li><a class="dropdown-item" href="/district/{{i.slug}}/{{i.year}}">{{i.name}}</a></li>
               {% endfor %}
             </ul>
 
@@ -69,11 +69,13 @@
         </div>
         <div class=tribe-image-main style="background-image: url(../media/{{tribe.tribe_image.first.main_image}});">
           <div class=tribe-photo-desc style=background-color:#f2f2f277>
-            <div class=image-location->
+            <div class=an-asur-man>{{tribe.tribe_image.first.main_desc}}</div>
+            <div class=image-loc>
+
               {{tribe.tribe_image.first.location}}
             </div>
-            <div class=an-asur-man>{{tribe.tribe_image.first.main_desc}}</div>
           </div>
+          <div class="image-date">DOP : {{tribe.tribe_image.first.date}}</div>
         </div>
       </div>
       <div class=frame2>

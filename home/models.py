@@ -234,7 +234,7 @@ class Tribe(models.Model):
 
         if households:
             # Initialize the 'total' list with the test indicators of the first household
-            total = [[0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]
+            total = [[0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0,0.0,0.0], [0.0, 0.0], [0.0, 0.0]]
 
             for household in households:
                 indicators = household.test_indicators
